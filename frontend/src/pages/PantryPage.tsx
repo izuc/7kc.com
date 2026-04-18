@@ -5,6 +5,7 @@ import { daysUntil, fmtExpiry, SECTIONS } from '../lib/format';
 import { Icon } from '../components/Icon';
 import { Modal } from '../components/Modal';
 import { useIngredients, displayFor, sectionFor } from '../hooks/useIngredients';
+import { SkeletonGrid } from '../components/Skeleton';
 import type { PantryItem } from '../types/models';
 
 type HydratedItem = PantryItem & { display: string; section: string; daysLeft: number | null };
@@ -40,7 +41,19 @@ export function PantryPage() {
 
   const invalidate = () => qc.invalidateQueries({ queryKey: ['pantry'] });
 
-  if (isLoading) return <div className="empty">Loading pantry…</div>;
+  if (isLoading) {
+    return (
+      <div className="screen">
+        <div className="screen-head">
+          <div className="screen-head-left">
+            <div className="eyebrow">Pantry</div>
+            <h1 className="screen-title">What you've got</h1>
+          </div>
+        </div>
+        <SkeletonGrid count={8} />
+      </div>
+    );
+  }
 
   return (
     <div className="screen">
@@ -108,7 +121,7 @@ export function PantryPage() {
                   <span>{s.label}</span>
                   <span className="mono muted">{group.length}</span>
                 </div>
-                <div className="pantry-grid">
+                <div className="pantry-grid stagger-in">
                   {group.map((i) => (
                     <PantryCard key={i.id} item={i} onChanged={invalidate} />
                   ))}
@@ -118,7 +131,7 @@ export function PantryPage() {
           })}
         </div>
       ) : (
-        <div className="pantry-grid">
+        <div className="pantry-grid stagger-in">
           {sortedForGridView.map((i) => (
             <PantryCard key={i.id} item={i} onChanged={invalidate} />
           ))}

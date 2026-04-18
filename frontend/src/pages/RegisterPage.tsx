@@ -28,54 +28,86 @@ export function RegisterPage() {
 
   return (
     <div className="auth-shell">
-      <form className="auth-card" onSubmit={submit}>
-        <div>
+      <aside className="auth-aside">
+        <Link to="/" className="auth-aside-brand">
+          <svg viewBox="0 0 28 28" width={32} height={32} aria-hidden>
+            <rect x="1" y="1" width="26" height="26" rx="7" fill="var(--accent)" />
+            <text x="14" y="19" textAnchor="middle" fontFamily="var(--serif)" fontSize={14} fill="var(--cream)">
+              7
+            </text>
+          </svg>
+          <div>
+            <div className="name">7 Day Kitchen</div>
+            <div className="tag">7kc.com</div>
+          </div>
+        </Link>
+
+        <div className="auth-aside-body">
           <div className="eyebrow">Start free</div>
-          <h2 style={{ fontSize: 28 }}>Your kitchen, remembered.</h2>
-          <p className="muted small" style={{ margin: 0 }}>
-            Private pantry, smart lists, recipes that use what you've got.
+          <h1>
+            Your <em>kitchen,</em> remembered.
+          </h1>
+          <p>
+            Private pantry, smart lists, recipes that use what you've already
+            bought. Thirty seconds to set up, no credit card, nothing to cancel
+            later.
           </p>
         </div>
-        {err && <div className="error">{err}</div>}
-        <div className="auth-field">
-          <label>Your name (optional)</label>
-          <input
-            className="text-input"
-            value={displayName}
-            onChange={(e) => setDisplayName(e.target.value)}
-            placeholder="e.g. Lance"
-          />
+
+        <div className="auth-aside-foot">
+          <span><span className="tick">✓</span>Works offline</span>
+          <span><span className="tick">✓</span>Installable as a PWA</span>
+          <span><span className="tick">✓</span>52 recipes seeded</span>
         </div>
-        <div className="auth-field">
-          <label>Email</label>
-          <input
-            className="text-input"
-            type="email"
-            autoComplete="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="auth-field">
-          <label>Password (min 8 chars)</label>
-          <input
-            className="text-input"
-            type="password"
-            autoComplete="new-password"
-            required
-            minLength={8}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button className="btn btn-primary full" type="submit" disabled={busy}>
-          {busy ? 'Creating…' : 'Create account'}
-        </button>
-        <div className="auth-switch">
-          Already signed up? <Link to="/login">Sign in</Link>
-        </div>
-      </form>
+      </aside>
+
+      <main className="auth-main">
+        <form className="auth-card" onSubmit={submit}>
+          <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            New account
+          </div>
+          <h2>Start your pantry.</h2>
+          {err && <div className="error">{err}</div>}
+          <div className="auth-field">
+            <label>Your name (optional)</label>
+            <input
+              className="text-input"
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+              placeholder="e.g. Lance"
+            />
+          </div>
+          <div className="auth-field">
+            <label>Email</label>
+            <input
+              className="text-input"
+              type="email"
+              autoComplete="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="auth-field">
+            <label>Password (min 8 chars)</label>
+            <input
+              className="text-input"
+              type="password"
+              autoComplete="new-password"
+              required
+              minLength={8}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button className="btn btn-primary full" type="submit" disabled={busy}>
+            {busy ? 'Creating your kitchen…' : 'Create account →'}
+          </button>
+          <div className="auth-switch">
+            Already signed up? <Link to="/login">Sign in</Link>
+          </div>
+        </form>
+      </main>
     </div>
   );
 }

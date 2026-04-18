@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './styles.css';
 import './styles.extra.css';
+import './styles.landing.css';
 import { App } from './App';
 import { AuthProvider } from './store/auth';
 import { initAnalytics } from './lib/analytics';

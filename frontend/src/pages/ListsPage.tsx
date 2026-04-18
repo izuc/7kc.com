@@ -9,6 +9,7 @@ import { useUi } from '../store/ui';
 import { useIngredients, displayFor } from '../hooks/useIngredients';
 import { OcrModal } from '../components/OcrModal';
 import { AffiliateButtons } from '../components/AffiliateButtons';
+import { SkeletonList } from '../components/Skeleton';
 import { trackEvent } from '../lib/analytics';
 import type { ListItem, ParsedItem, Ingredient } from '../types/models';
 
@@ -48,7 +49,19 @@ export function ListsPage() {
     },
   });
 
-  if (isLoading) return <div className="empty">Loading your lists…</div>;
+  if (isLoading) {
+    return (
+      <div className="screen">
+        <div className="screen-head">
+          <div className="screen-head-left">
+            <div className="eyebrow">Shopping list</div>
+            <span className="skeleton skeleton-line tall" style={{ width: 220 }} />
+          </div>
+        </div>
+        <SkeletonList rows={6} />
+      </div>
+    );
+  }
 
   if (!list) {
     return (

@@ -15,6 +15,7 @@ import { CookPage } from './pages/CookPage';
 import { GroupPage } from './pages/GroupPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { PublicRecipePage } from './pages/PublicRecipePage';
+import { LandingPage } from './pages/LandingPage';
 
 export function App() {
   const { user, loading } = useAuth();
@@ -40,9 +41,10 @@ export function App() {
     return (
       <div className={`accent-${accent} density-${density}`}>
         <Routes>
+          <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="*" element={<Navigate to="/login" replace state={{ from: location }} />} />
+          <Route path="*" element={<Navigate to="/" replace state={{ from: location }} />} />
         </Routes>
         <Toasts />
       </div>

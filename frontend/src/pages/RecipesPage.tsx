@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { Icon } from '../components/Icon';
 import { Swatch } from '../components/Swatch';
+import { SkeletonRecipeGrid } from '../components/Skeleton';
 import type { RankedRecipe } from '../types/models';
 
 type Filter = 'all' | 'can-make' | 'quick' | 'expiring' | 'veg';
@@ -38,7 +39,19 @@ export function RecipesPage() {
 
   const topPick = ranked[0];
 
-  if (isLoading) return <div className="empty">Finding recipes…</div>;
+  if (isLoading) {
+    return (
+      <div className="screen">
+        <div className="screen-head">
+          <div className="screen-head-left">
+            <div className="eyebrow">Recipes</div>
+            <h1 className="screen-title">What can I make?</h1>
+          </div>
+        </div>
+        <SkeletonRecipeGrid count={8} />
+      </div>
+    );
+  }
 
   return (
     <div className="screen">
@@ -124,7 +137,7 @@ export function RecipesPage() {
         ))}
       </div>
 
-      <div className="recipe-grid">
+      <div className="recipe-grid stagger-in">
         {filtered.slice(0, 60).map((entry) => (
           <RecipeCard key={entry.recipe.id} entry={entry} />
         ))}

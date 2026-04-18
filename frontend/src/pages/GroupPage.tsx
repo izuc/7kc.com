@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { Icon } from '../components/Icon';
 import { Avatar } from '../components/Avatar';
+import { Swatch } from '../components/Swatch';
 import { fmtRelative } from '../lib/format';
 import { useAuth } from '../store/auth';
-import type { GroupMember, Suggestion } from '../types/models';
+import type { GroupMember, RecipeSummary, Suggestion } from '../types/models';
 
 export function GroupPage() {
   const { user } = useAuth();
@@ -23,6 +24,14 @@ export function GroupPage() {
     queryKey: ['group-suggestions'],
     queryFn: () => api.listSuggestions(),
   });
+  // recipe lookup so suggestion cards can show real palettes
+  const { data: recipesData } = useQuery({
+    queryKey: ['recipes-all'],
+    queryFn: () => api.recipes(),
+    staleTime: 10 * 60 * 1000,
+  });
+  const recipeByTitle = new Map<string, RecipeSummary>();
+  for (const r of recipesData?.recipes ?? []) recipeByTitle.set(r.title, r);
 
   if (!user?.group_id) {
     return (
@@ -89,6 +98,7 @@ export function GroupPage() {
                 <SuggestionCard
                   key={s.id}
                   s={s}
+                  recipe={recipeByTitle.get(s.recipe_title)}
                   membersById={membersById}
                   currentUserId={user.id}
                   onChanged={() => {
@@ -145,11 +155,13 @@ export function GroupPage() {
 
 function SuggestionCard({
   s,
+  recipe,
   membersById,
   currentUserId,
   onChanged,
 }: {
   s: Suggestion;
+  recipe?: RecipeSummary;
   membersById: Record<string, GroupMember>;
   currentUserId: string;
   onChanged: () => void;
@@ -160,7 +172,11 @@ function SuggestionCard({
 
   return (
     <div className="suggestion-card">
-      <div className="swatch rounded" style={{ background: '#e8e4df' }} />
+      {recipe ? (
+        <Swatch palette={recipe.palette} label={recipe.title} size="sm" rounded />
+      ) : (
+        <div className="swatch rounded" style={{ width: 64, height: 64, background: 'var(--cream-2)' }} />
+      )}
       <div className="suggestion-body">
         <div className="suggestion-head">
           <Avatar user={{ user_id: by.user_id, display_name: by.display_name, color: by.color }} size={18} />
