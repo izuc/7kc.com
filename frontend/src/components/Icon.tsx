@@ -38,6 +38,13 @@ const paths: Record<string, ReactNode> = {
   ),
   sparkle: <path d="M12 3l2 7 7 2-7 2-2 7-2-7-7-2 7-2z" />,
   refresh: <path d="M4 12a8 8 0 0 1 14-5.3L20 9M20 4v5h-5M20 12a8 8 0 0 1-14 5.3L4 15M4 20v-5h5" />,
+  print: (
+    <>
+      <path d="M6 9V4h12v5" />
+      <rect x="4" y="9" width="16" height="9" rx="1" />
+      <rect x="7" y="14" width="10" height="6" />
+    </>
+  ),
   low: <path d="M12 3v10M12 17v.01M5 21h14" />,
   cart: (
     <>

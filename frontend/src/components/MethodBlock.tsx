@@ -5,7 +5,8 @@ import type { RecipeStep } from '../types/models';
  * Recipe method list with a "show beginner notes" toggle. The quick step
  * line (content) is always visible; the longer beginner walkthrough (detail)
  * is hidden by default and revealed inline beneath each step when the
- * toggle is on. Preference persists across recipes via localStorage.
+ * toggle is on. Preference persists via localStorage. Details always land
+ * in the DOM (hidden via CSS) so print/PDF can force them visible.
  */
 
 const LS_KEY = '7kc.beginner-notes';
@@ -42,15 +43,13 @@ export function MethodBlock({ steps }: { steps: RecipeStep[] }) {
           </button>
         )}
       </div>
-      <ol className="recipe-steps">
+      <ol className={`recipe-steps ${showDetail ? 'with-detail' : ''}`}>
         {steps.map((s, i) => (
           <li key={i}>
             <span className="step-num mono">{i + 1}</span>
             <div className="step-body">
               <div className="step-content">{s.content}</div>
-              {showDetail && s.detail && (
-                <p className="step-detail">{s.detail}</p>
-              )}
+              {s.detail && <p className="step-detail">{s.detail}</p>}
             </div>
           </li>
         ))}

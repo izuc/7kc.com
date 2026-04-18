@@ -112,6 +112,9 @@ export function RecipeDetailPage() {
                 <Icon name="group" size={14} /> Suggest to group
               </button>
             )}
+            <button className="btn btn-ghost print-btn" onClick={() => window.print()}>
+              <Icon name="print" size={14} /> Print / Save PDF
+            </button>
           </div>
         </div>
       </div>

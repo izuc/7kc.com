@@ -103,6 +103,9 @@ export function PublicRecipePage() {
               <Link to="/register" className="btn btn-primary">
                 <Icon name="chef" size={14} /> Cook it &amp; track your pantry
               </Link>
+              <button className="btn btn-ghost print-btn" onClick={() => window.print()}>
+                <Icon name="print" size={14} /> Print / Save PDF
+              </button>
             </div>
           </div>
         </div>

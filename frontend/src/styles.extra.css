@@ -529,3 +529,455 @@
   font-size: 13px;
   color: var(--muted);
 }
+
+/* ============================================================
+   Method block — class-based detail visibility so print can force
+   all beginner notes visible regardless of the toggle state.
+   ============================================================ */
+.recipe-steps:not(.with-detail) .step-detail {
+  display: none;
+}
+
+/* ============================================================
+   Mobile polish
+   ============================================================ */
+
+@media (max-width: 900px) {
+  /* Main content needs more bottom space so the mobile nav doesn't
+     cover the last row of content. Was 100px; bump + safe-area. */
+  .main {
+    padding: 20px 20px calc(110px + env(safe-area-inset-bottom)) !important;
+  }
+
+  /* Mobile nav — comfortable tap targets + home-indicator clearance */
+  .mobile-nav {
+    padding: 8px 6px calc(14px + env(safe-area-inset-bottom)) 6px;
+    gap: 2px;
+    box-shadow: 0 -4px 20px rgba(60, 30, 10, 0.06);
+  }
+  .mobile-nav button {
+    padding: 10px 4px;
+    font-size: 10.5px;
+    letter-spacing: 0.02em;
+    min-height: 52px;
+    border-radius: 10px;
+  }
+  .mobile-nav button svg {
+    margin-bottom: 2px;
+  }
+
+  /* Toast + install banner sit above the taller mobile nav */
+  .toast-stack {
+    bottom: calc(110px + env(safe-area-inset-bottom));
+  }
+  .install-banner {
+    bottom: calc(110px + env(safe-area-inset-bottom));
+    width: calc(100% - 20px);
+    max-width: 540px;
+  }
+
+  /* Tighter screen-head on mobile */
+  .screen-head {
+    gap: 14px;
+    padding-bottom: 10px;
+  }
+  .screen-head-right {
+    width: 100%;
+    gap: 8px;
+  }
+  .screen-head-right .btn {
+    flex: 1 1 auto;
+    min-height: 44px;
+    justify-content: center;
+  }
+  .screen-head-right .segmented {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .screen-head-right .segmented button {
+    flex: 1 1 auto;
+    white-space: nowrap;
+  }
+  .screen-head-right .search-input {
+    width: 100%;
+  }
+  .screen-head-right .search-input input {
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* Lists-tabs: horizontal scroll with snap on mobile */
+  .lists-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    margin-bottom: -4px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .lists-tabs::-webkit-scrollbar { display: none; }
+  .lists-tabs .list-tab {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    min-height: 36px;
+    padding: 7px 14px;
+  }
+
+  /* Quickadd a touch taller on mobile */
+  .quickadd-row {
+    padding: 14px 16px;
+  }
+  .quickadd-row input {
+    font-size: 16px; /* prevents iOS zoom on focus */
+  }
+  .text-input,
+  .paste,
+  .comment-entry input,
+  .search-input input {
+    font-size: 16px;
+  }
+
+  /* Larger tap targets on list rows */
+  .item {
+    padding: 12px 4px;
+    gap: 14px;
+  }
+  .item .tick {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+  }
+  .item .x {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+  }
+
+  /* Pantry cards slightly roomier on mobile */
+  .pantry-card {
+    padding: 16px;
+  }
+  .pantry-card-head {
+    gap: 12px;
+  }
+
+  /* Filter chip row scrolls rather than wraps — easier browsing */
+  .filter-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    margin-bottom: -4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .filter-row::-webkit-scrollbar { display: none; }
+  .filter-chip {
+    flex: 0 0 auto;
+    min-height: 36px;
+  }
+
+  /* Modal — more breathing room on small screens, safe-area respect */
+  .modal-backdrop {
+    padding: 16px;
+    align-items: flex-end;
+  }
+  .modal {
+    max-height: 88vh;
+    border-radius: 20px 20px 14px 14px;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom));
+  }
+
+  /* Pagination — bigger tap targets + fit on screen */
+  .pagination-num {
+    min-width: 40px;
+    height: 40px;
+  }
+  .pagination-buttons .btn {
+    padding: 9px 14px;
+    min-height: 40px;
+  }
+
+  /* Recipe cards tighten padding on mobile */
+  .recipe-card-body {
+    padding: 12px;
+  }
+
+  /* Suggestion cards on group page stack better on mobile */
+  .suggestion-card {
+    grid-template-columns: 54px 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  /* Sidebar brand scales down a touch */
+  .sidebar {
+    padding: 14px 16px !important;
+  }
+  .brand-name {
+    font-size: 18px;
+  }
+
+  /* Reduce hero-pick vertical weight on phones */
+  .hero-pick {
+    padding: 16px;
+    gap: 16px;
+  }
+  .hero-pick-body h2 {
+    font-size: 26px;
+  }
+
+  /* Recipe detail hero on phones */
+  .recipe-detail-title h1 {
+    font-size: 30px;
+  }
+  .recipe-detail-stats {
+    gap: 8px;
+  }
+  .stat-num-sm {
+    font-size: 22px;
+  }
+}
+
+/* ============================================================
+   Polish pass — subtle refinements across the app
+   ============================================================ */
+
+/* Smoother focus ring for accessibility */
+.btn:focus-visible,
+.chip:focus-visible,
+.nav-btn:focus-visible,
+.filter-chip:focus-visible,
+.list-tab:focus-visible,
+.tick:focus-visible,
+.x:focus-visible,
+.pagination-num:focus-visible,
+.mobile-nav button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 999px;
+}
+.text-input:focus-visible,
+.paste:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* Slightly richer card shadow on hover */
+.recipe-card,
+.pantry-card,
+.suggestion-card,
+.setting-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Warmer hover on list tabs */
+.list-tab:hover:not(.active) {
+  background: var(--cream-2);
+  color: var(--ink);
+}
+
+/* Tighter, more editorial eyebrows */
+.eyebrow {
+  font-weight: 500;
+}
+
+/* Section-head active/number styling */
+.section-head {
+  padding-bottom: 8px;
+}
+
+/* Subtle hover on recipe tiles (landing mosaic) */
+.lp-recipe-tile {
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.lp-recipe-tile:hover .lp-recipe-plate {
+  filter: brightness(1.02);
+}
+
+/* Cleaner buttons when busy/disabled */
+.btn:disabled,
+.btn[aria-busy="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Keep buttons from wrapping awkwardly in action bars */
+.recipe-detail-actions .btn {
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Print styles — "Save as PDF" via the browser print dialog.
+   Hides chrome, forces beginner notes visible, lays out for A4.
+   ============================================================ */
+
+@media print {
+  /* reset background colour for ink-efficient printing */
+  html, body, .app, .public-shell {
+    background: #fff !important;
+    color: #1a1411 !important;
+  }
+
+  /* hide everything that isn't recipe content */
+  .sidebar,
+  .mobile-nav,
+  .toast-stack,
+  .install-banner,
+  .back-btn,
+  .tweaks-panel,
+  .recipe-detail-actions,
+  .method-head button,
+  .lp-nav,
+  .lp-foot,
+  .public-head .row-inline,
+  .affiliate-row {
+    display: none !important;
+  }
+
+  /* strip any fixed-position grain overlays */
+  .app::before,
+  .app::after,
+  .lp::before,
+  .lp::after {
+    display: none !important;
+  }
+
+  /* reclaim full width */
+  .app {
+    display: block !important;
+  }
+  .main,
+  .public-shell main,
+  .lp-wrap {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+  .screen.recipe-detail {
+    gap: 12pt;
+  }
+
+  /* recipe hero lays flat on the page */
+  .recipe-detail-hero {
+    grid-template-columns: 160pt 1fr !important;
+    gap: 20pt !important;
+    align-items: flex-start !important;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+  .recipe-detail-hero svg {
+    width: 160pt !important;
+    height: 160pt !important;
+    max-width: 160pt !important;
+  }
+  .recipe-detail-title h1 {
+    font-size: 26pt !important;
+    margin-bottom: 6pt !important;
+  }
+  .recipe-detail-title .lede {
+    font-size: 11pt;
+  }
+  .recipe-detail-stats {
+    padding: 8pt 0 !important;
+    gap: 12pt !important;
+  }
+  .stat-num-sm {
+    font-size: 16pt !important;
+  }
+
+  /* body becomes single column on print */
+  .recipe-detail-body {
+    grid-template-columns: 1fr !important;
+    gap: 14pt !important;
+  }
+
+  /* ingredients */
+  .recipe-ings li {
+    padding: 4pt 0 !important;
+    page-break-inside: avoid;
+  }
+  .recipe-ings li .dot {
+    border: 1pt solid #5a3a1a !important;
+  }
+  .recipe-ings li.have .dot {
+    background: #8aa63a !important;
+  }
+
+  /* method — force detail visible, clean layout, avoid awkward breaks */
+  .recipe-steps {
+    margin-top: 6pt !important;
+    gap: 10pt !important;
+  }
+  .recipe-steps .step-detail {
+    display: block !important;
+    background: #faf5e8 !important;
+    border-left: 2pt solid #8aa63a !important;
+    padding: 6pt 10pt !important;
+    font-size: 10pt !important;
+    line-height: 1.5 !important;
+    color: #3f2410 !important;
+  }
+  .recipe-steps li {
+    page-break-inside: avoid;
+    gap: 10pt !important;
+  }
+  .step-num {
+    background: #f2e4c9 !important;
+    color: #8c4a1f !important;
+  }
+
+  /* headings carry through to the next page if needed */
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  /* page footer with attribution + URL (printed automatically by most
+     browsers, but we also add a subtle element) */
+  .screen.recipe-detail::after,
+  .public-shell main::after {
+    content: '7kc.com · Use what you\'ve got. Eat what you love. Waste nothing.';
+    display: block;
+    margin-top: 16pt;
+    padding-top: 10pt;
+    border-top: 1pt solid #e6dcc4;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: #94785a;
+    letter-spacing: 0.05em;
+  }
+
+  /* slightly more generous margins around the page */
+  @page {
+    margin: 15mm 15mm 18mm 15mm;
+  }
+
+  /* tighten base typography for print */
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* don't print the public-landing CTA block — it's just noise in PDF */
+  .public-foot,
+  .lp-hero,
+  .lp-section,
+  .lp-au,
+  .lp-footer-cta,
+  .lp-marquee {
+    display: none !important;
+  }
+
+  /* drop all animations */
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
