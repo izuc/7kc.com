@@ -10,6 +10,7 @@ import { useIngredients, displayFor } from '../hooks/useIngredients';
 import { OcrModal } from '../components/OcrModal';
 import { AffiliateButtons } from '../components/AffiliateButtons';
 import { SkeletonList } from '../components/Skeleton';
+import { IngredientIcon } from '../lib/ingredientIcons';
 import { trackEvent } from '../lib/analytics';
 import type { ListItem, ParsedItem, Ingredient } from '../types/models';
 
@@ -316,11 +317,17 @@ function ItemRow({
 }) {
   const { byId } = useIngredients();
   const name = displayFor(byId, item.ingredient_id, item.custom_name);
+  const section = item.ingredient_id ? byId[item.ingredient_id]?.section : item.section;
   return (
     <li className={`item ${item.is_bought ? 'bought' : ''}`}>
       <button className="tick" onClick={onToggle} aria-label="toggle">
         {item.is_bought ? <Icon name="check" size={14} /> : null}
       </button>
+      {item.ingredient_id ? (
+        <IngredientIcon id={item.ingredient_id} section={section} size={26} title={name} />
+      ) : (
+        <span className={`section-dot section-dot-${section}`} />
+      )}
       <span className="item-name">{name}</span>
       {item.moved_to_pantry && (
         <span className="tag tag-sage">
@@ -389,7 +396,7 @@ function QuickAdd({ listId, onAdded }: { listId: string; onAdded: () => void }) 
         <ul className="typeahead">
           {matches.slice(0, 6).map((i) => (
             <li key={i.id} onMouseDown={() => void add(i)}>
-              <span className={`section-dot section-dot-${i.section}`} />
+              <IngredientIcon id={i.id} section={i.section} size={28} title={i.display} />
               {i.display}
               <span className="muted small">{i.section}</span>
             </li>
@@ -500,6 +507,7 @@ snags for the bbq`;
                 <span className="arrow">→</span>
                 {p.match ? (
                   <span className="match">
+                    <IngredientIcon id={p.match.id} section={p.match.section} size={22} title={p.match.display} />
                     <span className={`section-dot section-dot-${p.match.section}`} />
                     {p.match.display}
                   </span>

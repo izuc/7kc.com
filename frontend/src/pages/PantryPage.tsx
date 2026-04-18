@@ -6,6 +6,7 @@ import { Icon } from '../components/Icon';
 import { Modal } from '../components/Modal';
 import { useIngredients, displayFor, sectionFor } from '../hooks/useIngredients';
 import { SkeletonGrid } from '../components/Skeleton';
+import { IngredientIcon } from '../lib/ingredientIcons';
 import type { PantryItem } from '../types/models';
 
 type HydratedItem = PantryItem & { display: string; section: string; daysLeft: number | null };
@@ -149,7 +150,11 @@ function PantryCard({ item, onChanged }: { item: HydratedItem; onChanged: () => 
   return (
     <div className={`pantry-card ${danger ? 'danger ' : warn ? 'warn ' : ''}${item.running_low ? 'low' : ''}`}>
       <div className="pantry-card-head">
-        <div className={`section-dot section-dot-${item.section}`} />
+        {item.ingredient_id ? (
+          <IngredientIcon id={item.ingredient_id} section={item.section} size={32} title={item.display} />
+        ) : (
+          <div className={`section-dot section-dot-${item.section}`} />
+        )}
         <span className="pantry-name">{item.display}</span>
         <button
           className="x"
@@ -222,7 +227,7 @@ function AddPantryModal({ onClose, onAdded }: { onClose: () => void; onAdded: ()
               onClose();
             }}
           >
-            <span className={`section-dot section-dot-${i.section}`} />
+            <IngredientIcon id={i.id} section={i.section} size={28} title={i.display} />
             {i.display}
             <span className="mono muted small">{i.shelf_life_days}d shelf</span>
           </li>

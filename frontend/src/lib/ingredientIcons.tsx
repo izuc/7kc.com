@@ -326,6 +326,13 @@ const ICONS: Record<string, Icon> = {
       <circle cx="36" cy="52" r="3" fill="#4d7c0f" /><circle cx="48" cy="50" r="3" fill="#4d7c0f" /><circle cx="60" cy="52" r="3" fill="#4d7c0f" />
     </>
   ),
+  cabbage: () => (
+    <>
+      <circle cx="50" cy="54" r="30" fill="#a3b18a" stroke={INK} strokeWidth={S} />
+      <path d="M32 40 Q40 30, 50 30 Q60 30, 68 40 M28 54 Q40 48, 50 48 Q60 48, 72 54 M32 70 Q40 76, 50 76 Q60 76, 68 70" stroke="#4d7c0f" strokeWidth={1} fill="none" />
+      <circle cx="50" cy="54" r="10" fill="#bbcc99" stroke={INK} strokeWidth={1} opacity={0.6} />
+    </>
+  ),
   bok_choy: () => (
     <>
       <path d="M30 82 Q20 50, 40 32 Q48 24, 50 32 Q52 24, 60 32 Q80 50, 70 82 Q50 84, 30 82 Z" fill="#2d4a0a" stroke={INK} strokeWidth={S} strokeLinejoin="round" />
@@ -711,6 +718,31 @@ const ICONS: Record<string, Icon> = {
     <rect x="34" y="24" width="32" height="66" rx="4" fill="#92400e" stroke={INK} strokeWidth={S} />
     <rect x="38" y="44" width="24" height="30" fill="#facc15" />
     <path d="M38 24 L38 18 L62 18 L62 24" fill="none" stroke={INK} strokeWidth={S} />
+  </>),
+  tofu: () => (<>
+    <rect x="24" y="36" width="52" height="34" rx="3" fill="#fefbf2" stroke={INK} strokeWidth={S} />
+    <path d="M24 46 L76 46 M24 58 L76 58" stroke={INK} strokeWidth={0.5} opacity={0.3} />
+    <path d="M32 36 L32 70 M44 36 L44 70 M56 36 L56 70 M68 36 L68 70" stroke={INK} strokeWidth={0.5} opacity={0.3} />
+  </>),
+  miso: () => <Tin body="#a16207" label="#78350f" letter="Mi" />,
+  nori: () => (<>
+    <rect x="26" y="22" width="48" height="58" fill="#1f2937" stroke={INK} strokeWidth={S} />
+    <rect x="26" y="22" width="48" height="58" fill="url(#noriTex)" opacity={0.3} />
+    <path d="M30 30 L70 30 M30 40 L70 40 M30 50 L70 50 M30 60 L70 60 M30 70 L70 70" stroke="#065f46" strokeWidth={0.8} opacity={0.4} />
+  </>),
+  kimchi: () => <Tin body="#dc2626" label="#7f1d1d" letter="Ki" />,
+  gochujang: () => <Tin body="#b91c1c" label="#7f1d1d" letter="G" />,
+  cream_cheese: () => <Tin body="#fff" label="#fef3c7" letter="CC" />,
+  worcestershire: () => <Bottle body="#3f2410" cap="#dc2626" label="#fef3c7" letter="W" />,
+  stock_beef: () => <Tin body="#78350f" label="#92400e" letter="Bf" />,
+  passionfruit: () => (<>
+    <circle cx="50" cy="54" r="24" fill="#7c2d12" stroke={INK} strokeWidth={S} />
+    <ellipse cx="50" cy="54" rx="18" ry="14" fill="#fde68a" />
+    {[[46,50],[54,52],[50,58],[44,56],[56,58],[48,48]].map(([x,y],i)=><ellipse key={i} cx={x} cy={y} rx={1.5} ry={2} fill="#1f2937" />)}
+  </>),
+  paneer: () => (<>
+    <rect x="24" y="36" width="52" height="34" rx="2" fill="#fffbf2" stroke={INK} strokeWidth={S} />
+    <path d="M30 44 L70 44 M30 52 L70 52 M30 60 L70 60" stroke={INK} strokeWidth={0.4} opacity={0.4} />
   </>),
 };
 

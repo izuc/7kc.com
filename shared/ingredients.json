@@ -114,6 +114,7 @@
   { "id": "beetroot", "display": "Beetroot", "section": "produce", "shelf_life_days": 21 },
   { "id": "snow_pea", "display": "Snow peas", "section": "produce", "shelf_life_days": 4 },
   { "id": "bok_choy", "display": "Bok choy", "section": "produce", "shelf_life_days": 5 },
+  { "id": "cabbage", "display": "Cabbage", "section": "produce", "shelf_life_days": 21 },
   { "id": "strawberry", "display": "Strawberries", "section": "produce", "shelf_life_days": 4 },
   { "id": "blueberry", "display": "Blueberries", "section": "produce", "shelf_life_days": 7 },
   { "id": "orange", "display": "Oranges", "section": "produce", "shelf_life_days": 14 },
@@ -153,5 +154,15 @@
   { "id": "walnut", "display": "Walnuts", "section": "pantry", "shelf_life_days": 180 },
   { "id": "raisin", "display": "Raisins", "section": "pantry", "shelf_life_days": 365 },
   { "id": "corn_frozen", "display": "Frozen corn", "section": "frozen", "shelf_life_days": 180 },
-  { "id": "pastry_filo", "display": "Filo pastry", "section": "frozen", "shelf_life_days": 120 }
+  { "id": "pastry_filo", "display": "Filo pastry", "section": "frozen", "shelf_life_days": 120 },
+  { "id": "tofu", "display": "Tofu", "section": "pantry", "shelf_life_days": 30 },
+  { "id": "miso", "display": "Miso paste", "section": "pantry", "shelf_life_days": 365 },
+  { "id": "nori", "display": "Nori sheets", "section": "pantry", "shelf_life_days": 365 },
+  { "id": "kimchi", "display": "Kimchi", "section": "dairy", "shelf_life_days": 60 },
+  { "id": "gochujang", "display": "Gochujang", "section": "pantry", "shelf_life_days": 365 },
+  { "id": "cream_cheese", "display": "Cream cheese", "section": "dairy", "shelf_life_days": 30 },
+  { "id": "worcestershire", "display": "Worcestershire", "section": "pantry", "shelf_life_days": 730 },
+  { "id": "stock_beef", "display": "Beef stock", "section": "pantry", "shelf_life_days": 365 },
+  { "id": "passionfruit", "display": "Passionfruit", "section": "produce", "shelf_life_days": 10 },
+  { "id": "paneer", "display": "Paneer", "section": "dairy", "shelf_life_days": 14 }
 ]
