@@ -66,6 +66,8 @@ export interface RecipeSummary {
   is_custom: boolean;
   owner_user_id: string | null;
   group_id: string | null;
+  /** present on list responses, used by <MealPlate> */
+  ingredient_ids?: string[];
 }
 
 export interface RecipeIngredient {

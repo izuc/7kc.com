@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../lib/api';
 import { Icon } from '../components/Icon';
 import { Modal } from '../components/Modal';
-import { Swatch } from '../components/Swatch';
+import { MealPlate } from '../components/MealPlate';
 import { useAuth } from '../store/auth';
 import { useUi } from '../store/ui';
 
@@ -65,7 +65,7 @@ export function RecipeDetailPage() {
         <Icon name="arrow" size={14} /> Back to recipes
       </Link>
       <div className="recipe-detail-hero">
-        <Swatch palette={recipe.palette} label={recipe.title} size="full" />
+        <MealPlate recipe={recipe} size={340} />
         <div className="recipe-detail-title">
           <div className="eyebrow">{recipe.tags.slice(0, 3).join(' · ')}</div>
           <h1>{recipe.title}</h1>

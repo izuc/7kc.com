@@ -57,7 +57,7 @@ export function RegisterPage() {
         <div className="auth-aside-foot">
           <span><span className="tick">✓</span>Works offline</span>
           <span><span className="tick">✓</span>Installable as a PWA</span>
-          <span><span className="tick">✓</span>52 recipes seeded</span>
+          <span><span className="tick">✓</span>72 recipes seeded</span>
         </div>
       </aside>
 

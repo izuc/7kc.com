@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '../components/Icon';
+import { MealPlate } from '../components/MealPlate';
 
 /**
  * Public landing page at /. Editorial food-magazine treatment with embedded
@@ -18,7 +19,7 @@ export function LandingPage() {
     })();
     meta.setAttribute(
       'content',
-      "A pantry-first kitchen management app. Your shopping list becomes your pantry. Your pantry decides what's for dinner. 52 recipes, no AI, no subscription."
+      "A pantry-first kitchen management app. Your shopping list becomes your pantry. Your pantry decides what's for dinner. 72 recipes, no AI, no subscription."
     );
   }, []);
 
@@ -106,7 +107,7 @@ function Hero() {
               <span className="arrow-glyph">→</span>
             </Link>
             <a href="#recipes" className="btn btn-ghost btn-lg">
-              Browse 52 recipes
+              Browse 72 recipes
             </a>
           </div>
           <div className="lp-reassurance lp-reveal lp-reveal-5">
@@ -387,13 +388,20 @@ function ParsedRow({ raw, to, sectionDot, matched, unmatched }: { raw: string; t
 
 /* ---------------- Recipe mosaic ---------------- */
 
-const MOSAIC = [
-  { slug: 'spaghetti-bolognese', title: 'Spaghetti Bolognese', meta: '50 min · 4 serves', tags: 'comfort · one-pot · family', palette: ['#c2410c', '#fde6d4'] },
-  { slug: 'green-thai-curry', title: 'Green Thai Curry', meta: '30 min · 4 serves', tags: 'thai · quick · gf', palette: ['#65a30d', '#e4f3cf'] },
-  { slug: 'haloumi-grain-bowl', title: 'Haloumi Grain Bowl', meta: '35 min · 2 serves', tags: 'vego · quick', palette: ['#f59e0b', '#fff1d6'] },
-  { slug: 'smashed-avo-toast', title: 'Smashed Avo', meta: '8 min · 2 serves', tags: 'brunch · veg', palette: ['#16a34a', '#d9f0d3'] },
-  { slug: 'chicken-tikka-masala', title: 'Chicken Tikka Masala', meta: '45 min · 4 serves', tags: 'indian · family', palette: ['#dc2626', '#fde2e2'] },
-  { slug: 'sunday-roast-chook', title: 'Sunday Roast Chook', meta: '85 min · 4 serves', tags: 'sunday · family', palette: ['#ca8a04', '#fef5d4'] },
+const MOSAIC: Array<{
+  slug: string;
+  title: string;
+  meta: string;
+  tags: string;
+  palette: [string, string];
+  ingredient_ids: string[];
+}> = [
+  { slug: 'spaghetti-bolognese', title: 'Spaghetti Bolognese', meta: '50 min · 4 serves', tags: 'comfort · one-pot · family', palette: ['#c2410c', '#fde6d4'], ingredient_ids: ['spaghetti','beef_mince','tinned_tomato','onion_brown','garlic','parmesan'] },
+  { slug: 'green-thai-curry', title: 'Green Thai Curry', meta: '30 min · 4 serves', tags: 'thai · quick · gf', palette: ['#65a30d', '#e4f3cf'], ingredient_ids: ['chicken_thigh','curry_paste_green','coconut_milk','rice_jasmine','basil','chilli'] },
+  { slug: 'haloumi-grain-bowl', title: 'Haloumi Grain Bowl', meta: '35 min · 2 serves', tags: 'vego · quick', palette: ['#f59e0b', '#fff1d6'], ingredient_ids: ['haloumi','pumpkin','rocket','rice_basmati','lemon','cumin'] },
+  { slug: 'smashed-avo-toast', title: 'Smashed Avo', meta: '8 min · 2 serves', tags: 'brunch · veg', palette: ['#16a34a', '#d9f0d3'], ingredient_ids: ['avocado','bread','feta','lemon','chilli_powder','olive_oil'] },
+  { slug: 'chicken-tikka-masala', title: 'Chicken Tikka Masala', meta: '45 min · 4 serves', tags: 'indian · family', palette: ['#dc2626', '#fde2e2'], ingredient_ids: ['chicken_thigh','yoghurt','tinned_tomato','cream','rice_basmati','coriander'] },
+  { slug: 'sunday-roast-chook', title: 'Sunday Roast Chook', meta: '85 min · 4 serves', tags: 'sunday · family', palette: ['#ca8a04', '#fef5d4'], ingredient_ids: ['chicken_whole','lemon','garlic','potato','olive_oil','salt'] },
 ];
 
 function RecipeMosaic() {
@@ -403,7 +411,7 @@ function RecipeMosaic() {
         <div className="lp-section-head">
           <div>
             <div className="lp-eyebrow">Chapter three <span className="dot">·</span> the library</div>
-            <h2>Fifty-two recipes, pre-seeded. Your pantry picks the one.</h2>
+            <h2>Seventy-plus recipes, pre-seeded. Your pantry picks the one.</h2>
           </div>
           <p className="lp-kicker">
             A tight, hand-curated library. Spag bol, snag sanga, green curry,
@@ -415,18 +423,27 @@ function RecipeMosaic() {
         <div className="lp-mosaic">
           {MOSAIC.map((r) => (
             <a key={r.slug} className="lp-recipe-tile" href={`/r/${r.slug}`}>
-              <div
-                className="lp-recipe-swatch"
-                style={{
-                  background: `linear-gradient(135deg, ${r.palette[1]} 0%, ${r.palette[1]} 55%, ${r.palette[0]} 55%, ${r.palette[0]} 100%)`,
-                  color: r.palette[0],
-                }}
-              >
-                {r.title
-                  .split(' ')
-                  .slice(0, 2)
-                  .map((w) => w[0])
-                  .join('')}
+              <div className="lp-recipe-plate" style={{ aspectRatio: '4/3' }}>
+                <MealPlate
+                  recipe={{
+                    id: r.slug,
+                    slug: r.slug,
+                    title: r.title,
+                    description: null,
+                    prep_time: 0,
+                    cook_time: 0,
+                    servings: 1,
+                    tags: [],
+                    palette: r.palette,
+                    image_url: null,
+                    is_custom: false,
+                    owner_user_id: null,
+                    group_id: null,
+                  }}
+                  ingredientIds={r.ingredient_ids}
+                  size={300}
+                  rounded={false}
+                />
               </div>
               <div className="lp-recipe-body">
                 <div className="meta">
@@ -486,7 +503,7 @@ function ContraSection() {
             <span className="mono-label">03 · No paywall</span>
             <span className="struck">Subscription to unlock basics</span>
             <p className="why">
-              Shopping lists, pantry, 52 recipes, offline, groups.
+              Shopping lists, pantry, 72 recipes, offline, groups.
               <strong>&nbsp;All free&nbsp;</strong>forever. You can even use the list feature
               without an account. Sign up when you're ready, not when a modal
               demands it.

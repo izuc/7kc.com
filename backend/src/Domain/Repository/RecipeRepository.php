@@ -24,7 +24,16 @@ final class RecipeRepository
         }
         $sql .= ' ORDER BY title ASC';
         $rows = $this->db->fetchAllAssociative($sql, $params);
-        return array_map([$this, 'hydrate'], $rows);
+        $recipes = array_map([$this, 'hydrate'], $rows);
+
+        // attach compact ingredient_ids so the frontend can compose MealPlates
+        // without fetching each recipe detail separately.
+        $byRecipe = $this->ingredientIdsForAll();
+        foreach ($recipes as &$r) {
+            $r['ingredient_ids'] = $byRecipe[$r['id']] ?? [];
+        }
+        unset($r);
+        return $recipes;
     }
 
     public function findBySlug(string $slug): ?array

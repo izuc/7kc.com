@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { Icon } from '../components/Icon';
-import { Swatch } from '../components/Swatch';
+import { MealPlate } from '../components/MealPlate';
 import { SkeletonRecipeGrid } from '../components/Skeleton';
 import type { RankedRecipe } from '../types/models';
 
@@ -76,7 +76,11 @@ export function RecipesPage() {
           onClick={() => navigate(`/recipes/${topPick.recipe.slug}`)}
           role="button"
         >
-          <Swatch palette={topPick.recipe.palette} label={topPick.recipe.title} size="lg" rounded />
+          <MealPlate
+            recipe={topPick.recipe}
+            ingredientIds={[...topPick.have_ingredient_ids, ...topPick.missing_ingredient_ids]}
+            size={280}
+          />
           <div className="hero-pick-body">
             <div className="eyebrow sage">Top pick for your pantry</div>
             <h2>{topPick.recipe.title}</h2>
@@ -148,9 +152,12 @@ export function RecipesPage() {
 
 function RecipeCard({ entry }: { entry: RankedRecipe }) {
   const { recipe, pantry_match, have_ingredient_ids, missing_ingredient_ids, expiring_hits } = entry;
+  const allIngredientIds = [...have_ingredient_ids, ...missing_ingredient_ids];
   return (
     <Link className="recipe-card" to={`/recipes/${recipe.slug}`}>
-      <Swatch palette={recipe.palette} label={recipe.title} size="full" />
+      <div style={{ aspectRatio: '5 / 4', overflow: 'hidden' }}>
+        <MealPlate recipe={recipe} ingredientIds={allIngredientIds} size={280} rounded={false} />
+      </div>
       <div className="recipe-card-body">
         <div className="recipe-card-meta">
           <span className="mono small">{recipe.prep_time + recipe.cook_time} min</span>

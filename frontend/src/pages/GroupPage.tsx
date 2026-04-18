@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { Icon } from '../components/Icon';
 import { Avatar } from '../components/Avatar';
-import { Swatch } from '../components/Swatch';
+import { MealPlate } from '../components/MealPlate';
 import { fmtRelative } from '../lib/format';
 import { useAuth } from '../store/auth';
 import type { GroupMember, RecipeSummary, Suggestion } from '../types/models';
@@ -173,7 +173,7 @@ function SuggestionCard({
   return (
     <div className="suggestion-card">
       {recipe ? (
-        <Swatch palette={recipe.palette} label={recipe.title} size="sm" rounded />
+        <MealPlate recipe={recipe} size={64} rounded />
       ) : (
         <div className="swatch rounded" style={{ width: 64, height: 64, background: 'var(--cream-2)' }} />
       )}

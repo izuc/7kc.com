@@ -599,23 +599,17 @@
   transform: translateY(-4px);
   box-shadow: 0 24px 48px -28px rgba(60, 30, 10, 0.35);
 }
-.lp-recipe-swatch {
+.lp-recipe-plate {
   aspect-ratio: 4 / 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--serif);
-  font-size: 56px;
-  color: color-mix(in oklch, var(--ink) 30%, transparent);
-  position: relative;
+  width: 100%;
+  background: var(--cream-2);
   overflow: hidden;
+  position: relative;
 }
-.lp-recipe-swatch::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 70% 20%, rgba(255,255,255,0.35), transparent 60%);
-  pointer-events: none;
+.lp-recipe-plate svg {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
 }
 .lp-recipe-body {
   padding: 14px 16px 16px;
@@ -651,7 +645,7 @@
 @media (max-width: 880px) {
   .lp-mosaic { grid-template-columns: 1fr 1fr; }
   .lp-recipe-tile:nth-child(n) { grid-column: span 1; }
-  .lp-recipe-swatch { font-size: 44px; }
+  .lp-recipe-plate { aspect-ratio: 4/3; }
 }
 
 /* ---------- Contra section ("what we don't do") ---------- */

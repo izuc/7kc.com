@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Icon } from '../components/Icon';
-import { Swatch } from '../components/Swatch';
+import { MealPlate } from '../components/MealPlate';
 import type { Recipe } from '../types/models';
 
 /**
@@ -79,7 +79,7 @@ export function PublicRecipePage() {
 
       <main className="screen recipe-detail" style={{ maxWidth: 1100, margin: '0 auto', padding: '32px 20px 80px' }}>
         <div className="recipe-detail-hero">
-          <Swatch palette={recipe.palette} label={recipe.title} size="full" />
+          <MealPlate recipe={recipe} size={340} />
           <div className="recipe-detail-title">
             <div className="eyebrow">{recipe.tags.slice(0, 3).join(' · ')}</div>
             <h1>{recipe.title}</h1>
