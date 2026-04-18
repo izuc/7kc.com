@@ -1,0 +1,42 @@
+{
+    "name": "sevenkc/backend",
+    "description": "7 Day Kitchen API — Slim 4 backend supporting MySQL and SQLite.",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.2",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "slim/slim": "^4.12",
+        "slim/psr7": "^1.6",
+        "php-di/php-di": "^7.0",
+        "doctrine/dbal": "^3.7",
+        "firebase/php-jwt": "^6.10",
+        "vlucas/phpdotenv": "^5.6",
+        "ramsey/uuid": "^4.7",
+        "respect/validation": "^2.3",
+        "robmorgan/phinx": "^0.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "SevenKC\\": "src/"
+        }
+    },
+    "scripts": {
+        "serve": "php -S 0.0.0.0:8000 -t public",
+        "migrate": "phinx migrate -c config/phinx.php",
+        "seed": "phinx seed:run -c config/phinx.php"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        },
+        "audit": {
+            "abandoned": "report",
+            "ignore": {
+                "PKSA-y2cr-5h3j-g3ys": "firebase/php-jwt advisory — not exploitable in our validation flow; review at next release"
+            }
+        }
+    }
+}

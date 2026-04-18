@@ -1,0 +1,21 @@
+<?php
+declare(strict_types=1);
+
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DriverManager;
+use Psr\Container\ContainerInterface;
+use SevenKC\Infrastructure\Auth\JwtService;
+use SevenKC\Infrastructure\Database\ConnectionFactory;
+
+return [
+    'settings' => require __DIR__ . '/settings.php',
+
+    Connection::class => function (ContainerInterface $c): Connection {
+        return ConnectionFactory::create($c->get('settings')['db']);
+    },
+
+    JwtService::class => function (ContainerInterface $c): JwtService {
+        $cfg = $c->get('settings')['jwt'];
+        return new JwtService($cfg['secret'], $cfg['alg'], $cfg['ttl_hours']);
+    },
+];

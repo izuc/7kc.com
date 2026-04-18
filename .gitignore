@@ -1,0 +1,23 @@
+# Node / frontend
+node_modules/
+/frontend/dist
+/frontend/dev-dist
+/frontend/.env
+/frontend/.env.local
+
+# PHP / backend
+/backend/vendor
+/backend/.env
+/backend/var/*.sqlite
+/backend/var/*.sqlite-*
+/backend/var/.installed
+
+# logs & transient output
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
