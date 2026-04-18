@@ -793,6 +793,32 @@ const RECIPE_ARTWORK: Record<string, Template> = {
 
   // grill
   'chimichurri-steak': (p) => <RoastPlate {...p} protein="steak" />,
+
+  // added this round
+  'pork-chops-apple': (p) => <RoastPlate {...p} />,
+  'smoked-salmon-bagel': (p) => <SandwichStack {...p} />,
+  'slow-beef-brisket': (p) => <RoastPlate {...p} protein="steak" />,
+  'aloo-gobi': (p) => <CurryBowl {...p} />,
+  'kung-pao-chicken': (p) => <StirFry {...p} />,
+  'mongolian-beef': (p) => <StirFry {...p} />,
+  'cacio-e-pepe': (p) => <PastaBowl {...p} />,
+  'aglio-e-olio': (p) => <PastaBowl {...p} />,
+  'pasta-puttanesca': (p) => <PastaBowl {...p} />,
+  'nicoise-salad': (p) => <SaladPlate {...p} />,
+  'cobb-salad': (p) => <SaladPlate {...p} />,
+  'tomato-basil-soup': (p) => <SoupBowl {...p} />,
+  'wonton-soup': (p) => <SoupBowl {...p} />,
+  'summer-rolls': (p) => <Tacos {...p} />,
+  'carrot-cake': (p) => <BakedSlice {...p} />,
+  'chocolate-mousse': (p) => <DipPlate {...p} />,
+  'creme-brulee': (p) => <DipPlate {...p} />,
+  'eton-mess': (p) => <Pancakes {...p} />,
+  'margherita-pizza': (p) => <BakedSlice {...p} />,
+  'quiche-lorraine': (p) => <BakedSlice {...p} />,
+  'chicken-mushroom-pie': (p) => <BakedSlice {...p} />,
+  'bread-butter-pudding': (p) => <BakedSlice {...p} />,
+  'tandoori-chicken': (p) => <Skewers {...p} />,
+  'honey-soy-wings': (p) => <Skewers {...p} />,
 };
 
 export function dishArtworkFor(slug: string | undefined, palette: Palette, garnishIds: string[] = []): ReactNode {

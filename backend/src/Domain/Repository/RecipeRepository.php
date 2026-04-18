@@ -55,7 +55,7 @@ final class RecipeRepository
             [$recipe['id']]
         );
         $steps = $this->db->fetchAllAssociative(
-            'SELECT content, timer_seconds, sort_order FROM recipe_steps WHERE recipe_id = ? ORDER BY sort_order',
+            'SELECT content, detail, timer_seconds, sort_order FROM recipe_steps WHERE recipe_id = ? ORDER BY sort_order',
             [$recipe['id']]
         );
         $recipe['ingredients'] = array_map(fn ($r) => [
@@ -67,6 +67,7 @@ final class RecipeRepository
         ], $ings);
         $recipe['steps'] = array_map(fn ($r) => [
             'content' => $r['content'],
+            'detail' => $r['detail'] ?: null,
             'timer_seconds' => $r['timer_seconds'] !== null ? (int)$r['timer_seconds'] : null,
         ], $steps);
         return $recipe;

@@ -788,6 +788,81 @@ const ICONS: Record<string, Icon> = {
     <path d="M22 72 C34 62, 52 56, 74 40" fill="none" stroke="#a16207" strokeWidth={1.2} opacity={0.4} />
     <text x="78" y="18" fontFamily="Georgia, serif" fontSize="14" fill="#0891b2">❄</text>
   </>),
+  smoked_salmon: () => (<>
+    <path d="M14 56 Q18 44, 36 42 Q58 44, 74 54 Q80 58, 72 64 Q56 70, 34 66 Q16 64, 14 56 Z" fill="#fb923c" stroke={INK} strokeWidth={S} strokeLinejoin="round" />
+    <path d="M20 55 Q35 50, 55 55 Q65 58, 55 60 Q35 62, 20 57" fill="#fecaca" opacity={0.8} />
+    <path d="M20 59 Q40 55, 62 58" stroke="#fef3c7" strokeWidth={1} fill="none" />
+    <text x="80" y="36" fontFamily="Georgia, serif" fontSize="9" fill={INK} style={{fontStyle:'italic'}}>s.</text>
+  </>),
+  pork_chop: () => (<>
+    <path d="M18 54 Q20 34, 48 32 Q74 34, 82 50 Q80 68, 58 74 Q28 76, 20 64 Q14 58, 18 54 Z" fill="#f4a6a6" stroke={INK} strokeWidth={S} strokeLinejoin="round" />
+    <path d="M28 46 Q48 42, 66 48 M26 58 Q48 56, 68 60" stroke="#e11d48" strokeWidth={1.2} fill="none" opacity={0.5} />
+    <path d="M14 52 L8 48 L14 44 L10 42" stroke={INK} strokeWidth={S} fill="none" />
+  </>),
+  beef_brisket: () => (<>
+    <path d="M12 44 L88 36 L88 68 L12 60 Z" fill="#7f1d1d" stroke={INK} strokeWidth={S} strokeLinejoin="round" />
+    <path d="M12 52 L88 48" stroke="#fbbf24" strokeWidth={3} opacity={0.7} />
+    <path d="M12 58 L88 56" stroke="#991b1b" strokeWidth={1.5} opacity={0.6} />
+  </>),
+  tahini: () => <Tin body="#d4a373" label="#78350f" letter="Ta" />,
+  preserved_lemon: () => <Tin body="#eab308" label="#facc15" letter="PL" />,
+  sumac: () => <Tin body="#b91c1c" label="#7f1d1d" letter="Su" />,
+  pine_nut: () => (<>
+    {[[34,50],[46,46],[58,50],[50,60],[38,64],[60,64],[44,74],[54,74]].map(([x,y],i)=>(<ellipse key={i} cx={x} cy={y} rx={3.5} ry={5} fill="#fde68a" stroke={INK} strokeWidth={0.8} />))}
+  </>),
+  pecan: () => (<>
+    <ellipse cx="50" cy="55" rx="22" ry="18" fill="#a16207" stroke={INK} strokeWidth={S} />
+    <path d="M50 40 L50 70 M32 55 Q50 50, 68 55 M36 42 Q50 52, 64 42 M36 68 Q50 58, 64 68" stroke="#78350f" strokeWidth={1.2} fill="none" />
+  </>),
+  hazelnut: () => (<>
+    <circle cx="50" cy="58" r="20" fill="#c89e6b" stroke={INK} strokeWidth={S} />
+    <path d="M40 40 L44 28 L56 28 L60 40" fill="#4d7c0f" stroke={INK} strokeWidth={S} strokeLinejoin="round" />
+    <circle cx="50" cy="58" r="12" fill="#a16207" opacity={0.5} />
+  </>),
+  fig: () => (<>
+    <path d="M34 34 Q40 26, 50 26 Q60 26, 66 34 L58 42 Q68 50, 64 66 Q50 82, 36 66 Q32 50, 42 42 Z" fill="#6b21a8" stroke={INK} strokeWidth={S} strokeLinejoin="round" />
+    <path d="M44 32 L50 20 L56 32" fill="#4d7c0f" stroke={INK} strokeWidth={S} />
+    <circle cx="45" cy="60" r="2" fill="#fecaca" /><circle cx="52" cy="58" r="1.5" fill="#fecaca" /><circle cx="50" cy="66" r="2" fill="#fecaca" />
+  </>),
+  pear: () => (<>
+    <path d="M38 40 Q38 58, 32 70 Q40 84, 50 84 Q60 84, 68 70 Q62 58, 62 40 Q50 28, 38 40 Z" fill="#a3e635" stroke={INK} strokeWidth={S} strokeLinejoin="round" />
+    <path d="M50 26 L48 16" stroke="#4d2d0f" strokeWidth={S} strokeLinecap="round" />
+    <path d="M52 20 Q58 14, 66 18" fill="#65a30d" stroke={INK} strokeWidth={S} strokeLinejoin="round" />
+  </>),
+  peach: () => (<>
+    <circle cx="50" cy="54" r="26" fill="#fb923c" stroke={INK} strokeWidth={S} />
+    <path d="M50 28 Q42 32, 38 42 Q42 34, 50 32" fill="#c2410c" opacity={0.4} />
+    <path d="M50 28 L50 54" stroke="#c2410c" strokeWidth={1} opacity={0.5} fill="none" />
+    <path d="M48 28 L46 18 L56 20" fill="#4d7c0f" stroke={INK} strokeWidth={S} />
+  </>),
+  cherry: () => (<>
+    <path d="M36 24 Q50 20, 62 26 L50 46 Z" fill="none" stroke="#4d2d0f" strokeWidth={2} strokeLinejoin="round" />
+    <circle cx="38" cy="60" r="14" fill="#dc2626" stroke={INK} strokeWidth={S} />
+    <circle cx="62" cy="64" r="14" fill="#991b1b" stroke={INK} strokeWidth={S} />
+    <circle cx="34" cy="55" r="3" fill="#fecaca" opacity={0.8} />
+  </>),
+  kiwi: () => (<>
+    <circle cx="50" cy="54" r="28" fill="#8b5a2b" stroke={INK} strokeWidth={S} />
+    <circle cx="50" cy="54" r="22" fill="#84cc16" stroke={INK} strokeWidth={S} />
+    <circle cx="50" cy="54" r="6" fill="#fef3c7" />
+    {Array.from({length:8}).map((_,i)=>{const a=i/8*Math.PI*2; return <ellipse key={i} cx={50+Math.cos(a)*12} cy={54+Math.sin(a)*12} rx={1.5} ry={2.5} fill={INK} />})}
+  </>),
+  buttermilk: () => (<>
+    <path d="M36 12 L36 20 L30 30 L30 86 Q30 90, 34 90 L66 90 Q70 90, 70 86 L70 30 L64 20 L64 12 Z" fill="#fefbf2" stroke={INK} strokeWidth={S} strokeLinejoin="round" />
+    <rect x="38" y="50" width="24" height="20" fill="#fef9c3" stroke={INK} strokeWidth={1} />
+    <text x="50" y="65" textAnchor="middle" fontFamily="Georgia, serif" fontSize="9" fill={INK} style={{fontStyle:'italic'}}>Bm</text>
+  </>),
+  saffron: () => (<>
+    <path d="M30 48 Q40 30, 50 56 Q38 50, 30 48 Z M50 32 Q58 48, 50 64 Q42 48, 50 32 Z M70 50 Q58 32, 50 60 Q64 54, 70 50 Z M35 72 Q48 60, 58 76 Q44 72, 35 72 Z" fill="#dc2626" stroke={INK} strokeWidth={1.2} strokeLinejoin="round" />
+    <circle cx="50" cy="54" r="8" fill="#991b1b" opacity={0.5} />
+  </>),
+  bay_leaf: () => (<>
+    <g transform="translate(0,0) rotate(-20 50 50)"><path d="M50 20 Q30 30, 30 55 Q40 75, 50 80 Q60 75, 70 55 Q70 30, 50 20 Z" fill="#4d7c0f" stroke={INK} strokeWidth={S} strokeLinejoin="round" /><path d="M50 22 L50 78" stroke="#2d4a0a" strokeWidth={1} /></g>
+  </>),
+  star_anise: () => (<>
+    {Array.from({length:8}).map((_,i)=>{const a=i*Math.PI/4; const x1=50; const y1=50; const x2=50+Math.cos(a)*24; const y2=50+Math.sin(a)*24; return (<g key={i}><path d={`M${x1} ${y1} L${x2-3} ${y2-3} L${x2} ${y2} L${x2+3} ${y2+3} Z`} fill="#7c2d12" stroke={INK} strokeWidth={S} strokeLinejoin="round" /><ellipse cx={50+Math.cos(a)*14} cy={50+Math.sin(a)*14} rx={3} ry={2} fill="#fef3c7" /></g>);})}
+    <circle cx="50" cy="50" r="5" fill="#78350f" stroke={INK} strokeWidth={1} />
+  </>),
 };
 
 // ---------------------------------------------------------------------------

@@ -80,6 +80,7 @@ export interface RecipeIngredient {
 
 export interface RecipeStep {
   content: string;
+  detail?: string | null;
   timer_seconds: number | null;
 }
 

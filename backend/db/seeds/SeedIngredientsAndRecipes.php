@@ -5,10 +5,16 @@ use Phinx\Seed\AbstractSeed;
 use Ramsey\Uuid\Uuid;
 
 /**
- * Idempotent seed. Inserts ingredients, recipes, recipe_ingredients and
- * recipe_steps that don't already exist (keyed by id / slug). Safe to re-run
- * on a populated database — existing rows are left untouched, aliases_json
- * is refreshed in case we've grown the alias set.
+ * Idempotent seed. Ingredients are inserted if missing (by id), aliases
+ * refreshed every run. Recipes are inserted if missing (by slug). Every run
+ * also does a backfill pass that updates `content` and `detail` on existing
+ * seeded recipe steps whenever the JSON provides an object-form step — so
+ * we can progressively add beginner walkthrough text to older recipes
+ * without touching user-created customs.
+ *
+ * Recipe steps in recipes.json can be:
+ *   - a plain string (short content, no detail), or
+ *   - { "content": "...", "detail": "..." }
  */
 final class SeedIngredientsAndRecipes extends AbstractSeed
 {
@@ -37,7 +43,6 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
         foreach ($ingredients as $i) {
             $aliasesJson = json_encode($aliasesByIngredient[$i['id']] ?? [], JSON_UNESCAPED_UNICODE);
             if (isset($existingIngIdSet[$i['id']])) {
-                // refresh aliases only (keeps your hand-edited shelf life etc. intact)
                 $this->getAdapter()->execute(
                     'UPDATE ingredients SET aliases_json = ' . $pdo->quote($aliasesJson) .
                     ' WHERE id = ' . $pdo->quote($i['id'])
@@ -57,11 +62,9 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
         }
 
         // ---------- recipes ----------
-        $existingSlugs = array_column(
-            $this->getAdapter()->fetchAll('SELECT slug FROM recipes'),
-            'slug'
-        );
-        $existingSlugSet = array_flip($existingSlugs);
+        $existingRecipeRows = $this->getAdapter()->fetchAll('SELECT id, slug FROM recipes');
+        $idBySlug = [];
+        foreach ($existingRecipeRows as $r) $idBySlug[$r['slug']] = $r['id'];
 
         $now = time();
         $recipeRows = [];
@@ -69,8 +72,9 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
         $recipeStepRows = [];
 
         foreach ($recipes as $r) {
-            if (isset($existingSlugSet[$r['slug']])) continue;
+            if (isset($idBySlug[$r['slug']])) continue;
             $rid = Uuid::uuid4()->toString();
+            $idBySlug[$r['slug']] = $rid;
             $recipeRows[] = [
                 'id' => $rid,
                 'slug' => $r['slug'],
@@ -98,10 +102,12 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
                 ];
             }
             foreach ($r['steps'] as $idx => $step) {
+                [$content, $detail] = self::normaliseStep($step);
                 $recipeStepRows[] = [
                     'recipe_id' => $rid,
                     'sort_order' => $idx,
-                    'content' => $step,
+                    'content' => $content,
+                    'detail' => $detail,
                     'timer_seconds' => null,
                 ];
             }
@@ -110,5 +116,50 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
         if ($recipeRows) $this->table('recipes')->insert($recipeRows)->save();
         if ($recipeIngRows) $this->table('recipe_ingredients')->insert($recipeIngRows)->save();
         if ($recipeStepRows) $this->table('recipe_steps')->insert($recipeStepRows)->save();
+
+        // ---------- metadata + detail sync ----------
+        // For every recipe in the JSON, sync editable metadata (title,
+        // description, prep/cook times, servings, tags, palette) on the
+        // existing DB row — so bug fixes like "&amp;" → "&" on a title
+        // land without a reset. Also updates step content+detail when the
+        // JSON provides the object form.
+        foreach ($recipes as $r) {
+            $rid = $idBySlug[$r['slug']] ?? null;
+            if (!$rid) continue;
+
+            $this->getAdapter()->execute(
+                'UPDATE recipes SET title = ' . $pdo->quote((string)$r['title']) .
+                ', description = ' . $pdo->quote((string)($r['description'] ?? '')) .
+                ', prep_time = ' . (int)$r['prep_time'] .
+                ', cook_time = ' . (int)$r['cook_time'] .
+                ', servings = ' . (int)$r['servings'] .
+                ', tags_json = ' . $pdo->quote(json_encode($r['tags'])) .
+                ', palette_json = ' . $pdo->quote(json_encode($r['palette'])) .
+                ' WHERE id = ' . $pdo->quote($rid)
+            );
+
+            foreach ($r['steps'] as $idx => $step) {
+                if (!is_array($step)) continue;
+                $detail = $step['detail'] ?? null;
+                if ($detail === null) continue;
+                $content = (string)($step['content'] ?? '');
+
+                $this->getAdapter()->execute(
+                    'UPDATE recipe_steps SET content = ' . $pdo->quote($content) .
+                    ', detail = ' . $pdo->quote($detail) .
+                    ' WHERE recipe_id = ' . $pdo->quote($rid) .
+                    ' AND sort_order = ' . (int)$idx
+                );
+            }
+        }
+    }
+
+    /** @param mixed $step  @return array{0:string, 1:string|null} */
+    private static function normaliseStep($step): array
+    {
+        if (is_array($step)) {
+            return [(string)($step['content'] ?? ''), $step['detail'] ?? null];
+        }
+        return [(string)$step, null];
     }
 }

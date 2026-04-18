@@ -5,6 +5,7 @@ import { api } from '../lib/api';
 import { Icon } from '../components/Icon';
 import { Modal } from '../components/Modal';
 import { MealPlate } from '../components/MealPlate';
+import { MethodBlock } from '../components/MethodBlock';
 import { useAuth } from '../store/auth';
 import { useUi } from '../store/ui';
 
@@ -132,15 +133,7 @@ export function RecipeDetailPage() {
           </ul>
         </div>
         <div>
-          <h3>Method</h3>
-          <ol className="recipe-steps">
-            {recipe.steps.map((s, i) => (
-              <li key={i}>
-                <span className="step-num mono">{i + 1}</span>
-                <span>{s.content}</span>
-              </li>
-            ))}
-          </ol>
+          <MethodBlock steps={recipe.steps} />
         </div>
       </div>
 

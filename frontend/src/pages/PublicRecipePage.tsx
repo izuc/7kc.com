@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Icon } from '../components/Icon';
 import { MealPlate } from '../components/MealPlate';
+import { MethodBlock } from '../components/MethodBlock';
 import type { Recipe } from '../types/models';
 
 /**
@@ -120,15 +121,7 @@ export function PublicRecipePage() {
             </ul>
           </div>
           <div>
-            <h3>Method</h3>
-            <ol className="recipe-steps">
-              {recipe.steps.map((s, i) => (
-                <li key={i}>
-                  <span className="step-num mono">{i + 1}</span>
-                  <span>{s.content}</span>
-                </li>
-              ))}
-            </ol>
+            <MethodBlock steps={recipe.steps} />
           </div>
         </div>
 

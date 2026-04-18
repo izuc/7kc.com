@@ -1,5 +1,58 @@
 /* 7KC extras on top of the base styles */
 
+/* method block with beginner-notes toggle */
+.method-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.method-head h3 { margin: 0; }
+.method-head .chip {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  padding: 4px 12px;
+}
+.step-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.step-content {
+  font-size: 15px;
+  line-height: 1.5;
+}
+.step-detail {
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.65;
+  margin: 0;
+  padding: 10px 14px;
+  background: var(--cream-2);
+  border-left: 3px solid var(--sage);
+  border-radius: 0 8px 8px 0;
+  animation: step-detail-in 0.3s ease-out;
+  text-wrap: pretty;
+}
+@keyframes step-detail-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .step-detail { animation: none; }
+}
+
+/* tighter recipe-steps to accommodate the new layout */
+.recipe-steps li {
+  align-items: flex-start;
+}
+
+
+
 /* auth screens — editorial split layout */
 .auth-shell {
   min-height: 100vh;
