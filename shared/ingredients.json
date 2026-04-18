@@ -164,5 +164,17 @@
   { "id": "worcestershire", "display": "Worcestershire", "section": "pantry", "shelf_life_days": 730 },
   { "id": "stock_beef", "display": "Beef stock", "section": "pantry", "shelf_life_days": 365 },
   { "id": "passionfruit", "display": "Passionfruit", "section": "produce", "shelf_life_days": 10 },
-  { "id": "paneer", "display": "Paneer", "section": "dairy", "shelf_life_days": 14 }
+  { "id": "paneer", "display": "Paneer", "section": "dairy", "shelf_life_days": 14 },
+  { "id": "chicken_wing", "display": "Chicken wings", "section": "meat", "shelf_life_days": 3 },
+  { "id": "pork_shoulder", "display": "Pork shoulder", "section": "meat", "shelf_life_days": 4 },
+  { "id": "tomato_paste", "display": "Tomato paste", "section": "pantry", "shelf_life_days": 365 },
+  { "id": "rosemary", "display": "Rosemary", "section": "produce", "shelf_life_days": 14 },
+  { "id": "thyme", "display": "Thyme", "section": "produce", "shelf_life_days": 14 },
+  { "id": "oregano", "display": "Oregano", "section": "pantry", "shelf_life_days": 365 },
+  { "id": "olive", "display": "Olives", "section": "pantry", "shelf_life_days": 180 },
+  { "id": "caper", "display": "Capers", "section": "pantry", "shelf_life_days": 365 },
+  { "id": "chocolate_chip", "display": "Chocolate chips", "section": "pantry", "shelf_life_days": 365 },
+  { "id": "tea_chai", "display": "Chai tea", "section": "pantry", "shelf_life_days": 365 },
+  { "id": "ice_cream_vanilla", "display": "Vanilla ice cream", "section": "frozen", "shelf_life_days": 180 },
+  { "id": "banana_frozen", "display": "Frozen banana", "section": "frozen", "shelf_life_days": 90 }
 ]

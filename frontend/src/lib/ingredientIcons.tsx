@@ -744,6 +744,50 @@ const ICONS: Record<string, Icon> = {
     <rect x="24" y="36" width="52" height="34" rx="2" fill="#fffbf2" stroke={INK} strokeWidth={S} />
     <path d="M30 44 L70 44 M30 52 L70 52 M30 60 L70 60" stroke={INK} strokeWidth={0.4} opacity={0.4} />
   </>),
+  chicken_wing: () => (<>
+    <path d="M28 60 Q26 46, 36 36 Q50 30, 66 34 Q78 42, 76 54 Q72 70, 54 74 Q36 74, 28 60 Z" fill="#d4a373" stroke={INK} strokeWidth={S} strokeLinejoin="round" />
+    <path d="M30 62 Q40 52, 56 50 Q66 50, 68 56" stroke="#a16207" strokeWidth={0.8} fill="none" opacity={0.7} />
+    <ellipse cx="22" cy="62" rx="6" ry="4" fill="#faf2e3" stroke={INK} strokeWidth={S} />
+    <path d="M34 40 Q38 32, 48 34 M48 32 Q54 28, 60 34" stroke={INK} strokeWidth={1} fill="none" opacity={0.4} />
+  </>),
+  pork_shoulder: () => (<>
+    <path d="M18 58 Q20 36, 44 32 Q68 28, 80 46 Q86 64, 72 76 Q48 82, 26 74 Q16 68, 18 58 Z" fill="#f4a6a6" stroke={INK} strokeWidth={S} strokeLinejoin="round" />
+    <path d="M36 48 Q48 46, 60 50 M30 58 Q50 56, 68 60" stroke="#e11d48" strokeWidth={1.4} fill="none" opacity={0.5} />
+    <path d="M18 58 Q12 54, 14 48" stroke={INK} strokeWidth={S} fill="none" />
+  </>),
+  tomato_paste: () => <Tin body="#7f1d1d" label="#dc2626" letter="T" />,
+  rosemary: () => (
+    <g><path d="M50 90 L50 18" stroke="#4d7c0f" strokeWidth={2.5} strokeLinecap="round" />{Array.from({length:10}).map((_, i) => { const y = 24 + i * 6; const side = i % 2 === 0 ? 1 : -1; return (<line key={i} x1={50} y1={y} x2={50 + side * 14} y2={y - 3} stroke="#4d7c0f" strokeWidth={2} strokeLinecap="round" />); })}</g>
+  ),
+  thyme: () => (
+    <g><path d="M50 88 L50 22" stroke="#4d7c0f" strokeWidth={1.5} />{Array.from({length:14}).map((_, i) => { const y = 26 + i * 4.5; const side = i % 2 === 0 ? 1 : -1; return (<circle key={i} cx={50 + side * 6} cy={y} r={2.5} fill="#4d7c0f" stroke={INK} strokeWidth={0.5} />); })}</g>
+  ),
+  oregano: () => <Tin body="#4d7c0f" label="#2d4a0a" letter="Or" />,
+  olive: () => (<>
+    <ellipse cx="34" cy="54" rx="10" ry="13" fill="#2d4a0a" stroke={INK} strokeWidth={S} />
+    <ellipse cx="50" cy="60" rx="10" ry="13" fill="#4d7c0f" stroke={INK} strokeWidth={S} />
+    <ellipse cx="66" cy="54" rx="10" ry="13" fill="#2d4a0a" stroke={INK} strokeWidth={S} />
+    <circle cx="34" cy="52" r="2" fill="#bbcc99" />
+    <circle cx="50" cy="58" r="2" fill="#bbcc99" />
+    <circle cx="66" cy="52" r="2" fill="#bbcc99" />
+  </>),
+  caper: () => (<>
+    {[[36,52],[46,48],[58,50],[40,62],[52,66],[62,60],[46,74],[58,74]].map(([x,y],i)=><circle key={i} cx={x} cy={y} r={4} fill="#4d7c0f" stroke={INK} strokeWidth={1} />)}
+  </>),
+  chocolate_chip: () => (<>
+    {[[32,42],[48,38],[62,44],[36,56],[52,52],[66,58],[42,68],[58,70]].map(([x,y],i)=>(<path key={i} d={`M${x} ${y-5} L${x+5} ${y+4} L${x-5} ${y+4} Z`} fill="#3f2410" stroke={INK} strokeWidth={0.8} />))}
+  </>),
+  tea_chai: () => <Packet body="#92400e" label="#fde68a" letter="Ch" />,
+  ice_cream_vanilla: () => (<>
+    <path d="M34 58 L50 90 L66 58 Z" fill="#d4a373" stroke={INK} strokeWidth={S} strokeLinejoin="round" />
+    <circle cx="50" cy="42" r="18" fill="#fef9c3" stroke={INK} strokeWidth={S} />
+    <circle cx="44" cy="36" r="4" fill="#fef08a" opacity={0.7} />
+  </>),
+  banana_frozen: () => (<>
+    <path d="M20 72 C20 48, 36 22, 68 22 C66 30, 62 34, 60 38 C68 34, 76 26, 82 22 C84 48, 72 78, 44 82 C30 82, 22 80, 20 72 Z" fill="#fef9c3" stroke={INK} strokeWidth={S} strokeLinejoin="round" />
+    <path d="M22 72 C34 62, 52 56, 74 40" fill="none" stroke="#a16207" strokeWidth={1.2} opacity={0.4} />
+    <text x="78" y="18" fontFamily="Georgia, serif" fontSize="14" fill="#0891b2">❄</text>
+  </>),
 };
 
 // ---------------------------------------------------------------------------

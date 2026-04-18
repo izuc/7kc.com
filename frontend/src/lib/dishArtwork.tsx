@@ -750,6 +750,49 @@ const RECIPE_ARTWORK: Record<string, Template> = {
 
   // gyoza + dumplings
   'gyoza': (p) => <DipPlate {...p} />,
+
+  // snacks / parties
+  'loaded-nachos': (p) => <DipPlate {...p} />,
+  'buffalo-wings': (p) => <Skewers {...p} />,
+  'satay-skewers': (p) => <Skewers {...p} />,
+  'san-choy-bow': (p) => <Tacos {...p} />,
+  'cheese-toastie': (p) => <SandwichStack {...p} />,
+  'ham-cheese-jaffle': (p) => <SandwichStack {...p} />,
+
+  // asian
+  'pad-see-ew': (p) => <PastaBowl {...p} />,
+  'korean-beef-bowl': (p) => <GrainBowl {...p} />,
+
+  // curries / slow
+  'chicken-tagine': (p) => <CurryBowl {...p} />,
+  'paella': (p) => <CurryBowl {...p} />,
+  'pulled-pork': (p) => <SandwichStack {...p} />,
+
+  // soups
+  'tom-yum': (p) => <SoupBowl {...p} />,
+  'french-onion-soup': (p) => <SoupBowl {...p} />,
+  'mushroom-soup': (p) => <SoupBowl {...p} />,
+
+  // baked / sweet
+  'choc-chip-cookies': (p) => <BakedSlice {...p} />,
+  'nyc-cheesecake': (p) => <BakedSlice {...p} />,
+  'lemon-delicious': (p) => <BakedSlice {...p} />,
+  'rocky-road': (p) => <BakedSlice {...p} />,
+  'apple-pie': (p) => <BakedSlice {...p} />,
+  'garlic-bread': (p) => <BakedSlice {...p} />,
+  'yorkshire-puddings': (p) => <BakedSlice {...p} />,
+  'focaccia': (p) => <BakedSlice {...p} />,
+
+  // breakfast / sides
+  'berry-smoothie-bowl': (p) => <GrainBowl {...p} />,
+  'hash-browns': (p) => <RoastPlate {...p} />,
+  'omelette': (p) => <EggBrunch {...p} />,
+  'bircher-muesli': (p) => <GrainBowl {...p} />,
+  'coleslaw': (p) => <SaladPlate {...p} />,
+  'mashed-potato': (p) => <Risotto {...p} />,
+
+  // grill
+  'chimichurri-steak': (p) => <RoastPlate {...p} protein="steak" />,
 };
 
 export function dishArtworkFor(slug: string | undefined, palette: Palette, garnishIds: string[] = []): ReactNode {

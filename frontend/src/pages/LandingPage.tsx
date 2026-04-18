@@ -19,7 +19,7 @@ export function LandingPage() {
     })();
     meta.setAttribute(
       'content',
-      "A pantry-first kitchen management app. Your shopping list becomes your pantry. Your pantry decides what's for dinner. 100 recipes, no AI, no subscription."
+      "A pantry-first kitchen management app. Your shopping list becomes your pantry. Your pantry decides what's for dinner. 130+ recipes, no AI, no subscription."
     );
   }, []);
 
@@ -107,7 +107,7 @@ function Hero() {
               <span className="arrow-glyph">→</span>
             </Link>
             <a href="#recipes" className="btn btn-ghost btn-lg">
-              Browse 100 recipes
+              Browse 130+ recipes
             </a>
           </div>
           <div className="lp-reassurance lp-reveal lp-reveal-5">
@@ -411,7 +411,7 @@ function RecipeMosaic() {
         <div className="lp-section-head">
           <div>
             <div className="lp-eyebrow">Chapter three <span className="dot">·</span> the library</div>
-            <h2>A hundred recipes, pre-seeded. Your pantry picks the one.</h2>
+            <h2>A hundred-thirty recipes, pre-seeded. Your pantry picks the one.</h2>
           </div>
           <p className="lp-kicker">
             A tight, hand-curated library. Spag bol, snag sanga, green curry,
@@ -503,7 +503,7 @@ function ContraSection() {
             <span className="mono-label">03 · No paywall</span>
             <span className="struck">Subscription to unlock basics</span>
             <p className="why">
-              Shopping lists, pantry, 100 recipes, offline, groups.
+              Shopping lists, pantry, 130+ recipes, offline, groups.
               <strong>&nbsp;All free&nbsp;</strong>forever. You can even use the list feature
               without an account. Sign up when you're ready, not when a modal
               demands it.

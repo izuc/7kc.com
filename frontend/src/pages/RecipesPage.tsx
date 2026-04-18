@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
@@ -7,12 +7,16 @@ import { MealPlate } from '../components/MealPlate';
 import { SkeletonRecipeGrid } from '../components/Skeleton';
 import type { RankedRecipe } from '../types/models';
 
+const PAGE_SIZE = 24;
+
 type Filter = 'all' | 'can-make' | 'quick' | 'expiring' | 'veg';
 
 export function RecipesPage() {
   const navigate = useNavigate();
   const [filter, setFilter] = useState<Filter>('all');
   const [q, setQ] = useState('');
+  const [page, setPage] = useState(1);
+  const gridAnchor = useRef<HTMLDivElement | null>(null);
 
   const { data, isLoading } = useQuery({
     queryKey: ['recipe-suggestions'],
@@ -36,6 +40,22 @@ export function RecipesPage() {
       return true;
     });
   }, [ranked, filter, q]);
+
+  // reset pagination whenever filters change
+  useEffect(() => {
+    setPage(1);
+  }, [filter, q]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const safePage = Math.min(page, totalPages);
+  const pageStart = (safePage - 1) * PAGE_SIZE;
+  const pageEnd = Math.min(pageStart + PAGE_SIZE, filtered.length);
+  const paginated = filtered.slice(pageStart, pageEnd);
+
+  const goToPage = (p: number) => {
+    setPage(Math.min(Math.max(1, p), totalPages));
+    gridAnchor.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const topPick = ranked[0];
 
@@ -141,13 +161,117 @@ export function RecipesPage() {
         ))}
       </div>
 
-      <div className="recipe-grid stagger-in">
-        {filtered.slice(0, 60).map((entry) => (
-          <RecipeCard key={entry.recipe.id} entry={entry} />
-        ))}
-      </div>
+      <div ref={gridAnchor} />
+
+      {filtered.length === 0 ? (
+        <div className="empty">
+          <Icon name="chef" size={26} />
+          <p>No recipes match that filter.</p>
+          <button className="btn btn-ghost" onClick={() => { setFilter('all'); setQ(''); }}>
+            Clear filters
+          </button>
+        </div>
+      ) : (
+        <>
+          <div className="recipe-grid stagger-in">
+            {paginated.map((entry) => (
+              <RecipeCard key={entry.recipe.id} entry={entry} />
+            ))}
+          </div>
+
+          <Pagination
+            page={safePage}
+            totalPages={totalPages}
+            pageStart={pageStart + 1}
+            pageEnd={pageEnd}
+            total={filtered.length}
+            onPage={goToPage}
+          />
+        </>
+      )}
     </div>
   );
+}
+
+function Pagination({
+  page,
+  totalPages,
+  pageStart,
+  pageEnd,
+  total,
+  onPage,
+}: {
+  page: number;
+  totalPages: number;
+  pageStart: number;
+  pageEnd: number;
+  total: number;
+  onPage: (p: number) => void;
+}) {
+  if (totalPages <= 1) {
+    return (
+      <div className="pagination-count mono small muted" aria-live="polite">
+        Showing all {total} recipe{total === 1 ? '' : 's'}
+      </div>
+    );
+  }
+  const numbers = pageNumbers(page, totalPages);
+  return (
+    <nav className="pagination" aria-label="Recipe pagination">
+      <div className="pagination-count mono small muted" aria-live="polite">
+        Showing {pageStart}–{pageEnd} of {total}
+      </div>
+      <div className="pagination-buttons">
+        <button
+          className="btn btn-ghost"
+          onClick={() => onPage(page - 1)}
+          disabled={page === 1}
+          aria-label="Previous page"
+        >
+          <span style={{ transform: 'rotate(180deg)', display: 'inline-block' }}>→</span> Prev
+        </button>
+        {numbers.map((n, i) =>
+          n === '…' ? (
+            <span key={`gap-${i}`} className="pagination-gap mono muted">…</span>
+          ) : (
+            <button
+              key={n}
+              className={`pagination-num ${n === page ? 'active' : ''}`}
+              onClick={() => onPage(n)}
+              aria-current={n === page ? 'page' : undefined}
+            >
+              {n}
+            </button>
+          )
+        )}
+        <button
+          className="btn btn-ghost"
+          onClick={() => onPage(page + 1)}
+          disabled={page === totalPages}
+          aria-label="Next page"
+        >
+          Next →
+        </button>
+      </div>
+    </nav>
+  );
+}
+
+function pageNumbers(current: number, total: number): (number | '…')[] {
+  const pages: (number | '…')[] = [];
+  const add = (n: number) => pages.push(n);
+
+  // always show first, last, current, current±1; collapse the rest with ellipsis
+  const shown = new Set<number>([1, total, current - 1, current, current + 1]);
+  const sorted = [...shown].filter((n) => n >= 1 && n <= total).sort((a, b) => a - b);
+
+  let prev = 0;
+  for (const n of sorted) {
+    if (n - prev > 1) pages.push('…');
+    add(n);
+    prev = n;
+  }
+  return pages;
 }
 
 function RecipeCard({ entry }: { entry: RankedRecipe }) {

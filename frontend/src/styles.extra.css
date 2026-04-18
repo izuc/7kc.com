@@ -312,6 +312,68 @@
   align-items: center;
 }
 
+/* pagination */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-2);
+  flex-wrap: wrap;
+}
+.pagination-count { letter-spacing: 0.04em; }
+.pagination-buttons {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pagination-buttons .btn {
+  padding: 7px 14px;
+  font-size: 13px;
+}
+.pagination-num {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-2);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.pagination-num:hover {
+  background: var(--cream-2);
+  color: var(--ink);
+}
+.pagination-num.active {
+  background: var(--accent);
+  color: var(--paper);
+  border-color: var(--accent);
+}
+.pagination-gap {
+  width: 24px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1;
+}
+.pagination-count:only-child {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-2);
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .pagination { flex-direction: column; align-items: stretch; }
+  .pagination-buttons { justify-content: center; }
+}
+
 /* mobile nav active indicator */
 @media (max-width: 900px) {
   .mobile-nav button {
