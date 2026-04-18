@@ -901,7 +901,8 @@
     grid-template-columns: 1fr;
     gap: 18px;
   }
-  .recipe-detail-hero svg {
+  /* Only target the MealPlate, not button icons inside the hero */
+  .recipe-detail-hero > svg {
     width: 100% !important;
     max-width: 340px;
     height: auto !important;
@@ -1300,7 +1301,7 @@ input:focus-visible {
     page-break-after: avoid;
     page-break-inside: avoid;
   }
-  .recipe-detail-hero svg {
+  .recipe-detail-hero > svg {
     width: 160pt !important;
     height: 160pt !important;
     max-width: 160pt !important;
