@@ -46,6 +46,7 @@ use SevenKC\Action\Recipes\CookedRecipesAction;
 use SevenKC\Action\Recipes\FavouriteRecipesAction;
 use SevenKC\Action\Recipes\ToggleFavouriteAction;
 use SevenKC\Action\Recipes\CreateRecipeAction;
+use SevenKC\Action\Recipes\ImportRecipeAction;
 use SevenKC\Action\Recipes\GetRecipeAction;
 use SevenKC\Action\Recipes\ListRecipesAction;
 use SevenKC\Action\Recipes\SuggestionsAction;
@@ -113,6 +114,7 @@ return function (App $app): void {
             $a->get('/recipes/favourites', FavouriteRecipesAction::class);
             $a->get('/recipes/{slug}', GetRecipeAction::class);
             $a->post('/recipes', CreateRecipeAction::class);
+            $a->post('/recipes/import', ImportRecipeAction::class);
             $a->post('/recipes/{slug}/cook', CookRecipeAction::class);
             $a->post('/recipes/{slug}/favourite', ToggleFavouriteAction::class);
 
