@@ -186,6 +186,32 @@ final class RecipeRepository
         return $out;
     }
 
+    public function toggleFavourite(string $userId, string $recipeId): bool
+    {
+        $exists = $this->db->fetchOne('SELECT 1 FROM recipe_favourites WHERE user_id = ? AND recipe_id = ?', [$userId, $recipeId]);
+        if ($exists) {
+            $this->db->delete('recipe_favourites', ['user_id' => $userId, 'recipe_id' => $recipeId]);
+            return false;
+        }
+        $this->db->insert('recipe_favourites', ['user_id' => $userId, 'recipe_id' => $recipeId, 'created_at' => time()]);
+        return true;
+    }
+
+    public function favourites(string $userId): array
+    {
+        $rows = $this->db->fetchAllAssociative(
+            'SELECT r.* FROM recipe_favourites f JOIN recipes r ON r.id = f.recipe_id WHERE f.user_id = ? ORDER BY f.created_at DESC',
+            [$userId]
+        );
+        $recipes = array_map([$this, 'hydrate'], $rows);
+        $ings = $this->ingredientIdsForAll();
+        foreach ($recipes as &$r) {
+            $r['ingredient_ids'] = $ings[$r['id']] ?? [];
+        }
+        unset($r);
+        return $recipes;
+    }
+
     public function recentlyCookedIds(string $userId, int $since): array
     {
         return array_map(

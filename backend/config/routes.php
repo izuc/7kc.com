@@ -38,6 +38,8 @@ use SevenKC\Action\Pantry\SeedStaplesAction;
 use SevenKC\Action\Pantry\UpdatePantryItemAction;
 use SevenKC\Action\Recipes\CookRecipeAction;
 use SevenKC\Action\Recipes\CookedRecipesAction;
+use SevenKC\Action\Recipes\FavouriteRecipesAction;
+use SevenKC\Action\Recipes\ToggleFavouriteAction;
 use SevenKC\Action\Recipes\CreateRecipeAction;
 use SevenKC\Action\Recipes\GetRecipeAction;
 use SevenKC\Action\Recipes\ListRecipesAction;
@@ -98,9 +100,11 @@ return function (App $app): void {
             $a->get('/recipes', ListRecipesAction::class);
             $a->get('/recipes/suggestions', SuggestionsAction::class);
             $a->get('/recipes/cooked', CookedRecipesAction::class);
+            $a->get('/recipes/favourites', FavouriteRecipesAction::class);
             $a->get('/recipes/{slug}', GetRecipeAction::class);
             $a->post('/recipes', CreateRecipeAction::class);
             $a->post('/recipes/{slug}/cook', CookRecipeAction::class);
+            $a->post('/recipes/{slug}/favourite', ToggleFavouriteAction::class);
 
             $a->post('/groups', CreateGroupAction::class);
             $a->get('/groups/mine', GetMyGroupAction::class);

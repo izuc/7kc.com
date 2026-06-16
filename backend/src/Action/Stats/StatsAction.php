@@ -36,11 +36,17 @@ final class StatsAction
             [$userId, 'tossed', $monthStart]
         );
 
+        $mealsThisWeek = (int)$this->db->fetchOne(
+            'SELECT COUNT(*) FROM cooked_meals WHERE user_id = ? AND cooked_at >= ?',
+            [$userId, time() - 7 * 86400]
+        );
+
         $total = $rescued + $tossed;
         return Json::send($res, ['stats' => [
             'rescued' => $rescued,
             'tossed' => $tossed,
             'rescue_rate' => $total > 0 ? (int)round($rescued / $total * 100) : null,
+            'meals_this_week' => $mealsThisWeek,
             'since' => $monthStart,
         ]]);
     }
