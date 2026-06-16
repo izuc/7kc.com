@@ -23,6 +23,21 @@ final class IngredientRepository
         );
     }
 
+    /** Full dictionary (ingredients + alias→id map) for the client-side parser. */
+    public function dictionary(): array
+    {
+        $rows = $this->db->fetchAllAssociative('SELECT id, display, section, aliases_json FROM ingredients ORDER BY display');
+        $ingredients = [];
+        $aliases = [];
+        foreach ($rows as $r) {
+            $ingredients[] = ['id' => $r['id'], 'display' => $r['display'], 'section' => $r['section']];
+            foreach ((array)json_decode((string)($r['aliases_json'] ?? '[]'), true) as $a) {
+                $aliases[strtolower((string)$a)] = $r['id'];
+            }
+        }
+        return ['ingredients' => $ingredients, 'aliases' => $aliases];
+    }
+
     public function find(string $id): ?array
     {
         $r = $this->db->fetchAssociative('SELECT id, display, section, shelf_life_days FROM ingredients WHERE id = ?', [$id]);

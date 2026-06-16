@@ -16,6 +16,7 @@ use SevenKC\Action\Groups\ListSuggestionsAction;
 use SevenKC\Action\Groups\LikeSuggestionAction;
 use SevenKC\Action\Groups\CommentSuggestionAction;
 use SevenKC\Action\Groups\CreateSuggestionAction;
+use SevenKC\Action\Ingredients\DictionaryAction;
 use SevenKC\Action\Ingredients\ListIngredientsAction;
 use SevenKC\Action\Ingredients\ParseAction;
 use SevenKC\Action\Recipes\PublicRecipeAction;
@@ -69,6 +70,7 @@ return function (App $app): void {
 
         // public utility endpoints (no auth for ingredient lookup)
         $g->get('/ingredients', ListIngredientsAction::class);
+        $g->get('/ingredients/dictionary', DictionaryAction::class);
         $g->post('/ingredients/parse', ParseAction::class);
 
         // public SEO / landing (no auth)
