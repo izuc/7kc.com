@@ -27,8 +27,8 @@ tests/rate-limiting/account-deletion.
   - [x] `PantryRepository::runningLow(userId, groupId)` + `POST /lists/{id}/restock` reusing `AddListItemsAction` batch + section resolution.
   - [x] ListsPage: "Restock (N)" button by "Paste list" + a "Running low (N) — add" chip-row when a list is open; dedup against existing items.
   - [x] The upsert bug fix from Phase 0.
-- [ ] **#7 · Undo on destructive actions + guided empty-pantry state** `H/L`
-  - [ ] Action-bearing toast with **deferred-commit undo** (drop from the react-query cache, hold the API delete until the toast expires, restore on Undo — not reinsert) for list-item delete, pantry delete, "Toss it". Extend `store/ui.ts` toast model + `Toasts.tsx`.
+- [x] **#7 · Undo on destructive actions + guided empty-pantry state** `H/L`
+  - [x] Action-bearing toast with **deferred-commit undo** (drop from the react-query cache, hold the API delete until the toast expires, restore on Undo — not reinsert) for list-item delete, pantry delete, "Toss it". Extend `store/ui.ts` toast model + `Toasts.tsx`.
   - [x] Banner on RecipesPage when pantry empty or top match < 0.5, reframing the 0% grid as "browse the library" with Go-to-pantry / Start-a-list CTAs.
 - [x] **#8 · Monetize + share the recipe pages** `H/L`
   - [x] Render `AffiliateButtons` on `PublicRecipePage` + `RecipeDetailPage` (add slug to the `trackEvent` payload).
@@ -37,9 +37,9 @@ tests/rate-limiting/account-deletion.
 - [ ] **#5b · Shareable group invite link** `L/M` — turn the raw clipboard token into `${origin}/join/<token>` + a `/join/:token` landing (one small public token-resolve endpoint returning only group name + inviter) + share sheet.
 - [ ] **Trivial wins**
   - [x] Commit `composer.lock` (Phase 0).
-  - [ ] Surface dormant **Sponsored** recipe inventory (`sponsored_by`/`sponsored_url` shipped but never SELECTed) — plumb through + badge.
-  - [ ] **Haptics** (`navigator.vibrate`) on tick-off / mark-all / move-to-pantry / cook "Next step", behind a capability + reduced-motion + settings guard.
-  - [ ] **iOS install card** ("Tap Share → Add to Home Screen") instead of `InstallPrompt` silently returning null; add a `share` glyph to `Icon.tsx`.
+  - [x] Surface dormant **Sponsored** recipe inventory (`sponsored_by`/`sponsored_url` shipped but never SELECTed) — plumb through + badge.
+  - [x] **Haptics** (`navigator.vibrate`) on tick-off / mark-all / move-to-pantry / cook "Next step", behind a capability + reduced-motion + settings guard.
+  - [x] **iOS install card** ("Tap Share → Add to Home Screen") instead of `InstallPrompt` silently returning null; add a `share` glyph to `Icon.tsx`.
 
 ## Phase 2 — Core loop & retention payoff
 
