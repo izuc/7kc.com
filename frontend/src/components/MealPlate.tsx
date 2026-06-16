@@ -50,7 +50,7 @@ export function MealPlate({ recipe, size = 240, className, rounded = true, ingre
         </radialGradient>
       </defs>
       <rect width="400" height="400" fill={`url(#bg-${slug})`} />
-      {dishArtworkFor(slug, palette, garnishIds)}
+      {dishArtworkFor(slug, palette, garnishIds, recipe.dish_form)}
     </svg>
   );
 }
@@ -87,7 +87,7 @@ export function MealPlateMini({ recipe, size = 140, className, ingredientIds }: 
         </radialGradient>
       </defs>
       <rect width="400" height="400" fill={`url(#mini-bg-${slug})`} />
-      {dishArtworkFor(slug, palette, garnishIds)}
+      {dishArtworkFor(slug, palette, garnishIds, recipe.dish_form)}
     </svg>
   );
 }

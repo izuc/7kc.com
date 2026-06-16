@@ -619,6 +619,41 @@ function DefaultPlate({ palette, garnishIds }: DishProps): ReactNode {
 
 type Template = (p: DishProps) => ReactNode;
 
+// Form token → template. This is the authoritative, data-driven source: a recipe's
+// `dish_form` (stored in recipes.json / the DB and returned by the API) selects its
+// art here, so a NEW recipe declares its form in data with no code edit. The
+// slug-keyed RECIPE_ARTWORK below is retained only as a fallback for recipe objects
+// that don't carry dish_form (e.g. the landing mosaic, pre-dish_form custom recipes).
+const FORM_TEMPLATES: Record<string, Template> = {
+  'pasta-bowl': (p) => <PastaBowl {...p} />,
+  'curry-bowl': (p) => <CurryBowl {...p} />,
+  'soup-bowl': (p) => <SoupBowl {...p} />,
+  'salad-plate': (p) => <SaladPlate {...p} />,
+  'sandwich-stack': (p) => <SandwichStack {...p} />,
+  tacos: (p) => <Tacos {...p} />,
+  'stir-fry': (p) => <StirFry {...p} />,
+  'fried-rice': (p) => <FriedRice {...p} />,
+  'roast-chicken': (p) => <RoastChicken {...p} />,
+  'roast-plate': (p) => <RoastPlate {...p} />,
+  'roast-plate-steak': (p) => <RoastPlate {...p} protein="steak" />,
+  'roast-plate-chicken': (p) => <RoastPlate {...p} protein="chicken" />,
+  'roast-plate-lamb': (p) => <RoastPlate {...p} protein="lamb" />,
+  'roast-plate-fish': (p) => <RoastPlate {...p} protein="fish" />,
+  risotto: (p) => <Risotto {...p} />,
+  shakshuka: (p) => <Shakshuka {...p} />,
+  'egg-brunch': (p) => <EggBrunch {...p} />,
+  pancakes: (p) => <Pancakes {...p} />,
+  'baked-slice': (p) => <BakedSlice {...p} />,
+  skewers: (p) => <Skewers {...p} />,
+  'grain-bowl': (p) => <GrainBowl {...p} />,
+  'dip-plate': (p) => <DipPlate {...p} />,
+  'fish-chips': (p) => <FishChips {...p} />,
+  'default-plate': (p) => <DefaultPlate {...p} />,
+};
+
+/** The set of valid dish_form tokens — also asserted by scripts/validate-recipes.mjs. */
+export const DISH_FORMS = Object.keys(FORM_TEMPLATES);
+
 const RECIPE_ARTWORK: Record<string, Template> = {
   // pasta bowls
   'spaghetti-bolognese': (p) => <PastaBowl {...p} />,
@@ -821,8 +856,14 @@ const RECIPE_ARTWORK: Record<string, Template> = {
   'honey-soy-wings': (p) => <Skewers {...p} />,
 };
 
-export function dishArtworkFor(slug: string | undefined, palette: Palette, garnishIds: string[] = []): ReactNode {
-  const template = slug ? RECIPE_ARTWORK[slug] : undefined;
+export function dishArtworkFor(
+  slug: string | undefined,
+  palette: Palette,
+  garnishIds: string[] = [],
+  form?: string | null
+): ReactNode {
+  // Data-driven first (recipe.dish_form), then the legacy slug map, then a generic plate.
+  const template = (form && FORM_TEMPLATES[form]) || (slug ? RECIPE_ARTWORK[slug] : undefined);
   if (template) return template({ palette, garnishIds, slug });
   return <DefaultPlate palette={palette} garnishIds={garnishIds} slug={slug} />;
 }

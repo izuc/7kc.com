@@ -72,6 +72,8 @@ export interface RecipeSummary {
   servings: number;
   tags: string[];
   palette: [string, string];
+  /** artwork form token (data-driven MealPlate); null falls back to the slug registry */
+  dish_form?: string | null;
   image_url: string | null;
   sponsored_by?: string | null;
   /** diet flags derived from the recipe's ingredients (authoritative) */
