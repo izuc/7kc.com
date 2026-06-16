@@ -13803,5 +13803,1805 @@
         "detail": "Off the heat, swirl in a splash of cream for extra silk and richness. Serve warm with a dusting of cinnamon on top. Leftovers thicken to a paste in the fridge — loosen with a splash of milk when you reheat."
       }
     ]
+  },
+  {
+    "slug": "spinach-cheese-borek",
+    "title": "Spinach & Cheese Borek",
+    "description": "Coiled Balkan filo rolls packed with feta and spinach, baked crisp with a glossy egg wash.",
+    "prep_time": 25,
+    "cook_time": 35,
+    "servings": 6,
+    "tags": [
+      "balkan",
+      "vegetarian",
+      "baked"
+    ],
+    "palette": [
+      "#a16207",
+      "#f5ead0"
+    ],
+    "dish_form": "baked-slice",
+    "ingredients": [
+      {
+        "id": "pastry_filo",
+        "amount": "1 packet"
+      },
+      {
+        "id": "feta",
+        "amount": "300 g"
+      },
+      {
+        "id": "spinach",
+        "amount": "300 g"
+      },
+      {
+        "id": "ricotta",
+        "amount": "200 g"
+      },
+      {
+        "id": "eggs",
+        "amount": "2"
+      },
+      {
+        "id": "butter",
+        "amount": "80 g"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "sesame_oil",
+        "amount": "drizzle",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Wilt and dry the spinach.",
+        "detail": "Wilt the spinach in a dry pan or with boiling water, cool, then squeeze it dry in fistfuls. As with any filo bake, water is the enemy — a wet filling steams the pastry from the inside and you lose the crunch that makes borek borek. Chop it roughly once it's drained."
+      },
+      {
+        "content": "Mash the cheese filling.",
+        "detail": "Crumble the feta into a bowl and mash with a fork, then mix in the ricotta, the spinach and one of the eggs (keep the second for the wash). The feta brings the salt and tang, the ricotta softens and binds it into a creamy spreadable mix. Taste and add pepper, but skip salt — the feta has it covered."
+      },
+      {
+        "content": "Set up your buttering station.",
+        "detail": "Melt the butter and stir in the olive oil — the oil stops the butter burning and keeps the pastry pliable. Unroll the filo and keep it under a damp tea towel between sheets. Brushing each sheet with the butter-oil mix is what gives you shattering layers, so don't rush this part or let the filo dry out."
+      },
+      {
+        "content": "Fill and roll into ropes.",
+        "detail": "Lay a filo sheet down, brush with butter, and spread a thin line of filling along the long edge. Roll it up into a long thin rope, not too tightly — too tight and it splits as it bakes, too loose and it unravels. Repeat until the filling is used up. A thin even line of filling beats a fat lump that bursts out the ends."
+      },
+      {
+        "content": "Coil into a spiral.",
+        "detail": "Starting from the centre of a round buttered tin, coil the first rope into a snail, then join the next rope onto its end and keep coiling outwards until the tin is filled. This classic spiral lets the rolls support each other so they hold their shape and bake evenly instead of flopping apart."
+      },
+      {
+        "content": "Egg wash and bake.",
+        "detail": "Beat the reserved egg and brush it all over the coil for that deep glossy bronze finish, with an optional drizzle of sesame oil on top. Bake at 180C for about 35 min until crisp and golden. Cool 10 min before slicing into wedges so the cheese sets and you get clean pieces.",
+        "timer_seconds": 2100
+      }
+    ]
+  },
+  {
+    "slug": "fig-honey-filo-bites",
+    "title": "Fig & Honey Filo Bites",
+    "description": "Crisp little filo parcels of fresh fig and walnut, baked golden and drenched in warm honey.",
+    "prep_time": 20,
+    "cook_time": 20,
+    "servings": 4,
+    "tags": [
+      "greek",
+      "dessert",
+      "vegetarian"
+    ],
+    "palette": [
+      "#9d174d",
+      "#f7e3ea"
+    ],
+    "dish_form": "baked-slice",
+    "ingredients": [
+      {
+        "id": "fig",
+        "amount": "6"
+      },
+      {
+        "id": "pastry_filo",
+        "amount": "1/2 packet"
+      },
+      {
+        "id": "honey",
+        "amount": "1/3 cup"
+      },
+      {
+        "id": "walnut",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "butter",
+        "amount": "60 g"
+      },
+      {
+        "id": "cinnamon",
+        "amount": "1/2 tsp"
+      },
+      {
+        "id": "mascarpone",
+        "amount": "to serve",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Prep the figs and toast the walnuts.",
+        "detail": "Quarter the fresh figs and roughly chop the walnuts. Toast the walnuts in a dry pan over medium heat for 3-4 min until they smell nutty — toasting wakes up their oils and adds a depth that raw nuts just don't have. Watch them like a hawk near the end, as nuts go from golden to burnt in seconds."
+      },
+      {
+        "content": "Mix the filling.",
+        "detail": "Toss the figs and toasted walnuts with the cinnamon and a single tablespoon of the honey. Keep it just lightly coated — pile in too much honey now and it leaks out and welds the parcels to the tray as they bake. The rest of the honey goes on at the very end where it can shine."
+      },
+      {
+        "content": "Butter and cut the filo.",
+        "detail": "Melt the butter. Stack two filo sheets, brushing butter between them, then cut into wide strips. Keep spare filo under a damp tea towel so it doesn't dry and crack. Two buttered layers give you a parcel sturdy enough to hold the juicy fig without going soggy or tearing."
+      },
+      {
+        "content": "Fold into triangles.",
+        "detail": "Place a spoon of filling at one end of a strip and fold it up flag-style, corner over corner, into a neat triangle. Brush the outside with butter and sit it seam-side down on a lined tray. Seam down stops them springing open in the oven, and the butter outside is what crisps and bronzes the pastry."
+      },
+      {
+        "content": "Bake until crisp and golden.",
+        "detail": "Bake at 190C for about 18 min until deeply golden and crisp all over. Don't pull them out pale — underbaked filo is pasty and floppy rather than shattering. The figs will be soft and jammy inside by the time the outside is properly bronzed.",
+        "timer_seconds": 1080
+      },
+      {
+        "content": "Drench in warm honey and serve.",
+        "detail": "Gently warm the remaining honey until runny and spoon it over the hot parcels so it soaks into the crisp layers. Doing this while everything is hot lets the honey seep in rather than just sitting on top. Serve with a dollop of mascarpone, which cuts the sweetness beautifully."
+      }
+    ]
+  },
+  {
+    "slug": "avgolemono",
+    "title": "Avgolemono (Lemon Chicken Soup)",
+    "description": "Silky Greek lemon and egg soup with shredded chicken and rice — velvety, bright and restorative.",
+    "prep_time": 10,
+    "cook_time": 30,
+    "servings": 4,
+    "tags": [
+      "greek",
+      "soup",
+      "gluten-free"
+    ],
+    "palette": [
+      "#ca8a04",
+      "#fbf3d3"
+    ],
+    "dish_form": "soup-bowl",
+    "ingredients": [
+      {
+        "id": "chicken_thigh",
+        "amount": "500 g"
+      },
+      {
+        "id": "stock_chicken",
+        "amount": "1.5 L"
+      },
+      {
+        "id": "eggs",
+        "amount": "3"
+      },
+      {
+        "id": "lemon",
+        "amount": "2"
+      },
+      {
+        "id": "rice_jasmine",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "onion_brown",
+        "amount": "1"
+      },
+      {
+        "id": "parsley",
+        "amount": "handful",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Poach the chicken.",
+        "detail": "Drop the whole chicken thighs and the halved onion into the stock and simmer gently for about 18 min until the chicken is cooked through. A bare simmer rather than a rolling boil keeps the meat tender and the broth clear. Poaching in the stock itself means all that flavour stays in the pot.",
+        "timer_seconds": 1080
+      },
+      {
+        "content": "Cook the rice in the broth.",
+        "detail": "Lift the chicken out to cool and discard the onion. Add the rice to the simmering broth and cook for about 12 min until tender. Cooking the rice right in the soup makes it slightly starchy, which gives the finished bowl extra body. Meanwhile shred the chicken into bite-sized pieces with two forks."
+      },
+      {
+        "content": "Whisk the egg and lemon.",
+        "detail": "In a bowl, whisk the eggs hard with the juice of both lemons until pale and frothy. This egg-lemon mix, the avgolemono itself, is what makes the soup velvety and tangy rather than a plain broth. Whisking in plenty of air now helps it fold through smoothly later."
+      },
+      {
+        "content": "Temper the eggs.",
+        "detail": "Take the broth off the boil. Whisking the egg mix constantly, ladle in a cup of the hot broth in a slow trickle, then a second. This is tempering — it warms the eggs gradually so they don't scramble. Skip it and tip cold egg straight into hot soup and you get lemony omelette threads instead of silk."
+      },
+      {
+        "content": "Finish off the heat.",
+        "detail": "Pour the tempered mixture back into the pot, return the shredded chicken, and stir over the lowest heat until it just thickens to coat a spoon. Do not let it boil — boiling will curdle the eggs and split your beautiful smooth soup. It thickens in a minute or two; pull it the moment it turns silky."
+      },
+      {
+        "content": "Season and serve.",
+        "detail": "Taste and adjust with salt, pepper and an extra squeeze of lemon if you want it brighter. Avgolemono waits for no one — it's at its silkiest straight away and tightens as it sits, so ladle it up at once with a scatter of parsley. Loosen reheated leftovers with a splash of stock, gently."
+      }
+    ]
+  },
+  {
+    "slug": "moussaka",
+    "title": "Moussaka",
+    "description": "Layered Greek bake of roasted eggplant, cinnamon-spiced lamb mince and a creamy baked bechamel top.",
+    "prep_time": 40,
+    "cook_time": 60,
+    "servings": 6,
+    "tags": [
+      "greek",
+      "comfort",
+      "baked"
+    ],
+    "palette": [
+      "#7c2d12",
+      "#f3e3d3"
+    ],
+    "dish_form": "baked-slice",
+    "ingredients": [
+      {
+        "id": "eggplant",
+        "amount": "3"
+      },
+      {
+        "id": "lamb_mince",
+        "amount": "600 g"
+      },
+      {
+        "id": "tinned_tomato",
+        "amount": "1 tin"
+      },
+      {
+        "id": "onion_brown",
+        "amount": "1"
+      },
+      {
+        "id": "cinnamon",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "milk",
+        "amount": "500 ml"
+      },
+      {
+        "id": "butter",
+        "amount": "50 g"
+      },
+      {
+        "id": "flour",
+        "amount": "50 g"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "for frying"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Salt and roast the eggplant.",
+        "detail": "Slice the eggplant into 1cm rounds, salt them and leave 15 min, then pat dry. Salting draws out bitter juices and stops the slices drinking up oil like a sponge. Brush with olive oil and roast at 200C for about 20 min until soft and golden — soggy raw eggplant would make the whole bake watery.",
+        "timer_seconds": 1200
+      },
+      {
+        "content": "Brown the lamb.",
+        "detail": "Brown the lamb mince in a hot pan in batches, leaving it untouched to colour before stirring. That deep browning is real flavour — crowd the pan and it stews grey instead. Tip off excess fat once it's well coloured so the finished sauce isn't greasy."
+      },
+      {
+        "content": "Build the meat sauce.",
+        "detail": "Add the diced onion to the lamb and cook until soft, then stir in the cinnamon, tinned tomato and a splash of water. The cinnamon is the signature warm spice of a Greek moussaka, not a mistake — it makes the meat sauce taste distinctly Greek. Simmer 20 min until thick and rich, not soupy.",
+        "timer_seconds": 1200
+      },
+      {
+        "content": "Make the bechamel.",
+        "detail": "Melt the butter, whisk in the flour and cook this roux 1-2 min so it loses its raw floury taste. Add the milk a splash at a time, whisking out every lump before adding more — going slow is the whole secret to a smooth sauce. Cook until it thickens enough to coat the back of a spoon. Season with salt, pepper and a little nutmeg if you have it."
+      },
+      {
+        "content": "Layer it up.",
+        "detail": "In a baking dish, lay half the eggplant, then all the meat sauce, then the rest of the eggplant, and pour the bechamel over the top to seal it completely. Spreading the bechamel right to the edges stops the meat below from drying out and gives you that classic golden lid."
+      },
+      {
+        "content": "Bake and, crucially, rest.",
+        "detail": "Bake at 180C for about 40 min until the top is set and golden brown. Then resist temptation and rest it a full 20 min before cutting — this is the most important step. Cut it hot and it collapses into a landslide; rested, it firms into neat, proud layers that hold on the plate.",
+        "timer_seconds": 2400
+      }
+    ]
+  },
+  {
+    "slug": "cashew-chicken",
+    "title": "Cashew Chicken",
+    "description": "The takeaway favourite done better at home — velveted chicken, toasty cashews and crisp capsicum in a glossy soy-oyster sauce.",
+    "prep_time": 20,
+    "cook_time": 12,
+    "servings": 4,
+    "tags": [
+      "chinese",
+      "stir-fry",
+      "quick",
+      "weeknight"
+    ],
+    "palette": [
+      "#b45309",
+      "#f6e7cf"
+    ],
+    "dish_form": "stir-fry",
+    "ingredients": [
+      {
+        "id": "chicken_thigh",
+        "amount": "600 g"
+      },
+      {
+        "id": "cashew",
+        "amount": "1 cup"
+      },
+      {
+        "id": "capsicum_red",
+        "amount": "1"
+      },
+      {
+        "id": "spring_onion",
+        "amount": "4"
+      },
+      {
+        "id": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "id": "ginger",
+        "amount": "3 cm knob"
+      },
+      {
+        "id": "soy_sauce",
+        "amount": "3 tbsp"
+      },
+      {
+        "id": "oyster_sauce",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "vegetable_oil",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "rice_jasmine",
+        "amount": "2 cups"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Velvet the chicken with a spoon of soy and cornflour-free toss.",
+        "detail": "Cut the thigh into 3cm pieces and toss with 1 tbsp of the soy sauce in a bowl. Let it sit while you chop everything else — the soy seasons the meat right through and the brief marinate keeps it juicy. Thigh is forgiving here; it stays tender even if your wok runs a touch hot, unlike breast which dries out fast."
+      },
+      {
+        "content": "Dry-toast the cashews in the cold wok, 3 min.",
+        "detail": "Tip the cashews into the dry wok before any oil and toast over medium heat, shaking constantly, until they smell nutty and turn pale gold. Cashews scorch in seconds once they colour, so pull them out the moment they smell toasty — tip onto a plate. Toasting deepens their flavour and keeps them crunchy in the finished dish instead of going soft in the sauce."
+      },
+      {
+        "content": "Prep the aromatics and sauce.",
+        "detail": "Mince the garlic, grate the ginger, slice the capsicum into bite-sized squares, and cut the spring onions into 3cm batons (keep the green tops aside for the end). Stir the remaining 2 tbsp soy and the oyster sauce together in a small bowl with a splash of water. A stir-fry moves fast — once the wok is hot there's no time to chop, so have every bowl lined up first."
+      },
+      {
+        "content": "Sear the chicken hard, then set aside.",
+        "detail": "Get the wok rippling-hot, add 1 tbsp oil, then spread the chicken in a single layer and leave it alone for a minute to catch colour before tossing. Crowding steams the meat grey, so if your wok is small, do it in two batches. Cook until just golden and barely cooked through, about 4 min, then scoop it out — it'll finish in the sauce."
+      },
+      {
+        "content": "Fry aromatics and capsicum, return everything.",
+        "detail": "Add the last tablespoon of oil, then the garlic, ginger and white spring-onion batons. Stir for 20 seconds only — garlic burns and turns bitter quickly on high heat. Add the capsicum and toss 1 min so it stays crisp-tender with a little bite, then return the chicken and cashews to the wok."
+      },
+      {
+        "content": "Pour in the sauce, toss to gloss, serve over rice.",
+        "detail": "Pour the sauce down the side of the hot wok so it sizzles, then toss for a minute until it thickens slightly and coats everything in a shine. If it looks dry, a splash of water loosens it; oyster sauce is already salty so taste before adding more soy. Scatter the green spring-onion tops over and serve straight away on steamed jasmine rice."
+      }
+    ]
+  },
+  {
+    "slug": "beef-rendang",
+    "title": "Beef Rendang",
+    "description": "Indonesia's slow-cooked dry curry — beef braised in spiced coconut milk until the sauce caramelises into a dark, clinging glaze.",
+    "prep_time": 20,
+    "cook_time": 150,
+    "servings": 6,
+    "tags": [
+      "indonesian",
+      "slow-cooked",
+      "curry",
+      "gluten-free"
+    ],
+    "palette": [
+      "#7c2d12",
+      "#efdcc6"
+    ],
+    "dish_form": "curry-bowl",
+    "ingredients": [
+      {
+        "id": "beef_brisket",
+        "amount": "1.2 kg"
+      },
+      {
+        "id": "coconut_milk",
+        "amount": "800 ml"
+      },
+      {
+        "id": "onion_brown",
+        "amount": "2"
+      },
+      {
+        "id": "garlic",
+        "amount": "6 cloves"
+      },
+      {
+        "id": "ginger",
+        "amount": "5 cm knob"
+      },
+      {
+        "id": "chilli",
+        "amount": "3"
+      },
+      {
+        "id": "turmeric",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "cinnamon",
+        "amount": "1 stick"
+      },
+      {
+        "id": "star_anise",
+        "amount": "2"
+      },
+      {
+        "id": "rice_jasmine",
+        "amount": "3 cups"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Blitz a spice paste from onion, garlic, ginger and chilli.",
+        "detail": "Roughly chop the onions, garlic, ginger and chilli, then blend to a rough paste with a splash of water (a stick blender in a jug works fine). This paste is the backbone of the curry — pounding or blending it releases far more flavour than just chopping. Leave the seeds in the chilli for more heat or scrape them out for a milder, family-friendly version."
+      },
+      {
+        "content": "Fry the paste with turmeric until fragrant, 8 min.",
+        "detail": "Heat a glug of oil in a heavy pot and cook the paste with the turmeric over medium heat, stirring often, until it darkens and smells deeply aromatic rather than raw and sharp. This is the most important step — undercooked paste tastes harsh. It'll spit a little; keep the heat moderate so it doesn't catch and turn bitter."
+      },
+      {
+        "content": "Add beef, coconut milk and whole spices.",
+        "detail": "Cut the brisket into large 4cm chunks — it shrinks a lot over the long cook, so don't go small. Add it to the pot with the coconut milk, cinnamon stick and star anise, plus a good pinch of salt. Stir so every piece is submerged. Brisket is ideal because its connective tissue melts to gelatine over hours, giving that silky texture leaner cuts never reach."
+      },
+      {
+        "content": "Simmer uncovered and low for 1.5 hours.",
+        "detail": "Bring to a gentle simmer, then keep it on the lowest steady bubble, uncovered, stirring every 15 min or so. The liquid slowly reduces and the beef turns fork-tender. Don't rush with high heat — that boils the coconut milk into a greasy split mess instead of letting it gradually thicken into sauce. Top up with a little water only if it dries before the beef is tender."
+      },
+      {
+        "content": "Reduce hard at the end until the sauce caramelises, 30–45 min.",
+        "detail": "Once the beef is tender, let the sauce keep reducing. This is what makes a rendang rather than a curry — the coconut oil eventually separates out and starts to fry the meat in its own spiced paste, going from pale to a glossy dark brown. Stir constantly now so the bottom doesn't scorch. It's done when the sauce clings to the beef and there's almost no liquid left."
+      },
+      {
+        "content": "Rest, then serve with jasmine rice.",
+        "detail": "Fish out the cinnamon stick and star anise, then let the rendang sit off the heat for 10 min so the flavours settle. Like most braises it tastes even better the next day once the spices mellow and deepen. Serve over steamed jasmine rice to soak up every bit of the dark, intense sauce."
+      }
+    ]
+  },
+  {
+    "slug": "tofu-japchae",
+    "title": "Tofu Japchae",
+    "description": "Korean stir-fried noodles tossed in a sweet-savoury soy-sesame sauce with crisp veg, golden tofu and a hum of gochujang.",
+    "prep_time": 25,
+    "cook_time": 15,
+    "servings": 4,
+    "tags": [
+      "korean",
+      "noodles",
+      "vegetarian",
+      "stir-fry"
+    ],
+    "palette": [
+      "#a16207",
+      "#f3ead4"
+    ],
+    "dish_form": "stir-fry",
+    "ingredients": [
+      {
+        "id": "noodle_egg",
+        "amount": "250 g"
+      },
+      {
+        "id": "tofu",
+        "amount": "400 g"
+      },
+      {
+        "id": "carrot",
+        "amount": "1"
+      },
+      {
+        "id": "spinach",
+        "amount": "2 handfuls"
+      },
+      {
+        "id": "mushroom",
+        "amount": "150 g"
+      },
+      {
+        "id": "spring_onion",
+        "amount": "3"
+      },
+      {
+        "id": "soy_sauce",
+        "amount": "4 tbsp"
+      },
+      {
+        "id": "sesame_oil",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "gochujang",
+        "amount": "1 tbsp"
+      },
+      {
+        "id": "sugar",
+        "amount": "2 tbsp"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Press and pan-fry the tofu until golden.",
+        "detail": "Pat the tofu very dry with a tea towel and press it under a plate for 10 min while you prep — wet tofu steams and falls apart instead of crisping. Cut into 2cm cubes and fry in a little oil over medium-high, turning, until golden and firm on several sides. A crust forms a skin that holds the cubes together when you toss them through the noodles later."
+      },
+      {
+        "content": "Mix the sauce and cook the noodles.",
+        "detail": "Stir the soy sauce, sesame oil, gochujang and sugar together until the sugar dissolves — this single sauce both seasons and glosses the whole dish. Boil the egg noodles to just tender, then drain and rinse briefly under cold water. Rinsing stops the cooking and washes off surface starch so they stay springy and slip apart instead of clumping into a sticky ball."
+      },
+      {
+        "content": "Stir-fry the vegetables separately, briefly.",
+        "detail": "Julienne the carrot, slice the mushrooms and cut the spring onions into batons. Stir-fry them in a hot pan with a touch of oil for just 2–3 min so they keep colour and crunch — soft, grey veg makes a sad japchae. Add the spinach at the very end and toss only until it wilts, which takes seconds; then squeeze out excess water so it doesn't dilute the sauce."
+      },
+      {
+        "content": "Toss noodles, veg, tofu and sauce together.",
+        "detail": "Return everything to the big pan off the heat, pour over the sauce and toss with tongs until every strand is evenly coated and glistening. Doing this off the heat means the sauce coats rather than catches and burns. Taste and adjust — a little more soy for salt, a pinch more sugar to round it out, or extra gochujang if you want more warmth."
+      },
+      {
+        "content": "Finish with sesame oil and serve warm or cool.",
+        "detail": "Give it a final drizzle of sesame oil and a good toss — added at the end its nutty aroma stays bright rather than cooking off. Japchae is one of the few noodle dishes that's just as good at room temperature, so it's perfect for lunchboxes or making ahead. Scatter any reserved spring-onion green over the top to serve."
+      }
+    ]
+  },
+  {
+    "slug": "char-siu-pork",
+    "title": "Char Siu Pork",
+    "description": "Cantonese sticky barbecue pork — lacquered in honey, soy and miso, roasted until the edges char and the inside stays juicy.",
+    "prep_time": 15,
+    "cook_time": 40,
+    "servings": 4,
+    "tags": [
+      "chinese",
+      "pork",
+      "roast",
+      "sticky"
+    ],
+    "palette": [
+      "#9f1239",
+      "#f6dcd8"
+    ],
+    "dish_form": "roast-plate",
+    "ingredients": [
+      {
+        "id": "pork_shoulder",
+        "amount": "800 g"
+      },
+      {
+        "id": "honey",
+        "amount": "3 tbsp"
+      },
+      {
+        "id": "soy_sauce",
+        "amount": "3 tbsp"
+      },
+      {
+        "id": "miso",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "id": "ginger",
+        "amount": "3 cm knob"
+      },
+      {
+        "id": "sesame_oil",
+        "amount": "1 tbsp"
+      },
+      {
+        "id": "rice_jasmine",
+        "amount": "2 cups"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Cut pork into long strips and make the marinade.",
+        "detail": "Slice the shoulder lengthways into strips about 4cm thick — long thin pieces give you maximum charred, caramelised surface, which is the whole point of char siu. Whisk the honey, soy, miso, grated garlic, grated ginger and sesame oil into a glossy marinade. The miso stands in beautifully for the usual fermented bean paste, bringing deep savoury umami and helping the pork brown."
+      },
+      {
+        "content": "Marinate at least 2 hours, ideally overnight.",
+        "detail": "Reserve a couple of spoons of marinade in the fridge for glazing, then coat the pork in the rest and leave it covered in the fridge — two hours will do, but overnight is far better. The salt and miso slowly penetrate and season the meat right through, while the sugars set it up to lacquer. Bring it back to room temperature before roasting so it cooks evenly."
+      },
+      {
+        "content": "Roast at high heat on a rack, 25 min.",
+        "detail": "Heat the oven to 200°C and sit the pork on a rack over a lined tray — the rack lets heat circulate underneath and stops the strips stewing in their juices. Roast 25 min, turning once halfway. A rack also catches the drips so the sugary marinade doesn't burn against the meat and turn acrid."
+      },
+      {
+        "content": "Glaze with honey and blast to caramelise.",
+        "detail": "Brush the pork generously with the reserved marinade plus an extra drizzle of honey, then crank the oven to its highest grill setting for 5–8 min. Watch it like a hawk — the honey takes the strips from glossy to charred fast, and a minute too long means bitter black edges. You're after sticky, blistered, mahogany patches, not uniform brown."
+      },
+      {
+        "content": "Rest, then slice across the grain.",
+        "detail": "Let the pork rest on a board for 10 min before cutting — resting lets the juices redistribute so they stay in the meat rather than running out onto the board. Slice across the grain into thin pieces for tenderness, and serve over jasmine rice with any sticky pan juices spooned over the top."
+      }
+    ]
+  },
+  {
+    "slug": "roast-grape-ricotta-toast",
+    "title": "Roast Grape & Ricotta Toast",
+    "description": "Grapes blistered jammy in the oven, piled on creamy ricotta toast with honey and thyme. Brunch that looks fancy, takes ten minutes.",
+    "prep_time": 5,
+    "cook_time": 20,
+    "servings": 2,
+    "tags": [
+      "breakfast",
+      "vegetarian",
+      "quick"
+    ],
+    "palette": [
+      "#6b21a8",
+      "#f3e8f7"
+    ],
+    "dish_form": "sandwich-stack",
+    "ingredients": [
+      {
+        "id": "grape",
+        "amount": "300 g (a couple of bunches)"
+      },
+      {
+        "id": "ricotta",
+        "amount": "200 g"
+      },
+      {
+        "id": "bread",
+        "amount": "4 thick slices"
+      },
+      {
+        "id": "honey",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "thyme",
+        "amount": "a few sprigs"
+      },
+      {
+        "id": "lemon",
+        "amount": "1/2"
+      },
+      {
+        "id": "walnut",
+        "amount": "1/4 cup",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Toss grapes with oil and thyme, roast 18 min at 200°C.",
+        "detail": "Pull the grapes off their stems and scatter on a lined tray — leave them whole so they keep their juice until they burst. Toss with 1 tbsp olive oil, a pinch of salt and the thyme sprigs, then roast at 200°C for about 18 min until the skins split and they look shrunken and jammy. Roasting drives off water and concentrates the sugar, turning ordinary supermarket grapes into something sticky and intense.",
+        "timer_seconds": 1080
+      },
+      {
+        "content": "Whip the ricotta smooth with lemon.",
+        "detail": "Tip the ricotta into a bowl with a squeeze of lemon, a small drizzle of olive oil and a pinch of salt, then beat with a fork or whisk for a minute until it loosens and goes light. Shop ricotta is grainy straight from the tub — a quick whip turns it spreadable and almost like a soft cheese spread. The lemon lifts it so it doesn't taste flat under the sweet grapes."
+      },
+      {
+        "content": "Toast the bread well.",
+        "detail": "Toast thick slices of a good sourdough or country loaf until properly golden and crisp — soft bread goes soggy the moment the warm grapes land. A sturdy crust gives you something to bite against the soft ricotta and bursting fruit. Drizzle each slice with a little olive oil while still hot if you like."
+      },
+      {
+        "content": "Spread ricotta, pile on grapes, drizzle honey.",
+        "detail": "Spread the whipped ricotta thickly over each toast, then spoon over the roast grapes along with the syrupy juices left on the tray — that sticky liquid is liquid gold, don't waste it. Drizzle with honey, scatter the optional toasted walnuts for crunch, and finish with a few thyme leaves and a crack of pepper. Eat straight away while the grapes are warm against the cool ricotta."
+      }
+    ]
+  },
+  {
+    "slug": "kiwi-mango-salsa-fish",
+    "title": "Kiwi-Mango Salsa over Pan-Fried Fish",
+    "description": "Crisp-skinned barramundi under a fresh kiwi and mango salsa with lime and chilli. Bright, summery and on the table in twenty minutes.",
+    "prep_time": 15,
+    "cook_time": 8,
+    "servings": 2,
+    "tags": [
+      "seafood",
+      "fresh",
+      "gluten-free",
+      "quick"
+    ],
+    "palette": [
+      "#16a34a",
+      "#fdf3d8"
+    ],
+    "dish_form": "roast-plate-fish",
+    "ingredients": [
+      {
+        "id": "barramundi",
+        "amount": "2 fillets, skin on"
+      },
+      {
+        "id": "kiwi",
+        "amount": "2 firm-ripe"
+      },
+      {
+        "id": "mango",
+        "amount": "1"
+      },
+      {
+        "id": "lime",
+        "amount": "1"
+      },
+      {
+        "id": "chilli",
+        "amount": "1/2, finely diced"
+      },
+      {
+        "id": "coriander",
+        "amount": "small handful"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "1 tbsp"
+      },
+      {
+        "id": "salt",
+        "amount": "to season"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Dice the kiwi and mango for the salsa.",
+        "detail": "Peel and dice the kiwi and mango into small, even 5mm cubes so every forkful has a bit of each. Choose kiwi that gives just slightly to a gentle squeeze — rock-hard ones are sour and mushy ones turn to slush. Tip into a bowl with the diced chilli (deseed it first if you want less heat) and a pinch of salt."
+      },
+      {
+        "content": "Dress the salsa with lime and coriander.",
+        "detail": "Squeeze in the juice of half the lime, add roughly chopped coriander and stir gently. Let it sit while you cook the fish — 10 min of resting lets the fruit release a little juice and the flavours marry into a proper salsa rather than just chopped fruit. Taste and add more lime or salt; it should be sharp and lively.",
+        "timer_seconds": 600
+      },
+      {
+        "content": "Dry the fish and season the skin.",
+        "detail": "Pat the barramundi fillets bone-dry with paper towel, especially the skin — moisture is the enemy of crisp skin, it just steams. Season both sides with salt right before cooking. Salting too early draws water out and you're back to a wet fillet."
+      },
+      {
+        "content": "Pan-fry skin-side down until crisp, then flip.",
+        "detail": "Heat the oil in a non-stick pan over medium-high until it shimmers. Lay the fillets in skin-side down and press flat with a spatula for the first 10 seconds so the skin doesn't curl away from the heat. Leave them untouched for 4–5 min until the skin is crisp and golden and the flesh has turned opaque most of the way up, then flip for just 1–2 min to finish. Resist the urge to move them — fish releases itself from the pan when the crust is ready.",
+        "timer_seconds": 300
+      },
+      {
+        "content": "Plate fish skin-up and spoon over the salsa.",
+        "detail": "Sit each fillet skin-side up to keep that hard-won crisp, then spoon the kiwi-mango salsa alongside or over the flesh — not over the skin, or it softens. Squeeze the last of the lime over the top. The cool, sharp fruit against the hot, savoury fish is the whole point of the dish."
+      }
+    ]
+  },
+  {
+    "slug": "grape-walnut-rocket-salad",
+    "title": "Grape, Walnut & Rocket Salad",
+    "description": "Peppery rocket, sweet grapes, toasted walnuts and shaved parmesan in a sharp balsamic dressing. The five-minute salad that lifts any plate.",
+    "prep_time": 10,
+    "cook_time": 5,
+    "servings": 4,
+    "tags": [
+      "salad",
+      "vegetarian",
+      "side",
+      "quick"
+    ],
+    "palette": [
+      "#4d7c0f",
+      "#eef6df"
+    ],
+    "dish_form": "salad-plate",
+    "ingredients": [
+      {
+        "id": "rocket",
+        "amount": "120 g (large handful)"
+      },
+      {
+        "id": "grape",
+        "amount": "200 g, halved"
+      },
+      {
+        "id": "walnut",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "parmesan",
+        "amount": "shavings, to serve"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "3 tbsp"
+      },
+      {
+        "id": "vinegar_balsamic",
+        "amount": "1 tbsp"
+      },
+      {
+        "id": "honey",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "dijon",
+        "amount": "1 tsp"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Toast the walnuts in a dry pan.",
+        "detail": "Toast the walnuts in a dry pan over medium heat, shaking often, for 3–4 min until fragrant and a shade darker. Watch them like a hawk — nuts go from golden to burnt in seconds, and burnt walnuts taste acrid. Tip them straight out of the hot pan onto a plate so they stop cooking, then roughly chop once cool.",
+        "timer_seconds": 240
+      },
+      {
+        "content": "Whisk the dressing in the bottom of the bowl.",
+        "detail": "In your serving bowl, whisk the balsamic, dijon, honey and a pinch of salt together first, then drizzle in the olive oil while whisking so it emulsifies into a thick, glossy dressing rather than splitting. The dijon is the trick — it acts as an emulsifier that holds the oil and vinegar together. Building it in the bowl saves washing up."
+      },
+      {
+        "content": "Halve the grapes.",
+        "detail": "Cut the grapes in half lengthways. Halving does two things: it stops them rolling off the fork, and it lets their sweet juice mingle into the dressing. If you've got fat seedless grapes they're perfect; otherwise flick out any pips."
+      },
+      {
+        "content": "Toss the rocket through the dressing and plate.",
+        "detail": "Add the rocket to the bowl and toss gently with your hands until just coated — dress it only at the last second, because rocket wilts fast once the acid hits it. Scatter over the grapes and walnuts, then use a peeler to shave parmesan over the top. Serve immediately while the leaves are still lively and the walnuts crunchy."
+      }
+    ]
+  },
+  {
+    "slug": "tea-poached-pears",
+    "title": "Tea-Poached Pears",
+    "description": "Whole pears gently poached in spiced black tea until tender and amber, served with toasted hazelnuts and a drizzle of honey syrup. A lighter, fragrant take on poached pears.",
+    "prep_time": 10,
+    "cook_time": 30,
+    "servings": 4,
+    "tags": [
+      "dessert",
+      "fruit",
+      "vegetarian",
+      "make-ahead"
+    ],
+    "palette": [
+      "#92400e",
+      "#f6ead4"
+    ],
+    "dish_form": "roast-plate",
+    "ingredients": [
+      {
+        "id": "pear",
+        "amount": "4 firm"
+      },
+      {
+        "id": "tea",
+        "amount": "3 bags black tea"
+      },
+      {
+        "id": "honey",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "cinnamon",
+        "amount": "1 stick or 1 tsp"
+      },
+      {
+        "id": "star_anise",
+        "amount": "2"
+      },
+      {
+        "id": "lemon",
+        "amount": "1"
+      },
+      {
+        "id": "hazelnut",
+        "amount": "1/3 cup"
+      },
+      {
+        "id": "yoghurt",
+        "amount": "to serve",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Brew the spiced tea poaching liquid.",
+        "detail": "Bring about 1 litre of water to the boil in a pot just wide enough to hold the pears, then take it off the heat and drop in the tea bags, cinnamon, star anise and a few strips of lemon peel. Let the tea steep 4 min then lift the bags out — leave them longer and the tannins turn the liquid bitter and astringent. Stir in the honey until it dissolves.",
+        "timer_seconds": 240
+      },
+      {
+        "content": "Peel the pears, leaving the stalks on.",
+        "detail": "Choose firm, slightly underripe pears such as Beurre Bosc or Packham — ripe ones collapse into mush in the hot liquid. Peel them smoothly with a vegetable peeler but keep the stalk on as a handle and for looks. Rub each peeled pear with the cut lemon to stop it browning while you work, and slice a sliver off the base so they sit upright."
+      },
+      {
+        "content": "Poach gently for 25–30 min, turning.",
+        "detail": "Lower the pears into the tea and keep it at the barest simmer — just a few bubbles trembling at the surface. A hard boil cooks the outside to mush before the centre softens. Lay a scrunched square of baking paper on top to keep them submerged, and turn every 10 min so they colour evenly to a warm amber. They're done when a skewer slides into the thickest part with gentle resistance.",
+        "timer_seconds": 1800
+      },
+      {
+        "content": "Lift out the pears and reduce the syrup.",
+        "detail": "Set the pears aside and turn the heat up, boiling the tea liquid hard until it reduces by about half to a light, pourable syrup that just coats a spoon — usually 8–10 min. Remember it keeps thickening as it cools, so stop while it still looks a touch loose or you'll end up with toffee.",
+        "timer_seconds": 600
+      },
+      {
+        "content": "Toast and chop the hazelnuts.",
+        "detail": "Toast the hazelnuts in a dry pan over medium heat, shaking often, until fragrant and the skins darken, about 4 min. Tip onto a clean tea towel and rub firmly to slough off the bitter papery skins, then chop roughly. Dry-toasting wakes up their oils — raw hazelnuts taste flat next to the spiced pears.",
+        "timer_seconds": 240
+      },
+      {
+        "content": "Serve with syrup, hazelnuts and yoghurt.",
+        "detail": "Stand a pear on each plate, spoon over the warm tea syrup and scatter the hazelnuts. A dollop of cold thick yoghurt alongside cuts the sweetness beautifully. You can poach these a day ahead and let them steep in the cooled syrup overnight — they take on a deeper amber colour and even more spice."
+      }
+    ]
+  },
+  {
+    "slug": "masala-chai-oats",
+    "title": "Masala Chai Porridge",
+    "description": "Creamy oats simmered in spiced chai with banana and toasted hazelnuts. A warming, fragrant bowl that beats plain porridge on a cold morning.",
+    "prep_time": 5,
+    "cook_time": 12,
+    "servings": 2,
+    "tags": [
+      "breakfast",
+      "vegetarian",
+      "comfort",
+      "quick"
+    ],
+    "palette": [
+      "#b45309",
+      "#f7ecd6"
+    ],
+    "dish_form": "grain-bowl",
+    "ingredients": [
+      {
+        "id": "oats",
+        "amount": "1 cup rolled"
+      },
+      {
+        "id": "milk",
+        "amount": "2 cups"
+      },
+      {
+        "id": "tea_chai",
+        "amount": "2 bags"
+      },
+      {
+        "id": "banana",
+        "amount": "1"
+      },
+      {
+        "id": "hazelnut",
+        "amount": "1/4 cup"
+      },
+      {
+        "id": "honey",
+        "amount": "1–2 tbsp"
+      },
+      {
+        "id": "cinnamon",
+        "amount": "1/4 tsp"
+      },
+      {
+        "id": "fig",
+        "amount": "2, quartered",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Steep the chai in warm milk.",
+        "detail": "Gently warm the milk in a saucepan until steaming but not boiling, then drop in the chai bags and let them steep off the heat for 4–5 min. Steeping in milk rather than water pulls the cardamom, ginger and clove deep into the dish — this is where the whole bowl gets its perfume. Squeeze and lift the bags out, pressing to get every drop of spice.",
+        "timer_seconds": 300
+      },
+      {
+        "content": "Add the oats and simmer, stirring.",
+        "detail": "Stir the rolled oats and cinnamon into the spiced milk and bring to a gentle simmer over medium-low heat. Stir often, scraping the base so the milk doesn't catch and scorch — thin pans burn milk fast and that taste spreads through everything. Cook 5–7 min until the oats are soft and the porridge is thick and creamy. Use rolled oats, not instant, which turn to glue."
+      },
+      {
+        "content": "Toast the hazelnuts while it cooks.",
+        "detail": "In a separate dry pan, toast the hazelnuts over medium heat for 3–4 min, shaking often, until fragrant and golden under the skins. Rub off the loose skins in a tea towel and chop roughly. Toasting is worth the extra pan — it brings out a deep, buttery crunch that raw nuts just can't give.",
+        "timer_seconds": 240
+      },
+      {
+        "content": "Loosen, sweeten and serve topped.",
+        "detail": "The porridge thickens as it sits, so stir in a splash more milk to bring it back to a loose, spoonable consistency, then sweeten to taste with honey. Spoon into bowls and top with sliced banana, the toasted hazelnuts and quartered figs if you have them. A final drizzle of honey and a dusting of cinnamon finishes it off."
+      }
+    ]
+  },
+  {
+    "slug": "patatas-bravas",
+    "title": "Patatas Bravas",
+    "description": "Crispy fried potatoes under a smoky paprika tomato sauce — the tapas bar staple, with a little chorizo crisped through.",
+    "prep_time": 15,
+    "cook_time": 30,
+    "servings": 4,
+    "tags": [
+      "spanish",
+      "tapas",
+      "share-plate"
+    ],
+    "palette": [
+      "#c2410c",
+      "#fce3cf"
+    ],
+    "dish_form": "dip-plate",
+    "ingredients": [
+      {
+        "id": "potato",
+        "amount": "800 g"
+      },
+      {
+        "id": "chorizo",
+        "amount": "1 (about 120 g)"
+      },
+      {
+        "id": "tinned_tomato",
+        "amount": "400 g tin"
+      },
+      {
+        "id": "paprika",
+        "amount": "2 tsp smoked"
+      },
+      {
+        "id": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "for frying"
+      },
+      {
+        "id": "salt",
+        "amount": "to taste"
+      },
+      {
+        "id": "parsley",
+        "amount": "small handful",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Peel and cube potatoes, then parboil 6 min.",
+        "detail": "Cut the potatoes into roughly 3 cm chunks so they cook evenly. Start them in cold, well-salted water and bring to the boil — starting cold means the outside doesn't turn to mush before the centre softens. Simmer just until a knife slides in with a little resistance, about 6 min. Drain and let them steam-dry in the colander for 5 min; dry surfaces crisp, wet ones steam and go soggy."
+      },
+      {
+        "content": "Make the brava sauce.",
+        "detail": "Warm a glug of olive oil over medium heat, add the minced garlic and smoked paprika, and stir for 30 seconds only — paprika scorches fast and turns bitter, so keep it moving and don't let it smoke. Tip in the tinned tomato, a pinch of salt, and simmer 10 min until thick and glossy. Blitz or mash smooth if you like it silky. Taste — it should be smoky and gently warming, not fiery."
+      },
+      {
+        "content": "Crisp the chorizo.",
+        "detail": "Slice the chorizo into coins. Fry in a dry pan over medium heat — chorizo renders its own deep-red, paprika-stained oil, so you need no extra fat. Cook until the edges crisp and curl, about 4 min, then lift out, leaving that ruby oil behind. Don't toss it — that oil is pure flavour for frying the potatoes."
+      },
+      {
+        "content": "Fry the potatoes until golden.",
+        "detail": "Add more olive oil to the chorizo oil to a depth of about 1 cm and bring to a shimmer over medium-high. Fry the dried potato chunks in a single uncrowded layer — crowding drops the temperature and steams them. Turn only once they've formed a crust and release easily from the pan, about 10–12 min total, until deep golden and crunchy. Drain on paper and salt straight away."
+      },
+      {
+        "content": "Plate and serve.",
+        "detail": "Pile the hot potatoes on a plate, spoon the warm brava sauce over and around — not tossed through, or they soften — and scatter the crisp chorizo on top. Finish with chopped parsley if using. Serve immediately while the potatoes still crackle; bravas wait for no one."
+      }
+    ]
+  },
+  {
+    "slug": "gambas-al-ajillo",
+    "title": "Gambas al Ajillo",
+    "description": "Spanish sizzling garlic prawns in chilli-spiked olive oil — ten minutes, one pan, bread for mopping.",
+    "prep_time": 10,
+    "cook_time": 8,
+    "servings": 4,
+    "tags": [
+      "spanish",
+      "tapas",
+      "quick",
+      "seafood"
+    ],
+    "palette": [
+      "#dc2626",
+      "#fde4d0"
+    ],
+    "dish_form": "dip-plate",
+    "ingredients": [
+      {
+        "id": "prawns",
+        "amount": "500 g, peeled"
+      },
+      {
+        "id": "garlic",
+        "amount": "6 cloves"
+      },
+      {
+        "id": "chilli",
+        "amount": "1, or a pinch of flakes"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "120 ml"
+      },
+      {
+        "id": "paprika",
+        "amount": "1 tsp smoked"
+      },
+      {
+        "id": "lemon",
+        "amount": "1/2"
+      },
+      {
+        "id": "parsley",
+        "amount": "handful"
+      },
+      {
+        "id": "bread",
+        "amount": "crusty, to serve"
+      },
+      {
+        "id": "salt",
+        "amount": "pinch"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Pat the prawns dry and season.",
+        "detail": "Peeled prawns straight from the bag are wet, and wet prawns steam grey instead of searing. Press them between paper towel until properly dry, then season with a pinch of salt. Bringing them to room temperature for 10 min also helps them cook evenly in the brief time they're in the pan."
+      },
+      {
+        "content": "Slowly infuse the oil with garlic and chilli.",
+        "detail": "Thinly slice the garlic and chilli. Add them to the cold olive oil in a wide frying pan, then turn the heat to medium-low. Starting cold lets the garlic perfume the oil gently as it warms — the goal is soft, pale gold, sweet garlic. The moment it turns past gold it's bitter, so pull the pan off the heat if it's colouring too fast."
+      },
+      {
+        "content": "Sear the prawns.",
+        "detail": "Turn the heat up to medium-high and slide in the prawns in one layer. They cook fast — about 1 minute per side. Watch the colour: a prawn is done the instant it turns pink and curls into a loose C. A tight O means overcooked and rubbery. Stir in the smoked paprika off the heat so it blooms in the warm oil without scorching."
+      },
+      {
+        "content": "Finish and serve sizzling.",
+        "detail": "Squeeze in the lemon, scatter over chopped parsley, and check the salt. Bring the whole pan to the table still spitting — that sizzle is the dish. Tear the crusty bread and mop up the garlicky, paprika-stained oil; in Spain the oil is the best part, never wasted."
+      }
+    ]
+  },
+  {
+    "slug": "tortilla-espanola",
+    "title": "Tortilla Espanola",
+    "description": "The classic Spanish potato omelette — soft, custardy centre, served warm or at room temperature in thick wedges.",
+    "prep_time": 15,
+    "cook_time": 30,
+    "servings": 6,
+    "tags": [
+      "spanish",
+      "tapas",
+      "vegetarian",
+      "gluten-free"
+    ],
+    "palette": [
+      "#eab308",
+      "#fdf3d4"
+    ],
+    "dish_form": "egg-brunch",
+    "ingredients": [
+      {
+        "id": "potato",
+        "amount": "600 g"
+      },
+      {
+        "id": "eggs",
+        "amount": "6"
+      },
+      {
+        "id": "onion_brown",
+        "amount": "1"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "250 ml"
+      },
+      {
+        "id": "salt",
+        "amount": "1 tsp"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Thinly slice potatoes and onion.",
+        "detail": "Peel the potatoes and slice them about 3 mm thick — thin enough to go meltingly soft. A traditional tortilla isn't fried crisp; the potatoes are gently poached in oil until tender. Slice the onion finely too. Don't rinse the potatoes — the starch helps the tortilla hold together."
+      },
+      {
+        "content": "Poach the potatoes and onion in oil.",
+        "detail": "Heat the olive oil in a non-stick pan over medium-low. Add the potatoes and onion with the salt — the oil should just cover them. Cook gently for about 15 min, stirring now and then, until a slice crushes easily between your fingers. You're confit-poaching, not frying, so keep it at a lazy bubble; brown bits mean the heat is too high."
+      },
+      {
+        "content": "Drain, then fold into beaten eggs.",
+        "detail": "Strain the potatoes (keep that lovely oil for next time) and let them cool for a couple of minutes so they don't scramble the eggs. Beat the eggs with a pinch of salt, then fold in the warm potatoes and onion. Let it sit 5 min so the potato soaks up the egg — this is what gives a tortilla its set, sliceable body."
+      },
+      {
+        "content": "Cook the first side.",
+        "detail": "Heat 1 tbsp of the reserved oil in the pan over medium. Pour in the mix and shape the edges into a neat round with a spatula. Cook 4–5 min, shaking the pan occasionally so it doesn't stick, until the base is set and golden but the top is still loose and wobbly. The centre stays soft on purpose."
+      },
+      {
+        "content": "Flip and finish.",
+        "detail": "The classic move: lay a flat plate over the pan, hold it tight, and confidently invert the whole thing — commit, or it folds. Slide the tortilla back in raw-side down and tuck the edges under for a domed shape. Cook 3 more min. Rest 5 min before cutting; it firms as it cools and is best warm, not hot, in fat wedges."
+      }
+    ]
+  },
+  {
+    "slug": "chilli-black-bean-soup",
+    "title": "Chilli Black Bean Soup",
+    "description": "A thick, smoky black bean soup with cumin and lime — cheap, filling, and ready in half an hour from the pantry.",
+    "prep_time": 10,
+    "cook_time": 25,
+    "servings": 4,
+    "tags": [
+      "latin",
+      "vegetarian",
+      "budget",
+      "one-pot"
+    ],
+    "palette": [
+      "#7c2d12",
+      "#f1ddc9"
+    ],
+    "dish_form": "soup-bowl",
+    "ingredients": [
+      {
+        "id": "tinned_black_bean",
+        "amount": "2 tins"
+      },
+      {
+        "id": "onion_brown",
+        "amount": "1"
+      },
+      {
+        "id": "capsicum_red",
+        "amount": "1"
+      },
+      {
+        "id": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "id": "cumin",
+        "amount": "2 tsp"
+      },
+      {
+        "id": "chilli_powder",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "stock_veg",
+        "amount": "750 ml"
+      },
+      {
+        "id": "lime",
+        "amount": "1"
+      },
+      {
+        "id": "sour_cream",
+        "amount": "to serve",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Dice and soften the vegetables.",
+        "detail": "Finely dice the onion and capsicum, mince the garlic. Sweat the onion and capsicum in a glug of oil over medium heat for 6–8 min until soft and just starting to colour — this base of softened veg is the soup's backbone, so don't rush it. Add the garlic only in the last minute, as it burns and goes acrid faster than the rest."
+      },
+      {
+        "content": "Toast the spices.",
+        "detail": "Stir in the cumin and chilli powder and cook for 30 seconds until fragrant. Toasting ground spices in the hot oil before any liquid goes in is what wakes them up — it releases their oils and deepens the flavour. Keep it moving; dry spices catch and turn bitter in seconds."
+      },
+      {
+        "content": "Add beans and stock, then simmer.",
+        "detail": "Drain and rinse the black beans (the tin liquid is starchy and can taste tinny), then tip them in with the stock. Bring to a simmer and cook 15 min. A gentle simmer lets the beans break down a little and thicken the broth naturally — no flour needed."
+      },
+      {
+        "content": "Blend part of the soup.",
+        "detail": "Scoop out about a third of the soup and blitz it smooth, then stir it back in — or pulse a stick blender in the pot a few times. This half-blended trick gives you a creamy body while keeping whole beans for texture. For a thinner soup, loosen with a splash more stock."
+      },
+      {
+        "content": "Finish with lime and serve.",
+        "detail": "Squeeze in the lime juice off the heat — its acidity lifts the whole pot and brightens the earthy beans, so don't skip it. Taste and adjust salt. Ladle into bowls with a swirl of sour cream if you like. A bit of chilli powder bloomed in oil on top makes it look the part."
+      }
+    ]
+  },
+  {
+    "slug": "arroz-con-pollo",
+    "title": "Arroz con Pollo",
+    "description": "Latin one-pot chicken and rice — golden with saffron, studded with chorizo and red capsicum. Comfort in a single pan.",
+    "prep_time": 15,
+    "cook_time": 40,
+    "servings": 4,
+    "tags": [
+      "latin",
+      "spanish",
+      "one-pot",
+      "family"
+    ],
+    "palette": [
+      "#d97706",
+      "#fdeecb"
+    ],
+    "dish_form": "risotto",
+    "ingredients": [
+      {
+        "id": "chicken_thigh",
+        "amount": "8 (about 900 g)"
+      },
+      {
+        "id": "chorizo",
+        "amount": "1 (about 120 g)"
+      },
+      {
+        "id": "rice_jasmine",
+        "amount": "1.5 cups"
+      },
+      {
+        "id": "capsicum_red",
+        "amount": "1"
+      },
+      {
+        "id": "onion_brown",
+        "amount": "1"
+      },
+      {
+        "id": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "id": "saffron",
+        "amount": "pinch"
+      },
+      {
+        "id": "stock_chicken",
+        "amount": "750 ml"
+      },
+      {
+        "id": "peas_frozen",
+        "amount": "1 cup"
+      },
+      {
+        "id": "paprika",
+        "amount": "1 tsp"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Bloom the saffron and brown the chicken.",
+        "detail": "Crumble the saffron threads into a few tablespoons of the warm stock and leave them to steep — saffron is fat- and water-soluble, and soaking releases far more colour and honeyed aroma than tossing the dry threads in. Meanwhile, season the chicken thighs and brown them skin-side down in an ovenproof pan over medium-high until deeply golden, about 5 min a side. Lift out; that fond left in the pan is flavour."
+      },
+      {
+        "content": "Render the chorizo and soften the veg.",
+        "detail": "Slice and fry the chorizo in the chicken fat until it releases its red oil and crisps at the edges. Add the diced onion, capsicum and garlic and cook 6 min until soft, scraping up the browned bits from the chicken — they dissolve into the base and carry deep, savoury flavour through the whole dish."
+      },
+      {
+        "content": "Toast the rice.",
+        "detail": "Stir in the rice and paprika and cook for 2 min until the grains turn glossy and smell nutty. Toasting the rice in the fat before liquid goes in coats each grain so it cooks up separate rather than gluey — the same trick as a risotto or pilaf."
+      },
+      {
+        "content": "Add stock and nestle in the chicken.",
+        "detail": "Pour in the saffron stock and the rest of the chicken stock, stir once to settle the rice in an even layer, then nestle the chicken thighs back on top, skin proud of the liquid so it stays crisp. Bring to a simmer, then cover and cook on low (or in a 180C oven) for 18–20 min. Resist stirring once the rice is in — stirring releases starch and makes it claggy."
+      },
+      {
+        "content": "Add peas, rest, and fluff.",
+        "detail": "Scatter the frozen peas over the top in the last 5 min — they only need to warm through, and adding them early dulls their colour. When the liquid is absorbed and the rice is tender, take it off the heat and let it sit covered for 5 min. Fluff gently with a fork and serve from the pan."
+      }
+    ]
+  },
+  {
+    "slug": "bangers-and-mash-onion-gravy",
+    "title": "Bangers & Mash with Onion Gravy",
+    "description": "Snags on a cloud of buttery mash, drowned in slow, sweet onion gravy. The ultimate pub comfort plate.",
+    "prep_time": 15,
+    "cook_time": 35,
+    "servings": 4,
+    "tags": [
+      "british",
+      "comfort",
+      "pub-classic"
+    ],
+    "palette": [
+      "#7c4a21",
+      "#f3e3cf"
+    ],
+    "dish_form": "default-plate",
+    "ingredients": [
+      {
+        "id": "snags",
+        "amount": "8"
+      },
+      {
+        "id": "potato",
+        "amount": "1 kg"
+      },
+      {
+        "id": "onion_brown",
+        "amount": "3"
+      },
+      {
+        "id": "butter",
+        "amount": "80 g"
+      },
+      {
+        "id": "milk",
+        "amount": "100 ml"
+      },
+      {
+        "id": "flour",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "stock_beef",
+        "amount": "500 ml"
+      },
+      {
+        "id": "worcestershire",
+        "amount": "1 tbsp"
+      },
+      {
+        "id": "parsley",
+        "amount": "small handful",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Boil the potatoes for mash.",
+        "detail": "Peel and cut potatoes into even 4cm chunks so they cook at the same rate. Start them in cold, well-salted water and bring to the boil — starting cold means the outside doesn't turn to mush before the middle is done. Simmer 15–18 min until a knife slides in with no resistance. Drain and let them steam-dry in the colander for a minute; dry potato makes fluffier mash."
+      },
+      {
+        "content": "Slowly caramelise the onions.",
+        "detail": "Halve and finely slice the onions. Melt a knob of the butter in a wide pan over medium-low and add the onions with a pinch of salt. This is the heart of the gravy — go slow, 15–18 min, stirring now and then, until they're deeply golden and jammy. Rushing on high heat just burns the edges and leaves them raw inside. The salt draws out water and helps them soften."
+      },
+      {
+        "content": "Brown the snags.",
+        "detail": "While the onions go, heat a separate pan over medium and add the snags with a tiny splash of oil. Turn them every few minutes for 12–15 min so they colour all over, not just two sides. Resist cranking the heat — sausages split and dry out if seared too hard. They're done when firm with no pink at the centre; let them rest while you finish the gravy."
+      },
+      {
+        "content": "Build the onion gravy.",
+        "detail": "Sprinkle the flour over the caramelised onions and stir for a minute to cook out the raw taste — it should look like wet sand. Pour in the beef stock a splash at a time, stirring constantly so no lumps form, then add the Worcestershire. Simmer 5 min until it coats the back of a spoon. Taste and season; if it's too thick, loosen with a splash of water."
+      },
+      {
+        "content": "Mash with butter and warm milk.",
+        "detail": "Mash the potatoes well, then beat in the rest of the butter and the milk. Warm the milk first (a quick zap in the microwave) — cold milk seizes the starch and makes gluey mash. For a silky finish, push the spuds through a ricer or sieve. Season generously; under-salted mash tastes flat."
+      },
+      {
+        "content": "Plate it up.",
+        "detail": "Spoon a big swirl of mash onto each plate, lean the snags against it, and ladle the onion gravy over the lot so it pools. Scatter chopped parsley if you like a bit of fresh colour. Serve straight away while everything's piping hot — mash cools fast."
+      }
+    ]
+  },
+  {
+    "slug": "full-english-fry-up",
+    "title": "Full English Fry-Up",
+    "description": "The proper weekend blowout: snags, bacon, mushrooms, eggs and grilled tomato, all on one plate.",
+    "prep_time": 10,
+    "cook_time": 25,
+    "servings": 2,
+    "tags": [
+      "british",
+      "breakfast",
+      "hearty"
+    ],
+    "palette": [
+      "#b91c1c",
+      "#f7e8d8"
+    ],
+    "dish_form": "egg-brunch",
+    "ingredients": [
+      {
+        "id": "snags",
+        "amount": "4"
+      },
+      {
+        "id": "bacon",
+        "amount": "4 rashers"
+      },
+      {
+        "id": "mushroom",
+        "amount": "200 g"
+      },
+      {
+        "id": "eggs",
+        "amount": "4"
+      },
+      {
+        "id": "tomato",
+        "amount": "2"
+      },
+      {
+        "id": "tinned_bean",
+        "amount": "1 tin"
+      },
+      {
+        "id": "bread",
+        "amount": "4 slices"
+      },
+      {
+        "id": "butter",
+        "amount": "for spreading"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Start the snags first.",
+        "detail": "A fry-up is all about timing — start with the things that take longest. Get the snags into a cold pan with a little oil and bring the heat up to medium. They need 12–15 min, turning often, so they're well ahead of everything else. Starting in a cold pan lets the fat render gently instead of the skin tightening and bursting."
+      },
+      {
+        "content": "Add the bacon and mushrooms.",
+        "detail": "Push the snags to one side and lay in the bacon. Halve or thickly slice the mushrooms and add them too — they'll soak up the bacon fat. Don't crowd or stir the mushrooms too soon; let them sit so they brown and go meaty rather than stewing in their own water. The bacon wants 3–4 min a side to crisp."
+      },
+      {
+        "content": "Grill the tomatoes and warm the beans.",
+        "detail": "Halve the tomatoes, season the cut faces, and put them under a hot grill (or in the pan, cut-side down) until softened and a little charred — about 5 min. Tip the beans into a small pot and warm through over low heat, stirring so they don't catch on the bottom. Keep them barely simmering; boiling hard turns them to paste."
+      },
+      {
+        "content": "Fry the eggs.",
+        "detail": "Wipe out a clean pan, add a knob of butter or a little of the bacon fat over medium-low, and crack in the eggs. For a runny yolk and set white, baste the tops by spooning hot fat over them, or pop a lid on for a minute. Low and slow keeps the whites tender — high heat gives you rubbery, lacy edges."
+      },
+      {
+        "content": "Toast the bread.",
+        "detail": "Toast the bread and butter it while warm so it melts in. If you want the full diner experience, fry the bread instead in the leftover pan fat until golden — it soaks up all that flavour. Either way, do this last so the toast lands hot on the plate."
+      },
+      {
+        "content": "Build the plate.",
+        "detail": "Pile everything onto warmed plates — snags, bacon, mushrooms, tomato, a little heap of beans, eggs on top and toast on the side. Warming the plates first (a minute in a low oven) stops the whole lot going cold the second it's served. Brown sauce or tomato sauce is non-negotiable."
+      }
+    ]
+  },
+  {
+    "slug": "cheese-scones",
+    "title": "Cheddar Cheese Scones",
+    "description": "Tall, fluffy savoury scones loaded with sharp cheddar. Best eaten warm with a slab of butter.",
+    "prep_time": 15,
+    "cook_time": 15,
+    "servings": 8,
+    "tags": [
+      "british",
+      "baking",
+      "vegetarian"
+    ],
+    "palette": [
+      "#d97706",
+      "#f8ecd6"
+    ],
+    "dish_form": "baked-slice",
+    "ingredients": [
+      {
+        "id": "flour",
+        "amount": "350 g"
+      },
+      {
+        "id": "baking_powder",
+        "amount": "1 tbsp"
+      },
+      {
+        "id": "butter",
+        "amount": "85 g, cold"
+      },
+      {
+        "id": "cheddar",
+        "amount": "150 g"
+      },
+      {
+        "id": "milk",
+        "amount": "175 ml"
+      },
+      {
+        "id": "eggs",
+        "amount": "1"
+      },
+      {
+        "id": "dijon",
+        "amount": "1 tsp",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Rub butter into the flour.",
+        "detail": "Sift the flour and baking powder into a big bowl with a good pinch of salt. Cut the cold butter into cubes and rub it into the flour with your fingertips, lifting and letting it fall, until it looks like breadcrumbs. Cold butter is key — those little flecks melt in the oven and create steam pockets, which is what makes scones rise tall and flaky."
+      },
+      {
+        "content": "Stir through the cheese.",
+        "detail": "Grate the cheddar and stir most of it through the flour mixture, holding a handful back for the tops. Use a sharp, mature cheddar — mild cheese gets lost once baked. Mixing it through now means cheese in every bite, not just on top."
+      },
+      {
+        "content": "Bring the dough together.",
+        "detail": "Beat the egg into the milk (and the dijon if using, for a savoury kick) and pour most of it in, keeping a little back for glazing. Stir with a knife just until it clumps into a shaggy dough. The golden rule of scones: mix as little as possible. Overworking develops gluten and gives you tough, dense hockey pucks instead of light scones."
+      },
+      {
+        "content": "Pat out and cut.",
+        "detail": "Tip onto a floured bench and gently pat — don't roll — into a slab about 3cm thick. Keeping them tall helps them rise. Cut straight down with a floured cutter and lift away; never twist the cutter, as twisting seals the edges and the scones rise lopsided. Press the offcuts together gently for the last couple."
+      },
+      {
+        "content": "Glaze and bake.",
+        "detail": "Sit the scones close together on a lined tray (touching helps them push each other up), brush the tops with the reserved milk and scatter on the rest of the cheese. Bake at 220°C for 12–15 min until risen and golden. A hot oven gives them an immediate blast of lift; too cool and they spread instead of rising."
+      },
+      {
+        "content": "Cool a little, then serve warm.",
+        "detail": "Let them cool on a rack for a few minutes so the insides set — straight out of the oven they're still a bit doughy in the middle. Split and load with cold butter while they're still warm. They're best the day they're made; revive any leftovers with 5 min in a warm oven."
+      }
+    ]
+  },
+  {
+    "slug": "beer-braised-brisket",
+    "title": "Beer-Braised Brisket",
+    "description": "Brisket slow-cooked in dark beer until it's spoon-tender, with a deep malty onion gravy.",
+    "prep_time": 20,
+    "cook_time": 210,
+    "servings": 6,
+    "tags": [
+      "british",
+      "slow",
+      "batch-friendly"
+    ],
+    "palette": [
+      "#5b341a",
+      "#efdcc4"
+    ],
+    "dish_form": "roast-plate-steak",
+    "ingredients": [
+      {
+        "id": "beef_brisket",
+        "amount": "1.8 kg"
+      },
+      {
+        "id": "beer",
+        "amount": "500 ml"
+      },
+      {
+        "id": "onion_brown",
+        "amount": "3"
+      },
+      {
+        "id": "carrot",
+        "amount": "3"
+      },
+      {
+        "id": "garlic",
+        "amount": "5 cloves"
+      },
+      {
+        "id": "tomato_paste",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "stock_beef",
+        "amount": "300 ml"
+      },
+      {
+        "id": "flour",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "bay_leaf",
+        "amount": "2"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Sear the brisket hard.",
+        "detail": "Pat the brisket really dry and season all over with salt and pepper. Heat a splash of oil in a heavy oven-proof pot over high until it's just smoking, then sear each face for 3–4 min until deeply browned. Don't rush or move it — that dark crust is pure flavour and is what gives the finished gravy its richness. Lift the brisket out onto a plate."
+      },
+      {
+        "content": "Soften the vegetables.",
+        "detail": "Drop the heat to medium and add roughly chopped onion and carrot to the same pot. Scrape up the browned bits stuck to the base as they release moisture — that stuck-on 'fond' is concentrated flavour you don't want to waste. Cook 8 min until softened, adding the smashed garlic for the final minute so it doesn't burn and turn bitter."
+      },
+      {
+        "content": "Add tomato paste and flour.",
+        "detail": "Stir in the tomato paste and cook for a minute until it darkens to brick-red — this cooks off the raw, tinny taste. Sprinkle over the flour and stir for another minute; the flour will thicken the braising liquid into a proper gravy later. It should look like a thick, rusty paste coating the veg."
+      },
+      {
+        "content": "Pour in the beer and stock.",
+        "detail": "Tip in the beer and let it bubble hard for 2 min — this burns off the raw alcohol and mellows any bitterness, leaving the malty depth behind. Add the stock and bay leaves, then nestle the brisket back in. The liquid should come about halfway up the meat, not cover it; a braise isn't a boil."
+      },
+      {
+        "content": "Braise low and slow.",
+        "detail": "Bring to a gentle simmer, put the lid on, and slide into a 150°C oven for 3 to 3.5 hours. Leave it alone for the first 2 hours. It's ready when a fork slides in and twists with no resistance — brisket is done when it's tender, not when the timer says so. A tough cut just needs more time, never more heat."
+      },
+      {
+        "content": "Rest, then thicken the gravy.",
+        "detail": "Lift the brisket out and rest it under foil for 20 min — resting lets the juices settle back into the meat instead of running out the moment you cut. Skim the fat off the surface of the liquid and simmer it on the stovetop until glossy and thickened. Slice the brisket across the grain into thick slabs and spoon the gravy over."
+      }
+    ]
+  },
+  {
+    "slug": "welsh-rarebit",
+    "title": "Welsh Rarebit",
+    "description": "Posh cheese on toast: a molten, savoury cheddar-and-beer sauce grilled until blistered and golden.",
+    "prep_time": 10,
+    "cook_time": 10,
+    "servings": 2,
+    "tags": [
+      "british",
+      "quick",
+      "vegetarian"
+    ],
+    "palette": [
+      "#ca8a04",
+      "#f6ecd2"
+    ],
+    "dish_form": "sandwich-stack",
+    "ingredients": [
+      {
+        "id": "cheddar",
+        "amount": "200 g"
+      },
+      {
+        "id": "beer",
+        "amount": "60 ml"
+      },
+      {
+        "id": "butter",
+        "amount": "20 g"
+      },
+      {
+        "id": "flour",
+        "amount": "1 tbsp"
+      },
+      {
+        "id": "dijon",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "worcestershire",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "eggs",
+        "amount": "1 yolk"
+      },
+      {
+        "id": "bread",
+        "amount": "4 thick slices"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Make a quick roux.",
+        "detail": "Melt the butter in a small saucepan over medium heat, then stir in the flour and cook for a minute until it smells nutty and looks like a smooth paste. This roux is what stops the sauce splitting later — cooking the flour now means no raw, floury taste in the finished rarebit."
+      },
+      {
+        "content": "Whisk in the beer.",
+        "detail": "Pour the beer in slowly, whisking the whole time so it stays lump-free, until you have a thick, smooth base. Let it bubble gently for a minute to cook off the raw alcohol. The beer gives rarebit its signature savoury, slightly bitter edge that plain cheese on toast doesn't have."
+      },
+      {
+        "content": "Melt in the cheese.",
+        "detail": "Drop the heat to low and add the grated cheddar a handful at a time, stirring until each lot melts before adding more. Low heat is crucial — boil cheese and it turns greasy and stringy as the fat splits out. You're after a thick, glossy, spoonable sauce."
+      },
+      {
+        "content": "Season and enrich.",
+        "detail": "Take the pan off the heat and stir in the dijon, Worcestershire and the egg yolk. The yolk thickens the sauce and helps it grill to a glorious golden brown. Adding it off the heat stops it scrambling. Taste and add a crack of pepper — it shouldn't need salt with all that cheese."
+      },
+      {
+        "content": "Toast the bread.",
+        "detail": "Lightly toast the bread on both sides under the grill first. Toasting before topping means the base stays crisp and doesn't go soggy under the wet sauce — soft bread collapses into a mess. You want sturdy, golden slices ready to hold the topping."
+      },
+      {
+        "content": "Spread thick and grill.",
+        "detail": "Spread the cheese mixture right to the edges and quite thick — a thin layer just disappears. Whack it under a hot grill for 2–3 min until bubbling, blistered and brown in patches. Watch it like a hawk; it goes from golden to burnt in seconds. Eat immediately while molten."
+      }
+    ]
   }
 ]
