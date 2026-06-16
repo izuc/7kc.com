@@ -10,6 +10,7 @@ import { useUi } from '../store/ui';
 import { trackEvent } from '../lib/analytics';
 import { SkeletonGrid } from '../components/Skeleton';
 import { IngredientIcon } from '../lib/ingredientIcons';
+import { mutateWithOutbox } from '../lib/offlineSync';
 import type { PantryItem } from '../types/models';
 
 type HydratedItem = PantryItem & { display: string; section: string; daysLeft: number | null };
@@ -197,8 +198,26 @@ export function PantryPage() {
 
 function PantryCard({ item, onChanged }: { item: HydratedItem; onChanged: () => void }) {
   const softDelete = useSoftDelete();
+  const qc = useQueryClient();
   const warn = item.daysLeft != null && item.daysLeft >= 0 && item.daysLeft <= 3;
   const danger = item.daysLeft != null && item.daysLeft < 0;
+
+  // "Running low" is a common in-the-kitchen toggle that should work offline too.
+  const toggleLow = () => {
+    const target = !item.running_low;
+    mutateWithOutbox({
+      qc,
+      optimistic: () =>
+        qc.setQueryData(['pantry'], (old: any) =>
+          old
+            ? { ...old, items: old.items.map((x: any) => (x.id === item.id ? { ...x, running_low: target } : x)) }
+            : old
+        ),
+      op: { kind: 'updatePantryItem', id: item.id, payload: { running_low: target } },
+      run: () => api.updatePantryItem(item.id, { running_low: target }),
+      reconcileKey: ['pantry'],
+    }).catch(() => {});
+  };
   return (
     <div className={`pantry-card ${danger ? 'danger ' : warn ? 'warn ' : ''}${item.running_low ? 'low' : ''}`}>
       <div className="pantry-card-head">
@@ -232,13 +251,7 @@ function PantryCard({ item, onChanged }: { item: HydratedItem; onChanged: () => 
         )}
       </div>
       <div className="pantry-actions">
-        <button
-          className="chip"
-          onClick={async () => {
-            await api.updatePantryItem(item.id, { running_low: !item.running_low });
-            onChanged();
-          }}
-        >
+        <button className="chip" onClick={toggleLow}>
           {item.running_low ? 'Not low' : 'Running low'}
         </button>
         {danger && (

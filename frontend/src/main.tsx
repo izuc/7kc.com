@@ -9,6 +9,7 @@ import './styles.refine.css';
 import { App } from './App';
 import { AuthProvider } from './store/auth';
 import { initAnalytics, trackEvent } from './lib/analytics';
+import { initOfflineSync } from './lib/offlineSync';
 
 initAnalytics();
 
@@ -23,6 +24,9 @@ const queryClient = new QueryClient({
     queries: { staleTime: 15_000, retry: 1, refetchOnWindowFocus: false },
   },
 });
+
+// Replay any writes that were queued while offline, and watch connectivity.
+initOfflineSync(queryClient);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

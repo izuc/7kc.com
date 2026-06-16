@@ -320,3 +320,38 @@ h3 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* Offline / pending-sync banner */
+.sync-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  padding: 9px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-ink, #7c2d12);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+}
+.sync-banner.offline {
+  color: #92400e;
+  background: #fef3c7;
+  border-color: #fcd34d;
+}
+.sync-banner .sync-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: 0 0 auto;
+  animation: sync-pulse 1.4s ease-in-out infinite;
+}
+@keyframes sync-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sync-banner .sync-dot { animation: none; }
+}

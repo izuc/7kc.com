@@ -15,6 +15,7 @@ import { IngredientIcon } from '../lib/ingredientIcons';
 import { trackEvent } from '../lib/analytics';
 import { haptic } from '../lib/haptics';
 import { createParser } from '../lib/parser';
+import { mutateWithOutbox } from '../lib/offlineSync';
 import type { ListItem, ParsedItem, Ingredient } from '../types/models';
 
 export function ListsPage() {
@@ -56,6 +57,32 @@ export function ListsPage() {
       }
     }
   };
+
+  // Tick an item off (or back on) with offline durability: the cache flips
+  // instantly, the write goes to the server when online or queues to the outbox
+  // when not. The op carries the target state, so replay is idempotent.
+  const setBought = (listId: string, itemId: string, target: boolean) =>
+    guard(() =>
+      mutateWithOutbox({
+        qc,
+        optimistic: () =>
+          qc.setQueryData(['lists'], (old: any) =>
+            old
+              ? {
+                  ...old,
+                  lists: old.lists.map((l: any) =>
+                    l.id === listId
+                      ? { ...l, items: l.items.map((x: any) => (x.id === itemId ? { ...x, is_bought: target } : x)) }
+                      : l
+                  ),
+                }
+              : old
+          ),
+        op: { kind: 'setBought', listId, itemId, value: target },
+        run: () => api.toggleBought(listId, itemId, target),
+        reconcileKey: ['lists'],
+      })
+    );
 
   const createList = useMutation({
     mutationFn: (name: string) => api.createList(name),
@@ -200,12 +227,7 @@ export function ListsPage() {
           <ItemRow
             key={it.id}
             item={it}
-            onToggle={() =>
-              guard(async () => {
-                await api.toggleBought(list.id, it.id);
-                invalidate();
-              })
-            }
+            onToggle={() => setBought(list.id, it.id, !it.is_bought)}
             onRemove={() =>
               softDelete({
                 queryKey: ['lists'],
@@ -259,12 +281,7 @@ export function ListsPage() {
               <ItemRow
                 key={it.id}
                 item={it}
-                onToggle={() =>
-                  guard(async () => {
-                    await api.toggleBought(list.id, it.id);
-                    invalidate();
-                  })
-                }
+                onToggle={() => setBought(list.id, it.id, !it.is_bought)}
                 onRemove={() =>
                   softDelete({
                     queryKey: ['lists'],

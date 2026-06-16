@@ -5,6 +5,7 @@ import { daysUntil } from '../lib/format';
 import { useAuth } from '../store/auth';
 import { useUi } from '../store/ui';
 import { Icon } from './Icon';
+import { useSync } from '../lib/offlineSync';
 import type { ReactNode } from 'react';
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -29,6 +30,9 @@ export function AppShell({ children }: { children: ReactNode }) {
     refetchInterval: 60_000,
   });
   const unread = unreadData?.unread ?? 0;
+
+  const { online, pending, syncing } = useSync();
+  const showSync = !online || pending > 0;
 
   const activeItemsCount =
     listsData?.lists
@@ -119,7 +123,19 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
       </aside>
 
-      <main className="main" id="main">{children}</main>
+      <main className="main" id="main">
+        {showSync && (
+          <div className={`sync-banner ${online ? '' : 'offline'}`} role="status" aria-live="polite">
+            <span className="sync-dot" aria-hidden />
+            {!online
+              ? `Offline — ${pending} change${pending === 1 ? '' : 's'} saved here, will sync when you're back`
+              : syncing
+              ? `Syncing ${pending} change${pending === 1 ? '' : 's'}…`
+              : `${pending} change${pending === 1 ? '' : 's'} waiting to sync`}
+          </div>
+        )}
+        {children}
+      </main>
 
       <nav className="mobile-nav" aria-label="Sections">
         <MobileNavItem to="/today" icon="home" label="Today" />
