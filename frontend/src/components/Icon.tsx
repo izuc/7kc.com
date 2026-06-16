@@ -61,6 +61,7 @@ const paths: Record<string, ReactNode> = {
       <path d="M8.2 10.8l7.6-4.6M8.2 13.2l7.6 4.6" />
     </>
   ),
+  home: <path d="M4 11l8-7 8 7M6 10v9h12v-9M10 19v-5h4v5" />,
 };
 
 export function Icon({ name, size = 18 }: { name: keyof typeof paths | string; size?: number }) {

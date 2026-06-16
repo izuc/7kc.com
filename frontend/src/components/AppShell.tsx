@@ -63,6 +63,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
 
         <nav className="nav" aria-label="Primary">
+          <NavItem to="/today" icon="home" label="Today" />
           <NavItem to="/lists" icon="list" label="Shopping" badge={activeItemsCount || undefined} />
           <NavItem to="/pantry" icon="pantry" label="Pantry" badge={totalPantry || undefined} ghost />
           <NavItem
@@ -112,6 +113,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <main className="main" id="main">{children}</main>
 
       <nav className="mobile-nav" aria-label="Sections">
+        <MobileNavItem to="/today" icon="home" label="Today" />
         <MobileNavItem to="/lists" icon="list" label="Shopping" />
         <MobileNavItem to="/pantry" icon="pantry" label="Pantry" />
         <MobileNavItem to="/recipes" icon="chef" label="Recipes" />

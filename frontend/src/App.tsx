@@ -14,6 +14,7 @@ import { JoinPage } from './pages/JoinPage';
 
 // Code-split the heavier / less-critical routes so logged-out and crawler visitors
 // (and first authed paint) don't download the whole app up front.
+const TodayPage = lazy(() => import('./pages/TodayPage').then((m) => ({ default: m.TodayPage })));
 const PantryPage = lazy(() => import('./pages/PantryPage').then((m) => ({ default: m.PantryPage })));
 const RecipesPage = lazy(() => import('./pages/RecipesPage').then((m) => ({ default: m.RecipesPage })));
 const RecipeDetailPage = lazy(() => import('./pages/RecipeDetailPage').then((m) => ({ default: m.RecipeDetailPage })));
@@ -24,6 +25,7 @@ const PublicRecipePage = lazy(() => import('./pages/PublicRecipePage').then((m) 
 const LandingPage = lazy(() => import('./pages/LandingPage').then((m) => ({ default: m.LandingPage })));
 
 const TITLES: Record<string, string> = {
+  '/today': 'Home · 7 Day Kitchen',
   '/lists': 'Shopping · 7 Day Kitchen',
   '/pantry': 'Pantry · 7 Day Kitchen',
   '/recipes': 'Recipes · 7 Day Kitchen',
@@ -110,7 +112,8 @@ export function App() {
       <ErrorBoundary>
         <Suspense fallback={<Loading label="Loading…" />}>
           <Routes>
-            <Route index element={<Navigate to="/lists" replace />} />
+            <Route index element={<Navigate to="/today" replace />} />
+            <Route path="/today" element={<TodayPage />} />
             <Route path="/lists" element={<ListsPage />} />
             <Route path="/lists/:id" element={<ListsPage />} />
             <Route path="/pantry" element={<PantryPage />} />
@@ -119,7 +122,7 @@ export function App() {
             <Route path="/cook/:slug" element={<CookPage />} />
             <Route path="/group" element={<GroupPage />} />
             <Route path="/settings" element={<SettingsPage />} />
-            <Route path="*" element={<Navigate to="/lists" replace />} />
+            <Route path="*" element={<Navigate to="/today" replace />} />
           </Routes>
         </Suspense>
       </ErrorBoundary>

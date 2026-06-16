@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { api } from '../lib/api';
 import { Icon } from '../components/Icon';
 import { MealPlate } from '../components/MealPlate';
@@ -13,7 +13,8 @@ type Filter = 'all' | 'can-make' | 'quick' | 'expiring' | 'veg';
 
 export function RecipesPage() {
   const navigate = useNavigate();
-  const [filter, setFilter] = useState<Filter>('all');
+  const [searchParams] = useSearchParams();
+  const [filter, setFilter] = useState<Filter>((searchParams.get('filter') as Filter) || 'all');
   const [q, setQ] = useState('');
   const [page, setPage] = useState(1);
   const gridAnchor = useRef<HTMLDivElement | null>(null);

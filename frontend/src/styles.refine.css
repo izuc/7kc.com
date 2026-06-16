@@ -222,6 +222,80 @@ h3 {
     border-color: color-mix(in oklch, var(--accent) 30%, var(--line));
   }
 }
+/* ---- "Your kitchen today" home dashboard ---- */
+.today-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+.today-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow-1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.today-cook { grid-column: 1 / -1; }
+.today-link {
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+@media (hover: hover) {
+  .today-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-3);
+    border-color: color-mix(in oklch, var(--accent) 30%, var(--line));
+  }
+}
+.today-card-num {
+  font-family: var(--serif);
+  font-size: 42px;
+  line-height: 1;
+  color: var(--ink);
+  flex: 0 0 auto;
+  min-width: 44px;
+}
+.today-card-num.amber { color: var(--amber-ink); }
+.today-card-num.sage { color: var(--sage); }
+.today-card-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+}
+.today-picks { display: flex; gap: 12px; flex-wrap: wrap; }
+.today-pick {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background: var(--cream);
+}
+.today-pick-plate { aspect-ratio: 5 / 4; overflow: hidden; }
+.today-pick-body { padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; }
+.today-pick-title {
+  font-family: var(--serif-sm);
+  font-weight: 500;
+  font-size: 13.5px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* ---- Waste & savings card (PantryPage) ---- */
 .waste-card { display: flex; flex-direction: column; gap: 10px; }
 .waste-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }

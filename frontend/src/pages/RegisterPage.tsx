@@ -30,7 +30,7 @@ export function RegisterPage() {
         navigate('/group', { replace: true });
         return;
       }
-      navigate(fromSlug ? `/recipes/${fromSlug}` : '/lists', { replace: true });
+      navigate(fromSlug ? `/recipes/${fromSlug}` : '/today', { replace: true });
     } catch (e) {
       setErr(e instanceof ApiError ? e.message : 'Could not create your account');
     } finally {

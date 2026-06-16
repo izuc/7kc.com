@@ -28,7 +28,7 @@ export function LoginPage() {
         navigate('/group', { replace: true });
         return;
       }
-      navigate('/lists', { replace: true });
+      navigate('/today', { replace: true });
     } catch (e) {
       setErr(e instanceof ApiError ? e.message : 'Could not sign in');
     } finally {
