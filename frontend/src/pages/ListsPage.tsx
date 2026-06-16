@@ -506,7 +506,7 @@ function QuickAdd({ listId, onAdded }: { listId: string; onAdded: () => void }) 
   );
 }
 
-function PasteParseModal({
+export function PasteParseModal({
   listId,
   onClose,
   seedText,

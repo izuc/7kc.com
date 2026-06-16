@@ -28,6 +28,14 @@ export default defineConfig(({ mode }) => {
             { src: '/pwa-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
             { src: '/pwa-maskable-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
           ],
+          // Android share sheet → app: text/links shared into 7KC land on /share,
+          // which seeds the paste-parse flow with the shared content.
+          share_target: {
+            action: '/share',
+            method: 'GET',
+            enctype: 'application/x-www-form-urlencoded',
+            params: { title: 'title', text: 'text', url: 'url' },
+          },
         },
         workbox: {
           globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],

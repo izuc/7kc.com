@@ -8,6 +8,7 @@ export function LoginPage() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const joinToken = params.get('join');
+  const next = params.get('next');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [err, setErr] = useState<string | null>(null);
@@ -28,7 +29,10 @@ export function LoginPage() {
         navigate('/group', { replace: true });
         return;
       }
-      navigate('/today', { replace: true });
+      // Resume an in-app destination (e.g. a Web Share Target hit while logged out).
+      // Only same-origin app paths — reject "//host" protocol-relative open redirects.
+      const safeNext = next && next.startsWith('/') && !next.startsWith('//') ? next : '/today';
+      navigate(safeNext, { replace: true });
     } catch (e) {
       setErr(e instanceof ApiError ? e.message : 'Could not sign in');
     } finally {
@@ -106,7 +110,8 @@ export function LoginPage() {
             {busy ? 'Signing in…' : 'Sign in →'}
           </button>
           <div className="auth-switch">
-            New here? <Link to="/register">Create an account</Link>
+            New here?{' '}
+            <Link to={`/register${next ? `?next=${encodeURIComponent(next)}` : ''}`}>Create an account</Link>
           </div>
         </form>
       </main>

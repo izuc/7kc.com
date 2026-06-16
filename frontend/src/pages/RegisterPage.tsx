@@ -9,6 +9,7 @@ export function RegisterPage() {
   const [params] = useSearchParams();
   const fromSlug = params.get('from');
   const joinToken = params.get('join');
+  const next = params.get('next');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
@@ -30,7 +31,9 @@ export function RegisterPage() {
         navigate('/group', { replace: true });
         return;
       }
-      navigate(fromSlug ? `/recipes/${fromSlug}` : '/today', { replace: true });
+      // Resume a shared-in destination (same-origin only — reject "//host" open redirects).
+      const safeNext = next && next.startsWith('/') && !next.startsWith('//') ? next : null;
+      navigate(safeNext ?? (fromSlug ? `/recipes/${fromSlug}` : '/today'), { replace: true });
     } catch (e) {
       setErr(e instanceof ApiError ? e.message : 'Could not create your account');
     } finally {
@@ -125,7 +128,8 @@ export function RegisterPage() {
             {busy ? 'Creating your kitchen…' : 'Create account →'}
           </button>
           <div className="auth-switch">
-            Already signed up? <Link to="/login">Sign in</Link>
+            Already signed up?{' '}
+            <Link to={`/login${next ? `?next=${encodeURIComponent(next)}` : ''}`}>Sign in</Link>
           </div>
         </form>
       </main>

@@ -21,6 +21,7 @@ const RecipeDetailPage = lazy(() => import('./pages/RecipeDetailPage').then((m) 
 const CookPage = lazy(() => import('./pages/CookPage').then((m) => ({ default: m.CookPage })));
 const GroupPage = lazy(() => import('./pages/GroupPage').then((m) => ({ default: m.GroupPage })));
 const SettingsPage = lazy(() => import('./pages/SettingsPage').then((m) => ({ default: m.SettingsPage })));
+const SharePage = lazy(() => import('./pages/SharePage').then((m) => ({ default: m.SharePage })));
 const PublicRecipePage = lazy(() => import('./pages/PublicRecipePage').then((m) => ({ default: m.PublicRecipePage })));
 const CollectionPage = lazy(() => import('./pages/CollectionPage').then((m) => ({ default: m.CollectionPage })));
 const LandingPage = lazy(() => import('./pages/LandingPage').then((m) => ({ default: m.LandingPage })));
@@ -100,6 +101,11 @@ export function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
+              {/* Shared-in before signing in → preserve the payload through login. */}
+              <Route
+                path="/share"
+                element={<Navigate to={`/login?next=${encodeURIComponent('/share' + location.search)}`} replace />}
+              />
               <Route path="*" element={<Navigate to="/" replace state={{ from: location }} />} />
             </Routes>
           </Suspense>
@@ -124,6 +130,7 @@ export function App() {
             <Route path="/cook/:slug" element={<CookPage />} />
             <Route path="/group" element={<GroupPage />} />
             <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/share" element={<SharePage />} />
             <Route path="*" element={<Navigate to="/today" replace />} />
           </Routes>
         </Suspense>
