@@ -85,6 +85,7 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
                 'servings' => $r['servings'],
                 'tags_json' => json_encode($r['tags']),
                 'palette_json' => json_encode($r['palette']),
+                'dish_form' => $r['dish_form'] ?? null,
                 'source' => null,
                 'image_url' => null,
                 'is_custom' => 0,
@@ -98,7 +99,8 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
                     'sort_order' => $idx,
                     'ingredient_id' => $ing['id'],
                     'amount_text' => $ing['amount'],
-                    'is_optional' => 0,
+                    // Read from data when authored (pipeline ready for is_optional backfill).
+                    'is_optional' => !empty($ing['is_optional']) ? 1 : 0,
                 ];
             }
             foreach ($r['steps'] as $idx => $step) {
@@ -108,7 +110,8 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
                     'sort_order' => $idx,
                     'content' => $content,
                     'detail' => $detail,
-                    'timer_seconds' => null,
+                    // Read from data when authored (pipeline ready for timer_seconds backfill).
+                    'timer_seconds' => is_array($step) && isset($step['timer_seconds']) ? (int)$step['timer_seconds'] : null,
                 ];
             }
         }
@@ -135,6 +138,8 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
                 ', servings = ' . (int)$r['servings'] .
                 ', tags_json = ' . $pdo->quote(json_encode($r['tags'])) .
                 ', palette_json = ' . $pdo->quote(json_encode($r['palette'])) .
+                // NULL-consistent with the insert path (don't coerce a missing form to '').
+                ', dish_form = ' . (empty($r['dish_form']) ? 'NULL' : $pdo->quote((string)$r['dish_form'])) .
                 ' WHERE id = ' . $pdo->quote($rid)
             );
 

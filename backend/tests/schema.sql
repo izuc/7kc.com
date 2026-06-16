@@ -23,7 +23,7 @@ CREATE TABLE recipes (
   id TEXT PRIMARY KEY, slug TEXT, title TEXT, description TEXT, prep_time INTEGER DEFAULT 0,
   cook_time INTEGER DEFAULT 0, servings INTEGER DEFAULT 2, tags_json TEXT, palette_json TEXT,
   source TEXT, image_url TEXT, sponsored_by TEXT, sponsored_url TEXT, view_count INTEGER DEFAULT 0,
-  is_custom INTEGER DEFAULT 0, owner_user_id TEXT, group_id TEXT, created_at INTEGER
+  is_custom INTEGER DEFAULT 0, owner_user_id TEXT, group_id TEXT, created_at INTEGER, dish_form TEXT
 );
 CREATE TABLE recipe_ingredients (
   recipe_id TEXT, sort_order INTEGER, ingredient_id TEXT, amount_text TEXT, is_optional INTEGER DEFAULT 0
