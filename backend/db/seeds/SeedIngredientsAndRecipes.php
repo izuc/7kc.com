@@ -143,17 +143,30 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
                 ' WHERE id = ' . $pdo->quote($rid)
             );
 
-            foreach ($r['steps'] as $idx => $step) {
-                if (!is_array($step)) continue;
-                $detail = $step['detail'] ?? null;
-                if ($detail === null) continue;
-                $content = (string)($step['content'] ?? '');
-
+            // Fully re-sync ingredients + steps from the JSON so recipe CORRECTIONS
+            // (added/removed/swapped ingredients, edited or re-ordered steps) land
+            // on existing rows without a DB reset — the repo JSON is authoritative.
+            $this->getAdapter()->execute('DELETE FROM recipe_ingredients WHERE recipe_id = ' . $pdo->quote($rid));
+            foreach ($r['ingredients'] as $idx => $ing) {
                 $this->getAdapter()->execute(
-                    'UPDATE recipe_steps SET content = ' . $pdo->quote($content) .
-                    ', detail = ' . $pdo->quote($detail) .
-                    ' WHERE recipe_id = ' . $pdo->quote($rid) .
-                    ' AND sort_order = ' . (int)$idx
+                    'INSERT INTO recipe_ingredients (recipe_id, sort_order, ingredient_id, amount_text, is_optional) VALUES ('
+                    . $pdo->quote($rid) . ', ' . (int)$idx . ', '
+                    . $pdo->quote((string)$ing['id']) . ', '
+                    . $pdo->quote((string)$ing['amount']) . ', '
+                    . (!empty($ing['is_optional']) ? 1 : 0) . ')'
+                );
+            }
+
+            $this->getAdapter()->execute('DELETE FROM recipe_steps WHERE recipe_id = ' . $pdo->quote($rid));
+            foreach ($r['steps'] as $idx => $step) {
+                [$content, $detail] = self::normaliseStep($step);
+                $timer = is_array($step) && isset($step['timer_seconds']) ? (int)$step['timer_seconds'] : null;
+                $this->getAdapter()->execute(
+                    'INSERT INTO recipe_steps (recipe_id, sort_order, content, detail, timer_seconds) VALUES ('
+                    . $pdo->quote($rid) . ', ' . (int)$idx . ', '
+                    . $pdo->quote($content) . ', '
+                    . ($detail === null || $detail === '' ? 'NULL' : $pdo->quote($detail)) . ', '
+                    . ($timer === null ? 'NULL' : (int)$timer) . ')'
                 );
             }
         }

@@ -48,6 +48,11 @@
       {
         "id": "salt",
         "amount": "pinch"
+      },
+      {
+        "id": "butter",
+        "amount": "knob, to finish",
+        "is_optional": true
       }
     ],
     "steps": [
@@ -751,6 +756,15 @@
       {
         "id": "chilli",
         "amount": "1"
+      },
+      {
+        "id": "noodle_rice",
+        "amount": "200 g"
+      },
+      {
+        "id": "coriander",
+        "amount": "handful",
+        "is_optional": true
       }
     ],
     "steps": [
@@ -917,8 +931,7 @@
     "servings": 6,
     "tags": [
       "family",
-      "batch-friendly",
-      "vegetarian"
+      "batch-friendly"
     ],
     "palette": [
       "#84cc16",
@@ -1010,6 +1023,18 @@
       {
         "id": "eggs",
         "amount": "2"
+      },
+      {
+        "id": "garlic",
+        "amount": "1 clove"
+      },
+      {
+        "id": "dijon",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "lemon",
+        "amount": "1/2"
       }
     ],
     "steps": [
@@ -1612,6 +1637,10 @@
       {
         "id": "olive_oil",
         "amount": "glug"
+      },
+      {
+        "id": "lemon",
+        "amount": "1/2"
       }
     ],
     "steps": [
@@ -1636,9 +1665,9 @@
   {
     "slug": "moroccan-lamb",
     "title": "Moroccan Lamb",
-    "description": "Slow-spiced lamb with chickpeas, apricots, couscous.",
+    "description": "Slow-spiced lamb with chickpeas, couscous.",
     "prep_time": 15,
-    "cook_time": 90,
+    "cook_time": 50,
     "servings": 6,
     "tags": [
       "slow",
@@ -1651,12 +1680,17 @@
     "dish_form": "roast-plate-lamb",
     "ingredients": [
       {
-        "id": "lamb_cutlet",
-        "amount": "1 kg"
+        "id": "lamb_mince",
+        "amount": "750 g"
       },
       {
         "id": "tinned_chickpea",
         "amount": "1 tin"
+      },
+      {
+        "id": "raisin",
+        "amount": "1/3 cup",
+        "is_optional": true
       },
       {
         "id": "tinned_tomato",
@@ -1685,20 +1719,21 @@
     ],
     "steps": [
       {
-        "content": "Brown lamb in batches.",
-        "detail": "Pat lamb cubes dry, season well with salt and pepper. Heat a glug of oil in a heavy pot till shimmering. Brown in BATCHES — crowding steams instead of sears. 3 min per side till each face is deep mahogany. Remove to a plate. That brown crust is the flavour foundation of the whole dish — don't rush it."
+        "content": "Brown the lamb mince.",
+        "detail": "Heat a glug of oil in a heavy pot until shimmering. Add the lamb mince and let it brown properly in batches, breaking up the clumps with a spoon — crowding the pot steams the meat instead of colouring it, and that deep brown crust is where the flavour comes from. Season with salt and pepper, then tip each batch out and set aside."
       },
       {
         "content": "Soften onions with spices.",
         "detail": "Drop heat to medium. Tip in two finely diced brown onions with a pinch of salt. Scrape up any browned bits (fond) stuck to the pot — that's gravy gold. 8 min till soft. Stir in 2 tsp cumin and 1 tsp cinnamon for 30 sec to bloom the spices."
       },
       {
-        "content": "Return lamb, add tomato, chickpeas, stock.",
-        "detail": "Lamb and any resting juices back in. Tip in a tin of tomatoes (crush with your hand), a tin of drained chickpeas, and 500ml chicken stock. Stir, scraping the bottom. Should just cover the meat — add water if needed."
+        "content": "Return lamb, add tomato, chickpeas, raisins, stock.",
+        "detail": "Lamb and any juices back in. Tip in a tin of tomatoes (crush with your hand), a tin of drained chickpeas, the raisins for a gentle sweetness, and 500 ml chicken stock. Stir and scrape the base so nothing catches."
       },
       {
-        "content": "Simmer 90 min, lid off last 20.",
-        "detail": "Bring to a simmer, lid on, drop heat to lowest. 70 min gentle simmer. Then lid off, turn heat up slightly, 20 min to reduce the sauce to a thick, glossy consistency that coats the lamb. Lamb should shred when poked with a fork. Taste for salt — slow cooks often need more."
+        "content": "Simmer 35 min, lid off the last 10.",
+        "detail": "Bring to a gentle simmer, lid on, on the lowest heat for 25 min so the spices marry into the mince. Then lid off, nudge the heat up, and reduce for 10 min to a thick, glossy sauce that clings. Taste for salt — slow-cooked spice often needs a final pinch.",
+        "timer_seconds": 2100
       },
       {
         "content": "Scatter coriander.",
@@ -1808,6 +1843,11 @@
       {
         "id": "salt",
         "amount": "flakes"
+      },
+      {
+        "id": "thyme",
+        "amount": "few sprigs",
+        "is_optional": true
       }
     ],
     "steps": [
@@ -1907,7 +1947,7 @@
       "#991b1b",
       "#f5d5d5"
     ],
-    "dish_form": "roast-plate",
+    "dish_form": "curry-bowl",
     "ingredients": [
       {
         "id": "beef_mince",
@@ -2005,6 +2045,10 @@
       {
         "id": "cinnamon",
         "amount": "1 tsp"
+      },
+      {
+        "id": "baking_powder",
+        "amount": "2 tsp"
       }
     ],
     "steps": [
@@ -2121,6 +2165,14 @@
       {
         "id": "lemon",
         "amount": "1"
+      },
+      {
+        "id": "oregano",
+        "amount": "1 tsp dried"
+      },
+      {
+        "id": "olive",
+        "amount": "1/2 cup"
       }
     ],
     "steps": [
@@ -2278,7 +2330,7 @@
       "#be185d",
       "#f4d0de"
     ],
-    "dish_form": "curry-bowl",
+    "dish_form": "grain-bowl",
     "ingredients": [
       {
         "id": "salmon",
@@ -2606,8 +2658,8 @@
     "dish_form": "roast-plate",
     "ingredients": [
       {
-        "id": "zucchini",
-        "amount": "1"
+        "id": "eggplant",
+        "amount": "1 large"
       },
       {
         "id": "eggs",
@@ -2636,8 +2688,8 @@
     ],
     "steps": [
       {
-        "content": "Slice zucchini lengthways.",
-        "detail": "Slice a zucchini lengthways into 1cm-thick planks. Salt both sides lightly and rest on paper towel 10 min — pulls out bitter moisture. Pat dry. Even thickness matters; wobbly slices cook unevenly."
+        "content": "Slice eggplant lengthways.",
+        "detail": "Slice a eggplant lengthways into 1cm-thick planks. Salt both sides lightly and rest on paper towel 10 min — pulls out bitter moisture. Pat dry. Even thickness matters; wobbly slices cook unevenly."
       },
       {
         "content": "Flour, egg, crumb, fry golden.",
@@ -2645,7 +2697,7 @@
       },
       {
         "content": "Layer in dish with tomato and mozzarella.",
-        "detail": "Baking dish — spread a ladle of napoli (gently simmered crushed tomato with garlic, salt, pepper) across the base. Lay crumbed zucchini planks on top in one layer. Spoon more sauce over each, then tear mozzarella into chunks and dot over."
+        "detail": "Baking dish — spread a ladle of napoli (gently simmered crushed tomato with garlic, salt, pepper) across the base. Lay crumbed eggplant planks on top in one layer. Spoon more sauce over each, then tear mozzarella into chunks and dot over."
       },
       {
         "content": "Bake 25 min at 200°C.",
@@ -2763,6 +2815,14 @@
       {
         "id": "rice_jasmine",
         "amount": "2 cups"
+      },
+      {
+        "id": "soy_sauce",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "sesame_oil",
+        "amount": "1 tsp"
       }
     ],
     "steps": [
@@ -2832,24 +2892,29 @@
       {
         "id": "wrap",
         "amount": "4"
+      },
+      {
+        "id": "oregano",
+        "amount": "1 tsp"
       }
     ],
     "steps": [
       {
-        "content": "Cube lamb, skewer, marinate in oil and lemon.",
-        "detail": "Cut lamb into 3cm cubes — same-size pieces cook at the same speed. Thread onto skewers (soak wooden ones in water 30 min first or they'll char to dust). Leave a little gap between cubes so the heat gets in. In a bowl, toss with olive oil, the juice and zest of a lemon, 2 grated garlic cloves, dried oregano, salt, pepper. 30 min minimum; overnight is transformative."
+        "content": "Marinate the lamb in oil, lemon and oregano.",
+        "detail": "Lamb cutlets are quick-cooking chops, so skip the cubing — just trim any heavy fat and toss them in a bowl with a glug of oil, the juice of half a lemon, the oregano, salt and pepper. Let them sit while you make the tzatziki; even 15 min of marinating lifts them."
       },
       {
         "content": "Grate cucumber into yoghurt with garlic and mint.",
         "detail": "Grate half a cucumber on the coarse side, then squeeze the shreds hard in a tea towel to get rid of the water — watery tzatziki is sad tzatziki. Tip squeezed cucumber into a bowl with 1 cup yoghurt, 2 grated garlic cloves, big handful chopped mint, juice of half a lemon, pinch salt. Stir. Rest 10 min for flavours to meld."
       },
       {
-        "content": "Grill skewers 8 min.",
-        "detail": "BBQ or griddle pan blazing hot. Oil the grills. Skewers on, don't move for 2 min — let char marks form. Turn every 2 min, 8 min total for pink in the middle on 3cm cubes (lamb is best medium-rare). Rest 3 min on a board — juices redistribute, meat stays juicy."
+        "content": "Grill the cutlets 6 min.",
+        "detail": "BBQ or griddle pan blazing hot, oil the grills. Lay the cutlets on and don’t move them for 2–3 min so a proper char forms. Flip once and give another 2–3 min for blushing pink in the middle. Rest a couple of minutes before serving — they keep cooking off the heat.",
+        "timer_seconds": 360
       },
       {
         "content": "Serve in warm flatbread with tzatziki.",
-        "detail": "Warm flatbreads 15 sec a side on the BBQ. Smear tzatziki down the middle, slide lamb off the skewers on top. Sliced tomato, red onion, extra oregano, squeeze of lemon. Roll tight, eat standing up."
+        "detail": "Warm flatbreads 15 sec a side on the BBQ. Smear tzatziki down the middle, lay the grilled cutlets on top. Sliced tomato, red onion, extra oregano, squeeze of lemon. Roll tight, eat standing up."
       }
     ]
   },
@@ -3079,6 +3144,10 @@
       {
         "id": "olive_oil",
         "amount": "glug"
+      },
+      {
+        "id": "couscous",
+        "amount": "1.5 cups"
       }
     ],
     "steps": [
@@ -3256,6 +3325,10 @@
       {
         "id": "sugar",
         "amount": "2 tbsp"
+      },
+      {
+        "id": "baking_powder",
+        "amount": "2 tsp"
       }
     ],
     "steps": [
@@ -3314,6 +3387,14 @@
       {
         "id": "vegetable_oil",
         "amount": "to fry"
+      },
+      {
+        "id": "beer",
+        "amount": "1 cup"
+      },
+      {
+        "id": "baking_powder",
+        "amount": "1 tsp"
       }
     ],
     "steps": [
@@ -3384,6 +3465,10 @@
       {
         "id": "chilli",
         "amount": "1"
+      },
+      {
+        "id": "onion_red",
+        "amount": "1/2"
       }
     ],
     "steps": [
@@ -3552,6 +3637,11 @@
       {
         "id": "lemon",
         "amount": "1"
+      },
+      {
+        "id": "tomato",
+        "amount": "1",
+        "is_optional": true
       }
     ],
     "steps": [
@@ -3791,8 +3881,8 @@
     ],
     "steps": [
       {
-        "content": "Soak dates in 1 cup boiling water, 10 min.",
-        "detail": "Pit dates if they're not already (you'll know — if you bite one, you'll know fast). Chop roughly. Cover with 1 cup boiling water and 1 tsp bicarb (the bicarb breaks down the dates and neutralises their acidity). Rest 10 min — they swell and soften into a paste. Mash gently with a fork."
+        "content": "Soak raisins in 1 cup boiling water, 10 min.",
+        "detail": "Pit raisins if they're not already (you'll know — if you bite one, you'll know fast). Chop roughly. Cover with 1 cup boiling water and 1 tsp bicarb (the bicarb breaks down the raisins and neutralises their acidity). Rest 10 min — they swell and soften into a paste. Mash gently with a fork."
       },
       {
         "content": "Cream butter and sugar, beat in eggs.",
@@ -4142,7 +4232,7 @@
   },
   {
     "slug": "beetroot-salad",
-    "title": "Beetroot, Goat Cheese & Walnut Salad",
+    "title": "Beetroot, Ricotta & Walnut Salad",
     "description": "Earthy roast beetroot, tangy ricotta, toasty walnuts. Entree energy.",
     "prep_time": 10,
     "cook_time": 40,
@@ -4223,8 +4313,7 @@
     "servings": 2,
     "tags": [
       "quick",
-      "one-pot",
-      "italian"
+      "one-pot"
     ],
     "palette": [
       "#b91c1c",
@@ -4418,6 +4507,11 @@
       {
         "id": "parsley",
         "amount": "handful"
+      },
+      {
+        "id": "vinegar_balsamic",
+        "amount": "splash (for poaching)",
+        "is_optional": true
       }
     ],
     "steps": [
@@ -4638,7 +4732,7 @@
         "amount": "2"
       },
       {
-        "id": "milk",
+        "id": "buttermilk",
         "amount": "2 cups"
       },
       {
@@ -4661,11 +4755,11 @@
     "steps": [
       {
         "content": "Whisk flour, baking powder, sugar.",
-        "detail": "Big bowl: 2 cups flour, 2 tsp baking powder, 3 tbsp sugar, pinch of salt. Whisk together to break up lumps and distribute the raising agent evenly. The bicarb is activated by the milk acids later — patches of it unmixed will leave bitter spots."
+        "detail": "Big bowl: 2 cups flour, 2 tsp baking powder, 3 tbsp sugar, pinch of salt. Whisk together to break up lumps and distribute the raising agent evenly. The bicarb is activated by the buttermilk acids later — patches of it unmixed will leave bitter spots."
       },
       {
-        "content": "Mix eggs, milk, melted butter, vanilla.",
-        "detail": "Separate jug: 2 eggs cracked in, 2 cups milk, 60g melted and cooled butter, 1 tsp vanilla. Beat with a fork till just combined — yolks broken up. The butter needs to be cooled or it'll scramble the eggs; pour it in last and quickly."
+        "content": "Mix eggs, buttermilk, melted butter, vanilla.",
+        "detail": "Separate jug: 2 eggs cracked in, 2 cups buttermilk, 60g melted and cooled butter, 1 tsp vanilla. Beat with a fork till just combined — yolks broken up. The butter needs to be cooled or it'll scramble the eggs; pour it in last and quickly."
       },
       {
         "content": "Combine gently — lumps are fine.",
@@ -4937,8 +5031,7 @@
     "servings": 2,
     "tags": [
       "asian",
-      "soup",
-      "seafood"
+      "soup"
     ],
     "palette": [
       "#9a3412",
@@ -5722,10 +5815,6 @@
         "amount": "2 cups shredded (sub bok choy)"
       },
       {
-        "id": "bok_choy",
-        "amount": "2 heads shredded"
-      },
-      {
         "id": "ginger",
         "amount": "thumb"
       },
@@ -6373,6 +6462,10 @@
       {
         "id": "parsley",
         "amount": "handful"
+      },
+      {
+        "id": "lettuce",
+        "amount": "1/4, shredded"
       }
     ],
     "steps": [
@@ -7513,10 +7606,6 @@
       {
         "id": "cocoa",
         "amount": "1/3 cup"
-      },
-      {
-        "id": "baking_powder",
-        "amount": "to make icing sugar runny"
       }
     ],
     "steps": [
@@ -7559,7 +7648,6 @@
     "servings": 2,
     "tags": [
       "vegetarian",
-      "vegan",
       "asian",
       "quick"
     ],
@@ -7743,7 +7831,7 @@
       "#ef4444",
       "#fbd7d7"
     ],
-    "dish_form": "skewers",
+    "dish_form": "roast-plate",
     "ingredients": [
       {
         "id": "chicken_wing",
@@ -7908,8 +7996,7 @@
     "servings": 4,
     "tags": [
       "asian",
-      "quick",
-      "gluten-free"
+      "quick"
     ],
     "palette": [
       "#65a30d",
@@ -8636,7 +8723,7 @@
       },
       {
         "id": "baking_powder",
-        "amount": "1 tsp bicarb"
+        "amount": "1 tsp"
       },
       {
         "id": "chocolate_chip",
@@ -9838,7 +9925,7 @@
       "#facc15",
       "#fbf3c2"
     ],
-    "dish_form": "risotto",
+    "dish_form": "default-plate",
     "ingredients": [
       {
         "id": "potato",
@@ -11017,7 +11104,7 @@
       "#65a30d",
       "#e5f2cf"
     ],
-    "dish_form": "tacos",
+    "dish_form": "default-plate",
     "ingredients": [
       {
         "id": "prawns",
@@ -13211,7 +13298,7 @@
     ],
     "steps": [
       {
-        "content": "Slice the peaches and toss with sugar and cornflour.",
+        "content": "Slice the peaches and toss with sugar and flour.",
         "detail": "If the peaches are ripe, the skins slip off after a 30-second dunk in boiling water then ice water; firmer ones can stay skin-on. Slice into wedges and toss with 1/4 cup of the sugar, 1 tbsp flour and the cinnamon. The flour thickens the juices into a glossy filling instead of a watery puddle."
       },
       {
