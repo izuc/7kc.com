@@ -22,6 +22,11 @@ export function RecipesPage() {
     queryKey: ['recipe-suggestions'],
     queryFn: () => api.suggestions(),
   });
+  const { data: cookedData } = useQuery({
+    queryKey: ['cooked-recipes'],
+    queryFn: () => api.cookedRecipes(),
+  });
+  const cooked = cookedData?.cooked ?? [];
 
   const ranked = data?.ranked ?? [];
   const filtered = useMemo<RankedRecipe[]>(() => {
@@ -144,6 +149,30 @@ export function RecipesPage() {
             >
               <Icon name="chef" size={14} /> Cook this
             </button>
+          </div>
+        </div>
+      )}
+
+      {cooked.length > 0 && (
+        <div className="cooked-rail">
+          <div className="eyebrow">Recently cooked</div>
+          <div className="cooked-rail-track">
+            {cooked.map((c) => (
+              <Link key={c.recipe.id} className="cooked-card" to={`/recipes/${c.recipe.slug}`}>
+                <div className="cooked-card-plate">
+                  <MealPlate
+                    recipe={c.recipe}
+                    ingredientIds={c.recipe.ingredient_ids}
+                    size={160}
+                    rounded={false}
+                  />
+                </div>
+                <div className="cooked-card-body">
+                  <span className="cooked-card-title">{c.recipe.title}</span>
+                  <span className="mono small muted">cooked {c.cooked_count}×</span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       )}

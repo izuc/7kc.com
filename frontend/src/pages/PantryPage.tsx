@@ -6,6 +6,7 @@ import { Icon } from '../components/Icon';
 import { Modal } from '../components/Modal';
 import { useIngredients, displayFor, sectionFor } from '../hooks/useIngredients';
 import { useSoftDelete } from '../hooks/useSoftDelete';
+import { useUi } from '../store/ui';
 import { SkeletonGrid } from '../components/Skeleton';
 import { IngredientIcon } from '../lib/ingredientIcons';
 import type { PantryItem } from '../types/models';
@@ -14,8 +15,10 @@ type HydratedItem = PantryItem & { display: string; section: string; daysLeft: n
 
 export function PantryPage() {
   const qc = useQueryClient();
+  const toast = useUi((s) => s.toast);
   const [view, setView] = useState<'section' | 'expiry' | 'alpha'>('section');
   const [showAdd, setShowAdd] = useState(false);
+  const [seeding, setSeeding] = useState(false);
 
   const { data, isLoading } = useQuery({ queryKey: ['pantry'], queryFn: () => api.pantry() });
   const { byId } = useIngredients();
@@ -107,10 +110,31 @@ export function PantryPage() {
       {items.length === 0 ? (
         <div className="empty">
           <Icon name="pantry" size={26} />
-          <p>Your pantry is empty.</p>
-          <button className="btn btn-primary" onClick={() => setShowAdd(true)}>
-            Add your first item
-          </button>
+          <p>Your pantry's empty — stock a few staples and recipes start ranking themselves.</p>
+          <div className="row-inline" style={{ gap: 10 }}>
+            <button
+              className="btn btn-primary"
+              disabled={seeding}
+              onClick={async () => {
+                setSeeding(true);
+                try {
+                  const r = await api.seedStaples();
+                  invalidate();
+                  qc.invalidateQueries({ queryKey: ['recipe-suggestions'] });
+                  toast(`Stocked ${r.added} staple${r.added === 1 ? '' : 's'}`);
+                } catch {
+                  toast('Could not stock staples — try again.');
+                } finally {
+                  setSeeding(false);
+                }
+              }}
+            >
+              <Icon name="sparkle" size={14} /> {seeding ? 'Stocking…' : 'Stock common staples'}
+            </button>
+            <button className="btn btn-ghost" onClick={() => setShowAdd(true)}>
+              Add my own
+            </button>
+          </div>
         </div>
       ) : view === 'section' ? (
         <div className="sections">

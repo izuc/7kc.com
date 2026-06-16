@@ -99,6 +99,12 @@ export interface RankedRecipe {
   score: number;
 }
 
+export interface CookedRecipe {
+  recipe: RecipeSummary;
+  cooked_count: number;
+  last_cooked: number;
+}
+
 export interface GroupMember {
   user_id: string;
   role: string;

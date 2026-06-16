@@ -4,6 +4,7 @@ import type {
   ParsedItem,
   PantryItem,
   RankedRecipe,
+  CookedRecipe,
   Recipe,
   RecipeSummary,
   ShoppingList,
@@ -133,6 +134,8 @@ export const api = {
     }),
   deletePantryItem: (id: string) =>
     request<{ ok: boolean }>(`/pantry/items/${id}`, { method: 'DELETE' }),
+  seedStaples: () =>
+    request<{ added: number; items: PantryItem[] }>('/pantry/seed-staples', { method: 'POST' }),
 
   // recipes
   recipes: (q?: string, tags?: string[]) => {
@@ -144,6 +147,7 @@ export const api = {
   },
   recipe: (slug: string) => request<{ recipe: Recipe }>(`/recipes/${slug}`),
   suggestions: () => request<{ ranked: RankedRecipe[] }>('/recipes/suggestions'),
+  cookedRecipes: () => request<{ cooked: CookedRecipe[] }>('/recipes/cooked'),
   createRecipe: (payload: Partial<Recipe> & { title: string }) =>
     request<{ recipe: Recipe }>('/recipes', { method: 'POST', body: JSON.stringify(payload) }),
   cookRecipe: (slug: string, removeIds: string[]) =>
