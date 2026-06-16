@@ -35,7 +35,7 @@ tests/rate-limiting/account-deletion.
   - [x] Native `navigator.share` button (clipboard fallback) on both, using the public `/r/` URL.
   - [x] `/register?from=<slug>` with recipe-aware copy + post-signup redirect to that recipe.
 - [x] **#5b · Shareable group invite link** `L/M` — turn the raw clipboard token into `${origin}/join/<token>` + a `/join/:token` landing (one small public token-resolve endpoint returning only group name + inviter) + share sheet.
-- [ ] **Trivial wins**
+- [x] **Trivial wins**
   - [x] Commit `composer.lock` (Phase 0).
   - [x] Surface dormant **Sponsored** recipe inventory (`sponsored_by`/`sponsored_url` shipped but never SELECTed) — plumb through + badge.
   - [x] **Haptics** (`navigator.vibrate`) on tick-off / mark-all / move-to-pantry / cook "Next step", behind a capability + reduced-motion + settings guard.
