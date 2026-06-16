@@ -9,6 +9,7 @@ use SevenKC\Action\Groups\GetFeedAction;
 use SevenKC\Action\Groups\GetMyGroupAction;
 use SevenKC\Action\Groups\JoinGroupAction;
 use SevenKC\Action\Groups\LeaveGroupAction;
+use SevenKC\Action\Groups\ResolveInviteAction;
 use SevenKC\Action\Groups\ListSuggestionsAction;
 use SevenKC\Action\Groups\LikeSuggestionAction;
 use SevenKC\Action\Groups\CommentSuggestionAction;
@@ -66,6 +67,7 @@ return function (App $app): void {
         // public SEO / landing (no auth)
         $g->get('/public/recipes/{slug}', PublicRecipeAction::class);
         $g->get('/public/retailers', ListRetailersAction::class);
+        $g->get('/public/groups/{token}', ResolveInviteAction::class);
 
         // authenticated
         $g->group('', function (RouteCollectorProxy $a) {
