@@ -34,7 +34,7 @@ tests/rate-limiting/account-deletion.
   - [x] Render `AffiliateButtons` on `PublicRecipePage` + `RecipeDetailPage` (add slug to the `trackEvent` payload).
   - [x] Native `navigator.share` button (clipboard fallback) on both, using the public `/r/` URL.
   - [x] `/register?from=<slug>` with recipe-aware copy + post-signup redirect to that recipe.
-- [ ] **#5b · Shareable group invite link** `L/M` — turn the raw clipboard token into `${origin}/join/<token>` + a `/join/:token` landing (one small public token-resolve endpoint returning only group name + inviter) + share sheet.
+- [x] **#5b · Shareable group invite link** `L/M` — turn the raw clipboard token into `${origin}/join/<token>` + a `/join/:token` landing (one small public token-resolve endpoint returning only group name + inviter) + share sheet.
 - [ ] **Trivial wins**
   - [x] Commit `composer.lock` (Phase 0).
   - [x] Surface dormant **Sponsored** recipe inventory (`sponsored_by`/`sponsored_url` shipped but never SELECTed) — plumb through + badge.
