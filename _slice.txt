@@ -1,0 +1,1767 @@
+{
+ "slug": "sunday-roast-chook",
+ "title": "Sunday Roast Chook",
+ "tags": [
+  "family",
+  "sunday"
+ ],
+ "prep": 10,
+ "cook": 75,
+ "ingredients": [
+  {
+   "id": "chicken_whole",
+   "amount": "1.6 kg"
+  },
+  {
+   "id": "lemon",
+   "amount": "1"
+  },
+  {
+   "id": "garlic",
+   "amount": "1 head"
+  },
+  {
+   "id": "potato",
+   "amount": "1 kg"
+  },
+  {
+   "id": "olive_oil",
+   "amount": "glug"
+  },
+  {
+   "id": "salt",
+   "amount": "flakes"
+  },
+  {
+   "id": "pepper",
+   "amount": "to taste"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Preheat oven to 200°C.",
+   "detail": "Get the oven going first thing — by the time you've prepped, it's ready. A roast needs high heat. Pull the chicken out of the fridge when you turn the oven on — cold meat cooks unevenly."
+  },
+  {
+   "content": "Pat chook dry, rub with oil and salt.",
+   "detail": "Paper towels inside and out — dry skin = crispy skin. Rub all over with olive oil, then coat heavily with sea salt and cracked pepper. Don't skimp on seasoning — a 1.6kg bird can take a good tablespoon of salt spread around. Massage into the legs, under the wings, everywhere."
+  },
+  {
+   "content": "Stuff cavity with lemon and garlic.",
+   "detail": "Halve a lemon and a whole garlic head across the equator. Stuff inside the cavity — they steam the bird from inside and flavour the juices. A few thyme sprigs if you have them. Tying the legs with string keeps the thighs juicy but it's optional."
+  },
+  {
+   "content": "Roast on potatoes, 75 min.",
+   "detail": "Chunk potatoes (skin on), toss in oil and salt. Spread in a roasting tray, sit the chicken on top breast-side-up. The chicken fat drips onto the potatoes — best roast potatoes in the world. 75 min for a 1.6kg bird: juices run clear when pierced in the thigh, and a thermometer reads 75°C in the thickest part. Baste halfway with pan juices if you remember."
+  },
+  {
+   "content": "Rest 10 min before carving.",
+   "detail": "Non-negotiable. Lift the chicken onto a board, tent loosely with foil. The juices that would run out onto the board now redistribute into the meat. Use the 10 min to stir pan juices into a quick gravy if you like — a splash of stock, boil hard, done."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "zucchini-slice",
+ "title": "Zucchini Slice",
+ "tags": [
+  "family",
+  "batch-friendly"
+ ],
+ "prep": 10,
+ "cook": 35,
+ "ingredients": [
+  {
+   "id": "zucchini",
+   "amount": "3"
+  },
+  {
+   "id": "eggs",
+   "amount": "5"
+  },
+  {
+   "id": "bacon",
+   "amount": "4 rashers"
+  },
+  {
+   "id": "cheddar",
+   "amount": "100 g"
+  },
+  {
+   "id": "flour",
+   "amount": "1 cup"
+  },
+  {
+   "id": "onion_brown",
+   "amount": "1"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Grate zucchini, squeeze out moisture.",
+   "detail": "Coarse-grater on the biggest holes. Grate the zucchini into a clean tea towel or a colander over a bowl. Sprinkle a big pinch of salt through, rest 5 min — the salt draws out water. Then wring HARD. This step is non-negotiable; skip it and your slice is a soggy puddle. You should pour off at least a cup of liquid. Wet zucchini is the enemy."
+  },
+  {
+   "content": "Mix with beaten eggs, flour, diced bacon, onion, cheese.",
+   "detail": "Beat 5 eggs in a big bowl with a fork. Tip in the squeezed zucchini, 1 cup plain flour, 4 diced rashers of bacon (raw is fine, it'll cook through), one finely diced brown onion, and 100g grated cheddar. Salt, pepper. Stir with a wooden spoon till just combined — overmixing develops gluten and makes it tough."
+  },
+  {
+   "content": "Pour into lined tin.",
+   "detail": "Line a 20x30cm slice tin with baking paper — grease first so the paper sticks. Pour the mix in and level with a spatula. It looks loose; it'll set as it cooks. Give the tin a gentle tap on the bench to release any air pockets."
+  },
+  {
+   "content": "Bake 35 min at 180°C until set and golden.",
+   "detail": "180°C oven, middle rack, 35 min. Done when the top is deep gold and a skewer in the centre comes out clean. The edges should be pulling away from the paper. If it's browning too fast, loosely tent with foil. Cool in the tin 10 min before lifting out — lets it set. Slice into squares; eats hot, warm, or fridge-cold for lunchboxes."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "chicken-schnitty",
+ "title": "Chicken Schnitty",
+ "tags": [
+  "family",
+  "comfort"
+ ],
+ "prep": 15,
+ "cook": 10,
+ "ingredients": [
+  {
+   "id": "chicken_breast",
+   "amount": "4"
+  },
+  {
+   "id": "breadcrumbs",
+   "amount": "2 cups"
+  },
+  {
+   "id": "eggs",
+   "amount": "2"
+  },
+  {
+   "id": "flour",
+   "amount": "1/2 cup"
+  },
+  {
+   "id": "lemon",
+   "amount": "1"
+  },
+  {
+   "id": "butter",
+   "amount": "knob"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Butterfly and bash chicken thin.",
+   "detail": "Lay breast flat, hold it down with one hand, slice horizontally through the middle to open it like a book — but don't cut all the way through. Open it out. Put between two sheets of baking paper and bash with a rolling pin or heavy pan till evenly 1cm thick. Even thickness = even cooking. Don't skip the paper; raw chicken shrapnel isn't the vibe."
+  },
+  {
+   "content": "Flour, egg, crumb.",
+   "detail": "Three shallow plates: seasoned flour, 2 beaten eggs, breadcrumbs. Dredge each piece flour first (shake off excess — clumps go soggy), then egg (let drip), then press firmly into crumbs on both sides. Firm pressing = crumbs stick. Rest on a rack 5 min if you can — helps the crust set."
+  },
+  {
+   "content": "Shallow-fry in butter, 4 min each side.",
+   "detail": "Wide pan, medium heat, enough butter + oil to come 5mm up the sides (butter adds flavour, oil stops it burning). When a crumb sizzles on contact, lay schnitties in — don't crowd. 4 min per side till the crumb is deep gold and the chicken is 72°C internal. Drain on paper towel."
+  },
+  {
+   "content": "Serve with lemon wedges.",
+   "detail": "Plate hot, lemon wedges on the side. Squeeze over at the table — waiting lemon goes floppy on the crumb. Classic sides: chippies, a slaw, or a big pile of peas with butter. Anchovy mayo or tartare if you're fancy."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "banana-bread",
+ "title": "Banana Bread",
+ "tags": [
+  "baking",
+  "snack"
+ ],
+ "prep": 10,
+ "cook": 55,
+ "ingredients": [
+  {
+   "id": "banana",
+   "amount": "3"
+  },
+  {
+   "id": "flour",
+   "amount": "2 cups"
+  },
+  {
+   "id": "sugar",
+   "amount": "3/4 cup"
+  },
+  {
+   "id": "butter",
+   "amount": "100 g"
+  },
+  {
+   "id": "eggs",
+   "amount": "2"
+  },
+  {
+   "id": "cinnamon",
+   "amount": "1 tsp"
+  },
+  {
+   "id": "baking_powder",
+   "amount": "2 tsp"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Mash bananas.",
+   "detail": "Three very ripe bananas — brown-spotted or fully black is perfect; they're sweeter and softer. Peel and mash in a bowl with a fork till broken down but still a little chunky. Totally smooth loses the banana pockets in the finished loaf."
+  },
+  {
+   "content": "Cream butter and sugar, add eggs.",
+   "detail": "In a stand mixer or with beaters: 100g soft butter and 3/4 cup sugar beaten 3 min till pale and fluffy — aeration is what gives the loaf a tender crumb. Add 2 eggs one at a time, beating between each. If it looks curdled, a tablespoon of the flour fixes it."
+  },
+  {
+   "content": "Fold in bananas, flour, cinnamon.",
+   "detail": "Fold in the mashed banana with a spatula. Sift in 2 cups of plain flour, the 2 tsp baking powder and 1 tsp cinnamon. Fold in big sweeping strokes till JUST combined — overmixing develops gluten and gives you a tough, rubbery loaf. Streaks of flour are fine to stop at."
+  },
+  {
+   "content": "Bake 55 min at 170°C.",
+   "detail": "Line a loaf tin with baking paper (overhang the sides so you can lift it out later). Pour in the batter, smooth the top. 170°C oven, middle shelf, 55 min. Done when a skewer in the centre comes out with a few moist crumbs but no raw batter. Cover with foil for the last 15 if the top is browning too fast."
+  },
+  {
+   "content": "Cool in tin 15 min.",
+   "detail": "Rest in the tin 15 min — critical. Hot banana bread is fragile and will break if you tip it out too early. Then lift out with the paper onto a rack to cool fully before slicing. Butter on thick slices, or toasted the next day with more butter."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "chicken-noodle-soup",
+ "title": "Chicken Noodle Soup",
+ "tags": [
+  "soup",
+  "comfort",
+  "family"
+ ],
+ "prep": 10,
+ "cook": 25,
+ "ingredients": [
+  {
+   "id": "chicken_thigh",
+   "amount": "400 g"
+  },
+  {
+   "id": "carrot",
+   "amount": "2"
+  },
+  {
+   "id": "stock_chicken",
+   "amount": "1.5 L"
+  },
+  {
+   "id": "spring_onion",
+   "amount": "3"
+  },
+  {
+   "id": "spaghetti",
+   "amount": "150 g"
+  },
+  {
+   "id": "ginger",
+   "amount": "thumb"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Poach chicken in stock with ginger, 20 min.",
+   "detail": "Chicken thighs (skin off, bone out — easier), a thumb of ginger sliced into coins, 1.5L chicken stock in a pot. Bring to a bare simmer — little bubbles, never a rolling boil or the chicken gets tough. 20 min and it's poached through. The broth becomes gingery and chickeny."
+  },
+  {
+   "content": "Shred.",
+   "detail": "Lift chicken out with tongs onto a plate. When cool enough to handle, use two forks to pull it into strips along the grain. Or your hands if the meat's cool enough — rougher shreds soak up broth better than knife cuts."
+  },
+  {
+   "content": "Cook noodles in broth.",
+   "detail": "Bring broth back to a simmer. Break spaghetti into thirds and drop straight in — cooking in stock not water means every strand soaks up flavour. Cook till just al dente per packet timing (usually 7 min)."
+  },
+  {
+   "content": "Return chicken, add carrot and spring onion.",
+   "detail": "Chicken back into the pot with thinly sliced carrot and sliced spring onions. 2 min to warm the chicken and barely soften the veg — you want a little bite in the carrot, not mush."
+  },
+  {
+   "content": "Season well.",
+   "detail": "Taste and season well — soup always needs more salt than you think, and stock varies. Big pinch of salt, plenty of cracked pepper. A squeeze of lemon lifts it. Ladle into bowls piping hot; this is medicine."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "lentil-bolognese",
+ "title": "Lentil Bolognese",
+ "tags": [
+  "vegetarian",
+  "vegan",
+  "batch-friendly"
+ ],
+ "prep": 10,
+ "cook": 40,
+ "ingredients": [
+  {
+   "id": "lentil_red",
+   "amount": "1.5 cups"
+  },
+  {
+   "id": "tinned_tomato",
+   "amount": "2 tins"
+  },
+  {
+   "id": "carrot",
+   "amount": "2"
+  },
+  {
+   "id": "onion_brown",
+   "amount": "1"
+  },
+  {
+   "id": "garlic",
+   "amount": "3 cloves"
+  },
+  {
+   "id": "spaghetti",
+   "amount": "400 g"
+  },
+  {
+   "id": "stock_veg",
+   "amount": "500 ml"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Soften diced carrot, onion, garlic.",
+   "detail": "Finely dice 2 carrots, 1 onion, 3 garlic cloves. Small dice = every spoonful catches all three. Glug of olive oil in a heavy pot over medium. Veg in with a pinch of salt, 10 min till onion is translucent and carrot is softening. This soffritto is the depth; don't rush."
+  },
+  {
+   "content": "Add lentils, stock, tomatoes.",
+   "detail": "Tip in 1.5 cups of red lentils (rinsed till the water runs clearer), 500ml vegetable stock, 2 tins of tomatoes (crush with your hand). Splash water into the empty tins to rinse out the rest and tip that in too. Big pinch of salt, pepper, bay leaf if you have one."
+  },
+  {
+   "content": "Simmer 35 min till thick.",
+   "detail": "Bring to a bubble, drop to a simmer, lid slightly ajar. 35 min stirring every 10 min so lentils don't catch on the bottom. They break down into a thick, meaty-textured ragu. A splash of milk or a knob of butter at the end (plant milk or olive oil to keep it vegan) rounds the edges off the tomato acid."
+  },
+  {
+   "content": "Toss with cooked spaghetti.",
+   "detail": "Cook spaghetti 1 min less than the packet in heavily salted water. Reserve half a cup of pasta water. Toss pasta into the sauce with a splash of water — creates the emulsion that makes the sauce cling. Plate up, generous parmesan (use nutritional yeast for vegan), crack of pepper. Torn basil."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "lamb-kofta",
+ "title": "Lamb Kofta with Tzatziki",
+ "tags": [
+  "bbq",
+  "mediterranean",
+  "family"
+ ],
+ "prep": 20,
+ "cook": 12,
+ "ingredients": [
+  {
+   "id": "lamb_mince",
+   "amount": "700 g"
+  },
+  {
+   "id": "onion_red",
+   "amount": "1"
+  },
+  {
+   "id": "garlic",
+   "amount": "5 cloves"
+  },
+  {
+   "id": "cumin",
+   "amount": "2 tsp"
+  },
+  {
+   "id": "paprika",
+   "amount": "1 tsp"
+  },
+  {
+   "id": "mint",
+   "amount": "handful"
+  },
+  {
+   "id": "yoghurt",
+   "amount": "1 cup"
+  },
+  {
+   "id": "cucumber",
+   "amount": "1/2"
+  },
+  {
+   "id": "wrap",
+   "amount": "4"
+  },
+  {
+   "id": "lemon",
+   "amount": "1"
+  },
+  {
+   "id": "tomato",
+   "amount": "1",
+   "is_optional": true
+  }
+ ],
+ "steps": [
+  {
+   "content": "Grate onion, squeeze dry.",
+   "detail": "Grate a red onion on the coarse side of a box grater into a sieve or tea towel. Squeeze HARD to remove the juice — wet onion makes kofta fall apart on the grill. Liquid out, oniony pulp left behind. Counterintuitive but essential."
+  },
+  {
+   "content": "Mix lamb, onion, garlic, spices, half the mint.",
+   "detail": "Big bowl: 700g lamb mince, the squeezed grated onion, 3 grated garlic cloves, 2 tsp cumin, 1 tsp paprika, salt, pepper, half a handful of finely chopped mint. Mix with your hands for 60 sec — till it tightens up and becomes sticky. That stickiness is the protein binding, which keeps kofta on the skewer."
+  },
+  {
+   "content": "Shape onto skewers, chill 10 min.",
+   "detail": "Divide into 8 portions. Shape each around a skewer (soak wooden skewers 30 min first, or use metal) into a long 2cm-thick sausage. Press firmly so it clings. Chill 10 min — firms them up so they don't slide off on the grill. Skipping this step means half your kofta in the coals."
+  },
+  {
+   "content": "Grate cucumber into yoghurt with remaining mint and garlic for tzatziki.",
+   "detail": "Grate half a cucumber on the coarse side, squeeze HARD to remove water. Tip into a bowl with 1 cup yoghurt, 2 grated garlic cloves, big handful chopped mint, juice of half a lemon, pinch of salt. Stir. This is tzatziki — rest 10 min so flavours meld."
+  },
+  {
+   "content": "Grill skewers 4 min a side.",
+   "detail": "BBQ or griddle pan blazing hot, oil the grills. Kofta on, don't move for 2 min — let char marks form. Turn once. 4 min per side for pink in the middle, 5 for medium. They should feel firm but still give a little. Rest 3 min on a board."
+  },
+  {
+   "content": "Wrap with tzatziki and lemon.",
+   "detail": "Warm flatbreads 15 sec a side on the hot grill. Smear tzatziki down the middle, slide two kofta off the skewer on top. Squeeze of lemon, sliced tomato, extra mint. Roll tight, eat standing up. Mess is expected."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "beetroot-salad",
+ "title": "Beetroot, Ricotta & Walnut Salad",
+ "tags": [
+  "vegetarian",
+  "salad",
+  "entree"
+ ],
+ "prep": 10,
+ "cook": 40,
+ "ingredients": [
+  {
+   "id": "beetroot",
+   "amount": "4"
+  },
+  {
+   "id": "ricotta",
+   "amount": "150 g"
+  },
+  {
+   "id": "walnut",
+   "amount": "1/2 cup"
+  },
+  {
+   "id": "rocket",
+   "amount": "4 handfuls"
+  },
+  {
+   "id": "olive_oil",
+   "amount": "3 tbsp"
+  },
+  {
+   "id": "honey",
+   "amount": "1 tsp"
+  },
+  {
+   "id": "vinegar_balsamic",
+   "amount": "2 tbsp"
+  },
+  {
+   "id": "orange",
+   "amount": "1"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Roast whole beetroot in foil 40 min at 200°C.",
+   "detail": "Scrub beetroot (don't peel — skin slips off easily after cooking). Trim stems leaving 2cm (stops bleeding). Wrap each in foil with a splash of oil and salt. 200°C oven, 40 min till a knife slides into the centre easily. Roasting concentrates sweetness and keeps colour; boiling leeches it."
+  },
+  {
+   "content": "Peel and wedge when cool enough to handle.",
+   "detail": "Once cool enough to handle (but still warm), rub the skins off with paper towel — they slip off like a jacket. Wear an apron or gloves; beetroot stains everything permanently. Cut into wedges or slices, whichever looks better on the plate."
+  },
+  {
+   "content": "Toast walnuts dry 3 min.",
+   "detail": "Dry pan over medium, walnuts in, no oil. Toss every 30 sec. 3 min till fragrant and you can hear a gentle sizzle — the oil inside is heating. Don't walk away; they burn fast. Tip onto a plate immediately (residual pan heat keeps toasting)."
+  },
+  {
+   "content": "Whisk oil, honey, balsamic, orange zest for dressing.",
+   "detail": "Small jar: 3 tbsp olive oil, 2 tbsp balsamic, 1 tsp honey, zest of one orange, pinch of salt. Shake till creamy-emulsified. The orange zest is the secret — its oils perfume everything without the juice making it runny. Taste — should be sweet, sharp, balanced."
+  },
+  {
+   "content": "Toss rocket, beetroot, walnuts, dot with ricotta.",
+   "detail": "Big platter: rocket spread in a layer, beetroot wedges tumbled across, walnuts scattered. Pour over the dressing from height — gentle rain, not flood. Dot ricotta around in spoonfuls (don't spread — leave rough pillows). Crack of pepper. Eat before the rocket wilts from the dressing."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "scallops-peas",
+ "title": "Seared Scallops with Pea Purée",
+ "tags": [
+  "seafood",
+  "quick",
+  "entree"
+ ],
+ "prep": 10,
+ "cook": 10,
+ "ingredients": [
+  {
+   "id": "scallop",
+   "amount": "12"
+  },
+  {
+   "id": "peas_frozen",
+   "amount": "1.5 cups"
+  },
+  {
+   "id": "butter",
+   "amount": "40 g"
+  },
+  {
+   "id": "mint",
+   "amount": "handful"
+  },
+  {
+   "id": "lemon",
+   "amount": "1"
+  },
+  {
+   "id": "garlic",
+   "amount": "1 clove"
+  },
+  {
+   "id": "olive_oil",
+   "amount": "1 tbsp"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Blanch peas 2 min, plunge in iced water.",
+   "detail": "1.5 cups of frozen peas into a pot of boiling salted water for EXACTLY 2 min — any longer and they lose their vivid green. Drain and plunge into a bowl of iced water to shock-stop the cooking. This preserves colour AND flavour. Drain once cold."
+  },
+  {
+   "content": "Blitz peas with mint, garlic, lemon, olive oil.",
+   "detail": "Into a blender: the blanched peas, a big handful of mint, 1 garlic clove, juice of half a lemon, 1 tbsp olive oil, pinch of salt. Blitz 60 sec till silky — should ribbon off a spoon. Thin with a splash of warm water if stiff. Taste — should be bright, grassy, fresh."
+  },
+  {
+   "content": "Pat scallops dry, season well.",
+   "detail": "Pat scallops REALLY dry on both sides with paper towel — wet scallops won't sear; they'll steam. Season generously with salt and pepper just before cooking (earlier and the salt draws moisture back out). Remove the small tough side-muscle if it's still attached."
+  },
+  {
+   "content": "Sear 90 sec a side in hot butter.",
+   "detail": "Heavy pan smoking-hot. Knob of butter in, swirl. Scallops laid in with space between them. DON'T TOUCH for 90 sec — you want a deep caramelised crust. Flip once, 60 sec the other side. Inside should stay silky and translucent in the centre. Over-cooked scallops are rubbery."
+  },
+  {
+   "content": "Spoon purée on plate, scallops on top, lemon wedge.",
+   "detail": "Big spoon of purée swooshed across each plate (back of the spoon drags a crescent). 3 scallops per person perched on top, crust-side up. Lemon wedge, crack of pepper, drizzle of your best olive oil. Restaurant entrée at home."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "pho",
+ "title": "Beef Pho",
+ "tags": [
+  "vietnamese",
+  "soup",
+  "asian"
+ ],
+ "prep": 15,
+ "cook": 30,
+ "ingredients": [
+  {
+   "id": "beef_steak",
+   "amount": "200 g sirloin"
+  },
+  {
+   "id": "noodle_rice",
+   "amount": "200 g"
+  },
+  {
+   "id": "stock_beef",
+   "amount": "1.5 L"
+  },
+  {
+   "id": "ginger",
+   "amount": "thumb"
+  },
+  {
+   "id": "onion_brown",
+   "amount": "1"
+  },
+  {
+   "id": "cinnamon",
+   "amount": "1 stick"
+  },
+  {
+   "id": "fish_sauce",
+   "amount": "2 tbsp"
+  },
+  {
+   "id": "basil",
+   "amount": "handful"
+  },
+  {
+   "id": "coriander",
+   "amount": "handful"
+  },
+  {
+   "id": "lime",
+   "amount": "1"
+  },
+  {
+   "id": "chilli",
+   "amount": "1"
+  },
+  {
+   "id": "spring_onion",
+   "amount": "2"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Char halved onion and ginger directly on the gas, 5 min.",
+   "detail": "Halve a brown onion and slice a thumb of ginger into coins. Char them directly on a gas flame (use tongs) for 5 min till blackened in spots — this toasting draws out sweet smoky flavour that's essential to pho. No gas? Blast under a hot grill or in a dry hot pan till well-blackened."
+  },
+  {
+   "content": "Simmer stock with onion, ginger, cinnamon, fish sauce, 25 min.",
+   "detail": "Into a large pot: the charred onion and ginger (skins and all — they're flavour), 1.5L beef stock, a cinnamon stick, 2 star anise if you have them, 2 tbsp fish sauce. Bare simmer, lid slightly ajar, 25 min. The broth should taste deep, aromatic, subtly sweet-spicy."
+  },
+  {
+   "content": "Strain broth, keep piping hot.",
+   "detail": "Strain the broth through a fine sieve into a clean pot, discarding the aromatics. Keep piping hot — it needs to be near-boiling when it hits the beef or the meat won't cook properly."
+  },
+  {
+   "content": "Cook noodles, divide between bowls.",
+   "detail": "Cook rice noodles per packet (usually 4 min in hot water till pliable with a tiny bite). Divide between 2 deep bowls. The noodles should fill about half the bowl."
+  },
+  {
+   "content": "Slice beef paper-thin, lay over noodles.",
+   "detail": "Slice beef against the grain as thin as you can manage — ideally see-through thin. Freezing for 15 min first makes this easier. Arrange slices over the noodles in a fan pattern. They'll still be raw at this stage."
+  },
+  {
+   "content": "Pour boiling broth over; beef cooks in seconds.",
+   "detail": "Ladle the near-boiling broth over the beef in a generous pour — should cover everything. The pouring broth cooks the paper-thin beef in seconds from pink to just-cooked. This technique is the whole magic of pho."
+  },
+  {
+   "content": "Top with herbs, chilli, lime wedge.",
+   "detail": "Plate of herbs at the table: torn Thai basil (or regular), coriander, bean sprouts, sliced chilli, sliced spring onion, lime wedges. Each person adds to their own bowl to taste. A splash of hoisin or sriracha for the sauce, but purists frown. Eat with both chopsticks and a spoon."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "chicken-biryani",
+ "title": "Quick Chicken Biryani",
+ "tags": [
+  "indian",
+  "family",
+  "rice-bowl"
+ ],
+ "prep": 20,
+ "cook": 40,
+ "ingredients": [
+  {
+   "id": "chicken_thigh",
+   "amount": "700 g"
+  },
+  {
+   "id": "rice_basmati",
+   "amount": "2 cups"
+  },
+  {
+   "id": "yoghurt",
+   "amount": "1 cup"
+  },
+  {
+   "id": "onion_brown",
+   "amount": "2"
+  },
+  {
+   "id": "garlic",
+   "amount": "3 cloves"
+  },
+  {
+   "id": "ginger",
+   "amount": "thumb"
+  },
+  {
+   "id": "curry_powder",
+   "amount": "2 tbsp"
+  },
+  {
+   "id": "turmeric",
+   "amount": "1 tsp"
+  },
+  {
+   "id": "cinnamon",
+   "amount": "1 stick"
+  },
+  {
+   "id": "mint",
+   "amount": "handful"
+  },
+  {
+   "id": "coriander",
+   "amount": "handful"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Marinate chicken in yoghurt + spices, 15 min.",
+   "detail": "Cube chicken thighs into 3cm pieces. Big bowl with 1 cup yoghurt, 2 tbsp curry powder, 1 tsp turmeric, 3 grated garlic cloves, a thumb of grated ginger, big pinch of salt. Mix till coated. Minimum 15 min; overnight is transformative — yoghurt tenderises, spices penetrate."
+  },
+  {
+   "content": "Fry sliced onions till deep brown, set aside.",
+   "detail": "Heavy-bottomed pot with a tight lid (critical for biryani). Heat 3 tbsp oil, thinly slice 2 onions. Fry over medium-high, stirring often, 15 min till DEEPLY brown (not just gold — properly caramelised). These crispy onions are the garnish and flavour both. Reserve half on paper towel."
+  },
+  {
+   "content": "Brown chicken in the same pot.",
+   "detail": "Same pot (don't wash — residual oil flavoured with onion is good). Medium-high heat. Tip in marinated chicken with all its yoghurt. Sear 5 min — it'll sizzle and brown. A cinnamon stick, 2 bay leaves if you have them."
+  },
+  {
+   "content": "Rinse rice, layer on top of chicken.",
+   "detail": "Rinse 2 cups of basmati till the water runs clear — washes surface starch for separate grains. Layer on top of the chicken WITHOUT stirring. This layering is what makes it biryani vs stew."
+  },
+  {
+   "content": "Pour 3 cups water over, season.",
+   "detail": "Pour 3 cups of water (or stock) gently down the side of the pot — don't disturb the rice layer. Big pinch of salt. A scatter of half the reserved crispy onions across the rice top. The water level should just cover the rice."
+  },
+  {
+   "content": "Cover tight, cook 18 min on low, rest 10.",
+   "detail": "Cover with a tight lid (lay a tea towel under the lid for extra seal — dum cooking). Bring to a boil, then drop to LOWEST heat for 18 min. Off heat, DO NOT LIFT THE LID for another 10 min — this rest is crucial; steam finishes the rice."
+  },
+  {
+   "content": "Fluff, top with fried onion, herbs.",
+   "detail": "Lift the lid — the smell is the reward. Fluff gently with a fork, bringing some chicken up from underneath without mashing rice. Scatter remaining crispy onions, torn mint and coriander across the top. Lemon wedges. A bowl of yoghurt on the side with cucumber is classic raita."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "tabouleh",
+ "title": "Parsley Tabouleh",
+ "tags": [
+  "middle-eastern",
+  "salad",
+  "vegetarian",
+  "no-cook"
+ ],
+ "prep": 15,
+ "cook": 0,
+ "ingredients": [
+  {
+   "id": "parsley",
+   "amount": "3 big handfuls"
+  },
+  {
+   "id": "mint",
+   "amount": "handful"
+  },
+  {
+   "id": "couscous",
+   "amount": "1/2 cup (or bulgur)"
+  },
+  {
+   "id": "tomato",
+   "amount": "2"
+  },
+  {
+   "id": "spring_onion",
+   "amount": "3"
+  },
+  {
+   "id": "lemon",
+   "amount": "2"
+  },
+  {
+   "id": "olive_oil",
+   "amount": "1/3 cup"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Cover couscous in hot water, rest 10 min, fluff.",
+   "detail": "Half a cup of couscous in a bowl. Cover with an equal amount of hot water (or stock for extra flavour), pinch of salt, splash of olive oil. Cover with a plate. Rest 10 min. Fluff vigorously with a fork to separate every grain — lumps ruin tabouleh."
+  },
+  {
+   "content": "Very finely chop parsley, mint, spring onion.",
+   "detail": "Tabouleh is a HERB salad that happens to have grains in it — not the other way round. 3 big handfuls of parsley, one handful of mint, 3 spring onions. Rinse, dry in a salad spinner (wet herbs make soggy tabouleh), then chop VERY fine. A sharp knife, patience, rocking motion. Stems too (flavour) — just tough bits removed."
+  },
+  {
+   "content": "Dice tomato small.",
+   "detail": "Dice 2 ripe tomatoes into small 5mm cubes. Drain on paper towel 2 min if they're particularly juicy. Keep the pieces small — big chunks feel wrong in tabouleh."
+  },
+  {
+   "content": "Combine everything with lemon and oil.",
+   "detail": "Biggest bowl you have. Combine cooked couscous, chopped herbs, tomatoes. Dress with juice of 2 lemons and 1/3 cup good olive oil. Toss well. The proportion should look VERY green — if you see mostly grain, you need more herbs."
+  },
+  {
+   "content": "Season, rest 10 min before serving.",
+   "detail": "Season generously with salt and pepper — tabouleh needs more salt than feels right. Rest 10 min before serving for flavours to meld. Eats chilled or room temp. Pita bread and hummus alongside, or as part of a mezze spread."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "damper",
+ "title": "Campfire Damper",
+ "tags": [
+  "aussie",
+  "baking",
+  "quick"
+ ],
+ "prep": 10,
+ "cook": 30,
+ "ingredients": [
+  {
+   "id": "flour",
+   "amount": "3 cups self-raising"
+  },
+  {
+   "id": "butter",
+   "amount": "60 g"
+  },
+  {
+   "id": "milk",
+   "amount": "1.25 cups"
+  },
+  {
+   "id": "salt",
+   "amount": "1 tsp"
+  },
+  {
+   "id": "honey",
+   "amount": "to serve"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Rub butter into flour and salt.",
+   "detail": "Big bowl: 3 cups self-raising flour, 1 tsp salt. Cube 60g cold butter and add. Rub between your fingertips till the mix looks like breadcrumbs — some bigger chunks are fine. The butter coats the flour particles, giving a tender crumb."
+  },
+  {
+   "content": "Mix in milk till just combined.",
+   "detail": "Make a well in the centre. Pour in 1.25 cups of milk. Stir with a wooden spoon, bringing flour from the edges into the milk, till it just comes together into a shaggy dough. Don't overmix — tough damper results. Use a light hand."
+  },
+  {
+   "content": "Shape into a round on a tray, slash a cross on top.",
+   "detail": "Flour the bench, tip dough out, knead gently just to bring together — 30 seconds only. Shape into a round about 18cm across, 5cm thick. Transfer to a lined tray. With a sharp knife, slash a deep cross into the top, about 1cm deep — makes the wedges easier to tear."
+  },
+  {
+   "content": "Dust with flour.",
+   "detail": "Dust the top generously with flour — gives the rustic, bushman damper look, and helps the crust form. A scrape of butter across the top if you want extra richness (melts in and keeps the crust tender)."
+  },
+  {
+   "content": "Bake 25 min at 200°C till hollow when tapped.",
+   "detail": "200°C oven, middle rack, 25 min. Done when the top is deep gold and the bottom sounds HOLLOW when you tap it with your knuckles. That hollow sound is the universal bread doneness test. If in doubt, give it another 5 min."
+  },
+  {
+   "content": "Hot, with butter and honey.",
+   "detail": "Best eaten warm within an hour — damper stales fast (no yeast, no preservatives). Tear into wedges, slather with butter and golden syrup or honey while still steaming. A cuppa on the side. The bushman's standby; a camping fire version cooked in foil in coals is even better."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "korean-beef-bowl",
+ "title": "Korean Beef Bowl",
+ "tags": [
+  "korean",
+  "quick",
+  "rice-bowl"
+ ],
+ "prep": 15,
+ "cook": 10,
+ "ingredients": [
+  {
+   "id": "beef_mince",
+   "amount": "400 g"
+  },
+  {
+   "id": "rice_jasmine",
+   "amount": "1.5 cups"
+  },
+  {
+   "id": "soy_sauce",
+   "amount": "3 tbsp"
+  },
+  {
+   "id": "honey",
+   "amount": "2 tbsp"
+  },
+  {
+   "id": "sesame_oil",
+   "amount": "1 tbsp"
+  },
+  {
+   "id": "gochujang",
+   "amount": "1 tbsp"
+  },
+  {
+   "id": "garlic",
+   "amount": "3 cloves"
+  },
+  {
+   "id": "ginger",
+   "amount": "thumb"
+  },
+  {
+   "id": "carrot",
+   "amount": "1"
+  },
+  {
+   "id": "spring_onion",
+   "amount": "2"
+  },
+  {
+   "id": "eggs",
+   "amount": "2"
+  },
+  {
+   "id": "kimchi",
+   "amount": "1/2 cup"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Whisk soy, honey, sesame oil, gochujang, garlic, ginger.",
+   "detail": "Small bowl: 3 tbsp soy, 2 tbsp honey, 1 tbsp sesame oil, 1 tbsp gochujang, 3 grated garlic cloves, a thumb of grated ginger. Whisk till smooth. Taste — sweet, salty, a warm chilli heat from the gochujang. Adjust. Pre-mixing means you're not scrambling once the pan is hot."
+  },
+  {
+   "content": "Brown beef in hot pan, pour in sauce, reduce 2 min.",
+   "detail": "Hot pan, splash of oil over medium-high. Tip in 400g mince, break up with a wooden spoon. Don't touch 3 min for a brown crust on the base. Then break up and cook 3 more min till no pink remains. Pour the sauce in, toss 2 min till glossy and reduced to a sticky glaze that coats every grain of mince."
+  },
+  {
+   "content": "Julienne carrot.",
+   "detail": "Peel and julienne one carrot into matchstick strips — raw carrot for crunch is the bowl's textural backbone. No cooking needed."
+  },
+  {
+   "content": "Fry eggs sunny-side up.",
+   "detail": "Non-stick pan, butter, medium-low. Crack eggs. Sunny-side up: don't touch till whites are set and edges lacy, 3 min. The runny yolk mixed through at the end is what brings everything together."
+  },
+  {
+   "content": "Bowls: rice, beef, carrot, kimchi, egg, spring onion.",
+   "detail": "Deep bowls. Hot rice base. Beef mince piled on one side, julienned carrot stacked next to it, kimchi in its own corner, egg in the centre or on top. Sliced spring onion and sesame seeds scattered. At the table, mix everything together with a spoon — the broken yolk coats everything in richness."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "lemon-delicious",
+ "title": "Lemon Delicious Pudding",
+ "tags": [
+  "dessert",
+  "baking",
+  "comfort"
+ ],
+ "prep": 15,
+ "cook": 45,
+ "ingredients": [
+  {
+   "id": "lemon",
+   "amount": "3"
+  },
+  {
+   "id": "butter",
+   "amount": "60 g"
+  },
+  {
+   "id": "sugar",
+   "amount": "3/4 cup"
+  },
+  {
+   "id": "eggs",
+   "amount": "3"
+  },
+  {
+   "id": "flour",
+   "amount": "1/2 cup"
+  },
+  {
+   "id": "milk",
+   "amount": "1.5 cups"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Cream butter, sugar, lemon zest.",
+   "detail": "Stand mixer or beaters: 60g soft butter, 3/4 cup sugar, zest of 3 lemons. Beat 3 min till pale and fluffy — rub sugar and zest between fingers first (releases lemon oils into the sugar). The zest is where lemon's essential aromatics live; this one step transforms the dish."
+  },
+  {
+   "content": "Beat in yolks and flour alternately with milk.",
+   "detail": "Separate 3 eggs — yolks into the butter mix, whites into a spotlessly clean bowl. Beat the yolks in one at a time. Sift in 1/2 cup self-raising flour. Then 1.5 cups milk, alternating with more flour so it doesn't split. Batter will look quite loose — that's right. The milk forms the sauce layer below."
+  },
+  {
+   "content": "Stir in lemon juice.",
+   "detail": "Juice the 3 lemons. Stir into the loose batter. It might look curdled — totally fine, that's the dairy hitting acid. Stir gently, don't fret."
+  },
+  {
+   "content": "Whisk whites to soft peaks, fold in.",
+   "detail": "Clean beaters (any trace of fat prevents whipping), beat whites to SOFT peaks — flops slightly when you lift the beater. Stiffer = brutal to fold. Fold a third into the batter vigorously to loosen it, then fold the rest gently in sweeping strokes."
+  },
+  {
+   "content": "Pour into buttered dish, sit in water bath.",
+   "detail": "Butter a 1.5L baking dish. Pour the batter in — looks shallow and liquidy. Place the dish in a deep roasting tray. Pour boiling water into the tray to come halfway up the dish sides. The water bath is what creates the magic separation: sponge on top, curd-sauce below."
+  },
+  {
+   "content": "Bake 45 min at 170°C till golden and wobbly.",
+   "detail": "170°C oven, middle rack, 45 min. Done when the top is golden and slightly puffed, centre has a faint wobble, and you can see the sauce bubbling up at the edges. Rest 5 min. Scoop with a big spoon, making sure each serve gets both the sponge top AND the lemon curd underneath. Cream or ice cream."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "garlic-bread",
+ "title": "Pull-Apart Garlic Bread",
+ "tags": [
+  "side",
+  "vegetarian",
+  "italian",
+  "quick"
+ ],
+ "prep": 10,
+ "cook": 15,
+ "ingredients": [
+  {
+   "id": "bread",
+   "amount": "1 large loaf"
+  },
+  {
+   "id": "butter",
+   "amount": "150 g"
+  },
+  {
+   "id": "garlic",
+   "amount": "5 cloves"
+  },
+  {
+   "id": "parsley",
+   "amount": "big handful"
+  },
+  {
+   "id": "parmesan",
+   "amount": "50 g"
+  },
+  {
+   "id": "olive_oil",
+   "amount": "2 tbsp"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Slice loaf at 2cm intervals, almost all the way through.",
+   "detail": "Crusty loaf (sourdough baguette or vienna works best). Use a serrated knife. Slice at 2cm intervals but DON'T cut all the way through — leave 1cm connected at the bottom. The loaf stays intact but opens up like an accordion for spreading. Pull-apart magic."
+  },
+  {
+   "content": "Cream butter with crushed garlic, chopped parsley, parmesan.",
+   "detail": "Soft butter (room temp for easy mixing). 5 crushed garlic cloves (use a press or grate on a microplane — finely chopped doesn't distribute as well), a BIG handful of chopped parsley, 50g grated parmesan, pinch of salt. Mash together with a fork into a green-flecked paste. Taste — should be strongly garlicky and herby."
+  },
+  {
+   "content": "Slather between every slice.",
+   "detail": "Open each slit of the loaf with your fingers, smear the butter mix generously into every gap. Don't skimp — this is the whole point. Also spread a thin layer across the top and cut faces. Messy hands are expected."
+  },
+  {
+   "content": "Wrap in foil, bake 12 min at 200°C.",
+   "detail": "Wrap the whole loaf tightly in foil (keeps moisture in so the bread steams soft while the butter infuses). 200°C oven, middle rack, 12 min. The butter will have fully melted into the bread by now."
+  },
+  {
+   "content": "Open foil, grill 3 min till crispy tops.",
+   "detail": "Open the foil, leaving it like a boat around the loaf. Drizzle 2 tbsp olive oil across the top, scatter extra parmesan. Back under the grill on high for 3 min — watch CLOSELY — till the tops are crispy-gold. Tear apart with hands at the table. Hot, garlicky, herby, communal."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "pork-chops-apple",
+ "title": "Pork Chops with Apple & Sage",
+ "tags": [
+  "quick",
+  "family",
+  "comfort"
+ ],
+ "prep": 10,
+ "cook": 18,
+ "ingredients": [
+  {
+   "id": "pork_chop",
+   "amount": "2 thick"
+  },
+  {
+   "id": "apple",
+   "amount": "2"
+  },
+  {
+   "id": "sage",
+   "amount": "handful"
+  },
+  {
+   "id": "butter",
+   "amount": "50 g"
+  },
+  {
+   "id": "garlic",
+   "amount": "2 cloves"
+  },
+  {
+   "id": "olive_oil",
+   "amount": "1 tbsp"
+  },
+  {
+   "id": "dijon",
+   "amount": "1 tsp"
+  },
+  {
+   "id": "honey",
+   "amount": "1 tbsp"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Pat chops dry, season generously.",
+   "detail": "Take chops out of the fridge 15 min before cooking. Pat completely dry with paper towel — surface moisture steams instead of sears. Season both sides heavily with sea salt flakes and cracked pepper."
+  },
+  {
+   "content": "Core and wedge apples.",
+   "detail": "Quarter the apples, cut out cores, then slice each quarter into 3–4 wedges. Thick pieces hold shape and caramelise. Granny Smith or Pink Lady work best."
+  },
+  {
+   "content": "Sear chops 3 min a side.",
+   "detail": "Heat olive oil in a heavy pan over medium-high until shimmering. Lay chops in and don't touch them for 3 full minutes — leave them alone to form a crust. Flip once. Total 6–7 min for 2cm thick. Rest on a plate tented with foil."
+  },
+  {
+   "content": "Butter, apple, sage, garlic — 5 min.",
+   "detail": "Same pan (the browned bits are flavour). Melt butter. When it foams, add apple wedges, whole sage leaves, and smashed garlic. Spoon foaming butter over the apples for 5 min till deep gold on both sides. The sage leaves crisp — save for garnish."
+  },
+  {
+   "content": "Deglaze with dijon and honey, return chops.",
+   "detail": "Stir dijon and honey into the apple-butter with a splash of water. Nestle chops back in with any resting juices, warm through 1 min, spooning sauce over."
+  },
+  {
+   "content": "Plate with crispy sage on top.",
+   "detail": "Pork, apples piled alongside, sauce spooned over, crispy sage leaves perched on top. Mashed potato or buttered greens catch the pan sauce."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "pasta-puttanesca",
+ "title": "Spaghetti Puttanesca",
+ "tags": [
+  "italian",
+  "quick",
+  "pantry"
+ ],
+ "prep": 5,
+ "cook": 15,
+ "ingredients": [
+  {
+   "id": "spaghetti",
+   "amount": "200 g"
+  },
+  {
+   "id": "tinned_tomato",
+   "amount": "1 tin"
+  },
+  {
+   "id": "olive",
+   "amount": "1/2 cup pitted"
+  },
+  {
+   "id": "caper",
+   "amount": "2 tbsp"
+  },
+  {
+   "id": "garlic",
+   "amount": "3 cloves"
+  },
+  {
+   "id": "chilli",
+   "amount": "1"
+  },
+  {
+   "id": "olive_oil",
+   "amount": "1/3 cup"
+  },
+  {
+   "id": "parsley",
+   "amount": "handful"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Cook pasta just under al dente.",
+   "detail": "Salt well. 1 min less than packet. Reserve a cup of pasta water."
+  },
+  {
+   "content": "Warm oil with garlic and chilli, 2 min.",
+   "detail": "Thin-sliced garlic, sliced chilli, oil over medium-low till fragrant and pale gold. Don't brown — puttanesca is big flavour, no bitterness on top."
+  },
+  {
+   "content": "Olives and capers, 1 min.",
+   "detail": "Roughly chopped olives, drained capers. Stir through the oil a minute — they release brine into the base. Whole point."
+  },
+  {
+   "content": "Tomatoes, simmer 8 min.",
+   "detail": "Add tomatoes (crush whole ones with your hand). Simmer 8 min till thick, raw edge gone. Taste — intensely savoury. No more salt needed."
+  },
+  {
+   "content": "Pasta in with splash of water.",
+   "detail": "Drained pasta in with a splash of reserved water. Toss 30 sec to emulsify."
+  },
+  {
+   "content": "Parsley, pepper.",
+   "detail": "Off heat, torn parsley and plenty of cracked pepper. Traditionally no cheese — olives and capers are the salty work."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "creme-brulee",
+ "title": "Crème Brûlée",
+ "tags": [
+  "dessert",
+  "french",
+  "gluten-free"
+ ],
+ "prep": 15,
+ "cook": 45,
+ "ingredients": [
+  {
+   "id": "cream",
+   "amount": "500 ml"
+  },
+  {
+   "id": "eggs",
+   "amount": "5 yolks"
+  },
+  {
+   "id": "sugar",
+   "amount": "1/3 cup + 4 tbsp for top"
+  },
+  {
+   "id": "vanilla",
+   "amount": "1 tsp (or a pod)"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Heat cream with vanilla, rest 10 min.",
+   "detail": "Cream into a saucepan. Pod (split, seeds scraped, both in) or extract later. Warm till first steam and edge bubbles — DON'T boil. Off heat, cover, infuse 10 min. Fish out the pod."
+  },
+  {
+   "content": "Whisk yolks with sugar till pale.",
+   "detail": "Yolks and sugar, 2–3 min till pale and thickened. Colour change tells you sugar is dissolved. Extract goes in now if using."
+  },
+  {
+   "content": "Temper yolks with warm cream.",
+   "detail": "VERY slowly pour warm cream into yolks while whisking constantly. Too fast = scrambled. Strain through a sieve into a jug — catches any stray cooked bits."
+  },
+  {
+   "content": "Ramekins in a water bath.",
+   "detail": "Divide between 4 ramekins in a deep roasting tin. Boiling water into the tin to halfway up the ramekins — bath cooks custard gently and evenly."
+  },
+  {
+   "content": "Bake 40 min at 150°C till just set.",
+   "detail": "Middle rack. 40 min — centre should wobble like set jelly, not slosh. Carefully out, cool to room temp, then fridge 3 hr minimum (overnight perfect)."
+  },
+  {
+   "content": "Sugar on top, torch or grill.",
+   "detail": "Just before serving: 1 tbsp sugar on each, tilt to spread. Torch till deep amber (sweep, don't dwell), or very hot grill 1–2 min watching like a hawk. Caramel hardens 1 min."
+  },
+  {
+   "content": "Crack with the back of a spoon.",
+   "detail": "The moment. Tap caramel with back of a spoon — cracks like ice. Scoop through to cold custard. Eat now — caramel softens in 15 min from condensation."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "baba-ganoush",
+ "title": "Baba Ganoush",
+ "tags": [
+  "middle-eastern",
+  "vegan",
+  "dip",
+  "gluten-free"
+ ],
+ "prep": 15,
+ "cook": 40,
+ "ingredients": [
+  {
+   "id": "eggplant",
+   "amount": "2 large"
+  },
+  {
+   "id": "tahini",
+   "amount": "1/3 cup"
+  },
+  {
+   "id": "lemon",
+   "amount": "1"
+  },
+  {
+   "id": "garlic",
+   "amount": "1 clove"
+  },
+  {
+   "id": "olive_oil",
+   "amount": "2 tbsp"
+  },
+  {
+   "id": "sumac",
+   "amount": "1 tsp",
+   "is_optional": true
+  },
+  {
+   "id": "parsley",
+   "amount": "small handful",
+   "is_optional": true
+  }
+ ],
+ "steps": [
+  {
+   "content": "Char the whole eggplants until collapsed and blistered.",
+   "detail": "The whole point of baba ganoush is smoke. Sit the eggplants directly on a gas flame or under a screaming-hot grill, turning with tongs every few minutes, until the skin is blackened all over and the flesh has fully slumped — 12 to 15 min on flame. No gas? Roast whole at 220C for 45 min, prick first so they don't burst. They should look ruined; that's correct.",
+   "timer_seconds": 900
+  },
+  {
+   "content": "Cool, then scoop the flesh and drain it.",
+   "detail": "Let them cool enough to handle, slit open and scoop the soft flesh away from the charred skin — a few flecks of black are flavour, but don't include the bitter skin itself. Tip the flesh into a sieve and let it drain 10 min. Eggplant holds a lot of water and skipping this gives you a watery, sad dip.",
+   "timer_seconds": 600
+  },
+  {
+   "content": "Mash or pulse with tahini, lemon, garlic and salt.",
+   "detail": "Traditionalists chop by hand with a fork for a rustic texture; a quick pulse in the processor is fine too — just don't puree it to baby food, you want some body. Add the tahini, juice of the whole lemon, one finely grated garlic clove and a good pinch of salt. Taste: it should be tangy and nutty. Tahini varies wildly in bitterness, so adjust lemon and salt until it sings."
+  },
+  {
+   "content": "Spread, pool with olive oil, dust with sumac and parsley.",
+   "detail": "Swoosh into a shallow bowl with the back of a spoon, leaving a well in the middle. Pour the olive oil into the well, scatter the sumac for a lemony-purple tang and tear over parsley. Serve with warm flatbread. It tastes even better an hour later once the garlic mellows."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "kale-caesar",
+ "title": "Kale Caesar Salad",
+ "tags": [
+  "salad",
+  "vegetarian",
+  "make-ahead"
+ ],
+ "prep": 15,
+ "cook": 10,
+ "ingredients": [
+  {
+   "id": "kale",
+   "amount": "1 large bunch"
+  },
+  {
+   "id": "parmesan",
+   "amount": "60 g"
+  },
+  {
+   "id": "bread",
+   "amount": "3 slices"
+  },
+  {
+   "id": "garlic",
+   "amount": "2 cloves"
+  },
+  {
+   "id": "lemon",
+   "amount": "1"
+  },
+  {
+   "id": "dijon",
+   "amount": "1 tsp"
+  },
+  {
+   "id": "mayo",
+   "amount": "3 tbsp"
+  },
+  {
+   "id": "olive_oil",
+   "amount": "1/4 cup"
+  }
+ ],
+ "steps": [
+  {
+   "content": "Strip and shred the kale.",
+   "detail": "Hold a kale leaf by the stalk and run your other hand down it to strip the leaf off the tough centre rib — that rib is bitter and chewy, discard it. Stack the leaves, roll them up and slice into thin ribbons. Curly or cavolo nero both work."
+  },
+  {
+   "content": "Massage the kale.",
+   "detail": "This is the secret to a kale salad. Put the ribbons in a big bowl with a pinch of salt and a teaspoon of the oil, and scrunch and rub it with your hands for a full minute. It wilts down, darkens and softens, losing its raw squeak. Unlike lettuce, kale only gets better sitting in dressing, so you can do this ahead.",
+   "timer_seconds": 60
+  },
+  {
+   "content": "Make the croutons.",
+   "detail": "Tear or cube the bread into rough 2cm chunks and toss with a drizzle of oil and salt. Spread on a tray and bake at 200C for 8 to 10 min, or toast in a pan, until deeply golden and crunchy through. Rough torn edges catch more dressing than neat cubes.",
+   "timer_seconds": 540
+  },
+  {
+   "content": "Whisk the dressing.",
+   "detail": "In a jar or bowl combine the mayo, dijon, juice of the lemon, a grated clove of garlic and half the parmesan finely grated. Whisk in the olive oil until creamy. Taste — it should be sharp, salty and garlicky enough to stand up to the sturdy kale. Loosen with a splash of water if it's too thick. A traditional caesar uses anchovy and raw yolk; this mayo version is the easy, reliable route."
+  },
+  {
+   "content": "Toss and serve.",
+   "detail": "Pour most of the dressing over the massaged kale and toss hard so every ribbon is coated. Add the croutons and toss again. Pile onto plates, shave the rest of the parmesan over in ribbons, plenty of black pepper, and a final lemon wedge. It holds beautifully for an hour, so it's a great salad to make first."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "peach-cobbler",
+ "title": "Peach Cobbler",
+ "tags": [
+  "dessert",
+  "fruit",
+  "comfort",
+  "baking"
+ ],
+ "prep": 20,
+ "cook": 40,
+ "ingredients": [
+  {
+   "id": "peach",
+   "amount": "6 ripe"
+  },
+  {
+   "id": "sugar",
+   "amount": "3/4 cup"
+  },
+  {
+   "id": "flour",
+   "amount": "1 1/2 cups"
+  },
+  {
+   "id": "butter",
+   "amount": "100 g"
+  },
+  {
+   "id": "baking_powder",
+   "amount": "2 tsp"
+  },
+  {
+   "id": "milk",
+   "amount": "3/4 cup"
+  },
+  {
+   "id": "pecan",
+   "amount": "1/2 cup"
+  },
+  {
+   "id": "cinnamon",
+   "amount": "1/2 tsp"
+  },
+  {
+   "id": "ice_cream",
+   "amount": "to serve",
+   "is_optional": true
+  }
+ ],
+ "steps": [
+  {
+   "content": "Slice the peaches and toss with sugar and flour.",
+   "detail": "If the peaches are ripe, the skins slip off after a 30-second dunk in boiling water then ice water; firmer ones can stay skin-on. Slice into wedges and toss with 1/4 cup of the sugar, 1 tbsp flour and the cinnamon. The flour thickens the juices into a glossy filling instead of a watery puddle."
+  },
+  {
+   "content": "Tip the fruit into a buttered dish.",
+   "detail": "Butter a 20x25cm baking dish and spread the peaches out evenly. Slide it into the oven on its own for 10 min at 190°C to get the juices bubbling before the topping goes on — a pre-warmed filling means the biscuit lid bakes through instead of sitting on cold, raw fruit.",
+   "timer_seconds": 600
+  },
+  {
+   "content": "Rub butter into the flour, then mix the dough.",
+   "detail": "In a bowl, whisk 1 1/2 cups flour (minus the spoon used on the fruit), the remaining 1/2 cup sugar and 2 tsp baking powder. Rub in 100g cold cubed butter until sandy with pea-sized lumps. Stir in chopped pecans, then the milk just until it clumps into a shaggy dough — overmixing makes it tough and bready."
+  },
+  {
+   "content": "Dollop the dough over the hot fruit.",
+   "detail": "Pull the dish out and drop rough spoonfuls of dough over the peaches, leaving gaps so juice bubbles up through the cracks — that's the cobbled look the name comes from. Don't spread it smooth; the craggy peaks are what crisp up golden."
+  },
+  {
+   "content": "Bake 30 min until golden and bubbling.",
+   "detail": "Back into the 190°C oven for 28–32 min. It's ready when the topping is deep gold and a skewer in the centre biscuit comes out clean, and the fruit bubbles thickly at the edges. If the top browns before the middle sets, tent loosely with foil.",
+   "timer_seconds": 1800
+  },
+  {
+   "content": "Rest, then serve warm with ice cream.",
+   "detail": "Let it sit 10–15 min — the filling is molten straight out and needs to settle so it spoons up jammy rather than runny. Serve warm with cold vanilla ice cream that melts into the juices, or a pour of thickened cream."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "spinach-cheese-borek",
+ "title": "Spinach & Cheese Borek",
+ "tags": [
+  "balkan",
+  "vegetarian",
+  "baked"
+ ],
+ "prep": 25,
+ "cook": 35,
+ "ingredients": [
+  {
+   "id": "pastry_filo",
+   "amount": "1 packet"
+  },
+  {
+   "id": "feta",
+   "amount": "300 g"
+  },
+  {
+   "id": "spinach",
+   "amount": "300 g"
+  },
+  {
+   "id": "ricotta",
+   "amount": "200 g"
+  },
+  {
+   "id": "eggs",
+   "amount": "2"
+  },
+  {
+   "id": "butter",
+   "amount": "80 g"
+  },
+  {
+   "id": "olive_oil",
+   "amount": "2 tbsp"
+  },
+  {
+   "id": "sesame_oil",
+   "amount": "drizzle",
+   "is_optional": true
+  }
+ ],
+ "steps": [
+  {
+   "content": "Wilt and dry the spinach.",
+   "detail": "Wilt the spinach in a dry pan or with boiling water, cool, then squeeze it dry in fistfuls. As with any filo bake, water is the enemy — a wet filling steams the pastry from the inside and you lose the crunch that makes borek borek. Chop it roughly once it's drained."
+  },
+  {
+   "content": "Mash the cheese filling.",
+   "detail": "Crumble the feta into a bowl and mash with a fork, then mix in the ricotta, the spinach and one of the eggs (keep the second for the wash). The feta brings the salt and tang, the ricotta softens and binds it into a creamy spreadable mix. Taste and add pepper, but skip salt — the feta has it covered."
+  },
+  {
+   "content": "Set up your buttering station.",
+   "detail": "Melt the butter and stir in the olive oil — the oil stops the butter burning and keeps the pastry pliable. Unroll the filo and keep it under a damp tea towel between sheets. Brushing each sheet with the butter-oil mix is what gives you shattering layers, so don't rush this part or let the filo dry out."
+  },
+  {
+   "content": "Fill and roll into ropes.",
+   "detail": "Lay a filo sheet down, brush with butter, and spread a thin line of filling along the long edge. Roll it up into a long thin rope, not too tightly — too tight and it splits as it bakes, too loose and it unravels. Repeat until the filling is used up. A thin even line of filling beats a fat lump that bursts out the ends."
+  },
+  {
+   "content": "Coil into a spiral.",
+   "detail": "Starting from the centre of a round buttered tin, coil the first rope into a snail, then join the next rope onto its end and keep coiling outwards until the tin is filled. This classic spiral lets the rolls support each other so they hold their shape and bake evenly instead of flopping apart."
+  },
+  {
+   "content": "Egg wash and bake.",
+   "detail": "Beat the reserved egg and brush it all over the coil for that deep glossy bronze finish, with an optional drizzle of sesame oil on top. Bake at 180C for about 35 min until crisp and golden. Cool 10 min before slicing into wedges so the cheese sets and you get clean pieces.",
+   "timer_seconds": 2100
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "roast-grape-ricotta-toast",
+ "title": "Roast Grape & Ricotta Toast",
+ "tags": [
+  "breakfast",
+  "vegetarian",
+  "quick"
+ ],
+ "prep": 5,
+ "cook": 20,
+ "ingredients": [
+  {
+   "id": "grape",
+   "amount": "300 g (a couple of bunches)"
+  },
+  {
+   "id": "ricotta",
+   "amount": "200 g"
+  },
+  {
+   "id": "bread",
+   "amount": "4 thick slices"
+  },
+  {
+   "id": "honey",
+   "amount": "2 tbsp"
+  },
+  {
+   "id": "olive_oil",
+   "amount": "2 tbsp"
+  },
+  {
+   "id": "thyme",
+   "amount": "a few sprigs"
+  },
+  {
+   "id": "lemon",
+   "amount": "1/2"
+  },
+  {
+   "id": "walnut",
+   "amount": "1/4 cup",
+   "is_optional": true
+  }
+ ],
+ "steps": [
+  {
+   "content": "Toss grapes with oil and thyme, roast 18 min at 200°C.",
+   "detail": "Pull the grapes off their stems and scatter on a lined tray — leave them whole so they keep their juice until they burst. Toss with 1 tbsp olive oil, a pinch of salt and the thyme sprigs, then roast at 200°C for about 18 min until the skins split and they look shrunken and jammy. Roasting drives off water and concentrates the sugar, turning ordinary supermarket grapes into something sticky and intense.",
+   "timer_seconds": 1080
+  },
+  {
+   "content": "Whip the ricotta smooth with lemon.",
+   "detail": "Tip the ricotta into a bowl with a squeeze of lemon, a small drizzle of olive oil and a pinch of salt, then beat with a fork or whisk for a minute until it loosens and goes light. Shop ricotta is grainy straight from the tub — a quick whip turns it spreadable and almost like a soft cheese spread. The lemon lifts it so it doesn't taste flat under the sweet grapes."
+  },
+  {
+   "content": "Toast the bread well.",
+   "detail": "Toast thick slices of a good sourdough or country loaf until properly golden and crisp — soft bread goes soggy the moment the warm grapes land. A sturdy crust gives you something to bite against the soft ricotta and bursting fruit. Drizzle each slice with a little olive oil while still hot if you like."
+  },
+  {
+   "content": "Spread ricotta, pile on grapes, drizzle honey.",
+   "detail": "Spread the whipped ricotta thickly over each toast, then spoon over the roast grapes along with the syrupy juices left on the tray — that sticky liquid is liquid gold, don't waste it. Drizzle with honey, scatter the optional toasted walnuts for crunch, and finish with a few thyme leaves and a crack of pepper. Eat straight away while the grapes are warm against the cool ricotta."
+  }
+ ]
+}
+
+=====================
+
+{
+ "slug": "chilli-black-bean-soup",
+ "title": "Chilli Black Bean Soup",
+ "tags": [
+  "latin",
+  "vegetarian",
+  "budget",
+  "one-pot"
+ ],
+ "prep": 10,
+ "cook": 25,
+ "ingredients": [
+  {
+   "id": "tinned_black_bean",
+   "amount": "2 tins"
+  },
+  {
+   "id": "onion_brown",
+   "amount": "1"
+  },
+  {
+   "id": "capsicum_red",
+   "amount": "1"
+  },
+  {
+   "id": "garlic",
+   "amount": "3 cloves"
+  },
+  {
+   "id": "cumin",
+   "amount": "2 tsp"
+  },
+  {
+   "id": "chilli_powder",
+   "amount": "1 tsp"
+  },
+  {
+   "id": "stock_veg",
+   "amount": "750 ml"
+  },
+  {
+   "id": "lime",
+   "amount": "1"
+  },
+  {
+   "id": "sour_cream",
+   "amount": "to serve",
+   "is_optional": true
+  }
+ ],
+ "steps": [
+  {
+   "content": "Dice and soften the vegetables.",
+   "detail": "Finely dice the onion and capsicum, mince the garlic. Sweat the onion and capsicum in a glug of oil over medium heat for 6–8 min until soft and just starting to colour — this base of softened veg is the soup's backbone, so don't rush it. Add the garlic only in the last minute, as it burns and goes acrid faster than the rest."
+  },
+  {
+   "content": "Toast the spices.",
+   "detail": "Stir in the cumin and chilli powder and cook for 30 seconds until fragrant. Toasting ground spices in the hot oil before any liquid goes in is what wakes them up — it releases their oils and deepens the flavour. Keep it moving; dry spices catch and turn bitter in seconds."
+  },
+  {
+   "content": "Add beans and stock, then simmer.",
+   "detail": "Drain and rinse the black beans (the tin liquid is starchy and can taste tinny), then tip them in with the stock. Bring to a simmer and cook 15 min. A gentle simmer lets the beans break down a little and thicken the broth naturally — no flour needed."
+  },
+  {
+   "content": "Blend part of the soup.",
+   "detail": "Scoop out about a third of the soup and blitz it smooth, then stir it back in — or pulse a stick blender in the pot a few times. This half-blended trick gives you a creamy body while keeping whole beans for texture. For a thinner soup, loosen with a splash more stock."
+  },
+  {
+   "content": "Finish with lime and serve.",
+   "detail": "Squeeze in the lime juice off the heat — its acidity lifts the whole pot and brightens the earthy beans, so don't skip it. Taste and adjust salt. Ladle into bowls with a swirl of sour cream if you like. A bit of chilli powder bloomed in oil on top makes it look the part."
+  }
+ ]
+}

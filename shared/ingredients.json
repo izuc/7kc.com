@@ -607,7 +607,7 @@
   },
   {
     "id": "coffee",
-    "display": "Coffee beans",
+    "display": "Coffee (ground or brewed)",
     "section": "other",
     "shelf_life_days": 60
   },
@@ -778,12 +778,6 @@
     "display": "Ricotta",
     "section": "dairy",
     "shelf_life_days": 10
-  },
-  {
-    "id": "brie",
-    "display": "Brie",
-    "section": "dairy",
-    "shelf_life_days": 14
   },
   {
     "id": "mascarpone",
@@ -1258,5 +1252,53 @@
     "display": "White vinegar",
     "section": "pantry",
     "shelf_life_days": 1825
+  },
+  {
+    "id": "vinegar_rice",
+    "display": "Rice vinegar",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "vinegar_red_wine",
+    "display": "Red wine vinegar",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "vinegar_cider",
+    "display": "Apple cider vinegar",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "blue_cheese",
+    "display": "Blue cheese",
+    "section": "dairy",
+    "shelf_life_days": 30
+  },
+  {
+    "id": "rice_paper",
+    "display": "Rice paper wrappers",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "biscuit_sweet",
+    "display": "Sweet biscuits",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "pasta_linguine",
+    "display": "Linguine",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "flour_self_raising",
+    "display": "Self-raising flour",
+    "section": "pantry",
+    "shelf_life_days": 365
   }
 ]
