@@ -43,12 +43,12 @@ tests/rate-limiting/account-deletion.
 
 ## Phase 2 — Core loop & retention payoff
 
-- [ ] **#2 · Seed a starter pantry on signup** `H/M` — empty pantry ⇒ all recipes rank 0% and the hero pick never fires. Dismissable first-run "stock common staples / I'll add my own" that inserts 8–12 high-coverage staples (verify ids vs `shared/ingredients.json`) in `RegisterAction` via the injected `PantryRepository`.
+- [x] **#2 · Seed a starter pantry on signup** `H/M` — empty pantry ⇒ all recipes rank 0% and the hero pick never fires. Dismissable first-run "stock common staples / I'll add my own" that inserts 8–12 high-coverage staples (verify ids vs `shared/ingredients.json`) in `RegisterAction` via the injected `PantryRepository`.
 - [ ] **#9 · Food-waste & savings dashboard** `H/M` — brand is "Waste nothing" but no waste outcome is shown.
   - [ ] Log tosses (add `removed_at`/`removed_reason` or a removals log; "Toss it" currently hard-deletes with no trace).
   - [ ] `GET /api/v1/stats` aggregating `cooked_meals.removed_pantry_json` (rescued) vs tossed/expired; "Waste & savings" card on PantryPage.
   - [ ] *(Defer/premium:)* the "~$Y saved" figure (needs price data; only ever an estimate per the "presence not quantity" principle).
-- [ ] **#11 · "Your kitchen" cook history** `H/M` — `cooked_meals` is captured but only used to demote.
+- [~] **#11 · "Your kitchen" cook history** `H/M` — `cooked_meals` is captured but only used to demote. *(Recently-cooked rail + cook counts shipped; favourites + streak chip pending.)*
   - [ ] `GET /recipes/cooked` (group by recipe) → "Recently cooked" rail + "Cook it again" + "cooked Nx" badge + streak chip.
   - [ ] `recipe_favourites` table + heart on detail/cards (mirror `suggestion_likes`); replace the dead-end cook done-screen with Save / Cook-again.
 - [ ] **#16 · "Your kitchen today" home dashboard** `H/M` — new default authed screen (`/today`) composing existing queries (expiring items, top matches, active list, group feed when in a group). Best sequenced after #9 + #11. *(Spec lists "Home" first.)*
