@@ -13,6 +13,14 @@ if (file_exists($root . '/.env')) {
     Dotenv::createImmutable($root)->load();
 }
 
+// Optional error monitoring — active only when SENTRY_DSN is set and the SDK is installed.
+if (($_ENV['SENTRY_DSN'] ?? '') !== '' && function_exists('Sentry\\init')) {
+    \Sentry\init([
+        'dsn' => $_ENV['SENTRY_DSN'],
+        'environment' => $_ENV['APP_ENV'] ?? 'production',
+    ]);
+}
+
 $builder = new ContainerBuilder();
 $builder->addDefinitions(require $root . '/config/dependencies.php');
 $container = $builder->build();

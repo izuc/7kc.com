@@ -23,9 +23,22 @@ final class ErrorHandler implements ErrorHandlerInterface
     ): ResponseInterface {
         $isHttp = $exception instanceof HttpException;
         $status = $isHttp ? $exception->getCode() : 500;
-        // Never leak internal exception details (SQL, paths) to clients on unexpected errors.
-        if (!$isHttp) {
-            error_log((string)$exception);
+        // Log server errors (incl. thrown 5xx HttpExceptions) as structured JSON, joinable
+        // to the client via X-Request-Id; report to Sentry when configured (no-op otherwise).
+        if ($status >= 500) {
+            error_log((string)json_encode([
+                'level' => 'error',
+                'ts' => date('c'),
+                'request_id' => $request->getHeaderLine('X-Request-Id'),
+                'method' => $request->getMethod(),
+                'path' => $request->getUri()->getPath(),
+                'status' => $status,
+                'error' => get_class($exception),
+                'message' => $exception->getMessage(),
+            ], JSON_UNESCAPED_SLASHES));
+            if (($_ENV['SENTRY_DSN'] ?? '') !== '' && function_exists('Sentry\\captureException')) {
+                \Sentry\captureException($exception);
+            }
         }
         $body = [
             'error' => match ($status) {

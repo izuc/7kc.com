@@ -36,4 +36,10 @@ return function (App $app): void {
         true
     );
     $errorMiddleware->setDefaultErrorHandler(new ErrorHandler((bool)$settings['app']['debug']));
+
+    // Outermost: tag every request/response with a correlation id (echoed + readable by the error handler).
+    $app->add(function (ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface {
+        $rid = $request->getHeaderLine('X-Request-Id') ?: bin2hex(random_bytes(8));
+        return $handler->handle($request->withHeader('X-Request-Id', $rid))->withHeader('X-Request-Id', $rid);
+    });
 };
