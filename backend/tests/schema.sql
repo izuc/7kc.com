@@ -3,7 +3,8 @@ CREATE TABLE ingredients (
   id TEXT PRIMARY KEY, display TEXT, section TEXT, shelf_life_days INTEGER, aliases_json TEXT
 );
 CREATE TABLE users (
-  id TEXT PRIMARY KEY, email TEXT, password_hash TEXT, display_name TEXT, group_id TEXT, created_at INTEGER
+  id TEXT PRIMARY KEY, email TEXT, password_hash TEXT, display_name TEXT, group_id TEXT, created_at INTEGER,
+  diet_json TEXT, last_seen_feed_at INTEGER
 );
 CREATE TABLE shopping_lists (
   id TEXT PRIMARY KEY, owner_user_id TEXT, group_id TEXT, name TEXT, created_at INTEGER, archived_at INTEGER
@@ -31,6 +32,9 @@ CREATE TABLE recipe_steps (
 );
 CREATE TABLE recipe_favourites (
   user_id TEXT, recipe_id TEXT, created_at INTEGER, PRIMARY KEY (user_id, recipe_id)
+);
+CREATE TABLE group_feed_events (
+  id TEXT PRIMARY KEY, group_id TEXT, user_id TEXT, kind TEXT, payload_json TEXT, created_at INTEGER
 );
 CREATE TABLE rate_limits (
   bucket TEXT PRIMARY KEY, count INTEGER DEFAULT 0, window_start INTEGER

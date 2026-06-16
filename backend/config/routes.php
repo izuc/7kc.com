@@ -9,6 +9,8 @@ use SevenKC\Action\Auth\RegisterAction;
 use SevenKC\Action\Auth\SetDietAction;
 use SevenKC\Action\Groups\CreateGroupAction;
 use SevenKC\Action\Groups\GetFeedAction;
+use SevenKC\Action\Groups\UnreadFeedAction;
+use SevenKC\Action\Groups\MarkFeedSeenAction;
 use SevenKC\Action\Groups\GetMyGroupAction;
 use SevenKC\Action\Groups\JoinGroupAction;
 use SevenKC\Action\Groups\LeaveGroupAction;
@@ -123,6 +125,8 @@ return function (App $app): void {
             $a->post('/groups/join', JoinGroupAction::class);
             $a->post('/groups/leave', LeaveGroupAction::class);
             $a->get('/groups/feed', GetFeedAction::class);
+            $a->get('/groups/unread', UnreadFeedAction::class);
+            $a->post('/groups/feed/seen', MarkFeedSeenAction::class);
             $a->get('/groups/suggestions', ListSuggestionsAction::class);
             $a->post('/groups/suggestions', CreateSuggestionAction::class);
             $a->post('/groups/suggestions/{id}/like', LikeSuggestionAction::class);

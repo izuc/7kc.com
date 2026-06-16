@@ -60,6 +60,17 @@ final class UserRepository
         $this->db->update('users', ['diet_json' => json_encode(array_values($diet))], ['id' => $userId]);
     }
 
+    public function lastSeenFeedAt(string $userId): int
+    {
+        $row = $this->db->fetchAssociative('SELECT last_seen_feed_at FROM users WHERE id = ?', [$userId]);
+        return (int)($row['last_seen_feed_at'] ?? 0);
+    }
+
+    public function markFeedSeen(string $userId, int $ts): void
+    {
+        $this->db->update('users', ['last_seen_feed_at' => $ts], ['id' => $userId]);
+    }
+
     /**
      * Hard-delete a user and all their data in one transaction. Any group they OWN is
      * handed to the longest-tenured remaining member, or dissolved if they were the

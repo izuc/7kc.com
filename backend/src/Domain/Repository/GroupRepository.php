@@ -98,6 +98,15 @@ final class GroupRepository
         );
     }
 
+    /** Feed events in the group newer than $since and not authored by $userId (your own actions don't count as unread). */
+    public function unreadCount(string $groupId, string $userId, int $since): int
+    {
+        return (int)$this->db->fetchOne(
+            'SELECT COUNT(*) FROM group_feed_events WHERE group_id = ? AND user_id != ? AND created_at > ?',
+            [$groupId, $userId, $since]
+        );
+    }
+
     public function pushEvent(string $groupId, string $userId, string $kind, array $payload = []): void
     {
         $this->db->insert('group_feed_events', [
