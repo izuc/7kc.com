@@ -46,8 +46,35 @@ export function RecipeDetailPage() {
     return { have, missing };
   }, [recipeData, pantryData]);
 
-  if (isLoading) return <div className="empty">Loading recipe…</div>;
-  if (!recipeData?.recipe) return <div className="empty">Recipe not found.</div>;
+  if (isLoading)
+    return (
+      <div className="screen recipe-detail">
+        <Link to="/recipes" className="back-btn">
+          <Icon name="arrow" size={14} /> Back to recipes
+        </Link>
+        <div className="empty">
+          <Icon name="chef" size={26} />
+          <p>Loading the recipe…</p>
+        </div>
+      </div>
+    );
+  if (!recipeData?.recipe)
+    return (
+      <div className="screen recipe-detail">
+        <Link to="/recipes" className="back-btn">
+          <Icon name="arrow" size={14} /> Back to recipes
+        </Link>
+        <div className="empty">
+          <Icon name="search" size={26} />
+          <p>
+            <b>We couldn't find that recipe.</b> It may have been removed.
+          </p>
+          <Link className="btn btn-primary" to="/recipes">
+            Browse all recipes
+          </Link>
+        </div>
+      </div>
+    );
 
   const recipe = recipeData.recipe;
   const isFav = (favData?.recipes ?? []).some((r) => r.id === recipe.id);

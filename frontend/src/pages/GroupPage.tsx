@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
@@ -30,15 +30,20 @@ export function GroupPage() {
     queryFn: () => api.recipes(),
     staleTime: 10 * 60 * 1000,
   });
-  const recipeByTitle = new Map<string, RecipeSummary>();
-  for (const r of recipesData?.recipes ?? []) recipeByTitle.set(r.title, r);
+  const recipeByTitle = useMemo(() => {
+    const m = new Map<string, RecipeSummary>();
+    for (const r of recipesData?.recipes ?? []) m.set(r.title, r);
+    return m;
+  }, [recipesData]);
 
   // Viewing the group marks the feed seen → clears the unread badge in the nav.
-  const feedCount = feedData?.feed.length ?? 0;
+  // Fire once per visit (not on every feed refetch).
+  const markedRef = useRef(false);
   useEffect(() => {
-    if (!user?.group_id || !feedData) return;
+    if (!user?.group_id || !feedData || markedRef.current) return;
+    markedRef.current = true;
     api.markFeedSeen().then(() => qc.invalidateQueries({ queryKey: ['feed-unread'] })).catch(() => {});
-  }, [user?.group_id, feedData, feedCount, qc]);
+  }, [user?.group_id, feedData, qc]);
 
   if (!user?.group_id) {
     return (
@@ -188,7 +193,7 @@ function SuggestionCard({
         <div className="suggestion-head">
           <Avatar user={{ user_id: by.user_id, display_name: by.display_name, color: by.color }} size={18} />
           <span>
-            <b>{by.display_name}</b> suggested
+            <b>{s.suggested_by === currentUserId ? 'You' : by.display_name}</b> suggested
           </span>
           {s.suggested_for_date && <span className="tag tag-sage">{s.suggested_for_date}</span>}
         </div>

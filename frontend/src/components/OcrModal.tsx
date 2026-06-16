@@ -204,7 +204,7 @@ export function OcrModal({
         <div style={{ textAlign: 'center' }}>
           <img
             src={preview}
-            alt="preview"
+            alt="Selected photo to scan for text"
             style={{ maxWidth: '100%', maxHeight: 320, borderRadius: 'var(--radius-sm)' }}
           />
           <div className="mono small muted" style={{ marginTop: 6 }}>

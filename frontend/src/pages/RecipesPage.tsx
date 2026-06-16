@@ -84,6 +84,10 @@ export function RecipesPage() {
   };
 
   const topPick = ranked[0];
+  // The hero pick is ranked by score (which also weights expiring + recently-cooked),
+  // so ranked[0] isn't necessarily the best pantry match. Gauge "can I cook anything?"
+  // off the genuinely-best match, not just the top card.
+  const bestMatch = useMemo(() => ranked.reduce((m, r) => Math.max(m, r.pantry_match), 0), [ranked]);
 
   if (isLoading) {
     return (
@@ -126,7 +130,7 @@ export function RecipesPage() {
 
       {showNew && <NewRecipeModal onClose={() => setShowNew(false)} />}
 
-      {(!topPick || topPick.pantry_match < 0.5) && (
+      {bestMatch < 0.5 && (
         <div className="empty">
           <Icon name="pantry" size={26} />
           <p>
