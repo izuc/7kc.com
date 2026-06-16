@@ -72,7 +72,7 @@ tests/rate-limiting/account-deletion.
 ## Phase 5 — Strategic bets (the big value)
 
 - [ ] **#10 · Notification infrastructure** `H/H` — build once, reuse everywhere.
-  - [ ] Slice 1 (cheap, first): group unread badge (`last_seen_feed_at` + `GET /groups/unread` → existing NavItem badge).
+  - [x] Slice 1 (cheap, first): group unread badge (`last_seen_feed_at` + `GET /groups/unread` → existing NavItem badge). ✅ `users.last_seen_feed_at` + `GroupRepository.unreadCount` (events newer than last-seen, excluding your own actions) → `GET /groups/unread` + `POST /groups/feed/seen`; AppShell polls (`['feed-unread']`, 60 s) and badges the Group nav item (count on desktop, dot on mobile); opening GroupPage marks seen + clears it. Verified live (cross-user direction, own-actions-excluded, mark-seen-clears, solo→0) + 2 PHPUnit tests.
   - [ ] Slice 2: web push (custom SW via VitePWA `injectManifest`, `push_subscriptions` table + subscribe endpoint, `minishlink/web-push`, CLI cron scanning the 0–3-day expiry window).
   - [ ] Slice 3: weekly "use-it-up" digest email (SMTP, `users.digest_optin` + unsubscribe). Strictly transactional/opt-in.
 - [ ] **#13 · Offline write queue + cache `/lists` & `/pantry`** `H/H` — optimistic local updates (absent today) + IndexedDB outbox flushed on reconnect (Workbox BackgroundSync is already a transitive dep) + NetworkFirst caching. ⚠️ `toggle-bought` is a server-side **flip** (not idempotent) — queue a desired target state or dedupe per item.
