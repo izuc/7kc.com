@@ -44,7 +44,7 @@ tests/rate-limiting/account-deletion.
 ## Phase 2 — Core loop & retention payoff
 
 - [x] **#2 · Seed a starter pantry on signup** `H/M` — empty pantry ⇒ all recipes rank 0% and the hero pick never fires. Dismissable first-run "stock common staples / I'll add my own" that inserts 8–12 high-coverage staples (verify ids vs `shared/ingredients.json`) in `RegisterAction` via the injected `PantryRepository`.
-- [ ] **#9 · Food-waste & savings dashboard** `H/M` — brand is "Waste nothing" but no waste outcome is shown.
+- [x] **#9 · Food-waste & savings dashboard** `H/M` — brand is "Waste nothing" but no waste outcome is shown.
   - [ ] Log tosses (add `removed_at`/`removed_reason` or a removals log; "Toss it" currently hard-deletes with no trace).
   - [ ] `GET /api/v1/stats` aggregating `cooked_meals.removed_pantry_json` (rescued) vs tossed/expired; "Waste & savings" card on PantryPage.
   - [ ] *(Defer/premium:)* the "~$Y saved" figure (needs price data; only ever an estimate per the "presence not quantity" principle).
