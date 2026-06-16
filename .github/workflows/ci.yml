@@ -33,6 +33,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Recipe data quality (gating)
+        run: node scripts/validate-recipes.mjs
       - name: Diet tag/ingredient consistency
         run: node scripts/validate-diet.mjs
         continue-on-error: true
