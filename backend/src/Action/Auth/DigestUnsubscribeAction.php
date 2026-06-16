@@ -6,6 +6,7 @@ namespace SevenKC\Action\Auth;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use SevenKC\Domain\Repository\UserRepository;
+use SevenKC\Support\RateLimiter;
 
 /**
  * Public, no-auth unsubscribe landing for the weekly digest (email links carry no JWT).
@@ -14,10 +15,17 @@ use SevenKC\Domain\Repository\UserRepository;
  */
 final class DigestUnsubscribeAction
 {
-    public function __construct(private readonly UserRepository $users) {}
+    public function __construct(
+        private readonly UserRepository $users,
+        private readonly RateLimiter $limiter,
+    ) {}
 
     public function __invoke(ServerRequestInterface $req, ResponseInterface $res): ResponseInterface
     {
+        $ip = RateLimiter::clientIp($req);
+        if (($retry = $this->limiter->check("unsub:ip:$ip", 20, 60)) !== null) {
+            return RateLimiter::tooMany($res, $retry);
+        }
         $token = trim((string)($req->getQueryParams()['token'] ?? ''));
         if ($token !== '') {
             $user = $this->users->byUnsubscribeToken($token);

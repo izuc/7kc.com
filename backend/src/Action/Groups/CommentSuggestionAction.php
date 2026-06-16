@@ -28,6 +28,7 @@ final class CommentSuggestionAction
         $body = (array)($req->getParsedBody() ?? []);
         $content = trim((string)($body['content'] ?? ''));
         if ($content === '') return Json::error($res, 'bad_request', 'Content required', 400);
+        if (mb_strlen($content) > 1000) return Json::error($res, 'bad_request', 'Comment is too long (max 1000 characters).', 400);
         $id = $this->groups->addComment($args['id'], $userId, $content);
         $this->groups->pushEvent($groupId, $userId, 'comment', [
             'suggestion_id' => $args['id'],

@@ -7,6 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use SevenKC\Domain\Repository\IngredientRepository;
 use SevenKC\Domain\Repository\ShoppingListRepository;
+use SevenKC\Domain\Repository\UserRepository;
 use SevenKC\Infrastructure\Http\Json;
 
 final class AddListItemsAction
@@ -14,13 +15,18 @@ final class AddListItemsAction
     public function __construct(
         private readonly ShoppingListRepository $lists,
         private readonly IngredientRepository $ingredients,
+        private readonly UserRepository $users,
     ) {}
 
     public function __invoke(ServerRequestInterface $req, ResponseInterface $res, array $args): ResponseInterface
     {
         $userId = (string)$req->getAttribute('user_id');
         $listId = $args['id'];
-        if (!$this->lists->find($listId)) return Json::error($res, 'not_found', 'List not found', 404);
+        // Ownership-scoped (BOLA guard) — matches every sibling list-write action.
+        $groupId = $this->users->groupIdFor($userId);
+        if (!$this->lists->findForUser($listId, $userId, $groupId)) {
+            return Json::error($res, 'not_found', 'List not found', 404);
+        }
         $body = (array)($req->getParsedBody() ?? []);
         $items = $body['items'] ?? [];
         $created = [];
@@ -36,7 +42,7 @@ final class AddListItemsAction
             $created[] = $this->lists->addItem($listId, $userId, $ingId, $custom, $section);
         }
         return Json::send($res, [
-            'list' => $this->lists->findWithItems($listId),
+            'list' => $this->lists->findWithItemsForUser($listId, $userId, $groupId),
             'added' => $created,
         ], 201);
     }

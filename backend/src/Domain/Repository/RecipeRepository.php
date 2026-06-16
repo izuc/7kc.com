@@ -196,8 +196,10 @@ final class RecipeRepository
             'tags_json' => json_encode($payload['tags'] ?? []),
             'palette_json' => json_encode($payload['palette'] ?? ['#8c8c8c', '#d4d4d4']),
             'dish_form' => $payload['dish_form'] ?? null,
-            'source' => $payload['source'] ?? null,
-            'image_url' => $payload['image_url'] ?? null,
+            // Only persist http(s) URLs — never a javascript:/data: scheme that could
+            // execute if `source` is later rendered as a link.
+            'source' => self::safeUrl($payload['source'] ?? null),
+            'image_url' => self::safeUrl($payload['image_url'] ?? null),
             'is_custom' => 1,
             'owner_user_id' => $ownerId,
             'group_id' => $groupId,
@@ -324,6 +326,14 @@ final class RecipeRepository
             'owner_user_id' => $r['owner_user_id'],
             'group_id' => $r['group_id'],
         ];
+    }
+
+    /** Keep a URL only if it's a well-formed http(s) link; otherwise null. */
+    private static function safeUrl(?string $url): ?string
+    {
+        $url = $url !== null ? trim($url) : '';
+        if ($url === '' || !filter_var($url, FILTER_VALIDATE_URL)) return null;
+        return in_array(strtolower((string)parse_url($url, PHP_URL_SCHEME)), ['http', 'https'], true) ? $url : null;
     }
 
     private function slugify(string $s): string
