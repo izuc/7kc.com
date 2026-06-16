@@ -47,6 +47,19 @@ export default defineConfig(({ mode }) => {
               handler: 'StaleWhileRevalidate',
               options: { cacheName: 'api-reads' },
             },
+            {
+              // Lists & pantry must render offline (the supermarket case) — serve the
+              // last-fetched copy when the network is unavailable. Writes go through
+              // the offline outbox, so a brief stale read reconciles on reconnect.
+              urlPattern: /\/api\/v1\/(lists|pantry)(\?|$)/,
+              handler: 'NetworkFirst',
+              method: 'GET',
+              options: {
+                cacheName: 'api-lists-pantry',
+                networkTimeoutSeconds: 4,
+                expiration: { maxEntries: 16, maxAgeSeconds: 60 * 60 * 24 * 7 },
+              },
+            },
           ],
         },
       }),

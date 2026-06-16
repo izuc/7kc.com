@@ -113,8 +113,11 @@ export const api = {
     }),
   deleteListItem: (listId: string, itemId: string) =>
     request<{ ok: boolean }>(`/lists/${listId}/items/${itemId}`, { method: 'DELETE' }),
-  toggleBought: (listId: string, itemId: string) =>
-    request<{ is_bought: boolean }>(`/lists/${listId}/items/${itemId}/toggle-bought`, { method: 'POST' }),
+  toggleBought: (listId: string, itemId: string, target?: boolean) =>
+    request<{ is_bought: boolean }>(`/lists/${listId}/items/${itemId}/toggle-bought`, {
+      method: 'POST',
+      ...(target === undefined ? {} : { body: JSON.stringify({ is_bought: target }) }),
+    }),
   markAllBought: (listId: string) =>
     request<{ marked: number }>(`/lists/${listId}/mark-all-bought`, { method: 'POST' }),
   moveBoughtToPantry: (listId: string, exclude: string[] = []) =>
