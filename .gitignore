@@ -24,3 +24,6 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# recipe-QA scratch
+scripts/.qa-*
