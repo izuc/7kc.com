@@ -12,6 +12,7 @@ const paths: Record<string, ReactNode> = {
     </>
   ),
   plus: <path d="M12 5v14M5 12h14" />,
+  minus: <path d="M5 12h14" />,
   check: <path d="M5 12l5 5L20 7" />,
   x: <path d="M6 6l12 12M18 6L6 18" />,
   clock: (

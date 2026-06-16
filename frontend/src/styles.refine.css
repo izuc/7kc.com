@@ -355,3 +355,47 @@ h3 {
 @media (prefers-reduced-motion: reduce) {
   .sync-banner .sync-dot { animation: none; }
 }
+
+/* Servings stepper (display-only ingredient scaling) */
+.ings-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.servings-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.servings-stepper .step-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--line, #e7ddd1);
+  background: var(--surface, #fff);
+  color: var(--ink, #2b2b2b);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.servings-stepper .step-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent-ink, var(--accent));
+}
+.servings-stepper .step-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.servings-stepper .servings-count {
+  min-width: 1.6em;
+  text-align: center;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+@media print {
+  .servings-stepper { display: none !important; }
+}

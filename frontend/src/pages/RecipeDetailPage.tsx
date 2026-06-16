@@ -8,8 +8,10 @@ import { MealPlate } from '../components/MealPlate';
 import { MethodBlock } from '../components/MethodBlock';
 import { AffiliateButtons } from '../components/AffiliateButtons';
 import { trackEvent } from '../lib/analytics';
+import { scaleAmount } from '../lib/scaleAmount';
 import { useAuth } from '../store/auth';
 import { useUi } from '../store/ui';
+import type { RecipeIngredient } from '../types/models';
 
 export function RecipeDetailPage() {
   const { slug } = useParams();
@@ -167,20 +169,7 @@ export function RecipeDetailPage() {
 
       <div className="recipe-detail-body">
         <div>
-          <h3>Ingredients</h3>
-          <ul className="recipe-ings">
-            {recipe.ingredients.map((i, idx) => {
-              const has = i.ingredient_id && have.includes(i.ingredient_id);
-              const named = i.display || i.ingredient_id;
-              return (
-                <li key={idx} className={has ? 'have' : 'miss'}>
-                  <span className="dot">{has ? <Icon name="check" size={11} /> : ''}</span>
-                  <span className="ing-name">{named || i.amount}</span>
-                  <span className="ing-amt mono small muted">{named ? i.amount : ''}</span>
-                </li>
-              );
-            })}
-          </ul>
+          <IngredientsPanel ingredients={recipe.ingredients} baseServings={recipe.servings} have={have} />
           <AffiliateButtons
             query={recipe.ingredients.map((i) => i.display || i.ingredient_id).filter(Boolean).join(', ')}
             unboughtCount={recipe.ingredients.length}
@@ -204,6 +193,65 @@ export function RecipeDetailPage() {
         />
       )}
     </div>
+  );
+}
+
+/** Ingredients list with a display-only servings stepper that scales the shown
+ * amounts. Kept in its own component so the servings state hook lives below the
+ * parent's early returns (Rules of Hooks). Nothing here is persisted. */
+function IngredientsPanel({
+  ingredients,
+  baseServings,
+  have,
+}: {
+  ingredients: RecipeIngredient[];
+  baseServings: number;
+  have: string[];
+}) {
+  const base = baseServings > 0 ? baseServings : 1;
+  const [servings, setServings] = useState(base);
+  const factor = servings / base;
+
+  return (
+    <>
+      <div className="ings-head">
+        <h3>Ingredients</h3>
+        <div className="servings-stepper" role="group" aria-label="Adjust servings">
+          <span className="mono small muted">Serves</span>
+          <button
+            className="step-btn"
+            aria-label="Fewer servings"
+            disabled={servings <= 1}
+            onClick={() => setServings((s) => Math.max(1, s - 1))}
+          >
+            <Icon name="minus" size={14} />
+          </button>
+          <span className="servings-count" aria-live="polite">{servings}</span>
+          <button
+            className="step-btn"
+            aria-label="More servings"
+            disabled={servings >= 99}
+            onClick={() => setServings((s) => Math.min(99, s + 1))}
+          >
+            <Icon name="plus" size={14} />
+          </button>
+        </div>
+      </div>
+      <ul className="recipe-ings">
+        {ingredients.map((i, idx) => {
+          const has = i.ingredient_id && have.includes(i.ingredient_id);
+          const named = i.display || i.ingredient_id;
+          const amt = scaleAmount(i.amount, factor);
+          return (
+            <li key={idx} className={has ? 'have' : 'miss'}>
+              <span className="dot">{has ? <Icon name="check" size={11} /> : ''}</span>
+              <span className="ing-name">{named || amt}</span>
+              <span className="ing-amt mono small muted">{named ? amt : ''}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </>
   );
 }
 
