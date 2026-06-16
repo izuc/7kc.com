@@ -66,6 +66,19 @@ final class UserRepository
         return (int)($row['last_seen_feed_at'] ?? 0);
     }
 
+    /** The user's current token generation; tokens carry this as a `tv` claim. */
+    public function tokenVersion(string $userId): int
+    {
+        $row = $this->db->fetchAssociative('SELECT token_version FROM users WHERE id = ?', [$userId]);
+        return (int)($row['token_version'] ?? 0);
+    }
+
+    /** Atomically advance the token generation, invalidating every outstanding token ("sign out everywhere"). */
+    public function bumpTokenVersion(string $userId): void
+    {
+        $this->db->executeStatement('UPDATE users SET token_version = token_version + 1 WHERE id = ?', [$userId]);
+    }
+
     public function markFeedSeen(string $userId, int $ts): void
     {
         $this->db->update('users', ['last_seen_feed_at' => $ts], ['id' => $userId]);

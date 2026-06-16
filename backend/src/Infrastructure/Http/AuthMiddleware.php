@@ -7,12 +7,16 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use SevenKC\Domain\Repository\UserRepository;
 use SevenKC\Infrastructure\Auth\JwtService;
 use Slim\Psr7\Response;
 
 final class AuthMiddleware implements MiddlewareInterface
 {
-    public function __construct(private readonly JwtService $jwt) {}
+    public function __construct(
+        private readonly JwtService $jwt,
+        private readonly UserRepository $users,
+    ) {}
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
@@ -25,7 +29,17 @@ final class AuthMiddleware implements MiddlewareInterface
         } catch (\Throwable $e) {
             return self::unauthorized('Invalid token: ' . $e->getMessage());
         }
-        $request = $request->withAttribute('user_id', $payload['sub'] ?? null)
+        $userId = $payload['sub'] ?? null;
+        // Token-generation check: "sign out everywhere" bumps the user's token_version.
+        // A legacy token with no `tv` claim reads as 0, matching new users' default,
+        // so already-issued tokens keep working until the user revokes them.
+        if ($userId !== null) {
+            $tokenTv = isset($payload['tv']) ? (int)$payload['tv'] : 0;
+            if ($tokenTv !== $this->users->tokenVersion($userId)) {
+                return self::unauthorized('Token revoked');
+            }
+        }
+        $request = $request->withAttribute('user_id', $userId)
             ->withAttribute('jwt', $payload);
         return $handler->handle($request);
     }

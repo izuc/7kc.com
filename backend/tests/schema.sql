@@ -4,7 +4,7 @@ CREATE TABLE ingredients (
 );
 CREATE TABLE users (
   id TEXT PRIMARY KEY, email TEXT, password_hash TEXT, display_name TEXT, group_id TEXT, created_at INTEGER,
-  diet_json TEXT, last_seen_feed_at INTEGER
+  diet_json TEXT, last_seen_feed_at INTEGER, token_version INTEGER NOT NULL DEFAULT 0
 );
 CREATE TABLE shopping_lists (
   id TEXT PRIMARY KEY, owner_user_id TEXT, group_id TEXT, name TEXT, created_at INTEGER, archived_at INTEGER

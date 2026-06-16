@@ -7,6 +7,7 @@ use SevenKC\Action\Auth\ExportUserAction;
 use SevenKC\Action\Auth\MeAction;
 use SevenKC\Action\Auth\RegisterAction;
 use SevenKC\Action\Auth\SetDietAction;
+use SevenKC\Action\Auth\SignOutEverywhereAction;
 use SevenKC\Action\Groups\CreateGroupAction;
 use SevenKC\Action\Groups\GetFeedAction;
 use SevenKC\Action\Groups\UnreadFeedAction;
@@ -88,6 +89,7 @@ return function (App $app): void {
         $g->group('', function (RouteCollectorProxy $a) {
             $a->get('/auth/me', MeAction::class);
             $a->post('/auth/diet', SetDietAction::class);
+            $a->post('/auth/sign-out-everywhere', SignOutEverywhereAction::class);
             $a->get('/auth/me/export', ExportUserAction::class);
             $a->delete('/auth/me', DeleteUserAction::class);
             $a->get('/stats', StatsAction::class);

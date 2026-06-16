@@ -27,4 +27,15 @@ final class UserRepositoryTest extends TestCase
         $repo->setGroup($user['id'], 'grp1');
         $this->assertSame('grp1', $repo->groupIdFor($user['id']));
     }
+
+    public function testTokenVersionStartsAtZeroAndBumps(): void
+    {
+        $repo = new UserRepository($this->db);
+        $user = $repo->create('a@b.com', 'x', null);
+        $this->assertSame(0, $repo->tokenVersion($user['id']));
+        $repo->bumpTokenVersion($user['id']);
+        $this->assertSame(1, $repo->tokenVersion($user['id']));
+        $repo->bumpTokenVersion($user['id']);
+        $this->assertSame(2, $repo->tokenVersion($user['id']));
+    }
 }

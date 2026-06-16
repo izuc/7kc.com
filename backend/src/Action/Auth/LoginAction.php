@@ -37,7 +37,7 @@ final class LoginAction
             return Json::error($res, 'unauthorized', 'Invalid credentials', 401);
         }
         return Json::send($res, [
-            'token' => $this->jwt->issue($user['id']),
+            'token' => $this->jwt->issue($user['id'], ['tv' => (int)($user['token_version'] ?? 0)]),
             'user' => [
                 'id' => $user['id'],
                 'email' => $user['email'],

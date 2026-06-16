@@ -44,7 +44,7 @@ final class RegisterAction
         }
 
         $user = $this->users->create($email, password_hash($password, PASSWORD_BCRYPT), $displayName);
-        $token = $this->jwt->issue($user['id']);
+        $token = $this->jwt->issue($user['id'], ['tv' => (int)($user['token_version'] ?? 0)]);
         return Json::send($res, [
             'token' => $token,
             'user' => $this->publicUser($user),
