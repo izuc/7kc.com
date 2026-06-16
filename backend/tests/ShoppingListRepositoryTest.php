@@ -37,4 +37,32 @@ final class ShoppingListRepositoryTest extends TestCase
         $this->assertSame($listId, $repo->itemListId($itemId));
         $this->assertNull($repo->itemListId('nope'));
     }
+
+    public function testSetBoughtIsIdempotent(): void
+    {
+        // The offline outbox may replay a setBought more than once; the explicit
+        // target must converge regardless of how many times (or in what order) it lands.
+        $repo = $this->repo();
+        $listId = $repo->create('userA', null, 'L');
+        $itemId = $repo->addItem($listId, 'userA', 'milk', null, 'dairy');
+
+        $this->assertTrue($repo->setBought($itemId, 'userA', true));
+        $this->assertTrue($repo->setBought($itemId, 'userA', true)); // replay → still bought
+        $this->assertSame(1, (int)$this->db->fetchOne('SELECT is_bought FROM shopping_list_items WHERE id = ?', [$itemId]));
+
+        $this->assertFalse($repo->setBought($itemId, 'userA', false));
+        $row = $this->db->fetchAssociative('SELECT is_bought, bought_by_user_id, bought_at FROM shopping_list_items WHERE id = ?', [$itemId]);
+        $this->assertSame(0, (int)$row['is_bought']);
+        $this->assertNull($row['bought_by_user_id']);
+        $this->assertNull($row['bought_at']);
+    }
+
+    public function testToggleStillFlips(): void
+    {
+        $repo = $this->repo();
+        $listId = $repo->create('userA', null, 'L');
+        $itemId = $repo->addItem($listId, 'userA', 'milk', null, 'dairy');
+        $this->assertTrue($repo->toggleBought($itemId, 'userA'));
+        $this->assertFalse($repo->toggleBought($itemId, 'userA'));
+    }
 }

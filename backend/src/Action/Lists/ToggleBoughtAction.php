@@ -26,7 +26,11 @@ final class ToggleBoughtAction
         if ($this->lists->itemListId($args['itemId']) !== $args['id']) {
             return Json::error($res, 'not_found', 'Item not found', 404);
         }
-        $bought = $this->lists->toggleBought($args['itemId'], $userId);
+        // An explicit target (offline outbox replay) is idempotent; absent it, flip.
+        $body = (array)($req->getParsedBody() ?? []);
+        $bought = array_key_exists('is_bought', $body)
+            ? $this->lists->setBought($args['itemId'], $userId, (bool)$body['is_bought'])
+            : $this->lists->toggleBought($args['itemId'], $userId);
         return Json::send($res, ['is_bought' => $bought]);
     }
 }

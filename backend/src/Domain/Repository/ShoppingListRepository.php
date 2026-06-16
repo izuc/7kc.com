@@ -164,13 +164,18 @@ final class ShoppingListRepository
     {
         $item = $this->db->fetchAssociative('SELECT is_bought FROM shopping_list_items WHERE id = ?', [$itemId]);
         if (!$item) return false;
-        $nowBought = !$item['is_bought'];
+        return $this->setBought($itemId, $userId, !$item['is_bought']);
+    }
+
+    /** Idempotent: set an item's bought state to an explicit value (safe to replay from the offline outbox). */
+    public function setBought(string $itemId, string $userId, bool $value): bool
+    {
         $this->db->update('shopping_list_items', [
-            'is_bought' => $nowBought ? 1 : 0,
-            'bought_by_user_id' => $nowBought ? $userId : null,
-            'bought_at' => $nowBought ? time() : null,
+            'is_bought' => $value ? 1 : 0,
+            'bought_by_user_id' => $value ? $userId : null,
+            'bought_at' => $value ? time() : null,
         ], ['id' => $itemId]);
-        return $nowBought;
+        return $value;
     }
 
     public function markAllBought(string $listId, string $userId): int
