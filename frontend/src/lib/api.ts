@@ -156,6 +156,10 @@ export const api = {
   createGroup: (name: string) =>
     request<{ group: Group }>('/groups', { method: 'POST', body: JSON.stringify({ name }) }),
   myGroup: () => request<{ group: Group | null }>('/groups/mine'),
+  resolveInvite: (token: string) =>
+    request<{ invite: { group_name: string; member_count: number; inviter: string | null } }>(
+      `/public/groups/${encodeURIComponent(token)}`
+    ),
   joinGroup: (token: string) =>
     request<{ group: Group }>('/groups/join', {
       method: 'POST',

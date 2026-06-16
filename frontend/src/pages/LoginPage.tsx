@@ -1,11 +1,13 @@
 import { FormEvent, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../store/auth';
-import { ApiError } from '../lib/api';
+import { api, ApiError } from '../lib/api';
 
 export function LoginPage() {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const joinToken = params.get('join');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [err, setErr] = useState<string | null>(null);
@@ -17,6 +19,15 @@ export function LoginPage() {
     setBusy(true);
     try {
       await login(email.trim(), password);
+      if (joinToken) {
+        try {
+          await api.joinGroup(joinToken);
+        } catch {
+          /* surfaced on the group page */
+        }
+        navigate('/group', { replace: true });
+        return;
+      }
       navigate('/lists', { replace: true });
     } catch (e) {
       setErr(e instanceof ApiError ? e.message : 'Could not sign in');

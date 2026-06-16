@@ -103,17 +103,26 @@ export function SettingsPage() {
           <div className="setting-card">
             <h3>Group · {group.name}</h3>
             <div className="mono small muted">{group.members.length} member{group.members.length === 1 ? '' : 's'}</div>
-            <div className="mono small muted">Invite token (share with trusted people)</div>
-            <div className="invite-token">{group.invite_token}</div>
+            <div className="mono small muted">Invite link (share with trusted people)</div>
+            <div className="invite-token">{`${window.location.origin}/join/${group.invite_token}`}</div>
             <div className="row-inline" style={{ gap: 10 }}>
               <button
-                className="btn btn-ghost"
-                onClick={() => {
-                  navigator.clipboard?.writeText(group.invite_token);
-                  toast('Copied invite');
+                className="btn btn-primary"
+                onClick={async () => {
+                  const url = `${window.location.origin}/join/${group.invite_token}`;
+                  try {
+                    if (navigator.share) {
+                      await navigator.share({ title: `Join ${group.name} on 7 Day Kitchen`, url });
+                    } else {
+                      await navigator.clipboard.writeText(url);
+                      toast('Invite link copied');
+                    }
+                  } catch {
+                    /* share cancelled */
+                  }
                 }}
               >
-                Copy invite
+                <Icon name="share" size={14} /> Share invite
               </button>
               <button className="btn btn-ghost" onClick={leave}>
                 Leave group

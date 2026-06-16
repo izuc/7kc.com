@@ -10,6 +10,7 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { ListsPage } from './pages/ListsPage';
+import { JoinPage } from './pages/JoinPage';
 
 // Code-split the heavier / less-critical routes so logged-out and crawler visitors
 // (and first authed paint) don't download the whole app up front.
@@ -68,6 +69,22 @@ export function App() {
 
   if (loading) {
     return <Loading label="Loading your kitchen…" />;
+  }
+
+  // Group invite landing — works for both logged-in and logged-out visitors.
+  if (location.pathname.startsWith('/join/')) {
+    return (
+      <div className={`accent-${accent} density-${density}`}>
+        <ErrorBoundary>
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route path="/join/:token" element={<JoinPage />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
+        <Toasts />
+      </div>
+    );
   }
 
   if (!user) {
