@@ -11922,5 +11922,1886 @@
         "detail": "Platter, drizzle sesame oil, sliced spring onion, sprinkle of sesame seeds. Immediately. Plenty of napkins."
       }
     ]
+  },
+  {
+    "slug": "baba-ganoush",
+    "title": "Baba Ganoush",
+    "description": "Charred eggplant whipped with tahini and lemon. Smoke in a bowl.",
+    "prep_time": 15,
+    "cook_time": 40,
+    "servings": 4,
+    "tags": [
+      "middle-eastern",
+      "vegan",
+      "dip",
+      "gluten-free"
+    ],
+    "palette": [
+      "#6b7280",
+      "#f3f0e8"
+    ],
+    "dish_form": "dip-plate",
+    "ingredients": [
+      {
+        "id": "eggplant",
+        "amount": "2 large"
+      },
+      {
+        "id": "tahini",
+        "amount": "1/3 cup"
+      },
+      {
+        "id": "lemon",
+        "amount": "1"
+      },
+      {
+        "id": "garlic",
+        "amount": "1 clove"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "sumac",
+        "amount": "1 tsp",
+        "is_optional": true
+      },
+      {
+        "id": "parsley",
+        "amount": "small handful",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Char the whole eggplants until collapsed and blistered.",
+        "detail": "The whole point of baba ganoush is smoke. Sit the eggplants directly on a gas flame or under a screaming-hot grill, turning with tongs every few minutes, until the skin is blackened all over and the flesh has fully slumped — 12 to 15 min on flame. No gas? Roast whole at 220C for 45 min, prick first so they don't burst. They should look ruined; that's correct.",
+        "timer_seconds": 900
+      },
+      {
+        "content": "Cool, then scoop the flesh and drain it.",
+        "detail": "Let them cool enough to handle, slit open and scoop the soft flesh away from the charred skin — a few flecks of black are flavour, but don't include the bitter skin itself. Tip the flesh into a sieve and let it drain 10 min. Eggplant holds a lot of water and skipping this gives you a watery, sad dip.",
+        "timer_seconds": 600
+      },
+      {
+        "content": "Mash or pulse with tahini, lemon, garlic and salt.",
+        "detail": "Traditionalists chop by hand with a fork for a rustic texture; a quick pulse in the processor is fine too — just don't puree it to baby food, you want some body. Add the tahini, juice of the whole lemon, one finely grated garlic clove and a good pinch of salt. Taste: it should be tangy and nutty. Tahini varies wildly in bitterness, so adjust lemon and salt until it sings."
+      },
+      {
+        "content": "Spread, pool with olive oil, dust with sumac and parsley.",
+        "detail": "Swoosh into a shallow bowl with the back of a spoon, leaving a well in the middle. Pour the olive oil into the well, scatter the sumac for a lemony-purple tang and tear over parsley. Serve with warm flatbread. It tastes even better an hour later once the garlic mellows."
+      }
+    ]
+  },
+  {
+    "slug": "fattoush",
+    "title": "Fattoush Salad",
+    "description": "Crunchy chopped salad, crisp bread shards, a sharp sumac dressing.",
+    "prep_time": 20,
+    "cook_time": 8,
+    "servings": 4,
+    "tags": [
+      "middle-eastern",
+      "vegan",
+      "salad",
+      "fresh"
+    ],
+    "palette": [
+      "#dc2626",
+      "#f0f7e9"
+    ],
+    "dish_form": "salad-plate",
+    "ingredients": [
+      {
+        "id": "bread",
+        "amount": "2 flatbreads or pita"
+      },
+      {
+        "id": "cucumber",
+        "amount": "2 small"
+      },
+      {
+        "id": "tomato",
+        "amount": "3"
+      },
+      {
+        "id": "lettuce",
+        "amount": "1/2 cos"
+      },
+      {
+        "id": "onion_red",
+        "amount": "1/2"
+      },
+      {
+        "id": "mint",
+        "amount": "handful"
+      },
+      {
+        "id": "sumac",
+        "amount": "1 tbsp"
+      },
+      {
+        "id": "lemon",
+        "amount": "1"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "1/4 cup"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Tear the bread and toast or fry it to shards.",
+        "detail": "Fattoush exists to use up stale flatbread, so the bread is the star, not an afterthought. Tear into rough shards, toss with a little olive oil and bake at 200C for 6 to 8 min until snapping-crisp and golden, or shallow-fry for the proper indulgent version. They must be fully crisp or they go soggy the second they meet the dressing.",
+        "timer_seconds": 420
+      },
+      {
+        "content": "Chop the veg into bold, even pieces.",
+        "detail": "Fattoush is a chopped salad, so cut cucumber and tomato into 2 cm chunks, slice the cos across into ribbons and the red onion paper-thin. Keep everything roughly the same size so each forkful is balanced. Use the ripest tomatoes you can find — they bleed sweet juice into the dressing."
+      },
+      {
+        "content": "Whisk the sumac dressing.",
+        "detail": "In a jar: the tablespoon of sumac, juice of the whole lemon, the olive oil, a small grated garlic clove if you like, salt and pepper. Sumac is the soul here — it's a ground dried berry that brings a tart, almost cranberry-like zing without vinegar. Shake hard so it emulsifies into a cloudy ruby dressing."
+      },
+      {
+        "content": "Toss everything just before serving.",
+        "detail": "Combine the veg, torn mint and most of the bread in a big bowl, pour over the dressing and toss with your hands. Do this at the last possible minute — dressed too early and the bread softens and the leaves wilt. Scatter the reserved bread and a final pinch of sumac on top for crunch and colour."
+      }
+    ]
+  },
+  {
+    "slug": "muhammara",
+    "title": "Muhammara",
+    "description": "Roasted red capsicum and walnut dip with a smoky, sweet-sour hit.",
+    "prep_time": 15,
+    "cook_time": 25,
+    "servings": 6,
+    "tags": [
+      "middle-eastern",
+      "vegan",
+      "dip",
+      "make-ahead"
+    ],
+    "palette": [
+      "#b91c1c",
+      "#f7e6dd"
+    ],
+    "dish_form": "dip-plate",
+    "ingredients": [
+      {
+        "id": "capsicum_red",
+        "amount": "3 large"
+      },
+      {
+        "id": "walnut",
+        "amount": "1 cup"
+      },
+      {
+        "id": "breadcrumbs",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "1/4 cup"
+      },
+      {
+        "id": "lemon",
+        "amount": "1"
+      },
+      {
+        "id": "cumin",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "chilli",
+        "amount": "1 small",
+        "is_optional": true
+      },
+      {
+        "id": "pine_nut",
+        "amount": "2 tbsp",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Blacken and steam the capsicums, then peel.",
+        "detail": "Roast the whole capsicums at 230C (or over a flame) until the skins are charred and blistered all over, about 20 to 25 min. Tip them into a bowl and cover with a plate for 10 min — the trapped steam loosens the skins so they slip off with your fingers. Peeling matters: leftover skin makes the dip stringy. Pull out the cores and seeds too.",
+        "timer_seconds": 1500
+      },
+      {
+        "content": "Toast the walnuts until fragrant.",
+        "detail": "Spread the walnuts on a dry tray and toast at 180C for 6 to 8 min, or in a dry pan, until they smell nutty and look a shade darker. Toasting deepens their flavour and chases off any raw bitterness. Keep a few back to chop and scatter on top later for texture.",
+        "timer_seconds": 420
+      },
+      {
+        "content": "Blitz everything to a coarse paste.",
+        "detail": "Into the processor: peeled capsicum, toasted walnuts, breadcrumbs, olive oil, juice of the lemon, cumin, the chilli if using and a good pinch of salt. Pulse to a thick, slightly grainy paste — muhammara should have a little rubble to it, not be silky like hummus. The breadcrumbs soak up moisture and give it body."
+      },
+      {
+        "content": "Rest, then taste and balance.",
+        "detail": "Let it sit 20 min so the flavours marry, then taste. It should land sweet, smoky, tangy and a touch hot all at once — push it with more lemon for sour or a pinch of sugar if your capsicums weren't sweet. Spread on a plate, drizzle with oil and scatter the toasted pine nuts and reserved walnuts."
+      }
+    ]
+  },
+  {
+    "slug": "saffron-rice-pilaf",
+    "title": "Saffron Rice Pilaf",
+    "description": "Golden basmati threaded with saffron, pine nuts and preserved lemon.",
+    "prep_time": 10,
+    "cook_time": 25,
+    "servings": 4,
+    "tags": [
+      "middle-eastern",
+      "vegetarian",
+      "side",
+      "gluten-free"
+    ],
+    "palette": [
+      "#f59e0b",
+      "#fdf6e3"
+    ],
+    "dish_form": "grain-bowl",
+    "ingredients": [
+      {
+        "id": "rice_basmati",
+        "amount": "1.5 cups"
+      },
+      {
+        "id": "saffron",
+        "amount": "1 good pinch"
+      },
+      {
+        "id": "onion_brown",
+        "amount": "1"
+      },
+      {
+        "id": "butter",
+        "amount": "30 g"
+      },
+      {
+        "id": "stock_veg",
+        "amount": "2.5 cups"
+      },
+      {
+        "id": "pine_nut",
+        "amount": "3 tbsp"
+      },
+      {
+        "id": "preserved_lemon",
+        "amount": "1/2"
+      },
+      {
+        "id": "parsley",
+        "amount": "handful",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Bloom the saffron in a splash of warm water.",
+        "detail": "Crush the saffron threads between your fingers into a small cup and cover with 2 tbsp of warm (not boiling) water. Let it steep while you cook — this draws out the colour and honeyed aroma evenly. Adding dry threads straight to the pot wastes the precious stuff and gives patchy colour.",
+        "timer_seconds": 600
+      },
+      {
+        "content": "Rinse the rice until the water runs clear.",
+        "detail": "Swirl the basmati in a bowl of cold water, drain and repeat three or four times until the cloudiness goes. That cloud is surface starch — rinsing it off is the difference between separate, fluffy grains and a sticky clump. A final 10 min soak makes the grains lengthen beautifully."
+      },
+      {
+        "content": "Soften the onion, toast the rice in butter.",
+        "detail": "Melt the butter in a heavy pot and cook the diced onion gently for 6 to 8 min until soft and golden. Tip in the drained rice and stir for a minute so every grain gets coated in butter — this seals the grains so they stay distinct, the heart of the pilaf method."
+      },
+      {
+        "content": "Add stock and saffron, then steam undisturbed.",
+        "detail": "Pour in the stock and the saffron water with its threads, season, and bring to a boil. The moment it boils, drop to the lowest heat, lid on, and leave it alone for 12 min — no peeking, no stirring, or you'll knock out the steam and turn it gloopy. Then off the heat, still covered, 10 min to finish steaming.",
+        "timer_seconds": 720
+      },
+      {
+        "content": "Toast pine nuts, fold through preserved lemon and fluff.",
+        "detail": "While it rests, toast the pine nuts in a dry pan over medium until golden — watch like a hawk, they go from pale to burnt in seconds. Finely chop the preserved lemon, discarding the soft pulp and using mostly the salty, intense rind. Fork through the rice with the pine nuts, preserved lemon and parsley, lifting the grains apart rather than stirring."
+      }
+    ]
+  },
+  {
+    "slug": "sumac-cauliflower-tahini",
+    "title": "Sumac-Roasted Cauliflower with Tahini",
+    "description": "Deeply roasted cauliflower and chickpeas over a lemony tahini pool.",
+    "prep_time": 15,
+    "cook_time": 35,
+    "servings": 4,
+    "tags": [
+      "middle-eastern",
+      "vegan",
+      "roast"
+    ],
+    "palette": [
+      "#a16207",
+      "#f4ede1"
+    ],
+    "dish_form": "roast-plate",
+    "ingredients": [
+      {
+        "id": "cauliflower",
+        "amount": "1 large head"
+      },
+      {
+        "id": "chickpea_dry",
+        "amount": "3/4 cup (or 1 tin)"
+      },
+      {
+        "id": "sumac",
+        "amount": "1 tbsp"
+      },
+      {
+        "id": "cumin",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "3 tbsp"
+      },
+      {
+        "id": "tahini",
+        "amount": "1/3 cup"
+      },
+      {
+        "id": "lemon",
+        "amount": "1"
+      },
+      {
+        "id": "garlic",
+        "amount": "1 clove"
+      },
+      {
+        "id": "pine_nut",
+        "amount": "2 tbsp",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Cook the soaked chickpeas until tender.",
+        "detail": "Dried chickpeas need a head start: soak them overnight in plenty of cold water, then simmer 45 to 60 min until creamy-soft with no chalky centre. Short on time, a tin of chickpeas, drained, works fine. Either way pat them bone-dry — wet chickpeas steam instead of roast and never crisp up."
+      },
+      {
+        "content": "Cut the cauliflower into flat-sided florets.",
+        "detail": "Cut the head into florets, slicing through the stem so each piece has a flat face. Those flat faces are what press against the hot tray and caramelise into the nutty, almost popcorn flavour that makes roasted cauliflower addictive. Aim for even-sized pieces so they cook at the same rate."
+      },
+      {
+        "content": "Toss with spices and oil, roast hot.",
+        "detail": "On a large tray, toss cauliflower and chickpeas with the olive oil, cumin, half the sumac, salt and pepper. Spread in a single layer with space between pieces — crowd the tray and everything steams pale instead of browning. Roast at 220C for 30 to 35 min, turning once, until the edges are deeply browned and the chickpeas are crunchy.",
+        "timer_seconds": 2100
+      },
+      {
+        "content": "Whisk the tahini sauce, loosening with water.",
+        "detail": "In a bowl, whisk the tahini with the juice of the whole lemon, a grated garlic clove and a pinch of salt. It will seize up and look split and horrible — this is normal. Keep whisking in cold water a tablespoon at a time and it suddenly turns pale, smooth and pourable, like thin cream. That seize-then-loosen is the trick to tahini sauce."
+      },
+      {
+        "content": "Pool the sauce, pile the veg, finish with sumac and pine nuts.",
+        "detail": "Spread the tahini sauce across a platter, mound the roasted cauliflower and chickpeas on top while still hot, and scatter over the remaining sumac and the toasted pine nuts. Serving it on the sauce rather than under it keeps the roasted bits crisp. Great warm or at room temperature with flatbread."
+      }
+    ]
+  },
+  {
+    "slug": "moules-mariniere",
+    "title": "Moules Mariniere",
+    "description": "Mussels steamed open in white wine, garlic and cream. Bread for the broth, non-negotiable.",
+    "prep_time": 15,
+    "cook_time": 12,
+    "servings": 2,
+    "tags": [
+      "french",
+      "seafood",
+      "quick"
+    ],
+    "palette": [
+      "#1d4e89",
+      "#dfe9f2"
+    ],
+    "dish_form": "soup-bowl",
+    "ingredients": [
+      {
+        "id": "mussel",
+        "amount": "1 kg"
+      },
+      {
+        "id": "wine_white",
+        "amount": "1 cup"
+      },
+      {
+        "id": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "id": "onion_brown",
+        "amount": "1 small"
+      },
+      {
+        "id": "butter",
+        "amount": "40 g"
+      },
+      {
+        "id": "cream",
+        "amount": "1/3 cup"
+      },
+      {
+        "id": "parsley",
+        "amount": "big handful"
+      },
+      {
+        "id": "bread",
+        "amount": "to serve"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Clean and check the mussels.",
+        "detail": "Tip mussels into the sink and scrub the shells under cold water. Pull off any stringy 'beards' poking from the shell by yanking towards the hinge. The big rule: tap any open mussel on the bench — if it closes within a few seconds it's alive and good; if it stays gaping, bin it. Discard any with cracked shells. This step is what keeps the dish safe."
+      },
+      {
+        "content": "Soften onion and garlic in butter.",
+        "detail": "Finely dice the onion and thinly slice the garlic. Melt the butter in a wide, deep pot with a tight lid over medium heat. Add onion and garlic and cook gently 4 min until soft and translucent — do not let them brown, you want sweetness not colour. A pinch of salt helps them sweat down.",
+        "timer_seconds": 240
+      },
+      {
+        "content": "Pour in the wine and bring to a boil.",
+        "detail": "Add the white wine and crank the heat to high. Let it bubble hard for 1 min — this burns off the raw alcohol and leaves the bright, acidic flavour behind. Use a wine you'd actually drink; cheap 'cooking wine' tastes harsh."
+      },
+      {
+        "content": "Add mussels, cover and steam 4 min.",
+        "detail": "Tip in all the mussels at once and clamp the lid on tight. The trapped steam is what cooks them. Give the pot a good shake halfway through to move the bottom ones up. They're done the moment the shells have opened — usually 3 to 4 min. Overcooking turns them rubbery, so don't dawdle.",
+        "timer_seconds": 240
+      },
+      {
+        "content": "Finish with cream and parsley.",
+        "detail": "Lift the lid — most shells should be open. Discard any that stayed firmly shut, they weren't good. Stir the cream through the broth and scatter in chopped parsley. Taste the broth and add pepper (it rarely needs salt, the mussels are briny). Tumble into bowls and pour the broth over."
+      },
+      {
+        "content": "Serve with bread for the broth.",
+        "detail": "The garlicky, briny, creamy broth in the bottom of the bowl is the best part. Serve with crusty bread, toasted or not, for mopping. Eat with your fingers — use an empty shell as little pincers to pull the meat from the others."
+      }
+    ]
+  },
+  {
+    "slug": "salt-pepper-calamari",
+    "title": "Salt & Pepper Calamari",
+    "description": "Crisp, peppery, golden calamari with a squeeze of lemon. The classic pub starter at home.",
+    "prep_time": 20,
+    "cook_time": 10,
+    "servings": 4,
+    "tags": [
+      "seafood",
+      "asian",
+      "snack"
+    ],
+    "palette": [
+      "#d4a017",
+      "#f7eccb"
+    ],
+    "dish_form": "fish-chips",
+    "ingredients": [
+      {
+        "id": "calamari",
+        "amount": "600 g tubes"
+      },
+      {
+        "id": "flour",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "salt",
+        "amount": "2 tsp"
+      },
+      {
+        "id": "pepper",
+        "amount": "2 tsp"
+      },
+      {
+        "id": "vegetable_oil",
+        "amount": "for frying"
+      },
+      {
+        "id": "lemon",
+        "amount": "2"
+      },
+      {
+        "id": "chilli",
+        "amount": "1",
+        "is_optional": true
+      },
+      {
+        "id": "spring_onion",
+        "amount": "2",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Score and cut the calamari.",
+        "detail": "Slit each tube open so it lies flat. Lay it inner-side up and lightly score a fine criss-cross pattern with the tip of your knife, cutting only halfway through — this helps it curl prettily and stay tender. Cut into bite-sized triangles or strips. Pat thoroughly dry with paper towel; wet calamari spits in hot oil and won't crisp."
+      },
+      {
+        "content": "Mix the salt and pepper flour.",
+        "detail": "Toast the peppercorns in a dry pan for a minute then grind coarse if you can — freshly ground pepper is the whole point of this dish. Mix the flour, salt and pepper in a bowl. A pinch of chilli powder or five-spice here is a nice touch but the pure salt-and-pepper hit is classic."
+      },
+      {
+        "content": "Heat the oil to 180C.",
+        "detail": "Pour about 3cm of oil into a deep, heavy pan and heat over medium-high. To test without a thermometer, drop in a small cube of bread — it should sizzle steadily and turn gold in about 30 seconds. Too cool and the calamari goes greasy; too hot and the flour burns before the inside cooks."
+      },
+      {
+        "content": "Coat and fry in batches.",
+        "detail": "Toss the dried calamari pieces in the seasoned flour, shaking off the excess in a sieve — a thin coat crisps, a thick one goes claggy. Fry in small batches so the oil stays hot and the pieces don't clump. Each batch needs only 1 to 2 min, until pale gold. Calamari cooks fast; longer than 2 min and it turns to rubber bands.",
+        "timer_seconds": 90
+      },
+      {
+        "content": "Drain and serve straight away.",
+        "detail": "Lift onto a wire rack or paper towel and hit it with a little extra salt while hot. Pile onto a plate, scatter over sliced chilli and spring onion if using, and wedge of lemon on the side. Squeeze the lemon over just before eating — serve immediately, as crisp calamari waits for no one."
+      }
+    ]
+  },
+  {
+    "slug": "charred-asparagus-egg",
+    "title": "Charred Asparagus with Egg",
+    "description": "Blistered asparagus, a runny fried egg, parmesan and lemon. A ten-minute brunch that eats elegant.",
+    "prep_time": 5,
+    "cook_time": 8,
+    "servings": 2,
+    "tags": [
+      "brunch",
+      "vegetarian",
+      "quick"
+    ],
+    "palette": [
+      "#558b2f",
+      "#e7f0d8"
+    ],
+    "dish_form": "egg-brunch",
+    "ingredients": [
+      {
+        "id": "asparagus",
+        "amount": "2 bunches"
+      },
+      {
+        "id": "eggs",
+        "amount": "2"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "parmesan",
+        "amount": "30 g"
+      },
+      {
+        "id": "lemon",
+        "amount": "1/2"
+      },
+      {
+        "id": "bread",
+        "amount": "2 thick slices"
+      },
+      {
+        "id": "butter",
+        "amount": "knob"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Snap the woody ends off the asparagus.",
+        "detail": "Hold a spear at both ends and bend gently — it snaps naturally right where the tough, woody base gives way to the tender stalk. Do one as a guide, then line the bunch up and cut the rest to the same length with a knife. No peeling needed for everyday spears."
+      },
+      {
+        "content": "Char the asparagus in a hot pan.",
+        "detail": "Get a frying pan or griddle properly hot over high heat — this is about blistering, not steaming. Toss the spears with a tablespoon of oil and a pinch of salt, then lay them in a single layer. Leave them mostly still for 3 to 4 min, rolling once, until they're bright green with dark charred spots and just tender. Tip onto a warm plate.",
+        "timer_seconds": 210
+      },
+      {
+        "content": "Fry the eggs in the same pan.",
+        "detail": "Lower the heat to medium and add a little more oil or a knob of butter. Crack the eggs in carefully. For crisp, lacy edges and a runny yolk, leave them alone and tilt the pan to spoon hot fat over the tops — about 3 min. Salt the whites, not the yolks (salt on the yolk leaves spots)."
+      },
+      {
+        "content": "Toast the bread.",
+        "detail": "Pop your bread in the toaster or char it in the pan while the eggs finish. A sturdy sourdough or a thick country slice holds up best — it's the plate for everything else. A scrape of butter while warm doesn't hurt."
+      },
+      {
+        "content": "Build the plate.",
+        "detail": "Toast on the plate, asparagus piled on top, fried egg crowning it. Shave over parmesan with a peeler for ribbons rather than a fine dust, a good squeeze of lemon to cut the richness, and a crack of pepper. Break the yolk and let it run down through the spears — that's the sauce."
+      }
+    ]
+  },
+  {
+    "slug": "kale-caesar",
+    "title": "Kale Caesar Salad",
+    "description": "Hardy kale stands up to a punchy anchovy-garlic dressing. Crunchy croutons, snowfall of parmesan.",
+    "prep_time": 15,
+    "cook_time": 10,
+    "servings": 4,
+    "tags": [
+      "salad",
+      "vegetarian",
+      "make-ahead"
+    ],
+    "palette": [
+      "#386641",
+      "#e4ecdc"
+    ],
+    "dish_form": "salad-plate",
+    "ingredients": [
+      {
+        "id": "kale",
+        "amount": "1 large bunch"
+      },
+      {
+        "id": "parmesan",
+        "amount": "60 g"
+      },
+      {
+        "id": "bread",
+        "amount": "3 slices"
+      },
+      {
+        "id": "garlic",
+        "amount": "2 cloves"
+      },
+      {
+        "id": "lemon",
+        "amount": "1"
+      },
+      {
+        "id": "dijon",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "mayo",
+        "amount": "3 tbsp"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "1/4 cup"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Strip and shred the kale.",
+        "detail": "Hold a kale leaf by the stalk and run your other hand down it to strip the leaf off the tough centre rib — that rib is bitter and chewy, discard it. Stack the leaves, roll them up and slice into thin ribbons. Curly or cavolo nero both work."
+      },
+      {
+        "content": "Massage the kale.",
+        "detail": "This is the secret to a kale salad. Put the ribbons in a big bowl with a pinch of salt and a teaspoon of the oil, and scrunch and rub it with your hands for a full minute. It wilts down, darkens and softens, losing its raw squeak. Unlike lettuce, kale only gets better sitting in dressing, so you can do this ahead.",
+        "timer_seconds": 60
+      },
+      {
+        "content": "Make the croutons.",
+        "detail": "Tear or cube the bread into rough 2cm chunks and toss with a drizzle of oil and salt. Spread on a tray and bake at 200C for 8 to 10 min, or toast in a pan, until deeply golden and crunchy through. Rough torn edges catch more dressing than neat cubes.",
+        "timer_seconds": 540
+      },
+      {
+        "content": "Whisk the dressing.",
+        "detail": "In a jar or bowl combine the mayo, dijon, juice of the lemon, a grated clove of garlic and half the parmesan finely grated. Whisk in the olive oil until creamy. Taste — it should be sharp, salty and garlicky enough to stand up to the sturdy kale. Loosen with a splash of water if it's too thick. A traditional caesar uses anchovy and raw yolk; this mayo version is the easy, reliable route."
+      },
+      {
+        "content": "Toss and serve.",
+        "detail": "Pour most of the dressing over the massaged kale and toss hard so every ribbon is coated. Add the croutons and toss again. Pile onto plates, shave the rest of the parmesan over in ribbons, plenty of black pepper, and a final lemon wedge. It holds beautifully for an hour, so it's a great salad to make first."
+      }
+    ]
+  },
+  {
+    "slug": "roma-tomato-bean-braise",
+    "title": "Roma Tomato & White Bean Braise",
+    "description": "Sweet roma tomatoes slow-cooked with white beans and rosemary. Humble, hearty, vegan.",
+    "prep_time": 10,
+    "cook_time": 30,
+    "servings": 4,
+    "tags": [
+      "italian",
+      "vegan",
+      "one-pot",
+      "comfort"
+    ],
+    "palette": [
+      "#c1352c",
+      "#f6ddd6"
+    ],
+    "dish_form": "soup-bowl",
+    "ingredients": [
+      {
+        "id": "roma_tomato",
+        "amount": "8"
+      },
+      {
+        "id": "tinned_bean",
+        "amount": "2 tins"
+      },
+      {
+        "id": "onion_brown",
+        "amount": "1"
+      },
+      {
+        "id": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "id": "rosemary",
+        "amount": "2 sprigs"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "3 tbsp"
+      },
+      {
+        "id": "tomato_paste",
+        "amount": "1 tbsp"
+      },
+      {
+        "id": "bread",
+        "amount": "to serve"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Prep the tomatoes, onion and garlic.",
+        "detail": "Roma tomatoes are the meaty, oval ones — less watery than salad tomatoes, so they cook down into a thick sauce. Roughly chop them, no need to peel. Finely dice the onion and thinly slice the garlic. Strip the rosemary needles off the woody stems and chop fine."
+      },
+      {
+        "content": "Soften the onion and garlic.",
+        "detail": "Warm the olive oil in a wide pan or pot over medium heat — be generous with the oil, it carries the flavour and enriches the braise. Add the onion with a pinch of salt and cook gently 6 min until soft and golden. Add the garlic and rosemary and cook 1 min more, just until fragrant. Don't let the garlic brown or it turns bitter.",
+        "timer_seconds": 360
+      },
+      {
+        "content": "Build the tomato base.",
+        "detail": "Stir in the tomato paste and let it cook for a minute, stirring — frying the paste deepens its flavour and takes off the raw, tinny edge. Then tip in the chopped roma tomatoes with a good pinch of salt. They'll look chunky and watery; that's fine, they collapse as they cook."
+      },
+      {
+        "content": "Simmer until thick and jammy.",
+        "detail": "Turn the heat to low and let it bubble gently, uncovered, for about 20 min. Stir now and then and squash the tomatoes against the side of the pan with your spoon. You're waiting for it to reduce from a watery mix into a thick, glossy, jammy sauce. If it catches on the base, add a splash of water.",
+        "timer_seconds": 1200
+      },
+      {
+        "content": "Add the beans and warm through.",
+        "detail": "Drain and rinse the white beans (cannellini or butter beans are perfect) and fold them in gently — they're already cooked, you only need to heat them and let them soak up the sauce, about 5 min. Stir too hard and they'll break up into mush. Taste and adjust salt and pepper.",
+        "timer_seconds": 300
+      },
+      {
+        "content": "Finish and serve.",
+        "detail": "Take it off the heat and stir through a final glug of your best olive oil — raw oil at the end adds a fruity, peppery lift you don't get from cooking it in. Spoon into bowls and serve with crusty bread to mop up. A handful of torn basil or a shaving of parmesan on top if you're not keeping it vegan."
+      }
+    ]
+  },
+  {
+    "slug": "buttermilk-pancakes",
+    "title": "Buttermilk Pancakes",
+    "description": "Tall, tangy, cloud-soft stacks. Buttermilk does the heavy lifting.",
+    "prep_time": 10,
+    "cook_time": 15,
+    "servings": 4,
+    "tags": [
+      "american",
+      "brunch",
+      "comfort",
+      "vegetarian"
+    ],
+    "palette": [
+      "#d9a441",
+      "#fbf0d8"
+    ],
+    "dish_form": "pancakes",
+    "ingredients": [
+      {
+        "id": "flour",
+        "amount": "2 cups"
+      },
+      {
+        "id": "buttermilk",
+        "amount": "2 cups"
+      },
+      {
+        "id": "eggs",
+        "amount": "2"
+      },
+      {
+        "id": "baking_powder",
+        "amount": "2 tsp"
+      },
+      {
+        "id": "sugar",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "butter",
+        "amount": "50 g melted, plus more for the pan"
+      },
+      {
+        "id": "salt",
+        "amount": "pinch"
+      },
+      {
+        "id": "maple_syrup",
+        "amount": "to serve"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Whisk the dry ingredients in one bowl.",
+        "detail": "Flour, baking powder, sugar and a good pinch of salt. Whisk them together properly before the wet goes anywhere near — this is how the raising agent gets evenly spread, so you don't get one bitter, soapy bite of concentrated baking powder. A small bubble of air gets in too, which helps the lift."
+      },
+      {
+        "content": "Whisk buttermilk, eggs and melted butter separately.",
+        "detail": "Let the melted butter cool a touch first or it'll scramble the eggs on contact. Buttermilk is the secret here: its acidity reacts with the baking powder for extra rise, and tenderises the flour's gluten so the crumb stays soft, not chewy. No buttermilk? Stir 2 tbsp lemon juice into 2 cups of milk and wait 5 min."
+      },
+      {
+        "content": "Fold wet into dry — stop while still lumpy.",
+        "detail": "Pour the wet into the dry and fold with a spatula just until no dry flour streaks remain. Lumps are good. The instinct to whisk it smooth is exactly wrong — overmixing develops gluten and you get flat, rubbery pancakes. Rest the batter 5 min; it'll thicken and the bubbles set up."
+      },
+      {
+        "content": "Cook on a medium pan, a ladle at a time.",
+        "detail": "Medium heat, not high — too hot and they scorch outside while raw within. Wipe the pan with a little butter. Ladle on rounds and wait: when bubbles rise and pop across the surface and the edges look dry, it's ready to flip. That's usually 2 min. Flip once only and give the second side about a minute.",
+        "timer_seconds": 120
+      },
+      {
+        "content": "Stack and drown in maple syrup.",
+        "detail": "Keep cooked pancakes warm in a low oven (around 100C) on a rack, not stacked on a plate where steam makes them soggy. Serve in a tall stack with butter melting between the layers and plenty of real maple syrup."
+      }
+    ]
+  },
+  {
+    "slug": "corn-fritters",
+    "title": "Corn Fritters",
+    "description": "Crisp-edged, sweet-corn cafe fritters. Brunch hero with a squeeze of lime.",
+    "prep_time": 10,
+    "cook_time": 15,
+    "servings": 4,
+    "tags": [
+      "brunch",
+      "vegetarian",
+      "comfort"
+    ],
+    "palette": [
+      "#eab308",
+      "#fdf4d0"
+    ],
+    "dish_form": "egg-brunch",
+    "ingredients": [
+      {
+        "id": "corn",
+        "amount": "3 cobs (or 2 cups kernels)"
+      },
+      {
+        "id": "flour",
+        "amount": "1 cup"
+      },
+      {
+        "id": "eggs",
+        "amount": "2"
+      },
+      {
+        "id": "milk",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "spring_onion",
+        "amount": "3"
+      },
+      {
+        "id": "feta",
+        "amount": "100 g"
+      },
+      {
+        "id": "olive_oil",
+        "amount": "for frying"
+      },
+      {
+        "id": "avocado",
+        "amount": "1, to serve",
+        "is_optional": true
+      },
+      {
+        "id": "lime",
+        "amount": "1, to serve",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Strip the kernels from the cobs.",
+        "detail": "Stand a cob upright in a wide bowl and run a knife down the sides to shear off the kernels — the bowl catches the spray. Fresh corn is sweetest, but frozen (thawed and patted dry) works fine out of season. Scrape the bare cob with the back of the knife to milk out the starchy juices; that's pure flavour for the batter."
+      },
+      {
+        "content": "Make a thick batter.",
+        "detail": "Whisk flour, eggs and milk into a smooth, thick batter — it should drop slowly off the spoon, not pour. If it's runny the fritters spread thin and won't hold; add a spoon more flour. Slice the spring onions thin and crumble in the feta."
+      },
+      {
+        "content": "Fold in the corn and season.",
+        "detail": "Stir the corn, spring onion and feta through. Season well — corn loves salt and pepper, and the feta is already salty so taste as you go. The batter should be loaded with corn, barely held together by the batter, not the other way round."
+      },
+      {
+        "content": "Fry spoonfuls until golden, 3 min a side.",
+        "detail": "Medium-high heat, a thin film of oil. Drop heaped spoonfuls and flatten gently with the back of the spoon so the centres cook through. Don't crowd the pan — leave space or they steam instead of crisp. Flip when the underside is deep golden and the edges look set, about 3 min, then the same again.",
+        "timer_seconds": 180
+      },
+      {
+        "content": "Drain and serve with avo and lime.",
+        "detail": "Rest the fritters on paper towel for a few seconds to shed excess oil and stay crisp. Pile up with smashed avocado and a hard squeeze of lime to cut the richness — a poached egg on top makes it a proper brunch."
+      }
+    ]
+  },
+  {
+    "slug": "creamy-parmesan-polenta",
+    "title": "Creamy Parmesan Polenta",
+    "description": "Soft, soothing, cheesy polenta. The ultimate comfort base under anything saucy.",
+    "prep_time": 5,
+    "cook_time": 35,
+    "servings": 4,
+    "tags": [
+      "italian",
+      "comfort",
+      "vegetarian",
+      "gluten-free"
+    ],
+    "palette": [
+      "#f2c14e",
+      "#fbf2da"
+    ],
+    "dish_form": "default-plate",
+    "ingredients": [
+      {
+        "id": "polenta",
+        "amount": "1 cup"
+      },
+      {
+        "id": "stock_veg",
+        "amount": "4 cups"
+      },
+      {
+        "id": "parmesan",
+        "amount": "3/4 cup grated"
+      },
+      {
+        "id": "butter",
+        "amount": "50 g"
+      },
+      {
+        "id": "milk",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "salt",
+        "amount": "to taste"
+      },
+      {
+        "id": "pepper",
+        "amount": "to taste"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Bring the stock to a gentle simmer.",
+        "detail": "Use stock, not just water — it's the whole flavour base of the dish and plain polenta in water tastes of nothing. Bring it to a simmer, not a hard boil; you want it hot and moving but calm when the polenta goes in."
+      },
+      {
+        "content": "Rain in the polenta while whisking.",
+        "detail": "Pour the polenta in a thin, steady stream with one hand while whisking constantly with the other. This is the only moment lumps form — dumping it in all at once gives you a lumpy mess you can't fix. Keep whisking for the first minute until it starts to thicken."
+      },
+      {
+        "content": "Cook low and slow, stirring often, 30 min.",
+        "detail": "Drop to the lowest heat and swap to a wooden spoon. Stir every few minutes, scraping the base so it doesn't catch and scorch. It'll spit lazy volcanic bubbles — keep the lid ajar and your hand clear. The long cook is what turns gritty grain into something silky; rushing it leaves it raw and sandy.",
+        "timer_seconds": 1800
+      },
+      {
+        "content": "Beat in butter, parmesan and milk.",
+        "detail": "Off the heat, beat in cold butter, the grated parmesan and a splash of milk until glossy and pourable. The milk loosens it back to a soft, spoonable texture — polenta firms up fast as it sits, so make it looser than you think you want."
+      },
+      {
+        "content": "Season hard and serve straight away.",
+        "detail": "Taste and season boldly with salt and lots of black pepper — it can take more than you'd expect. Serve immediately while it's loose and creamy, spooned under a braise, mushrooms or roast veg. If it sets firm before serving, whisk in a little hot milk to bring it back."
+      }
+    ]
+  },
+  {
+    "slug": "beer-battered-fish",
+    "title": "Beer-Battered Fish",
+    "description": "Shatteringly crisp pub-style fish. The beer makes the batter light as air.",
+    "prep_time": 15,
+    "cook_time": 20,
+    "servings": 4,
+    "tags": [
+      "pub",
+      "comfort",
+      "seafood"
+    ],
+    "palette": [
+      "#c8881f",
+      "#f8ead0"
+    ],
+    "dish_form": "fish-chips",
+    "ingredients": [
+      {
+        "id": "barramundi",
+        "amount": "4 fillets"
+      },
+      {
+        "id": "flour",
+        "amount": "1.5 cups, plus extra for dusting"
+      },
+      {
+        "id": "beer",
+        "amount": "330 ml cold"
+      },
+      {
+        "id": "baking_powder",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "vegetable_oil",
+        "amount": "for deep frying"
+      },
+      {
+        "id": "potato",
+        "amount": "4 large"
+      },
+      {
+        "id": "salt",
+        "amount": "to taste"
+      },
+      {
+        "id": "lemon",
+        "amount": "1, to serve"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Cut and par-cook the chips.",
+        "detail": "Cut the potatoes into thick chips and simmer in salted water for 5 min until just soft at the edges, then drain and steam-dry. Par-cooking guarantees a fluffy inside — frying raw potato leaves you with a hard, greasy chip. Dry chips are the goal; surface water means dangerous oil spitting and soggy results."
+      },
+      {
+        "content": "Heat the oil to 180C.",
+        "detail": "Fill a deep heavy pot no more than a third full and heat to 180C. No thermometer? A cube of bread should sizzle and brown in about 30 seconds. Too cool and the batter drinks oil and goes greasy; too hot and it burns before the fish cooks. Never leave hot oil unattended."
+      },
+      {
+        "content": "Whisk the batter — only at the last second.",
+        "detail": "Mix flour, baking powder and a pinch of salt, then whisk in the ice-cold beer until just combined; a few lumps are fine. The cold and the bubbles are everything: the carbonation puffs the batter and the gluten stays sleepy, giving that lacy, crisp shell. Make it right before frying — flat, warm batter fries heavy."
+      },
+      {
+        "content": "Dust, dip and fry the fish.",
+        "detail": "Pat the fillets bone-dry and dust in flour so the batter has something to grip — skip this and the batter slides off in the oil. Dip into the batter, let the excess drip, then lower into the oil away from you. Fry 5-6 min until deep gold and crisp, turning once. Don't crowd the pot or the temperature crashes.",
+        "timer_seconds": 330
+      },
+      {
+        "content": "Fry the chips hot, salt, and serve.",
+        "detail": "Drain the fish on a rack, not paper, so the underside stays crisp. Crank the oil back to 190C and fry the par-cooked chips until golden, 4-5 min. Salt the chips the second they leave the oil so it sticks. Serve with lemon wedges to squeeze over."
+      }
+    ]
+  },
+  {
+    "slug": "weetbix-breakfast-slice",
+    "title": "Weet-Bix Breakfast Slice",
+    "description": "A chewy, golden-syrup lunchbox slice built on Weet-Bix and muesli.",
+    "prep_time": 15,
+    "cook_time": 25,
+    "servings": 12,
+    "tags": [
+      "australian",
+      "baking",
+      "lunchbox",
+      "vegetarian"
+    ],
+    "palette": [
+      "#a9701f",
+      "#f6e8cf"
+    ],
+    "dish_form": "baked-slice",
+    "ingredients": [
+      {
+        "id": "weetbix",
+        "amount": "4 biscuits"
+      },
+      {
+        "id": "muesli",
+        "amount": "1.5 cups"
+      },
+      {
+        "id": "flour",
+        "amount": "1 cup self-raising"
+      },
+      {
+        "id": "butter",
+        "amount": "125 g"
+      },
+      {
+        "id": "honey",
+        "amount": "1/3 cup"
+      },
+      {
+        "id": "sugar",
+        "amount": "1/2 cup brown"
+      },
+      {
+        "id": "raisin",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "cinnamon",
+        "amount": "1 tsp",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Heat oven to 180C and line a slice tin.",
+        "detail": "Line a 20x30cm tin with baking paper, leaving an overhang on the long sides — that paper sling is how you lift the whole slab out cleanly later instead of digging it out in chunks. A moderate 180C bakes it through without burning the edges of the honey."
+      },
+      {
+        "content": "Crush the Weet-Bix and mix the dry.",
+        "detail": "Crumble the Weet-Bix to coarse crumbs with your hands or a quick bash in a bag — leave a little texture, you don't want fine dust. Combine with the muesli, flour, raisins and cinnamon. The Weet-Bix and muesli give the slice its hearty, nubbly chew."
+      },
+      {
+        "content": "Melt the butter, honey and sugar together.",
+        "detail": "Warm the butter, honey and brown sugar in a small pan over low heat, stirring just until the butter melts and the sugar dissolves — don't boil it. This is the glue that binds and caramelises the slice. Brown sugar and honey both bring that toffee depth; keep it gentle so it doesn't turn bitter."
+      },
+      {
+        "content": "Combine, press firmly into the tin.",
+        "detail": "Pour the warm butter mix over the dry and stir until every crumb is coated and clumping. Tip into the tin and press down hard with the back of a spoon — really compact it. A loosely packed slice crumbles to bits when cut; firm pressing is what holds it together."
+      },
+      {
+        "content": "Bake 25 min, then cool fully before cutting.",
+        "detail": "Bake until deep golden at the edges, about 25 min. It'll still feel soft in the middle — that's right, it firms as it cools. Resist cutting it warm or it'll fall apart; let it go completely cold in the tin, then lift out by the paper and cut into bars.",
+        "timer_seconds": 1500
+      }
+    ]
+  },
+  {
+    "slug": "red-wine-poached-pears",
+    "title": "Red Wine Poached Pears",
+    "description": "Pears blushed in spiced red wine, toasted hazelnuts, a melting scoop. Dinner-party showstopper.",
+    "prep_time": 15,
+    "cook_time": 35,
+    "servings": 4,
+    "tags": [
+      "dessert",
+      "fruit",
+      "make-ahead"
+    ],
+    "palette": [
+      "#7f1d3a",
+      "#f7e3e9"
+    ],
+    "dish_form": "roast-plate",
+    "ingredients": [
+      {
+        "id": "pear",
+        "amount": "4 firm"
+      },
+      {
+        "id": "wine_red",
+        "amount": "750 ml bottle"
+      },
+      {
+        "id": "sugar",
+        "amount": "3/4 cup"
+      },
+      {
+        "id": "cinnamon",
+        "amount": "1 stick or 1 tsp"
+      },
+      {
+        "id": "star_anise",
+        "amount": "2"
+      },
+      {
+        "id": "orange",
+        "amount": "1"
+      },
+      {
+        "id": "hazelnut",
+        "amount": "1/3 cup"
+      },
+      {
+        "id": "ice_cream_vanilla",
+        "amount": "to serve",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Peel the pears, leaving stalks on.",
+        "detail": "Choose firm, slightly underripe pears (Beurre Bosc or Packham are ideal) — soft ones turn to mush in the syrup. Peel smoothly with a vegetable peeler but leave the stalk intact; it's the handle and the looker. Slice a thin sliver off each base so they stand upright."
+      },
+      {
+        "content": "Build the poaching syrup in a snug pot.",
+        "detail": "Pour the whole bottle of red wine into a pot just wide enough to hold the pears standing up — too wide and the wine won't cover them. Add 3/4 cup sugar, the cinnamon, 2 star anise, and 3 strips of orange peel plus its juice. Stir over heat until the sugar fully dissolves before the pears go in.",
+        "timer_seconds": 240
+      },
+      {
+        "content": "Poach the pears 25–30 min, turning.",
+        "detail": "Lower the pears in lying down (or standing if they fit) and keep the liquid at a bare simmer — a hard boil cooks them unevenly and clouds the syrup. Turn every 10 min so they colour all over. They're done when a skewer slides in with gentle resistance, like a ripe avocado.",
+        "timer_seconds": 1800
+      },
+      {
+        "content": "Lift out the pears and reduce the syrup.",
+        "detail": "Set the pears aside. Turn the heat up and boil the poaching liquid hard until it reduces by half to a glossy, pourable syrup that coats a spoon — usually 10–12 min. It thickens more as it cools, so stop while it's still a touch loose.",
+        "timer_seconds": 660
+      },
+      {
+        "content": "Toast the hazelnuts and roughly chop.",
+        "detail": "Toast the hazelnuts in a dry pan over medium heat, shaking often, until fragrant and the skins darken, about 4 min. Tip onto a tea towel and rub to loosen the bitter skins, then chop roughly. Dry-toasting wakes up the oils — raw nuts taste flat here."
+      },
+      {
+        "content": "Plate with syrup, nuts and ice cream.",
+        "detail": "Stand a pear on each plate, spoon over plenty of warm syrup, and scatter hazelnuts. Add a scoop of vanilla ice cream right at the table so it just begins to melt into the syrup. You can poach a day ahead and let the pears steep in the cooled syrup overnight — they go a deeper ruby."
+      }
+    ]
+  },
+  {
+    "slug": "peach-cobbler",
+    "title": "Peach Cobbler",
+    "description": "Jammy summer peaches under a craggy pecan biscuit lid. Best warm, with cold cream.",
+    "prep_time": 20,
+    "cook_time": 40,
+    "servings": 6,
+    "tags": [
+      "dessert",
+      "fruit",
+      "comfort",
+      "baking"
+    ],
+    "palette": [
+      "#e8862e",
+      "#fcecd6"
+    ],
+    "dish_form": "baked-slice",
+    "ingredients": [
+      {
+        "id": "peach",
+        "amount": "6 ripe"
+      },
+      {
+        "id": "sugar",
+        "amount": "3/4 cup"
+      },
+      {
+        "id": "flour",
+        "amount": "1 1/2 cups"
+      },
+      {
+        "id": "butter",
+        "amount": "100 g"
+      },
+      {
+        "id": "baking_powder",
+        "amount": "2 tsp"
+      },
+      {
+        "id": "milk",
+        "amount": "3/4 cup"
+      },
+      {
+        "id": "pecan",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "cinnamon",
+        "amount": "1/2 tsp"
+      },
+      {
+        "id": "ice_cream",
+        "amount": "to serve",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Slice the peaches and toss with sugar and cornflour.",
+        "detail": "If the peaches are ripe, the skins slip off after a 30-second dunk in boiling water then ice water; firmer ones can stay skin-on. Slice into wedges and toss with 1/4 cup of the sugar, 1 tbsp flour and the cinnamon. The flour thickens the juices into a glossy filling instead of a watery puddle."
+      },
+      {
+        "content": "Tip the fruit into a buttered dish.",
+        "detail": "Butter a 20x25cm baking dish and spread the peaches out evenly. Slide it into the oven on its own for 10 min at 190°C to get the juices bubbling before the topping goes on — a pre-warmed filling means the biscuit lid bakes through instead of sitting on cold, raw fruit.",
+        "timer_seconds": 600
+      },
+      {
+        "content": "Rub butter into the flour, then mix the dough.",
+        "detail": "In a bowl, whisk 1 1/2 cups flour (minus the spoon used on the fruit), the remaining 1/2 cup sugar and 2 tsp baking powder. Rub in 100g cold cubed butter until sandy with pea-sized lumps. Stir in chopped pecans, then the milk just until it clumps into a shaggy dough — overmixing makes it tough and bready."
+      },
+      {
+        "content": "Dollop the dough over the hot fruit.",
+        "detail": "Pull the dish out and drop rough spoonfuls of dough over the peaches, leaving gaps so juice bubbles up through the cracks — that's the cobbled look the name comes from. Don't spread it smooth; the craggy peaks are what crisp up golden."
+      },
+      {
+        "content": "Bake 30 min until golden and bubbling.",
+        "detail": "Back into the 190°C oven for 28–32 min. It's ready when the topping is deep gold and a skewer in the centre biscuit comes out clean, and the fruit bubbles thickly at the edges. If the top browns before the middle sets, tent loosely with foil.",
+        "timer_seconds": 1800
+      },
+      {
+        "content": "Rest, then serve warm with ice cream.",
+        "detail": "Let it sit 10–15 min — the filling is molten straight out and needs to settle so it spoons up jammy rather than runny. Serve warm with cold vanilla ice cream that melts into the juices, or a pour of thickened cream."
+      }
+    ]
+  },
+  {
+    "slug": "cherry-clafoutis",
+    "title": "Cherry Clafoutis",
+    "description": "A French custard cake studded with cherries — somewhere between a flan and a pancake.",
+    "prep_time": 15,
+    "cook_time": 35,
+    "servings": 6,
+    "tags": [
+      "dessert",
+      "fruit",
+      "french",
+      "baking"
+    ],
+    "palette": [
+      "#9d1c3f",
+      "#f6ead9"
+    ],
+    "dish_form": "baked-slice",
+    "ingredients": [
+      {
+        "id": "cherry",
+        "amount": "400 g"
+      },
+      {
+        "id": "eggs",
+        "amount": "3"
+      },
+      {
+        "id": "milk",
+        "amount": "1 1/4 cups"
+      },
+      {
+        "id": "flour",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "sugar",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "butter",
+        "amount": "20 g"
+      },
+      {
+        "id": "vanilla",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "cream",
+        "amount": "to serve",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Butter and sugar a baking dish, add the cherries.",
+        "detail": "Rub a 24cm round or oval dish with the soft butter, then dust with a spoon of the sugar and tip out the excess — this gives the clafoutis a fine sugary crust and stops sticking. Scatter the cherries in a single layer. Traditionally the stones are left in (they add an almond note), but pit them if serving to kids or guests who won't expect it."
+      },
+      {
+        "content": "Whisk eggs, sugar and vanilla until pale.",
+        "detail": "Whisk the 3 eggs with 1/2 cup sugar and the vanilla for a minute until lightened and slightly frothy. Starting with the eggs and sugar, not the flour, keeps the batter lump-free."
+      },
+      {
+        "content": "Whisk in the flour, then the milk.",
+        "detail": "Add the 1/2 cup flour and whisk to a smooth thick paste first, then gradually pour in the milk while whisking. Adding milk in stages stops lumps far better than dumping it all at once. The finished batter is thin, like pouring cream — that's correct."
+      },
+      {
+        "content": "Pour the batter gently over the cherries.",
+        "detail": "Pour the batter slowly down the side of the dish so you don't dislodge the cherries from their even spread. Some will bob up and that's fine. Let it sit 5 min if you have time so the flour hydrates and bakes more tender."
+      },
+      {
+        "content": "Bake 35 min until puffed and set.",
+        "detail": "Bake at 180°C for 33–38 min. It's done when puffed and golden at the edges with just a faint wobble in the very centre — it sets as it cools. A skewer in the custard (not a cherry) should come out clean. Like a soufflé, it'll deflate a little out of the oven; that's normal.",
+        "timer_seconds": 2100
+      },
+      {
+        "content": "Dust and serve warm.",
+        "detail": "Cool 10 min, then dust with icing or caster sugar. Clafoutis is best warm or at room temperature, never fridge-cold — chilling mutes the delicate custard. A spoon of cream on the side is plenty."
+      }
+    ]
+  },
+  {
+    "slug": "pineapple-upside-down-cake",
+    "title": "Pineapple Upside-Down Cake",
+    "description": "Caramel-glazed pineapple rings and cherries over a soft buttery sponge. A retro classic, flipped.",
+    "prep_time": 20,
+    "cook_time": 40,
+    "servings": 8,
+    "tags": [
+      "dessert",
+      "fruit",
+      "baking",
+      "retro"
+    ],
+    "palette": [
+      "#e3a008",
+      "#fbedc6"
+    ],
+    "dish_form": "baked-slice",
+    "ingredients": [
+      {
+        "id": "pineapple",
+        "amount": "1 small or 6 rings"
+      },
+      {
+        "id": "cherry",
+        "amount": "8"
+      },
+      {
+        "id": "butter",
+        "amount": "180 g"
+      },
+      {
+        "id": "sugar",
+        "amount": "1 1/4 cups"
+      },
+      {
+        "id": "flour",
+        "amount": "1 1/2 cups"
+      },
+      {
+        "id": "eggs",
+        "amount": "3"
+      },
+      {
+        "id": "baking_powder",
+        "amount": "2 tsp"
+      },
+      {
+        "id": "milk",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "vanilla",
+        "amount": "1 tsp"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Make a caramel base in the cake tin.",
+        "detail": "Melt 60g of the butter with 1/2 cup of the sugar in a 23cm round cake tin set over low heat (or melt and pour in), swirling to coat the base evenly into a loose caramel. Use a solid-based tin, not a springform — a springform leaks caramel all over your oven. Take it off the heat before it browns past golden; it keeps cooking in the oven."
+      },
+      {
+        "content": "Arrange pineapple rings and cherries.",
+        "detail": "Lay pineapple rings flat on the caramel in a single snug layer and press a cherry into the hole of each ring. If using fresh pineapple, peel, core and slice into 1cm rings and pat dry — surface wetness dilutes the caramel. Remember this face becomes the top, so arrange it neatly."
+      },
+      {
+        "content": "Cream the butter and sugar, beat in eggs.",
+        "detail": "Beat the remaining 120g soft butter with 3/4 cup sugar until pale and fluffy, 3–4 min — this whips in air for a light sponge. Add the 3 eggs one at a time, beating well after each; if it looks curdled, a spoonful of the flour brings it back together."
+      },
+      {
+        "content": "Fold in flour and milk, then spread over the fruit.",
+        "detail": "Sift in 1 1/2 cups flour with 2 tsp baking powder and fold in alternately with the 1/2 cup milk and the vanilla, finishing on flour. Mix just until smooth — overworking develops gluten and toughens the cake. Spoon the batter gently over the pineapple and level it without disturbing the fruit."
+      },
+      {
+        "content": "Bake 40 min until a skewer comes out clean.",
+        "detail": "Bake at 180°C for 38–42 min, until golden and a skewer in the centre comes out clean. If the top colours too fast before the middle cooks, lay a sheet of foil over it. The cake should spring back when lightly pressed.",
+        "timer_seconds": 2400
+      },
+      {
+        "content": "Cool briefly, then flip onto a plate.",
+        "detail": "Cool just 5–10 min — flip too soon and it's molten and falls apart; leave it too long and the caramel glues itself to the tin. Run a knife round the edge, set a plate on top, and invert confidently in one motion. Lift the tin; any cherries that stick just press back into place."
+      }
+    ]
+  },
+  {
+    "slug": "red-curry-noodle-soup",
+    "title": "Red Curry Noodle Soup",
+    "description": "Coconut-creamy, chilli-warm broth over slippery rice noodles. A bowl that hugs you back.",
+    "prep_time": 10,
+    "cook_time": 20,
+    "servings": 4,
+    "tags": [
+      "thai",
+      "soup",
+      "quick",
+      "gluten-free"
+    ],
+    "palette": [
+      "#dc2626",
+      "#fbe2d3"
+    ],
+    "dish_form": "soup-bowl",
+    "ingredients": [
+      {
+        "id": "chicken_thigh",
+        "amount": "500 g"
+      },
+      {
+        "id": "curry_paste_red",
+        "amount": "3 tbsp"
+      },
+      {
+        "id": "coconut_milk",
+        "amount": "400 ml"
+      },
+      {
+        "id": "stock_chicken",
+        "amount": "800 ml"
+      },
+      {
+        "id": "noodle_rice",
+        "amount": "200 g"
+      },
+      {
+        "id": "corn_frozen",
+        "amount": "1 cup"
+      },
+      {
+        "id": "fish_sauce",
+        "amount": "1 tbsp"
+      },
+      {
+        "id": "lime",
+        "amount": "1"
+      },
+      {
+        "id": "coriander",
+        "amount": "handful",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Fry the curry paste until fragrant, 2 min.",
+        "detail": "Spoon the paste straight into a dry-ish hot pot with a splash of oil and stir-fry it over medium heat. You're 'blooming' it — cooking the raw garlic, lemongrass and chilli so the harshness softens into deep aroma. When it smells loud and your kitchen fills with it, you're there. Don't let it catch and burn or it turns bitter.",
+        "timer_seconds": 120
+      },
+      {
+        "content": "Pour in coconut milk and stir to a smooth base.",
+        "detail": "Tip the whole tin in and stir until the paste dissolves into a rust-orange cream with no lumps. Let it bubble gently for a minute — a little oil splitting to the surface is a good sign, that's the flavour from the paste releasing. This rich base is the soul of the soup."
+      },
+      {
+        "content": "Add stock and chicken, simmer 10 min.",
+        "detail": "Pour in the stock, then slide in the thigh sliced into bite-size strips. Bring to a gentle simmer — never a hard boil, which makes the coconut milk grainy and the chicken tough. Thigh stays juicy and forgiving; ten minutes and it's cooked through.",
+        "timer_seconds": 600
+      },
+      {
+        "content": "Drop in corn and season with fish sauce.",
+        "detail": "Add the frozen corn straight from the freezer — no need to thaw, it takes 3 min to heat through and stays sweet and snappy. Then fish sauce for salty depth. Taste: it should sing salty-sweet-spicy. Adjust with more fish sauce or a pinch of sugar if it's sharp."
+      },
+      {
+        "content": "Cook noodles, then build the bowls.",
+        "detail": "Soften the rice noodles in a separate pot of just-boiled water per the packet (usually 4–5 min) — cooking them in the soup makes the broth cloudy and starchy. Drain, divide between bowls, ladle the hot soup over. A squeeze of lime at the table lifts the whole thing; coriander on top if you like it."
+      }
+    ]
+  },
+  {
+    "slug": "black-bean-beef",
+    "title": "Black Bean Beef Stir-Fry",
+    "description": "Savoury, glossy, fast. Tender beef and capsicum in a salty-deep black bean sauce.",
+    "prep_time": 15,
+    "cook_time": 10,
+    "servings": 4,
+    "tags": [
+      "chinese",
+      "stir-fry",
+      "quick"
+    ],
+    "palette": [
+      "#44403c",
+      "#e7e2db"
+    ],
+    "dish_form": "stir-fry",
+    "ingredients": [
+      {
+        "id": "beef_steak",
+        "amount": "500 g"
+      },
+      {
+        "id": "tinned_black_bean",
+        "amount": "1 tin"
+      },
+      {
+        "id": "capsicum_green",
+        "amount": "2"
+      },
+      {
+        "id": "onion_brown",
+        "amount": "1"
+      },
+      {
+        "id": "garlic",
+        "amount": "3 cloves"
+      },
+      {
+        "id": "ginger",
+        "amount": "thumb"
+      },
+      {
+        "id": "soy_sauce",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "oyster_sauce",
+        "amount": "1 tbsp"
+      },
+      {
+        "id": "rice_jasmine",
+        "amount": "2 cups"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Slice the beef thin across the grain.",
+        "detail": "Look at the lines running through the steak — that's the grain. Cut at right angles to them in thin slices. This chops the long muscle fibres short, so every bite is tender instead of chewy. Firming the steak in the freezer for 15 min first makes thin slicing much easier."
+      },
+      {
+        "content": "Mash half the black beans, rinse the rest.",
+        "detail": "Tip the tin into a sieve and rinse off the brine — it's heavily salted. Mash about half with a fork into a rough paste and leave the rest whole: the paste melts into the sauce for savoury depth, the whole beans give little salty pops. This 'black bean sauce' is the heart of the dish."
+      },
+      {
+        "content": "Sear the beef hard, then lift it out.",
+        "detail": "Get a wok or wide pan ripping hot with a little oil — it should smoke faintly. Spread the beef in one layer and leave it 30 seconds before tossing, so it sears rather than stews. Crowding the pan steams the meat grey; do it in two batches if it looks packed. Set the seared beef aside.",
+        "timer_seconds": 120
+      },
+      {
+        "content": "Stir-fry the veg with garlic and ginger.",
+        "detail": "Same hot pan, splash more oil, then onion wedges and capsicum chunks. Keep them moving for 2–3 min — you want them crisp-tender with a bit of char, not soft. Add the minced garlic and ginger only in the last 30 seconds; they burn fast and turn acrid if they go in early."
+      },
+      {
+        "content": "Return beef, add the sauces, toss and serve.",
+        "detail": "Tip the beef back in with the black beans, soy and oyster sauce. Toss hard for a minute until everything's glossy and coated — a splash of water loosens it if it's claggy. Pull it off the heat while the beef is just done. Serve straight over steamed jasmine rice."
+      }
+    ]
+  },
+  {
+    "slug": "star-anise-pork-belly",
+    "title": "Star-Anise Braised Pork Belly",
+    "description": "Sticky, melting cubes of pork in a sweet-soy braise. Patience makes it spoon-tender.",
+    "prep_time": 10,
+    "cook_time": 90,
+    "servings": 4,
+    "tags": [
+      "chinese",
+      "slow",
+      "comfort"
+    ],
+    "palette": [
+      "#7c2d12",
+      "#f0d9c4"
+    ],
+    "dish_form": "default-plate",
+    "ingredients": [
+      {
+        "id": "pork_belly",
+        "amount": "1 kg"
+      },
+      {
+        "id": "star_anise",
+        "amount": "3 whole"
+      },
+      {
+        "id": "cinnamon",
+        "amount": "1 stick"
+      },
+      {
+        "id": "soy_sauce",
+        "amount": "1/3 cup"
+      },
+      {
+        "id": "sugar",
+        "amount": "3 tbsp"
+      },
+      {
+        "id": "ginger",
+        "amount": "thumb"
+      },
+      {
+        "id": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "id": "spring_onion",
+        "amount": "3",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Cut the belly into 3cm cubes and blanch.",
+        "detail": "Drop the cubes into cold water, bring to the boil, simmer 3 min, then drain and rinse. This blanching step lifts the grey scum and impurities out of the pork so your braise stays clean and clear — skip it and the sauce turns muddy. Pat the cubes dry afterwards."
+      },
+      {
+        "content": "Caramelise the sugar to a amber syrup.",
+        "detail": "Melt the sugar in a dry heavy pot over medium heat — don't stir, just swirl the pan — until it turns deep amber, about 4 min. This caramel is what gives the braise its mahogany colour and bittersweet edge. Watch it like a hawk; sugar goes from amber to burnt in seconds.",
+        "timer_seconds": 240
+      },
+      {
+        "content": "Brown the pork in the caramel.",
+        "detail": "Tip in the pork cubes and toss to coat — it'll sputter and seize, that's normal. Let them colour for a few minutes, turning, until glazed on all sides. The caramel clings to the fat and starts building the sticky lacquer that defines this dish."
+      },
+      {
+        "content": "Add aromatics, soy and water, then braise low.",
+        "detail": "In go the star anise, cinnamon, smashed garlic, sliced ginger and soy. Pour in enough water to almost cover. Star anise is the signature here — liquorice-warm and unmistakable; whole pods so you can fish them out later. Bring to a bare simmer, cover, and cook on the lowest heat 75–80 min. Low and slow renders the fat to silk; a hard boil makes the meat stringy.",
+        "timer_seconds": 4500
+      },
+      {
+        "content": "Uncover and reduce to a glossy glaze.",
+        "detail": "Lift the lid for the last 15 min and turn the heat up a notch. The liquid reduces and thickens to a syrup that coats each cube like lacquer. Spoon it over as it goes — when it clings to the pork and a spoon leaves a trail, it's done. Scatter sliced spring onion over to finish."
+      }
+    ]
+  },
+  {
+    "slug": "beef-bourguignon",
+    "title": "Beef Bourguignon",
+    "description": "The French Sunday braise. Beef gone tender in red wine, bacon and mushrooms.",
+    "prep_time": 20,
+    "cook_time": 150,
+    "servings": 6,
+    "tags": [
+      "french",
+      "slow",
+      "comfort",
+      "one-pot"
+    ],
+    "palette": [
+      "#7f1d1d",
+      "#ecd9d4"
+    ],
+    "dish_form": "roast-plate-steak",
+    "ingredients": [
+      {
+        "id": "beef_brisket",
+        "amount": "1.2 kg"
+      },
+      {
+        "id": "wine_red",
+        "amount": "750 ml"
+      },
+      {
+        "id": "bacon",
+        "amount": "200 g"
+      },
+      {
+        "id": "mushroom",
+        "amount": "300 g"
+      },
+      {
+        "id": "onion_brown",
+        "amount": "2"
+      },
+      {
+        "id": "carrot",
+        "amount": "3"
+      },
+      {
+        "id": "garlic",
+        "amount": "4 cloves"
+      },
+      {
+        "id": "stock_beef",
+        "amount": "500 ml"
+      },
+      {
+        "id": "tomato_paste",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "thyme",
+        "amount": "few sprigs"
+      },
+      {
+        "id": "bay_leaf",
+        "amount": "2"
+      }
+    ],
+    "steps": [
+      {
+        "content": "Brown the bacon, then sear the beef in batches.",
+        "detail": "Crisp the diced bacon in a heavy casserole and lift it out, leaving the fat. Pat the cubed beef bone-dry and sear it hard in that fat, a handful at a time. Dry meat and an uncrowded pan are everything — wet, packed meat steams grey, and you lose the deep brown crust that flavours the whole pot. Set the beef aside with the bacon."
+      },
+      {
+        "content": "Soften onion, carrot and garlic in the pan.",
+        "detail": "Drop the heat and add the chopped onion and carrot to the rendered fat. Cook 6–7 min until soft and golden, scraping the dark sticky bits off the base — that's called the fond, pure concentrated flavour. Stir in the garlic and tomato paste for the last minute to cook off its raw edge."
+      },
+      {
+        "content": "Pour in the wine and let it reduce.",
+        "detail": "Add the whole bottle of red and bring it to a bubble, scraping again. Let it reduce by about a third over 5 min — this boils off the sharp alcohol and concentrates the wine into something mellow and rich. Use a wine you'd happily drink; a rough, harsh red stays harsh after cooking.",
+        "timer_seconds": 300
+      },
+      {
+        "content": "Return the meat, add stock and herbs, braise low.",
+        "detail": "Tip the beef and bacon back in with the stock, thyme and bay. The liquid should nearly cover the meat. Bring to a bare simmer, lid on, and cook on the lowest heat (or a 160C oven) for 2 hours. Brisket is tough collagen that only surrenders to long, gentle heat — rush it and it's chewy; give it time and it falls apart.",
+        "timer_seconds": 7200
+      },
+      {
+        "content": "Brown the mushrooms and stir them through.",
+        "detail": "While it braises, fry the mushrooms in a little butter or oil over high heat until golden — added now rather than at the start, they keep their texture instead of turning to slime. Stir them into the finished braise. Fish out the bay and thyme stalks. Rest 10 min off the heat; it tastes even better the next day."
+      }
+    ]
+  },
+  {
+    "slug": "chai-rice-pudding",
+    "title": "Chai-Spiced Rice Pudding",
+    "description": "Slow-stirred, milky and warm with chai spice. Pure cold-night comfort in a bowl.",
+    "prep_time": 5,
+    "cook_time": 35,
+    "servings": 4,
+    "tags": [
+      "dessert",
+      "comfort",
+      "vegetarian"
+    ],
+    "palette": [
+      "#b45309",
+      "#f6e8d3"
+    ],
+    "dish_form": "default-plate",
+    "ingredients": [
+      {
+        "id": "rice_basmati",
+        "amount": "3/4 cup"
+      },
+      {
+        "id": "milk",
+        "amount": "1 L"
+      },
+      {
+        "id": "tea_chai",
+        "amount": "2 bags"
+      },
+      {
+        "id": "sugar",
+        "amount": "1/3 cup"
+      },
+      {
+        "id": "cinnamon",
+        "amount": "1/2 tsp"
+      },
+      {
+        "id": "raisin",
+        "amount": "1/3 cup",
+        "is_optional": true
+      },
+      {
+        "id": "cream",
+        "amount": "1/4 cup",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "content": "Warm the milk and steep the chai.",
+        "detail": "Gently heat the milk in a heavy pot until steaming but not boiling, then drop in the chai bags and let them steep 5 min off the heat. Steeping in warm milk pulls the cardamom, ginger and clove right through the dish — this is where the whole pudding gets its character. Squeeze and lift the bags out.",
+        "timer_seconds": 300
+      },
+      {
+        "content": "Add rice and sugar, bring to a bare simmer.",
+        "detail": "Stir in the rinsed rice, sugar and cinnamon. Use a wide heavy pot — milk catches and scorches on thin metal, and that burnt taste spreads through everything. Bring it to the gentlest simmer, just a few bubbles breaking the surface."
+      },
+      {
+        "content": "Cook low and stir often, 30 min.",
+        "detail": "Keep the heat low and stir every few minutes, scraping the base so nothing sticks. The rice slowly drinks the milk and releases its starch, turning the whole pot creamy and thick. It's meditative, not a recipe to wander off from — a skin or a scorch forms the moment you do.",
+        "timer_seconds": 1800
+      },
+      {
+        "content": "Add raisins near the end and check the set.",
+        "detail": "Stir the raisins through for the last 10 min so they plump in the warm milk. The pudding's done when the rice is soft and it's thickened but still loose and pourable — remember it sets firmer as it cools, so pull it off while it still looks a touch wet."
+      },
+      {
+        "content": "Finish with cream and a dusting of cinnamon.",
+        "detail": "Off the heat, swirl in a splash of cream for extra silk and richness. Serve warm with a dusting of cinnamon on top. Leftovers thicken to a paste in the fridge — loosen with a splash of milk when you reheat."
+      }
+    ]
   }
 ]
