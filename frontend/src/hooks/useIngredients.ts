@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api';
 import type { Ingredient } from '../types/models';
@@ -9,9 +10,13 @@ export function useIngredients() {
     staleTime: 60 * 60 * 1000,
     gcTime: 60 * 60 * 1000,
   });
-  const items = data?.items ?? [];
-  const byId: Record<string, Ingredient> = {};
-  for (const i of items) byId[i.id] = i;
+  // Memoize so the ~196-entry map isn't rebuilt on every render / per list row.
+  const items = useMemo(() => data?.items ?? [], [data]);
+  const byId = useMemo(() => {
+    const m: Record<string, Ingredient> = {};
+    for (const i of items) m[i.id] = i;
+    return m;
+  }, [items]);
   return { items, byId };
 }
 

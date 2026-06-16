@@ -65,7 +65,7 @@ export function LoginPage() {
             Sign in
           </div>
           <h2>Open the kitchen.</h2>
-          {err && <div className="error">{err}</div>}
+          {err && <div className="error" role="alert">{err}</div>}
           <div className="auth-field">
             <label htmlFor="login-email">Email</label>
             <input

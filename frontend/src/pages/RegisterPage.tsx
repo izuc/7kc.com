@@ -67,7 +67,7 @@ export function RegisterPage() {
             New account
           </div>
           <h2>Start your pantry.</h2>
-          {err && <div className="error">{err}</div>}
+          {err && <div className="error" role="alert">{err}</div>}
           <div className="auth-field">
             <label htmlFor="reg-name">Your name (optional)</label>
             <input

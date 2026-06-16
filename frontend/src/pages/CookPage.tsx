@@ -145,6 +145,8 @@ export function CookPage() {
                   <button
                     className="tick"
                     disabled={!inPantry || !i.ingredient_id}
+                    aria-pressed={isChecked}
+                    aria-label={`Remove ${i.display || i.ingredient_id} from pantry`}
                     onClick={() => i.ingredient_id && toggleRemove(i.ingredient_id)}
                   >
                     {isChecked ? <Icon name="check" size={14} /> : null}

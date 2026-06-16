@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect, useRef } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate, useParams } from 'react-router-dom';
-import { api } from '../lib/api';
+import { api, ApiError } from '../lib/api';
 import { SECTIONS } from '../lib/format';
 import { Icon } from '../components/Icon';
 import { Modal } from '../components/Modal';
@@ -40,6 +40,17 @@ export function ListsPage() {
 
   const invalidate = () => qc.invalidateQueries({ queryKey: ['lists'] });
 
+  // Surface failures instead of silently no-opping (401 is handled globally → login).
+  const guard = async (fn: () => Promise<void>) => {
+    try {
+      await fn();
+    } catch (e) {
+      if (!(e instanceof ApiError && e.status === 401)) {
+        toast("Couldn't update the list — please try again.");
+      }
+    }
+  };
+
   const createList = useMutation({
     mutationFn: (name: string) => api.createList(name),
     onSuccess: (r) => {
@@ -48,6 +59,7 @@ export function ListsPage() {
       invalidate();
       navigate(`/lists/${r.list.id}`);
     },
+    onError: () => toast("Couldn't create the list — please try again."),
   });
 
   if (isLoading) {
@@ -94,6 +106,7 @@ export function ListsPage() {
             Shopping list<span className="dot-sep">·</span>
             <span className="mono">{list.items.length} items</span>
           </div>
+          <h1 className="screen-title">{list.name}</h1>
           <div className="lists-tabs">
             {activeLists.map((l) => (
               <button
@@ -116,11 +129,13 @@ export function ListsPage() {
           <button
             className="btn btn-ghost"
             disabled={list.items.length === 0}
-            onClick={async () => {
-              await api.markAllBought(list.id);
-              invalidate();
-              toast('Marked all bought');
-            }}
+            onClick={() =>
+              guard(async () => {
+                await api.markAllBought(list.id);
+                invalidate();
+                toast('Marked all bought');
+              })
+            }
           >
             <Icon name="check" size={14} /> Mark all bought
           </button>
@@ -159,14 +174,18 @@ export function ListsPage() {
           <ItemRow
             key={it.id}
             item={it}
-            onToggle={async () => {
-              await api.toggleBought(list.id, it.id);
-              invalidate();
-            }}
-            onRemove={async () => {
-              await api.deleteListItem(list.id, it.id);
-              invalidate();
-            }}
+            onToggle={() =>
+              guard(async () => {
+                await api.toggleBought(list.id, it.id);
+                invalidate();
+              })
+            }
+            onRemove={() =>
+              guard(async () => {
+                await api.deleteListItem(list.id, it.id);
+                invalidate();
+              })
+            }
           />
         )}
         emptyHint={
@@ -188,12 +207,14 @@ export function ListsPage() {
             {boughtToMove.length > 0 && (
               <button
                 className="btn btn-sage"
-                onClick={async () => {
-                  const r = await api.moveBoughtToPantry(list.id);
-                  invalidate();
-                  qc.invalidateQueries({ queryKey: ['pantry'] });
-                  toast(`${r.moved} moved to pantry`);
-                }}
+                onClick={() =>
+                  guard(async () => {
+                    const r = await api.moveBoughtToPantry(list.id);
+                    invalidate();
+                    qc.invalidateQueries({ queryKey: ['pantry'] });
+                    toast(`${r.moved} moved to pantry`);
+                  })
+                }
               >
                 <Icon name="pantry" size={14} /> Move {boughtToMove.length} to pantry
               </button>
@@ -204,14 +225,18 @@ export function ListsPage() {
               <ItemRow
                 key={it.id}
                 item={it}
-                onToggle={async () => {
-                  await api.toggleBought(list.id, it.id);
-                  invalidate();
-                }}
-                onRemove={async () => {
-                  await api.deleteListItem(list.id, it.id);
-                  invalidate();
-                }}
+                onToggle={() =>
+                  guard(async () => {
+                    await api.toggleBought(list.id, it.id);
+                    invalidate();
+                  })
+                }
+                onRemove={() =>
+                  guard(async () => {
+                    await api.deleteListItem(list.id, it.id);
+                    invalidate();
+                  })
+                }
               />
             ))}
           </ul>
@@ -320,7 +345,12 @@ function ItemRow({
   const section = item.ingredient_id ? byId[item.ingredient_id]?.section : item.section;
   return (
     <li className={`item ${item.is_bought ? 'bought' : ''}`}>
-      <button className="tick" onClick={onToggle} aria-label="toggle">
+      <button
+        className="tick"
+        onClick={onToggle}
+        aria-pressed={item.is_bought}
+        aria-label={item.is_bought ? `Mark ${name} as not bought` : `Mark ${name} as bought`}
+      >
         {item.is_bought ? <Icon name="check" size={14} /> : null}
       </button>
       {item.ingredient_id ? (
@@ -334,7 +364,7 @@ function ItemRow({
           <Icon name="pantry" size={11} /> in pantry
         </span>
       )}
-      <button className="x" onClick={onRemove} aria-label="remove">
+      <button className="x" onClick={onRemove} aria-label={`Remove ${name}`}>
         <Icon name="x" size={14} />
       </button>
     </li>
@@ -352,6 +382,7 @@ function ShoppingAffiliateRow({ items }: { items: ListItem[] }) {
 }
 
 function QuickAdd({ listId, onAdded }: { listId: string; onAdded: () => void }) {
+  const toast = useUi((s) => s.toast);
   const [q, setQ] = useState('');
   const [open, setOpen] = useState(false);
   const { data } = useQuery({
@@ -364,14 +395,18 @@ function QuickAdd({ listId, onAdded }: { listId: string; onAdded: () => void }) 
 
   const add = async (ing: Ingredient | null) => {
     if (!ing && !q.trim()) return;
-    await api.addListItems(listId, [
-      ing
-        ? { ingredient_id: ing.id, section: ing.section }
-        : { custom_name: q.trim(), section: 'other' },
-    ]);
-    setQ('');
-    setOpen(false);
-    onAdded();
+    try {
+      await api.addListItems(listId, [
+        ing
+          ? { ingredient_id: ing.id, section: ing.section }
+          : { custom_name: q.trim(), section: 'other' },
+      ]);
+      setQ('');
+      setOpen(false);
+      onAdded();
+    } catch (e) {
+      if (!(e instanceof ApiError && e.status === 401)) toast("Couldn't add that item — please try again.");
+    }
   };
 
   return (
@@ -419,6 +454,7 @@ function PasteParseModal({
   onClose: () => void;
   seedText?: string | null;
 }) {
+  const toast = useUi((s) => s.toast);
   const [text, setText] = useState(seedText ?? '');
   const [parsed, setParsed] = useState<(ParsedItem & { skip?: boolean })[] | null>(null);
   const [busy, setBusy] = useState(false);
@@ -437,6 +473,8 @@ snags for the bbq`;
     try {
       const r = await api.parse(text);
       setParsed(r.items.map((i) => ({ ...i, skip: false })));
+    } catch (e) {
+      if (!(e instanceof ApiError && e.status === 401)) toast("Couldn't parse that — please try again.");
     } finally {
       setBusy(false);
     }
@@ -451,8 +489,12 @@ snags for the bbq`;
           ? { ingredient_id: p.match.id, section: p.match.section }
           : { custom_name: p.clean || p.raw, section: 'other' }
       );
-    await api.addListItems(listId, items);
-    onClose();
+    try {
+      await api.addListItems(listId, items);
+      onClose();
+    } catch (e) {
+      if (!(e instanceof ApiError && e.status === 401)) toast("Couldn't add those items — please try again.");
+    }
   };
 
   return (
@@ -497,6 +539,8 @@ snags for the bbq`;
               <li key={i} className={p.skip ? 'skip' : p.match ? 'matched' : 'unmatched'}>
                 <button
                   className="tick"
+                  aria-pressed={!p.skip}
+                  aria-label={p.skip ? `Include ${p.raw}` : `Exclude ${p.raw}`}
                   onClick={() =>
                     setParsed(parsed.map((x, j) => (i === j ? { ...x, skip: !x.skip } : x)))
                   }

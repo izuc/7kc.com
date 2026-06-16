@@ -159,3 +159,23 @@ h3 {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
+
+/* ---- Landing top-nav: hide in-page anchors on phones so it can't overflow ---- */
+@media (max-width: 640px) {
+  .lp-nav a.lp-nav-link[href^="#"] { display: none; }
+  .lp-nav-links { gap: 6px; }
+  .lp-brand-tag { display: none; }
+}
+
+/* ---- .tag-sage failed AA at 10.5px: use a darker sage ink for the text ---- */
+:root { --sage-ink: oklch(0.42 0.075 150); }
+.tag-sage { color: var(--sage-ink); }
+
+/* ---- Landing anchors/tiles: app accent focus ring, not just the UA default ---- */
+.lp-nav-link:focus-visible,
+.lp-recipe-tile:focus-visible,
+.lp-foot a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
