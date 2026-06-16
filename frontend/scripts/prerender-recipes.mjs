@@ -83,3 +83,51 @@ for (const r of recipes) {
   n++;
 }
 console.log(`prerendered ${n} recipe pages → dist/r/<slug>/index.html`);
+
+// ---- tag collection landing pages (internal-links the catalogue for SEO) ----
+const LABELS = { 'no-cook': 'No-cook', 'gluten-free': 'Gluten-free', 'batch-friendly': 'Batch-friendly', bbq: 'BBQ' };
+const tagLabel = (t) => LABELS[t] || t.charAt(0).toUpperCase() + t.slice(1);
+
+const tagCounts = {};
+for (const r of recipes) for (const t of r.tags || []) tagCounts[t] = (tagCounts[t] || 0) + 1;
+
+function collectionPage(tag, list) {
+  const url = `${ORIGIN}/collection/${encodeURIComponent(tag)}`;
+  const heading = `${tagLabel(tag)} recipes`;
+  const title = `${heading} — 7 Day Kitchen`;
+  const desc = `Browse ${list.length} ${tagLabel(tag).toLowerCase()} recipes — cook from what's already in your pantry.`;
+  const itemList = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: list.map((r, i) => ({ '@type': 'ListItem', position: i + 1, url: `${ORIGIN}/r/${r.slug}`, name: r.title })),
+  };
+  const jsonLd = JSON.stringify(itemList).replace(/</g, '\\u003c');
+
+  let html = template
+    .replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`)
+    .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${esc(desc)}" />`)
+    .replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${esc(url)}" />`)
+    .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${esc(heading)}" />`)
+    .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${esc(desc)}" />`)
+    .replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${esc(url)}" />`)
+    .replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${esc(heading)}" />`)
+    .replace(/<meta name="twitter:description" content="[^"]*" \/>/, `<meta name="twitter:description" content="${esc(desc)}" />`);
+
+  html = html.replace('</head>', `    <script type="application/ld+json">${jsonLd}</script>\n  </head>`);
+  const items = list
+    .map((r) => `<li><a href="/r/${esc(r.slug)}">${esc(r.title)}</a> — ${esc(r.description || '')}</li>`)
+    .join('');
+  const staticContent = `<main class="screen" style="max-width:1100px;margin:0 auto;padding:32px 20px 80px"><h1>${esc(heading)}</h1><ul>${items}</ul></main>`;
+  return html.replace('<div id="root"></div>', `<div id="root">${staticContent}</div>`);
+}
+
+let c = 0;
+for (const [tag, count] of Object.entries(tagCounts)) {
+  if (count < 8) continue;
+  const list = recipes.filter((r) => (r.tags || []).includes(tag)).sort((a, b) => a.title.localeCompare(b.title));
+  const dir = path.join(dist, 'collection', tag);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, 'index.html'), collectionPage(tag, list));
+  c++;
+}
+console.log(`prerendered ${c} collection pages → dist/collection/<tag>/index.html`);

@@ -164,6 +164,8 @@ export const api = {
     return request<{ recipes: RecipeSummary[] }>(`/recipes${qs ? `?${qs}` : ''}`);
   },
   recipe: (slug: string) => request<{ recipe: Recipe }>(`/recipes/${slug}`),
+  collection: (tag: string) =>
+    request<{ tag: string; recipes: RecipeSummary[] }>(`/public/collections/${encodeURIComponent(tag)}`),
   suggestions: () => request<{ ranked: RankedRecipe[] }>('/recipes/suggestions'),
   cookedRecipes: () => request<{ cooked: CookedRecipe[] }>('/recipes/cooked'),
   favouriteRecipes: () => request<{ recipes: RecipeSummary[] }>('/recipes/favourites'),

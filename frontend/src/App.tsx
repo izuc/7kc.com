@@ -22,6 +22,7 @@ const CookPage = lazy(() => import('./pages/CookPage').then((m) => ({ default: m
 const GroupPage = lazy(() => import('./pages/GroupPage').then((m) => ({ default: m.GroupPage })));
 const SettingsPage = lazy(() => import('./pages/SettingsPage').then((m) => ({ default: m.SettingsPage })));
 const PublicRecipePage = lazy(() => import('./pages/PublicRecipePage').then((m) => ({ default: m.PublicRecipePage })));
+const CollectionPage = lazy(() => import('./pages/CollectionPage').then((m) => ({ default: m.CollectionPage })));
 const LandingPage = lazy(() => import('./pages/LandingPage').then((m) => ({ default: m.LandingPage })));
 
 const TITLES: Record<string, string> = {
@@ -43,7 +44,7 @@ export function App() {
 
   useEffect(() => {
     // /r/ recipe pages set their own specific title — don't clobber it.
-    if (location.pathname.startsWith('/r/')) return;
+    if (location.pathname.startsWith('/r/') || location.pathname.startsWith('/collection/')) return;
     let title = "7 Day Kitchen — Use what you've got.";
     for (const [path, t] of Object.entries(TITLES)) {
       if (location.pathname === path || location.pathname.startsWith(path + '/')) {
@@ -55,13 +56,14 @@ export function App() {
   }, [location.pathname]);
 
   // public SEO routes render without auth and outside the AppShell
-  if (location.pathname.startsWith('/r/')) {
+  if (location.pathname.startsWith('/r/') || location.pathname.startsWith('/collection/')) {
     return (
       <div className={`accent-${accent} density-${density}`}>
         <ErrorBoundary>
-          <Suspense fallback={<Loading label="Loading recipe…" />}>
+          <Suspense fallback={<Loading label="Loading…" />}>
             <Routes>
               <Route path="/r/:slug" element={<PublicRecipePage />} />
+              <Route path="/collection/:tag" element={<CollectionPage />} />
             </Routes>
           </Suspense>
         </ErrorBoundary>

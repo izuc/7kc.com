@@ -99,7 +99,16 @@ export function PublicRecipePage() {
         <div className="recipe-detail-hero">
           <MealPlate recipe={recipe} size={340} />
           <div className="recipe-detail-title">
-            <div className="eyebrow">{recipe.tags.slice(0, 3).join(' · ')}</div>
+            <div className="eyebrow">
+              {recipe.tags.slice(0, 3).map((t, i) => (
+                <span key={t}>
+                  {i > 0 && <span className="dot-sep"> · </span>}
+                  <Link to={`/collection/${t}`} style={{ color: 'inherit' }}>
+                    {t}
+                  </Link>
+                </span>
+              ))}
+            </div>
             <h1>{recipe.title}</h1>
             <p className="lede">{recipe.description}</p>
             <div className="recipe-detail-stats">
