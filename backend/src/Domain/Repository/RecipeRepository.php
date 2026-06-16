@@ -36,6 +36,23 @@ final class RecipeRepository
         return $recipes;
     }
 
+    /** Public (non-custom) recipes carrying a given tag — for collection landing pages. */
+    public function publicByTag(string $tag): array
+    {
+        $recipes = array_map([$this, 'hydrate'], $this->db->fetchAllAssociative(
+            'SELECT * FROM recipes WHERE is_custom = 0 ORDER BY title ASC'
+        ));
+        $byRecipe = $this->ingredientIdsForAll();
+        $out = [];
+        foreach ($recipes as $r) {
+            if (in_array($tag, $r['tags'], true)) {
+                $r['ingredient_ids'] = $byRecipe[$r['id']] ?? [];
+                $out[] = $r;
+            }
+        }
+        return $out;
+    }
+
     public function findBySlug(string $slug): ?array
     {
         $r = $this->db->fetchAssociative('SELECT * FROM recipes WHERE slug = ?', [$slug]);

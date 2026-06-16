@@ -19,6 +19,7 @@ use SevenKC\Action\Groups\CreateSuggestionAction;
 use SevenKC\Action\Ingredients\DictionaryAction;
 use SevenKC\Action\Ingredients\ListIngredientsAction;
 use SevenKC\Action\Ingredients\ParseAction;
+use SevenKC\Action\Recipes\PublicCollectionAction;
 use SevenKC\Action\Recipes\PublicRecipeAction;
 use SevenKC\Action\Recipes\SitemapAction;
 use SevenKC\Action\Retailers\ListRetailersAction;
@@ -75,6 +76,7 @@ return function (App $app): void {
 
         // public SEO / landing (no auth)
         $g->get('/public/recipes/{slug}', PublicRecipeAction::class);
+        $g->get('/public/collections/{tag}', PublicCollectionAction::class);
         $g->get('/public/retailers', ListRetailersAction::class);
         $g->get('/public/groups/{token}', ResolveInviteAction::class);
 

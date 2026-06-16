@@ -51,6 +51,7 @@ final class PublicRecipeAction
             '@type' => 'Recipe',
             'name' => $recipe['title'],
             'description' => $recipe['description'],
+            'author' => ['@type' => 'Organization', 'name' => '7 Day Kitchen'],
             // Recipe rich results require an image — fall back to the brand card when none.
             'image' => !empty($recipe['image_url']) ? $recipe['image_url'] : $base . '/og-default.png',
             'recipeIngredient' => array_values(array_filter($ingredientStrings)),

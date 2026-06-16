@@ -18,8 +18,16 @@ final class SitemapAction
         $base = rtrim($_ENV['PUBLIC_WEB_ORIGIN'] ?? $origin, '/');
 
         $rows = $this->db->fetchAllAssociative(
-            'SELECT slug FROM recipes WHERE is_custom = 0 ORDER BY slug'
+            'SELECT slug, tags_json FROM recipes WHERE is_custom = 0 ORDER BY slug'
         );
+
+        // Tag collections with enough recipes to avoid thin content.
+        $tagCounts = [];
+        foreach ($rows as $r) {
+            foreach ((array)json_decode((string)($r['tags_json'] ?? '[]'), true) as $t) {
+                $tagCounts[$t] = ($tagCounts[$t] ?? 0) + 1;
+            }
+        }
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
@@ -27,6 +35,11 @@ final class SitemapAction
         $xml .= "  <url><loc>" . htmlspecialchars($base . '/') . "</loc><changefreq>weekly</changefreq></url>\n";
         foreach ($rows as $r) {
             $xml .= "  <url><loc>" . htmlspecialchars($base . '/r/' . $r['slug']) . "</loc><changefreq>monthly</changefreq></url>\n";
+        }
+        foreach ($tagCounts as $tag => $count) {
+            if ($count >= 8) {
+                $xml .= "  <url><loc>" . htmlspecialchars($base . '/collection/' . rawurlencode($tag)) . "</loc><changefreq>weekly</changefreq></url>\n";
+            }
         }
         $xml .= '</urlset>';
 
