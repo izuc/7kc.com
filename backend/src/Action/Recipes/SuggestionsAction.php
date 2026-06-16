@@ -12,6 +12,8 @@ use SevenKC\Infrastructure\Http\Json;
 
 final class SuggestionsAction
 {
+    private const MAX_SUGGESTIONS = 500;
+
     public function __construct(
         private readonly RecipeRepository $recipes,
         private readonly PantryRepository $pantry,
@@ -73,6 +75,15 @@ final class SuggestionsAction
             ];
         }
         usort($ranked, fn ($a, $b) => $b['score'] <=> $a['score']);
+
+        // Defensive cap, applied AFTER ranking so the highest-scored recipes survive.
+        // RecipesPage filters/searches/paginates this list client-side and derives
+        // its counts from the full set, so MAX must stay well above the catalogue
+        // (~157) — this only guards against runaway custom-recipe growth.
+        if (count($ranked) > self::MAX_SUGGESTIONS) {
+            error_log(sprintf('[suggestions] truncating ranked %d -> %d', count($ranked), self::MAX_SUGGESTIONS));
+            $ranked = array_slice($ranked, 0, self::MAX_SUGGESTIONS);
+        }
         return Json::send($res, ['ranked' => $ranked]);
     }
 }

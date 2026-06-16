@@ -12,16 +12,17 @@ final class ShoppingListRepository
 
     public function forUser(string $userId, ?string $groupId): array
     {
-        $sql = 'SELECT * FROM shopping_lists WHERE owner_user_id = ?';
         $params = [$userId];
+        $where = 'owner_user_id = ?';
         if ($groupId) {
-            $sql .= ' OR group_id = ?';
+            $where .= ' OR group_id = ?';
             $params[] = $groupId;
         }
-        $sql .= ' ORDER BY archived_at IS NULL DESC, created_at DESC';
-        // SQLite compatible version
+        // Active lists first, then newest; LIMIT bounds runaway counts without ever
+        // truncating active lists ahead of archived ones. (`archived_at IS NULL DESC`
+        // is SQLite- and MySQL-portable.)
         $lists = $this->db->fetchAllAssociative(
-            'SELECT * FROM shopping_lists WHERE owner_user_id = ?' . ($groupId ? ' OR group_id = ?' : '') . ' ORDER BY created_at DESC',
+            "SELECT * FROM shopping_lists WHERE $where ORDER BY archived_at IS NULL DESC, created_at DESC LIMIT 200",
             $params
         );
         return array_map([$this, 'hydrate'], $lists);

@@ -18,7 +18,9 @@ final class PantryRepository
             $sql .= ' OR group_id = ?';
             $params[] = $groupId;
         }
-        $sql .= ' ORDER BY added_at DESC';
+        // Generous defensive bound (newest kept) — ~10x any realistic pantry, so it
+        // never affects the client-side grouping/sort; it only caps pathological growth.
+        $sql .= ' ORDER BY added_at DESC LIMIT 1000';
         $rows = $this->db->fetchAllAssociative($sql, $params);
         return array_map([$this, 'hydrate'], $rows);
     }

@@ -125,10 +125,10 @@ final class GroupRepository
         return $row ?: null;
     }
 
-    public function suggestions(string $groupId): array
+    public function suggestions(string $groupId, int $limit = 200): array
     {
         $rows = $this->db->fetchAllAssociative(
-            'SELECT * FROM meal_suggestions WHERE group_id = ? ORDER BY created_at DESC',
+            'SELECT * FROM meal_suggestions WHERE group_id = ? ORDER BY created_at DESC LIMIT ' . (int)$limit,
             [$groupId]
         );
         if (!$rows) return [];
