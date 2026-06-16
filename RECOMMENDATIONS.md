@@ -59,7 +59,7 @@ tests/rate-limiting/account-deletion.
 - [x] **#4 · Rate-limit open endpoints** `H/M` — DB-backed fixed-window limiter: login/register 10/min/IP + 5/min/email, `/parse` 30/min/IP, and dedupe the unauth `view_count` UPDATE to 1 per IP+slug/hour. 429 + Retry-After in middleware; add a 429 arm to `ErrorHandler`.
 - [ ] **#5 · Smoke tests + CI** `H/M` — ~12–15 PHPUnit integration tests on in-memory SQLite (auth, move-to-pantry, suggestion ranking, cook-decrement, the server parser, one ownership assertion per resource to lock the BOLA fixes) + Vitest for `format.ts` + GitHub Actions (`composer audit`, phpunit, `tsc --noEmit`, `vite build`).
 - [x] **#6 · Account deletion + export** `H/M` — `DELETE /api/v1/auth/me` running ADMIN.md's documented cascade (10 tables, ordered) in a transaction + reassign group ownership on owner deletion; typed-confirmation modal in Settings. Export (`GET /auth/me/export`) is the lower-priority second step.
-- [ ] **#15 · Error monitoring + analytics instrumentation** `M/M`
+- [x] **#15 · Error monitoring + analytics instrumentation** `M/M` *(structured 5xx logs + X-Request-Id + loop-moment analytics + client-error hook shipped; Sentry init/capture is wired but env+SDK-gated — a deployer enables it with `composer require sentry/sentry` + `SENTRY_DSN`)*
   - [ ] Sentry (backend 5xx incl. thrown HttpExceptions; `@sentry/react` around `ErrorBoundary` + `onunhandledrejection`), DSN-gated; structured JSON logs + `X-Request-Id`.
   - [ ] Fire `trackEvent` at loop moments (`cook_completed`, `pantry_item_added`, `list_moved_to_pantry`, `suggestion_created`, `expiring_seen`) — only 3 wired today; read-only retention metrics endpoint.
 
