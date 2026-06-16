@@ -1,0 +1,161 @@
+/* ============================================================================
+   7KC — refinement layer  (loaded LAST, after styles.css / .extra / .landing)
+   Goals: readable small titles, AA contrast, warm depth, consistent polish.
+   Implemented mostly as design-token overrides so it cascades app-wide and is
+   easy to revert (delete this file + its import + the Fraunces <link>).
+   ========================================================================== */
+
+:root {
+  /* --- Typography ----------------------------------------------------------
+     Instrument Serif is gorgeous at 40px+ but spindly at 18–20px card titles
+     on cream. Split the serif: keep Instrument for large display, route small
+     editorial titles to Fraunces (variable, optical-sizing, real 500 weight). */
+  --serif-sm: 'Fraunces', 'Instrument Serif', Georgia, 'Times New Roman', serif;
+
+  /* type-scale tokens (codify the magic numbers scattered across 3 sheets) */
+  --fs-body: 15px;  --lh-body: 1.55;
+  --fs-h3: 18px;    --lh-h3: 1.28;
+  --fs-h2: 24px;    --lh-h2: 1.15;
+  --fs-h1: 40px;    --lh-h1: 1.05;
+
+  /* --- Contrast (WCAG 1.4.3 AA) -------------------------------------------
+     Darken the default terracotta accent and the muted grey so the primary
+     CTA (paper-on-accent), pervasive muted text, and accent-on-paper eyebrows
+     all clear 4.5:1. Other themes (sage/ink/plum) already passed and are
+     redefined by their own .accent-* classes, so this only affects default. */
+  --accent: oklch(0.555 0.142 40);
+  --accent-ink: oklch(0.33 0.12 40);
+  --muted: oklch(0.515 0.016 60);
+  --danger-ink: oklch(0.46 0.17 25);   /* readable danger text on --danger-2 */
+
+  /* --- Warm elevation scale (replaces ad-hoc neutral rgba shadows) --------- */
+  --shadow-color: 60 30 10;
+  --shadow-1: 0 1px 2px rgb(var(--shadow-color) / 0.05), 0 1px 1px rgb(var(--shadow-color) / 0.04);
+  --shadow-2: 0 3px 8px rgb(var(--shadow-color) / 0.06), 0 1px 2px rgb(var(--shadow-color) / 0.05);
+  --shadow-3: 0 8px 24px rgb(var(--shadow-color) / 0.10), 0 2px 6px rgb(var(--shadow-color) / 0.06);
+  --shadow-4: 0 22px 55px rgb(var(--shadow-color) / 0.18), 0 6px 16px rgb(var(--shadow-color) / 0.08);
+
+  /* --- Radius scale -------------------------------------------------------- */
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+}
+
+/* Body airiness */
+body { line-height: var(--lh-body); }
+
+/* ---- Headings: Fraunces for small titles, Instrument Serif stays on display ---- */
+h3 {
+  font-family: var(--serif-sm);
+  font-weight: 500;
+  font-optical-sizing: auto;
+  letter-spacing: 0;
+  line-height: var(--lh-h3);
+}
+.recipe-card h3,
+.suggestion-title {
+  font-family: var(--serif-sm);
+  font-weight: 500;
+  font-optical-sizing: auto;
+  letter-spacing: 0;
+}
+.suggestion-title { font-size: 20px; line-height: 1.2; }
+
+/* ---- Depth: gentle resting elevation, warmer lift on interactive cards ---- */
+.recipe-card,
+.pantry-card,
+.suggestion-card,
+.hero-pick,
+.stat,
+.quickadd {
+  box-shadow: var(--shadow-1);
+}
+.modal { box-shadow: var(--shadow-4); }
+.tweaks-panel { box-shadow: var(--shadow-3); }
+
+@media (hover: hover) {
+  .recipe-card:hover,
+  .pantry-card:hover,
+  .hero-pick:hover,
+  .suggestion-card:hover {
+    box-shadow: var(--shadow-3);
+    border-color: color-mix(in oklch, var(--accent) 30%, var(--line));
+  }
+  .suggestion-card { transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+  .suggestion-card:hover { transform: translateY(-2px); }
+}
+
+/* ---- Buttons: resting tint + press feedback ---- */
+.btn-primary {
+  box-shadow: 0 2px 8px -3px color-mix(in oklch, var(--accent) 55%, transparent);
+}
+.btn-primary:hover {
+  box-shadow: 0 5px 16px -5px color-mix(in oklch, var(--accent) 62%, transparent);
+}
+.btn-sage {
+  box-shadow: 0 2px 8px -3px color-mix(in oklch, var(--sage) 55%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn:active { transform: translateY(0.5px) scale(0.985); }
+}
+
+/* ---- Inputs: visible hover + a soft focus ring (mouse focus, not just kbd) ---- */
+.text-input,
+.search-input,
+.paste {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.text-input:hover,
+.paste:hover { border-color: var(--muted); }
+.text-input:focus,
+.search-input:focus-within,
+.paste:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--accent) 16%, transparent);
+}
+
+/* ---- Error text contrast ---- */
+.auth-card .error,
+.error { color: var(--danger-ink); }
+
+/* ---- Empty states: a soft framed surface instead of bare floating text ---- */
+.empty {
+  background: radial-gradient(120% 120% at 50% 0%,
+    color-mix(in oklch, var(--accent-2) 45%, var(--paper)) 0%,
+    var(--paper) 68%);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-lg);
+}
+.empty.small { background: none; border: 0; }
+
+/* ---- Finish the unfinished low-stock corner flag on pantry cards ---- */
+.pantry-card { position: relative; overflow: hidden; }
+.pantry-card.low::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 16px solid var(--amber);
+  border-left: 16px solid transparent;
+}
+
+/* ---- Skip-to-content link (keyboard users) ---- */
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 200;
+  background: var(--accent);
+  color: var(--paper);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  transform: translateY(-160%);
+  transition: transform 0.15s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
