@@ -42,6 +42,10 @@ async function request<T>(path: string, opts: RequestInit = {}): Promise<T> {
   const isJson = (resp.headers.get('Content-Type') || '').includes('application/json');
   const body = isJson ? await resp.json().catch(() => ({})) : null;
   if (!resp.ok) {
+    if (resp.status === 401 && typeof window !== 'undefined') {
+      setToken(null);
+      window.dispatchEvent(new Event('7kc:unauthorized'));
+    }
     throw new ApiError(resp.status, body?.error || 'error', body?.message || resp.statusText);
   }
   return (body as T) ?? ({} as T);

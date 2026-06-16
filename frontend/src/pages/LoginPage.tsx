@@ -67,8 +67,9 @@ export function LoginPage() {
           <h2>Open the kitchen.</h2>
           {err && <div className="error">{err}</div>}
           <div className="auth-field">
-            <label>Email</label>
+            <label htmlFor="login-email">Email</label>
             <input
+              id="login-email"
               className="text-input"
               type="email"
               autoComplete="email"
@@ -79,8 +80,9 @@ export function LoginPage() {
             />
           </div>
           <div className="auth-field">
-            <label>Password</label>
+            <label htmlFor="login-password">Password</label>
             <input
+              id="login-password"
               className="text-input"
               type="password"
               autoComplete="current-password"
