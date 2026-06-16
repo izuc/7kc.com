@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use SevenKC\Domain\Repository\RecipeRepository;
 use SevenKC\Infrastructure\Http\Json;
+use SevenKC\Support\RateLimiter;
 
 /**
  * Public, SEO-friendly recipe endpoint. Serves ONLY the curated (non-custom) catalogue
@@ -18,6 +19,7 @@ final class PublicRecipeAction
     public function __construct(
         private readonly RecipeRepository $recipes,
         private readonly Connection $db,
+        private readonly RateLimiter $limiter,
     ) {}
 
     public function __invoke(ServerRequestInterface $req, ResponseInterface $res, array $args): ResponseInterface
@@ -25,8 +27,11 @@ final class PublicRecipeAction
         $recipe = $this->recipes->findPublicBySlug($args['slug']);
         if (!$recipe) return Json::error($res, 'not_found', 'Recipe not found', 404);
 
-        // increment view count — only ever fires for public (non-custom) recipes now
-        $this->db->executeStatement('UPDATE recipes SET view_count = view_count + 1 WHERE id = ?', [$recipe['id']]);
+        // increment view count, deduped to once per IP+slug per hour so the metric can't be trivially inflated
+        $ip = RateLimiter::clientIp($req);
+        if ($this->limiter->check('view:' . $ip . ':' . $recipe['slug'], 1, 3600) === null) {
+            $this->db->executeStatement('UPDATE recipes SET view_count = view_count + 1 WHERE id = ?', [$recipe['id']]);
+        }
 
         $origin = $req->getUri()->getScheme() . '://' . $req->getUri()->getHost();
         if ($req->getUri()->getPort()) $origin .= ':' . $req->getUri()->getPort();

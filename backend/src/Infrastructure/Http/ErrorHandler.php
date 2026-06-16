@@ -36,6 +36,7 @@ final class ErrorHandler implements ErrorHandlerInterface
                 405 => 'method_not_allowed',
                 409 => 'conflict',
                 422 => 'unprocessable',
+                429 => 'rate_limited',
                 default => 'internal_error',
             },
             'message' => $isHttp ? $exception->getMessage() : 'Internal server error',
