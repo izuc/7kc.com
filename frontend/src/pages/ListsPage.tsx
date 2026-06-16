@@ -245,6 +245,7 @@ export function ListsPage() {
                     invalidate();
                     qc.invalidateQueries({ queryKey: ['pantry'] });
                     toast(`${r.moved} moved to pantry`);
+                    trackEvent('list_moved_to_pantry', { moved: r.moved });
                   })
                 }
               >

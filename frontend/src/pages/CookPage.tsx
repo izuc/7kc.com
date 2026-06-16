@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useUi } from '../store/ui';
 import { haptic } from '../lib/haptics';
+import { trackEvent } from '../lib/analytics';
 import { Icon } from '../components/Icon';
 
 export function CookPage() {
@@ -54,6 +55,7 @@ export function CookPage() {
   const finish = async () => {
     try {
       const r = await api.cookRecipe(recipe.slug, [...effectiveToRemove]);
+      trackEvent('cook_completed', { recipe: recipe.slug });
       qc.invalidateQueries({ queryKey: ['pantry'] });
       qc.invalidateQueries({ queryKey: ['recipe-suggestions'] });
       qc.invalidateQueries({ queryKey: ['cooked-recipes'] });

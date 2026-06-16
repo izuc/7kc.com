@@ -8,9 +8,15 @@ import './styles.landing.css';
 import './styles.refine.css';
 import { App } from './App';
 import { AuthProvider } from './store/auth';
-import { initAnalytics } from './lib/analytics';
+import { initAnalytics, trackEvent } from './lib/analytics';
 
 initAnalytics();
+
+// Surface otherwise-unhandled promise rejections to analytics (no-op without Plausible).
+window.addEventListener('unhandledrejection', (e) => {
+  const msg = e?.reason instanceof Error ? e.reason.message : String(e?.reason ?? 'unknown');
+  trackEvent('client_error', { message: msg.slice(0, 200) });
+});
 
 const queryClient = new QueryClient({
   defaultOptions: {

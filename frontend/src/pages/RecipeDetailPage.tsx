@@ -213,6 +213,7 @@ function SuggestModal({
   const qc = useQueryClient();
   const submit = async () => {
     await api.createSuggestion({ recipe_slug: slug, suggested_for_date: date });
+    trackEvent('suggestion_created', { recipe: slug });
     qc.invalidateQueries({ queryKey: ['group-suggestions'] });
     qc.invalidateQueries({ queryKey: ['feed'] });
     onDone();

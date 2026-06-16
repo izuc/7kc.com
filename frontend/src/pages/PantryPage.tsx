@@ -7,6 +7,7 @@ import { Modal } from '../components/Modal';
 import { useIngredients, displayFor, sectionFor } from '../hooks/useIngredients';
 import { useSoftDelete } from '../hooks/useSoftDelete';
 import { useUi } from '../store/ui';
+import { trackEvent } from '../lib/analytics';
 import { SkeletonGrid } from '../components/Skeleton';
 import { IngredientIcon } from '../lib/ingredientIcons';
 import type { PantryItem } from '../types/models';
@@ -284,6 +285,7 @@ function AddPantryModal({ onClose, onAdded }: { onClose: () => void; onAdded: ()
             key={i.id}
             onClick={async () => {
               await api.addPantryItem({ ingredient_id: i.id });
+              trackEvent('pantry_item_added');
               onAdded();
               onClose();
             }}
