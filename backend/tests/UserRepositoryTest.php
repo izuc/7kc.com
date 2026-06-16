@@ -38,4 +38,36 @@ final class UserRepositoryTest extends TestCase
         $repo->bumpTokenVersion($user['id']);
         $this->assertSame(2, $repo->tokenVersion($user['id']));
     }
+
+    public function testDigestOptinBackfillsTokenAndRoundTrips(): void
+    {
+        $repo = new UserRepository($this->db);
+        $user = $repo->create('a@b.com', 'x', null);
+        $this->assertFalse($repo->digestOptin($user['id']));
+
+        $repo->setDigestOptin($user['id'], true);
+        $this->assertTrue($repo->digestOptin($user['id']));
+
+        // Enabling backfills an unsubscribe token, idempotently, that resolves back.
+        $token = $repo->ensureUnsubscribeToken($user['id']);
+        $this->assertNotSame('', $token);
+        $this->assertSame($token, $repo->ensureUnsubscribeToken($user['id']));
+        $this->assertSame($user['id'], $repo->byUnsubscribeToken($token)['id']);
+
+        $repo->setDigestOptin($user['id'], false);
+        $this->assertFalse($repo->digestOptin($user['id']));
+        // Token survives unsubscribe so the same link keeps working.
+        $this->assertSame($user['id'], $repo->byUnsubscribeToken($token)['id']);
+    }
+
+    public function testOptedInUsersOnlyReturnsOptedIn(): void
+    {
+        $repo = new UserRepository($this->db);
+        $in = $repo->create('in@b.com', 'x', null);
+        $repo->create('out@b.com', 'x', null);
+        $repo->setDigestOptin($in['id'], true);
+
+        $emails = array_column($repo->optedInUsers(), 'email');
+        $this->assertSame(['in@b.com'], $emails);
+    }
 }

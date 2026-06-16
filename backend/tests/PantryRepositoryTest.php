@@ -39,4 +39,18 @@ final class PantryRepositoryTest extends TestCase
         $this->assertCount(1, $low);
         $this->assertSame('milk', $low[0]['ingredient_id']);
     }
+
+    public function testExpiringSoonIsWindowedBothEnds(): void
+    {
+        $repo = new PantryRepository($this->db);
+        $now = 1_000_000_000;
+        $repo->add('userA', null, 'old_milk', null, $now - 30 * 86400, false);  // long expired → excluded
+        $repo->add('userA', null, 'eggs', null, $now + 2 * 86400, false);        // expiring soon → included
+        $repo->add('userA', null, 'flour', null, $now + 30 * 86400, false);      // far future → excluded
+        $repo->add('userA', null, 'salt', null, null, false);                    // no expiry → excluded
+
+        $soon = $repo->expiringSoon('userA', null, $now, $now + 3 * 86400);
+        $this->assertCount(1, $soon, 'only items expiring within the window — never long-expired ones');
+        $this->assertSame('eggs', $soon[0]['ingredient_id']);
+    }
 }

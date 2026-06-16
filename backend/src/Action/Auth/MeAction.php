@@ -24,6 +24,7 @@ final class MeAction
             'group_id' => $user['group_id'],
             'created_at' => (int)$user['created_at'],
             'diet' => $this->users->dietFor($userId),
+            'digest_optin' => (bool)($user['digest_optin'] ?? false),
         ]);
     }
 }
