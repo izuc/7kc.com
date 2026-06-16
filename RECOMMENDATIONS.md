@@ -17,7 +17,7 @@ tests/rate-limiting/account-deletion.
 ## Phase 0 — Latent bug fixes (fast, concrete)
 
 - [x] **Duplicate pantry rows on re-buy** — `MoveBoughtToPantryAction` blindly inserts; re-buying a running-low staple creates a duplicate beside the flagged one. Make it **upsert by `ingredient_id`** (update `expires_at`, clear `running_low`). *(Folds into #1.)*
-- [ ] **Parser false positives** — greedy substring/single-token fallback returns confident wrong matches (`tomato sauce`→soy sauce, `frozen pizza`→frozen peas, `green onions`→brown onions). *(Fixed properly in #3.)*
+- [x] **Parser false positives** — greedy substring/single-token fallback returns confident wrong matches (`tomato sauce`→soy sauce, `frozen pizza`→frozen peas, `green onions`→brown onions). *(Fixed properly in #3 — scored matcher + maybe tier; locked by the PHPUnit known-bad fixture.)*
 - [x] **Wrong diet tags** — hand-set and contradictory (a `vegetarian` recipe contains bacon; `vegan` recipes contain dairy). *(Fixed in #14 — flags now derived from ingredients, not the hand tags.)*
 - [x] **`backend/composer.lock` is git-ignored** (untracked, 122 KB) → install/version drift; violates FLIPPING.md's own checklist. Un-ignore and commit it.
 
