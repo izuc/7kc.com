@@ -6,6 +6,7 @@ export interface User {
   display_name: string | null;
   group_id: string | null;
   diet?: string[];
+  digest_optin?: boolean;
 }
 
 export interface DietFlags {

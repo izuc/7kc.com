@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { api, ApiError } from '../lib/api';
 import { useAuth } from '../store/auth';
 import { useUi } from '../store/ui';
 import { Icon } from '../components/Icon';
 import { Modal } from '../components/Modal';
+import { pushSupported, enablePush, disablePush, isPushEnabled } from '../lib/push';
 
 export function SettingsPage() {
   const { user, refresh, logout, signOutEverywhere } = useAuth();
@@ -13,6 +14,48 @@ export function SettingsPage() {
   const [showCreate, setShowCreate] = useState(false);
   const [showJoin, setShowJoin] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
+
+  const canPush = pushSupported();
+  const [pushOn, setPushOn] = useState(false);
+  const [pushBusy, setPushBusy] = useState(false);
+  useEffect(() => {
+    if (canPush) void isPushEnabled().then(setPushOn);
+  }, [canPush]);
+
+  const togglePush = async () => {
+    setPushBusy(true);
+    try {
+      if (pushOn) {
+        await disablePush();
+        setPushOn(false);
+        toast('Notifications off');
+      } else {
+        const result = await enablePush();
+        setPushOn(result === 'enabled');
+        toast(
+          result === 'enabled'
+            ? 'Notifications on'
+            : result === 'denied'
+            ? 'Notifications are blocked — enable them in your browser settings.'
+            : "Notifications aren't available right now."
+        );
+      }
+    } catch {
+      toast('Could not update notifications — please try again.');
+    } finally {
+      setPushBusy(false);
+    }
+  };
+
+  const toggleDigest = async () => {
+    const next = !(user?.digest_optin ?? false);
+    try {
+      await api.setDigestOptin(next);
+      await refresh();
+    } catch {
+      toast('Could not update — please try again.');
+    }
+  };
 
   const exportData = async () => {
     try {
@@ -159,6 +202,52 @@ export function SettingsPage() {
                 </button>
               );
             })}
+          </div>
+        </div>
+
+        <div className="setting-card">
+          <h3>Notifications</h3>
+          <div className="tweak-row">
+            <label>
+              Expiring-food push
+              <span className="muted small" style={{ display: 'block' }}>
+                A heads-up when pantry items are about to expire.
+              </span>
+            </label>
+            {canPush ? (
+              <div className="segmented">
+                <button className={pushOn ? 'active' : ''} disabled={pushBusy} onClick={() => !pushOn && togglePush()}>
+                  On
+                </button>
+                <button className={!pushOn ? 'active' : ''} disabled={pushBusy} onClick={() => pushOn && togglePush()}>
+                  Off
+                </button>
+              </div>
+            ) : (
+              <span className="muted small">Add to your Home Screen to enable.</span>
+            )}
+          </div>
+          <div className="tweak-row">
+            <label>
+              Weekly use-it-up email
+              <span className="muted small" style={{ display: 'block' }}>
+                We only email when you have expiring or low items. Unsubscribe any time.
+              </span>
+            </label>
+            <div className="segmented">
+              <button
+                className={user?.digest_optin ? 'active' : ''}
+                onClick={() => !user?.digest_optin && toggleDigest()}
+              >
+                On
+              </button>
+              <button
+                className={!user?.digest_optin ? 'active' : ''}
+                onClick={() => user?.digest_optin && toggleDigest()}
+              >
+                Off
+              </button>
+            </div>
           </div>
         </div>
 

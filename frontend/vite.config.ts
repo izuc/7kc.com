@@ -39,6 +39,11 @@ export default defineConfig(({ mode }) => {
         },
         workbox: {
           globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+          // push-sw.js is pulled in via importScripts below — don't also precache it.
+          globIgnores: ['push-sw.js'],
+          // Pull the Web Push handlers into the generated SW without an injectManifest
+          // migration (keeps all the runtimeCaching below owned by Workbox).
+          importScripts: ['push-sw.js'],
           runtimeCaching: [
             {
               urlPattern: ({ url }) =>

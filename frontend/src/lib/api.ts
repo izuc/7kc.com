@@ -74,6 +74,15 @@ export const api = {
   deleteAccount: () => request<{ ok: boolean }>('/auth/me', { method: 'DELETE' }),
   exportData: () => request<Record<string, unknown>>('/auth/me/export'),
   signOutEverywhere: () => request<{ ok: boolean }>('/auth/sign-out-everywhere', { method: 'POST' }),
+  setDigestOptin: (enabled: boolean) =>
+    request<{ digest_optin: boolean }>('/auth/digest-optin', { method: 'POST', body: JSON.stringify({ enabled }) }),
+
+  // web push
+  getVapidKey: () => request<{ key: string | null }>('/push/key'),
+  pushSubscribe: (subscription: unknown) =>
+    request<{ ok: boolean }>('/push/subscribe', { method: 'POST', body: JSON.stringify({ subscription }) }),
+  pushUnsubscribe: (endpoint: string) =>
+    request<{ ok: boolean }>('/push/unsubscribe', { method: 'POST', body: JSON.stringify({ endpoint }) }),
 
   // ingredients
   ingredients: (q?: string) =>
