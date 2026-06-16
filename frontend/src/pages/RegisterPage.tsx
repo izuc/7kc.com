@@ -69,8 +69,9 @@ export function RegisterPage() {
           <h2>Start your pantry.</h2>
           {err && <div className="error">{err}</div>}
           <div className="auth-field">
-            <label>Your name (optional)</label>
+            <label htmlFor="reg-name">Your name (optional)</label>
             <input
+              id="reg-name"
               className="text-input"
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
@@ -78,8 +79,9 @@ export function RegisterPage() {
             />
           </div>
           <div className="auth-field">
-            <label>Email</label>
+            <label htmlFor="reg-email">Email</label>
             <input
+              id="reg-email"
               className="text-input"
               type="email"
               autoComplete="email"
@@ -89,8 +91,9 @@ export function RegisterPage() {
             />
           </div>
           <div className="auth-field">
-            <label>Password (min 8 chars)</label>
+            <label htmlFor="reg-password">Password (min 8 chars)</label>
             <input
+              id="reg-password"
               className="text-input"
               type="password"
               autoComplete="new-password"

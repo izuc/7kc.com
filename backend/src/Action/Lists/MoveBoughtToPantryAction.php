@@ -24,6 +24,9 @@ final class MoveBoughtToPantryAction
     {
         $userId = (string)$req->getAttribute('user_id');
         $groupId = $this->users->groupIdFor($userId);
+        if (!$this->lists->findForUser($args['id'], $userId, $groupId)) {
+            return Json::error($res, 'not_found', 'List not found', 404);
+        }
         $body = (array)($req->getParsedBody() ?? []);
         $exclude = $body['exclude_item_ids'] ?? [];
 

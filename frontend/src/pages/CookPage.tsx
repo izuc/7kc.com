@@ -2,12 +2,14 @@ import { useMemo, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../lib/api';
+import { useUi } from '../store/ui';
 import { Icon } from '../components/Icon';
 
 export function CookPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const qc = useQueryClient();
+  const toast = useUi((s) => s.toast);
   const [step, setStep] = useState(0);
   const [done, setDone] = useState(false);
   const [removed, setRemoved] = useState<number | null>(null);
@@ -49,12 +51,17 @@ export function CookPage() {
   };
 
   const finish = async () => {
-    const r = await api.cookRecipe(recipe.slug, [...effectiveToRemove]);
-    qc.invalidateQueries({ queryKey: ['pantry'] });
-    qc.invalidateQueries({ queryKey: ['recipe-suggestions'] });
-    setRemoved(r.removed);
-    setDone(true);
-    setTimeout(() => navigate(`/recipes/${recipe.slug}`), 1600);
+    try {
+      const r = await api.cookRecipe(recipe.slug, [...effectiveToRemove]);
+      qc.invalidateQueries({ queryKey: ['pantry'] });
+      qc.invalidateQueries({ queryKey: ['recipe-suggestions'] });
+      qc.invalidateQueries({ queryKey: ['feed'] });
+      setRemoved(r.removed);
+      setDone(true);
+      setTimeout(() => navigate(`/recipes/${recipe.slug}`), 1600);
+    } catch {
+      toast('Could not finish cooking — please try again.');
+    }
   };
 
   if (done) {

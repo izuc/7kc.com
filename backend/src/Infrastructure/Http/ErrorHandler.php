@@ -21,7 +21,12 @@ final class ErrorHandler implements ErrorHandlerInterface
         bool $logErrors,
         bool $logErrorDetails
     ): ResponseInterface {
-        $status = $exception instanceof HttpException ? $exception->getCode() : 500;
+        $isHttp = $exception instanceof HttpException;
+        $status = $isHttp ? $exception->getCode() : 500;
+        // Never leak internal exception details (SQL, paths) to clients on unexpected errors.
+        if (!$isHttp) {
+            error_log((string)$exception);
+        }
         $body = [
             'error' => match ($status) {
                 400 => 'bad_request',
@@ -33,9 +38,10 @@ final class ErrorHandler implements ErrorHandlerInterface
                 422 => 'unprocessable',
                 default => 'internal_error',
             },
-            'message' => $exception->getMessage(),
+            'message' => $isHttp ? $exception->getMessage() : 'Internal server error',
         ];
         if ($this->debug) {
+            if (!$isHttp) $body['detail'] = $exception->getMessage();
             $body['trace'] = explode("\n", $exception->getTraceAsString());
         }
         $resp = new Response($status);

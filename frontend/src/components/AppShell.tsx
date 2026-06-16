@@ -37,6 +37,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <div className={`app accent-${accent} density-${density}`}>
+      <a className="skip-link" href="#main">Skip to content</a>
       <aside className="sidebar">
         <div className="brand">
           <div className="brand-mark">
@@ -61,7 +62,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           </div>
         </div>
 
-        <nav className="nav">
+        <nav className="nav" aria-label="Primary">
           <NavItem to="/lists" icon="list" label="Shopping" badge={activeItemsCount || undefined} />
           <NavItem to="/pantry" icon="pantry" label="Pantry" badge={totalPantry || undefined} ghost />
           <NavItem
@@ -108,9 +109,9 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
       </aside>
 
-      <main className="main">{children}</main>
+      <main className="main" id="main">{children}</main>
 
-      <nav className="mobile-nav">
+      <nav className="mobile-nav" aria-label="Sections">
         <MobileNavItem to="/lists" icon="list" label="Shopping" />
         <MobileNavItem to="/pantry" icon="pantry" label="Pantry" />
         <MobileNavItem to="/recipes" icon="chef" label="Recipes" />

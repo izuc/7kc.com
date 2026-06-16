@@ -29,6 +29,23 @@ final class PantryRepository
         return $r ? $this->hydrate($r) : null;
     }
 
+    /** Ownership-scoped lookup: returns the item only if the user owns it or shares its group. */
+    public function findForUser(string $id, string $userId, ?string $groupId): ?array
+    {
+        $sql = 'SELECT * FROM pantry_items WHERE id = ? AND (owner_user_id = ?' . ($groupId ? ' OR group_id = ?' : '') . ')';
+        $params = [$id, $userId];
+        if ($groupId) $params[] = $groupId;
+        $r = $this->db->fetchAssociative($sql, $params);
+        return $r ? $this->hydrate($r) : null;
+    }
+
+    public function deleteForUser(string $id, string $userId, ?string $groupId): bool
+    {
+        if (!$this->findForUser($id, $userId, $groupId)) return false;
+        $this->delete($id);
+        return true;
+    }
+
     public function add(string $ownerId, ?string $groupId, ?string $ingId, ?string $customName, ?int $expiresAt, bool $runningLow = false): string
     {
         $id = Uid::new();

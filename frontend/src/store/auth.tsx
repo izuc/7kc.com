@@ -38,6 +38,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     void refresh();
   }, [refresh]);
 
+  // If any API call gets a 401 (expired/revoked token), drop to the login screen
+  // instead of leaving the UI wedged in a permanent loading/error state.
+  useEffect(() => {
+    const onUnauthorized = () => setUser(null);
+    window.addEventListener('7kc:unauthorized', onUnauthorized);
+    return () => window.removeEventListener('7kc:unauthorized', onUnauthorized);
+  }, []);
+
   const login = useCallback(async (email: string, password: string) => {
     const r = await api.login(email, password);
     setToken(r.token);
