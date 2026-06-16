@@ -36,6 +36,11 @@ CREATE TABLE recipe_favourites (
 CREATE TABLE group_feed_events (
   id TEXT PRIMARY KEY, group_id TEXT, user_id TEXT, kind TEXT, payload_json TEXT, created_at INTEGER
 );
+CREATE TABLE meal_plan (
+  id TEXT PRIMARY KEY, owner_user_id TEXT, group_id TEXT, plan_date TEXT,
+  recipe_id TEXT, recipe_title TEXT, created_at INTEGER,
+  UNIQUE (owner_user_id, plan_date)
+);
 CREATE TABLE rate_limits (
   bucket TEXT PRIMARY KEY, count INTEGER DEFAULT 0, window_start INTEGER
 );

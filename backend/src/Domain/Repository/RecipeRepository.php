@@ -78,6 +78,24 @@ final class RecipeRepository
         return $recipes;
     }
 
+    /** Compact summaries (with ingredient_ids + diet) for a set of recipe ids, keyed by id. */
+    public function summariesByIds(array $ids): array
+    {
+        $ids = array_values(array_unique(array_filter($ids)));
+        if ($ids === []) return [];
+        $ph = implode(',', array_fill(0, count($ids), '?'));
+        $rows = $this->db->fetchAllAssociative("SELECT * FROM recipes WHERE id IN ($ph)", $ids);
+        $byRecipe = $this->ingredientIdsForAll();
+        $out = [];
+        foreach ($rows as $r) {
+            $s = $this->hydrate($r);
+            $s['ingredient_ids'] = $byRecipe[$r['id']] ?? [];
+            $s['diet'] = $this->dietFor($s['ingredient_ids']);
+            $out[$r['id']] = $s;
+        }
+        return $out;
+    }
+
     /** Public (non-custom) recipes carrying a given tag — for collection landing pages. */
     public function publicByTag(string $tag): array
     {

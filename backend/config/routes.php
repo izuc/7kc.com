@@ -48,6 +48,10 @@ use SevenKC\Action\Recipes\CookRecipeAction;
 use SevenKC\Action\Recipes\CookedRecipesAction;
 use SevenKC\Action\Recipes\FavouriteRecipesAction;
 use SevenKC\Action\Recipes\ToggleFavouriteAction;
+use SevenKC\Action\MealPlan\GetMealPlanAction;
+use SevenKC\Action\MealPlan\SetMealPlanAction;
+use SevenKC\Action\MealPlan\ClearMealPlanAction;
+use SevenKC\Action\MealPlan\BuildListFromWeekAction;
 use SevenKC\Action\Recipes\CreateRecipeAction;
 use SevenKC\Action\Recipes\ImportRecipeAction;
 use SevenKC\Action\Recipes\GetRecipeAction;
@@ -121,6 +125,11 @@ return function (App $app): void {
             $a->post('/recipes/import', ImportRecipeAction::class);
             $a->post('/recipes/{slug}/cook', CookRecipeAction::class);
             $a->post('/recipes/{slug}/favourite', ToggleFavouriteAction::class);
+
+            $a->get('/meal-plan', GetMealPlanAction::class);
+            $a->put('/meal-plan', SetMealPlanAction::class);
+            $a->delete('/meal-plan', ClearMealPlanAction::class);
+            $a->post('/meal-plan/build-list', BuildListFromWeekAction::class);
 
             $a->post('/groups', CreateGroupAction::class);
             $a->get('/groups/mine', GetMyGroupAction::class);
