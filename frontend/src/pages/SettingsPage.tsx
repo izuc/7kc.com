@@ -12,6 +12,23 @@ export function SettingsPage() {
   const { accent, setAccent, density, setDensity, toast } = useUi();
   const [showCreate, setShowCreate] = useState(false);
   const [showJoin, setShowJoin] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+
+  const exportData = async () => {
+    try {
+      const data = await api.exportData();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '7kc-export.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      toast('Data exported');
+    } catch {
+      toast('Could not export — please try again.');
+    }
+  };
 
   const { data: groupData } = useQuery({
     queryKey: ['my-group'],
@@ -49,8 +66,20 @@ export function SettingsPage() {
               <div>{user.display_name}</div>
             </>
           )}
-          <button className="btn btn-ghost" onClick={logout}>
-            Sign out
+          <div className="row-inline" style={{ gap: 10, flexWrap: 'wrap' }}>
+            <button className="btn btn-ghost" onClick={logout}>
+              Sign out
+            </button>
+            <button className="btn btn-ghost" onClick={exportData}>
+              Export my data
+            </button>
+          </div>
+          <button
+            className="btn btn-ghost"
+            style={{ alignSelf: 'flex-start', color: 'var(--danger)' }}
+            onClick={() => setShowDelete(true)}
+          >
+            <Icon name="trash" size={14} /> Delete account
           </button>
         </div>
 
@@ -152,7 +181,54 @@ export function SettingsPage() {
           }}
         />
       )}
+      {showDelete && <DeleteAccountModal onClose={() => setShowDelete(false)} />}
     </div>
+  );
+}
+
+function DeleteAccountModal({ onClose }: { onClose: () => void }) {
+  const { logout } = useAuth();
+  const [confirm, setConfirm] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  return (
+    <Modal small eyebrow="This cannot be undone" title="Delete your account" onClose={onClose}>
+      {err && <div className="error" role="alert">{err}</div>}
+      <p className="muted small">
+        This permanently deletes your lists, pantry, cooked history and account. Type <b>DELETE</b> to
+        confirm.
+      </p>
+      <input
+        className="text-input"
+        value={confirm}
+        onChange={(e) => setConfirm(e.target.value)}
+        placeholder="DELETE"
+        autoFocus
+      />
+      <div className="modal-actions">
+        <button className="btn btn-ghost" onClick={onClose}>
+          Cancel
+        </button>
+        <button
+          className="btn btn-primary"
+          style={{ background: 'var(--danger)' }}
+          disabled={confirm !== 'DELETE' || busy}
+          onClick={async () => {
+            setBusy(true);
+            setErr(null);
+            try {
+              await api.deleteAccount();
+              logout();
+            } catch (e) {
+              setErr(e instanceof ApiError ? e.message : 'Could not delete your account');
+              setBusy(false);
+            }
+          }}
+        >
+          {busy ? 'Deleting…' : 'Delete forever'}
+        </button>
+      </div>
+    </Modal>
   );
 }
 

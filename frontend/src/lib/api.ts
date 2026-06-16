@@ -65,6 +65,8 @@ export const api = {
       body: JSON.stringify({ email, password }),
     }),
   me: () => request<User>('/auth/me'),
+  deleteAccount: () => request<{ ok: boolean }>('/auth/me', { method: 'DELETE' }),
+  exportData: () => request<Record<string, unknown>>('/auth/me/export'),
 
   // ingredients
   ingredients: (q?: string) =>
