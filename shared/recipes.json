@@ -765,6 +765,11 @@
         "id": "coriander",
         "amount": "handful",
         "is_optional": true
+      },
+      {
+        "id": "peanut",
+        "amount": "2 tbsp, chopped",
+        "is_optional": true
       }
     ],
     "steps": [
@@ -3509,6 +3514,10 @@
       {
         "id": "onion_red",
         "amount": "1/2"
+      },
+      {
+        "id": "sugar",
+        "amount": "1 tsp"
       }
     ],
     "steps": [
@@ -7429,7 +7438,7 @@
       },
       {
         "id": "eggs",
-        "amount": "4 + 1 yolk"
+        "amount": "4 + 2 yolks"
       },
       {
         "id": "lemon",
@@ -7913,7 +7922,7 @@
         "amount": "2 tbsp"
       },
       {
-        "id": "vinegar_balsamic",
+        "id": "vinegar_white",
         "amount": "1 tbsp"
       },
       {
@@ -8428,7 +8437,7 @@
         "amount": "200 g"
       },
       {
-        "id": "rice_jasmine",
+        "id": "rice_arborio",
         "amount": "2 cups bomba or short-grain"
       },
       {
@@ -8982,7 +8991,7 @@
   {
     "slug": "rocky-road",
     "title": "Rocky Road",
-    "description": "Marshmallows, nuts, glacé cherries, a chocolate mortar. School-fête classic.",
+    "description": "Marshmallows, nuts, glacé strawberries, a chocolate mortar. School-fête classic.",
     "prep_time": 15,
     "cook_time": 0,
     "servings": 16,
@@ -9038,7 +9047,7 @@
       },
       {
         "content": "Stir everything through chocolate.",
-        "detail": "Into the slightly cooled chocolate: walnuts, 1/2 cup almonds, 1/2 cup raisins, chopped glacé cherries , and 2 cups marshmallows (pink ones are traditional). Stir till every piece is coated in chocolate. Work fast — chocolate thickens as it cools."
+        "detail": "Into the slightly cooled chocolate: walnuts, 1/2 cup almonds, 1/2 cup raisins, chopped glacé strawberries, and 2 cups marshmallows (pink ones are traditional). Stir till every piece is coated in chocolate. Work fast — chocolate thickens as it cools."
       },
       {
         "content": "Tip into lined tin, press flat.",
