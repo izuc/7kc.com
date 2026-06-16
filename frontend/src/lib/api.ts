@@ -76,6 +76,10 @@ export const api = {
       method: 'POST',
       body: JSON.stringify({ text }),
     }),
+  dictionary: () =>
+    request<{ ingredients: { id: string; display: string; section: string }[]; aliases: Record<string, string> }>(
+      '/ingredients/dictionary'
+    ),
 
   // lists
   lists: () => request<{ lists: ShoppingList[] }>('/lists'),

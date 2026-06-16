@@ -14,6 +14,7 @@ import { SkeletonList } from '../components/Skeleton';
 import { IngredientIcon } from '../lib/ingredientIcons';
 import { trackEvent } from '../lib/analytics';
 import { haptic } from '../lib/haptics';
+import { createParser } from '../lib/parser';
 import type { ListItem, ParsedItem, Ingredient } from '../types/models';
 
 export function ListsPage() {
@@ -498,6 +499,12 @@ function PasteParseModal({
   seedText?: string | null;
 }) {
   const toast = useUi((s) => s.toast);
+  const { data: dict } = useQuery({
+    queryKey: ['ingredient-dictionary'],
+    queryFn: () => api.dictionary(),
+    staleTime: 60 * 60 * 1000,
+  });
+  const parser = useMemo(() => (dict ? createParser(dict) : null), [dict]);
   const [text, setText] = useState(seedText ?? '');
   const [parsed, setParsed] = useState<(ParsedItem & { skip?: boolean })[] | null>(null);
   const [busy, setBusy] = useState(false);
@@ -514,8 +521,13 @@ snags for the bbq`;
   const doParse = async () => {
     setBusy(true);
     try {
-      const r = await api.parse(text);
-      setParsed(r.items.map((i) => ({ ...i, skip: false })));
+      if (parser) {
+        // Instant, offline-capable client parse (server stays authoritative on save).
+        setParsed(parser.parse(text).map((i) => ({ ...i, skip: false })));
+      } else {
+        const r = await api.parse(text);
+        setParsed(r.items.map((i) => ({ ...i, skip: false })));
+      }
     } catch (e) {
       if (!(e instanceof ApiError && e.status === 401)) toast("Couldn't parse that — please try again.");
     } finally {
