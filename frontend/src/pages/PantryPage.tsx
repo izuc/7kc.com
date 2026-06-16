@@ -5,6 +5,7 @@ import { daysUntil, fmtExpiry, SECTIONS } from '../lib/format';
 import { Icon } from '../components/Icon';
 import { Modal } from '../components/Modal';
 import { useIngredients, displayFor, sectionFor } from '../hooks/useIngredients';
+import { useSoftDelete } from '../hooks/useSoftDelete';
 import { SkeletonGrid } from '../components/Skeleton';
 import { IngredientIcon } from '../lib/ingredientIcons';
 import type { PantryItem } from '../types/models';
@@ -145,6 +146,7 @@ export function PantryPage() {
 }
 
 function PantryCard({ item, onChanged }: { item: HydratedItem; onChanged: () => void }) {
+  const softDelete = useSoftDelete();
   const warn = item.daysLeft != null && item.daysLeft >= 0 && item.daysLeft <= 3;
   const danger = item.daysLeft != null && item.daysLeft < 0;
   return (
@@ -158,10 +160,15 @@ function PantryCard({ item, onChanged }: { item: HydratedItem; onChanged: () => 
         <span className="pantry-name">{item.display}</span>
         <button
           className="x"
-          onClick={async () => {
-            await api.deletePantryItem(item.id);
-            onChanged();
-          }}
+          aria-label={`Remove ${item.display}`}
+          onClick={() =>
+            softDelete({
+              queryKey: ['pantry'],
+              optimistic: (old) => ({ ...old, items: old.items.filter((x: any) => x.id !== item.id) }),
+              commit: () => api.deletePantryItem(item.id),
+              text: `Removed ${item.display}`,
+            })
+          }
         >
           <Icon name="x" size={12} />
         </button>
@@ -187,10 +194,14 @@ function PantryCard({ item, onChanged }: { item: HydratedItem; onChanged: () => 
         {danger && (
           <button
             className="chip chip-danger"
-            onClick={async () => {
-              await api.deletePantryItem(item.id);
-              onChanged();
-            }}
+            onClick={() =>
+              softDelete({
+                queryKey: ['pantry'],
+                optimistic: (old) => ({ ...old, items: old.items.filter((x: any) => x.id !== item.id) }),
+                commit: () => api.deletePantryItem(item.id),
+                text: `Tossed ${item.display}`,
+              })
+            }
           >
             Toss it
           </button>

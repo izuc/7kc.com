@@ -140,6 +140,18 @@ h3 {
   border-left: 16px solid transparent;
 }
 
+/* ---- Toast "Undo" action button ---- */
+.toast-action {
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  color: inherit;
+  margin-left: 14px;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+.toast-action:hover { opacity: 0.85; }
+
 /* ---- Skip-to-content link (keyboard users) ---- */
 .skip-link {
   position: fixed;

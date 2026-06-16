@@ -3,6 +3,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useUi } from '../store/ui';
+import { haptic } from '../lib/haptics';
 import { Icon } from '../components/Icon';
 
 export function CookPage() {
@@ -113,7 +114,13 @@ export function CookPage() {
                 Back
               </button>
             )}
-            <button className="btn btn-primary" onClick={() => setStep(step + 1)}>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                haptic();
+                setStep(step + 1);
+              }}
+            >
               {step === recipe.steps.length - 1 ? 'Finish' : 'Next step'} <Icon name="arrow" size={14} />
             </button>
           </div>

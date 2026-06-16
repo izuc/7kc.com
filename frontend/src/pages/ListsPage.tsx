@@ -7,11 +7,13 @@ import { Icon } from '../components/Icon';
 import { Modal } from '../components/Modal';
 import { useUi } from '../store/ui';
 import { useIngredients, displayFor } from '../hooks/useIngredients';
+import { useSoftDelete } from '../hooks/useSoftDelete';
 import { OcrModal } from '../components/OcrModal';
 import { AffiliateButtons } from '../components/AffiliateButtons';
 import { SkeletonList } from '../components/Skeleton';
 import { IngredientIcon } from '../lib/ingredientIcons';
 import { trackEvent } from '../lib/analytics';
+import { haptic } from '../lib/haptics';
 import type { ListItem, ParsedItem, Ingredient } from '../types/models';
 
 export function ListsPage() {
@@ -19,6 +21,7 @@ export function ListsPage() {
   const navigate = useNavigate();
   const params = useParams();
   const toast = useUi((s) => s.toast);
+  const softDelete = useSoftDelete();
 
   const [showPaste, setShowPaste] = useState(false);
   const [showNew, setShowNew] = useState(false);
@@ -203,9 +206,16 @@ export function ListsPage() {
               })
             }
             onRemove={() =>
-              guard(async () => {
-                await api.deleteListItem(list.id, it.id);
-                invalidate();
+              softDelete({
+                queryKey: ['lists'],
+                optimistic: (old) => ({
+                  ...old,
+                  lists: old.lists.map((l: any) =>
+                    l.id === list.id ? { ...l, items: l.items.filter((x: any) => x.id !== it.id) } : l
+                  ),
+                }),
+                commit: () => api.deleteListItem(list.id, it.id),
+                text: 'Item removed',
               })
             }
           />
@@ -254,9 +264,16 @@ export function ListsPage() {
                   })
                 }
                 onRemove={() =>
-                  guard(async () => {
-                    await api.deleteListItem(list.id, it.id);
-                    invalidate();
+                  softDelete({
+                    queryKey: ['lists'],
+                    optimistic: (old) => ({
+                      ...old,
+                      lists: old.lists.map((l: any) =>
+                        l.id === list.id ? { ...l, items: l.items.filter((x: any) => x.id !== it.id) } : l
+                      ),
+                    }),
+                    commit: () => api.deleteListItem(list.id, it.id),
+                    text: 'Item removed',
                   })
                 }
               />
@@ -369,7 +386,10 @@ function ItemRow({
     <li className={`item ${item.is_bought ? 'bought' : ''}`}>
       <button
         className="tick"
-        onClick={onToggle}
+        onClick={() => {
+          haptic();
+          onToggle();
+        }}
         aria-pressed={item.is_bought}
         aria-label={item.is_bought ? `Mark ${name} as not bought` : `Mark ${name} as bought`}
       >
