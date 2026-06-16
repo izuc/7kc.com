@@ -1222,7 +1222,7 @@
         "amount": "400 g"
       },
       {
-        "id": "rice_jasmine",
+        "id": "rice_arborio",
         "amount": "1.5 cups"
       },
       {
@@ -1452,12 +1452,16 @@
       {
         "id": "lemon",
         "amount": "1/2"
+      },
+      {
+        "id": "pine_nut",
+        "amount": "1/3 cup"
       }
     ],
     "steps": [
       {
-        "content": "Blitz basil, garlic, parmesan, oil, lemon.",
-        "detail": "Into a food processor (or mortar and pestle for the purists): basil leaves (ideally sunny, not refrigerator-cold), a peeled garlic clove, grated parmesan, good olive oil, a squeeze of lemon, pinch of salt. Pulse rather than blitz constantly — you want a rough paste, not a smooth sludge. Taste — salt, more lemon, more cheese until it sings."
+        "content": "Blitz basil, garlic, pine nuts, parmesan, oil, lemon.",
+        "detail": "Into a food processor (or mortar and pestle for the purists): basil leaves (ideally sunny, not refrigerator-cold), a peeled garlic clove, a handful of pine nuts, grated parmesan, good olive oil, a squeeze of lemon, pinch of salt. Pulse rather than blitz constantly — you want a rough paste, not a smooth sludge. Taste — salt, more lemon, more cheese until it sings."
       },
       {
         "content": "Cook pasta, reserve a splash of water.",
@@ -3929,7 +3933,7 @@
         "amount": "600 g"
       },
       {
-        "id": "rice_jasmine",
+        "id": "rice_arborio",
         "amount": "1.5 cups"
       },
       {
@@ -6312,7 +6316,6 @@
     "servings": 4,
     "tags": [
       "vegetarian",
-      "vegan",
       "middle-eastern",
       "batch-friendly"
     ],
@@ -7606,6 +7609,14 @@
       {
         "id": "cocoa",
         "amount": "1/3 cup"
+      },
+      {
+        "id": "coconut_desiccated",
+        "amount": "2 cups"
+      },
+      {
+        "id": "icing_sugar",
+        "amount": "3 cups"
       }
     ],
     "steps": [
@@ -8954,6 +8965,10 @@
       {
         "id": "strawberry",
         "amount": "dried or glacé"
+      },
+      {
+        "id": "marshmallow",
+        "amount": "2 cups"
       }
     ],
     "steps": [
@@ -9018,8 +9033,8 @@
         "amount": "1"
       },
       {
-        "id": "pastry_puff",
-        "amount": "2 sheets shortcrust"
+        "id": "pastry_shortcrust",
+        "amount": "2 sheets"
       },
       {
         "id": "butter",
@@ -10607,10 +10622,6 @@
       {
         "id": "parsley",
         "amount": "handful"
-      },
-      {
-        "id": "parmesan",
-        "amount": "optional to serve"
       }
     ],
     "steps": [
@@ -10636,7 +10647,7 @@
       },
       {
         "content": "Parsley, pepper, done.",
-        "detail": "Off heat, torn parsley, plenty of pepper. No cheese traditionally, but a light dusting is your call. Right away."
+        "detail": "Off heat, torn parsley, plenty of pepper. Traditionally no cheese — the garlic and oil are the whole point. Right away."
       }
     ]
   },
@@ -11251,6 +11262,10 @@
       {
         "id": "vanilla",
         "amount": "2 tsp"
+      },
+      {
+        "id": "icing_sugar",
+        "amount": "2 cups (for the icing)"
       }
     ],
     "steps": [
@@ -11464,8 +11479,8 @@
         "amount": "1 tsp"
       },
       {
-        "id": "bread",
-        "amount": "100 g shop-bought meringues"
+        "id": "meringue",
+        "amount": "6 nests"
       },
       {
         "id": "mint",
@@ -11597,8 +11612,8 @@
     "dish_form": "baked-slice",
     "ingredients": [
       {
-        "id": "pastry_puff",
-        "amount": "1 sheet shortcrust"
+        "id": "pastry_shortcrust",
+        "amount": "1 sheet"
       },
       {
         "id": "bacon",

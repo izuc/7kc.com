@@ -1,198 +1,1214 @@
 [
-  { "id": "banana", "display": "Bananas", "section": "produce", "shelf_life_days": 5 },
-  { "id": "apple", "display": "Apples", "section": "produce", "shelf_life_days": 14 },
-  { "id": "lemon", "display": "Lemons", "section": "produce", "shelf_life_days": 21 },
-  { "id": "lime", "display": "Limes", "section": "produce", "shelf_life_days": 14 },
-  { "id": "avocado", "display": "Avocados", "section": "produce", "shelf_life_days": 4 },
-  { "id": "tomato", "display": "Tomatoes", "section": "produce", "shelf_life_days": 6 },
-  { "id": "cherry_tomato", "display": "Cherry tomatoes", "section": "produce", "shelf_life_days": 6 },
-  { "id": "roma_tomato", "display": "Roma tomatoes", "section": "produce", "shelf_life_days": 7 },
-  { "id": "onion_brown", "display": "Brown onions", "section": "produce", "shelf_life_days": 30 },
-  { "id": "onion_red", "display": "Red onions", "section": "produce", "shelf_life_days": 30 },
-  { "id": "spring_onion", "display": "Spring onions", "section": "produce", "shelf_life_days": 7 },
-  { "id": "garlic", "display": "Garlic", "section": "produce", "shelf_life_days": 30 },
-  { "id": "ginger", "display": "Ginger", "section": "produce", "shelf_life_days": 21 },
-  { "id": "capsicum_red", "display": "Red capsicum", "section": "produce", "shelf_life_days": 8 },
-  { "id": "capsicum_green", "display": "Green capsicum", "section": "produce", "shelf_life_days": 8 },
-  { "id": "chilli", "display": "Red chilli", "section": "produce", "shelf_life_days": 10 },
-  { "id": "carrot", "display": "Carrots", "section": "produce", "shelf_life_days": 21 },
-  { "id": "potato", "display": "Potatoes", "section": "produce", "shelf_life_days": 30 },
-  { "id": "sweet_potato", "display": "Sweet potato", "section": "produce", "shelf_life_days": 21 },
-  { "id": "broccoli", "display": "Broccoli", "section": "produce", "shelf_life_days": 7 },
-  { "id": "cauliflower", "display": "Cauliflower", "section": "produce", "shelf_life_days": 8 },
-  { "id": "spinach", "display": "Baby spinach", "section": "produce", "shelf_life_days": 5 },
-  { "id": "rocket", "display": "Rocket", "section": "produce", "shelf_life_days": 4 },
-  { "id": "lettuce", "display": "Lettuce", "section": "produce", "shelf_life_days": 6 },
-  { "id": "cucumber", "display": "Cucumber", "section": "produce", "shelf_life_days": 7 },
-  { "id": "zucchini", "display": "Zucchini", "section": "produce", "shelf_life_days": 7 },
-  { "id": "mushroom", "display": "Mushrooms", "section": "produce", "shelf_life_days": 5 },
-  { "id": "coriander", "display": "Coriander", "section": "produce", "shelf_life_days": 5 },
-  { "id": "parsley", "display": "Parsley", "section": "produce", "shelf_life_days": 6 },
-  { "id": "basil", "display": "Basil", "section": "produce", "shelf_life_days": 5 },
-  { "id": "mint", "display": "Mint", "section": "produce", "shelf_life_days": 6 },
-  { "id": "sage", "display": "Sage", "section": "produce", "shelf_life_days": 5 },
-  { "id": "corn", "display": "Corn", "section": "produce", "shelf_life_days": 5 },
-  { "id": "pumpkin", "display": "Pumpkin", "section": "produce", "shelf_life_days": 30 },
-  { "id": "chicken_breast", "display": "Chicken breast", "section": "meat", "shelf_life_days": 3 },
-  { "id": "chicken_thigh", "display": "Chicken thigh", "section": "meat", "shelf_life_days": 3 },
-  { "id": "chicken_whole", "display": "Whole chicken", "section": "meat", "shelf_life_days": 3 },
-  { "id": "beef_mince", "display": "Beef mince", "section": "meat", "shelf_life_days": 2 },
-  { "id": "pork_mince", "display": "Pork mince", "section": "meat", "shelf_life_days": 2 },
-  { "id": "beef_steak", "display": "Beef steak", "section": "meat", "shelf_life_days": 4 },
-  { "id": "lamb_cutlet", "display": "Lamb cutlets", "section": "meat", "shelf_life_days": 3 },
-  { "id": "snags", "display": "Snags", "section": "meat", "shelf_life_days": 4 },
-  { "id": "bacon", "display": "Bacon", "section": "meat", "shelf_life_days": 7 },
-  { "id": "prawns", "display": "Prawns", "section": "meat", "shelf_life_days": 2 },
-  { "id": "salmon", "display": "Salmon", "section": "meat", "shelf_life_days": 2 },
-  { "id": "barramundi", "display": "Barramundi", "section": "meat", "shelf_life_days": 2 },
-  { "id": "ham_sliced", "display": "Sliced ham", "section": "meat", "shelf_life_days": 7 },
-  { "id": "milk", "display": "Milk", "section": "dairy", "shelf_life_days": 7 },
-  { "id": "butter", "display": "Butter", "section": "dairy", "shelf_life_days": 30 },
-  { "id": "eggs", "display": "Eggs", "section": "dairy", "shelf_life_days": 21 },
-  { "id": "cheddar", "display": "Cheddar", "section": "dairy", "shelf_life_days": 21 },
-  { "id": "parmesan", "display": "Parmesan", "section": "dairy", "shelf_life_days": 30 },
-  { "id": "feta", "display": "Feta", "section": "dairy", "shelf_life_days": 14 },
-  { "id": "yoghurt", "display": "Greek yoghurt", "section": "dairy", "shelf_life_days": 14 },
-  { "id": "cream", "display": "Thickened cream", "section": "dairy", "shelf_life_days": 10 },
-  { "id": "mozzarella", "display": "Mozzarella", "section": "dairy", "shelf_life_days": 10 },
-  { "id": "haloumi", "display": "Haloumi", "section": "dairy", "shelf_life_days": 14 },
-  { "id": "pasta", "display": "Pasta", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "spaghetti", "display": "Spaghetti", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "rice_jasmine", "display": "Jasmine rice", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "rice_basmati", "display": "Basmati rice", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "bread", "display": "Bread", "section": "pantry", "shelf_life_days": 5 },
-  { "id": "wrap", "display": "Wraps", "section": "pantry", "shelf_life_days": 14 },
-  { "id": "olive_oil", "display": "Olive oil", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "vegetable_oil", "display": "Vegetable oil", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "soy_sauce", "display": "Soy sauce", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "fish_sauce", "display": "Fish sauce", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "oyster_sauce", "display": "Oyster sauce", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "vinegar_balsamic", "display": "Balsamic vinegar", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "salt", "display": "Sea salt", "section": "pantry", "shelf_life_days": 730 },
-  { "id": "pepper", "display": "Black pepper", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "sugar", "display": "Sugar", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "flour", "display": "Plain flour", "section": "pantry", "shelf_life_days": 180 },
-  { "id": "tinned_tomato", "display": "Tinned tomatoes", "section": "pantry", "shelf_life_days": 730 },
-  { "id": "tinned_chickpea", "display": "Tinned chickpeas", "section": "pantry", "shelf_life_days": 730 },
-  { "id": "tinned_bean", "display": "Tinned beans", "section": "pantry", "shelf_life_days": 730 },
-  { "id": "tinned_tuna", "display": "Tinned tuna", "section": "pantry", "shelf_life_days": 730 },
-  { "id": "coconut_milk", "display": "Coconut milk", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "curry_paste_red", "display": "Red curry paste", "section": "pantry", "shelf_life_days": 180 },
-  { "id": "curry_paste_green", "display": "Green curry paste", "section": "pantry", "shelf_life_days": 180 },
-  { "id": "stock_chicken", "display": "Chicken stock", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "stock_veg", "display": "Vegetable stock", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "honey", "display": "Honey", "section": "pantry", "shelf_life_days": 730 },
-  { "id": "peanut_butter", "display": "Peanut butter", "section": "pantry", "shelf_life_days": 180 },
-  { "id": "vegemite", "display": "Vegemite", "section": "pantry", "shelf_life_days": 730 },
-  { "id": "weetbix", "display": "Weet-Bix", "section": "pantry", "shelf_life_days": 180 },
-  { "id": "oats", "display": "Rolled oats", "section": "pantry", "shelf_life_days": 180 },
-  { "id": "muesli", "display": "Muesli", "section": "pantry", "shelf_life_days": 90 },
-  { "id": "cumin", "display": "Ground cumin", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "paprika", "display": "Smoked paprika", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "chilli_powder", "display": "Chilli powder", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "cinnamon", "display": "Cinnamon", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "curry_powder", "display": "Curry powder", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "chickpea_dry", "display": "Dried chickpeas", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "lentil_red", "display": "Red lentils", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "breadcrumbs", "display": "Breadcrumbs", "section": "pantry", "shelf_life_days": 120 },
-  { "id": "tortilla", "display": "Tortillas", "section": "pantry", "shelf_life_days": 14 },
-  { "id": "peas_frozen", "display": "Frozen peas", "section": "frozen", "shelf_life_days": 180 },
-  { "id": "berries_frozen", "display": "Frozen berries", "section": "frozen", "shelf_life_days": 180 },
-  { "id": "pastry_puff", "display": "Puff pastry", "section": "frozen", "shelf_life_days": 120 },
-  { "id": "ice_cream", "display": "Ice cream", "section": "frozen", "shelf_life_days": 90 },
-  { "id": "coffee", "display": "Coffee beans", "section": "other", "shelf_life_days": 60 },
-  { "id": "tea", "display": "Tea bags", "section": "other", "shelf_life_days": 365 },
-  { "id": "wine_white", "display": "White wine", "section": "other", "shelf_life_days": 30 },
-  { "id": "wine_red", "display": "Red wine", "section": "other", "shelf_life_days": 14 },
-  { "id": "beer", "display": "Beer", "section": "other", "shelf_life_days": 180 },
-  { "id": "eggplant", "display": "Eggplant", "section": "produce", "shelf_life_days": 7 },
-  { "id": "green_bean", "display": "Green beans", "section": "produce", "shelf_life_days": 5 },
-  { "id": "celery", "display": "Celery", "section": "produce", "shelf_life_days": 14 },
-  { "id": "kale", "display": "Kale", "section": "produce", "shelf_life_days": 6 },
-  { "id": "leek", "display": "Leek", "section": "produce", "shelf_life_days": 14 },
-  { "id": "asparagus", "display": "Asparagus", "section": "produce", "shelf_life_days": 4 },
-  { "id": "beetroot", "display": "Beetroot", "section": "produce", "shelf_life_days": 21 },
-  { "id": "snow_pea", "display": "Snow peas", "section": "produce", "shelf_life_days": 4 },
-  { "id": "bok_choy", "display": "Bok choy", "section": "produce", "shelf_life_days": 5 },
-  { "id": "cabbage", "display": "Cabbage", "section": "produce", "shelf_life_days": 21 },
-  { "id": "strawberry", "display": "Strawberries", "section": "produce", "shelf_life_days": 4 },
-  { "id": "blueberry", "display": "Blueberries", "section": "produce", "shelf_life_days": 7 },
-  { "id": "orange", "display": "Oranges", "section": "produce", "shelf_life_days": 14 },
-  { "id": "grape", "display": "Grapes", "section": "produce", "shelf_life_days": 7 },
-  { "id": "mango", "display": "Mango", "section": "produce", "shelf_life_days": 5 },
-  { "id": "pineapple", "display": "Pineapple", "section": "produce", "shelf_life_days": 5 },
-  { "id": "lamb_mince", "display": "Lamb mince", "section": "meat", "shelf_life_days": 2 },
-  { "id": "pork_belly", "display": "Pork belly", "section": "meat", "shelf_life_days": 3 },
-  { "id": "chorizo", "display": "Chorizo", "section": "meat", "shelf_life_days": 14 },
-  { "id": "duck", "display": "Duck breast", "section": "meat", "shelf_life_days": 3 },
-  { "id": "scallop", "display": "Scallops", "section": "meat", "shelf_life_days": 2 },
-  { "id": "mussel", "display": "Mussels", "section": "meat", "shelf_life_days": 2 },
-  { "id": "calamari", "display": "Calamari", "section": "meat", "shelf_life_days": 2 },
-  { "id": "ricotta", "display": "Ricotta", "section": "dairy", "shelf_life_days": 10 },
-  { "id": "brie", "display": "Brie", "section": "dairy", "shelf_life_days": 14 },
-  { "id": "mascarpone", "display": "Mascarpone", "section": "dairy", "shelf_life_days": 14 },
-  { "id": "sour_cream", "display": "Sour cream", "section": "dairy", "shelf_life_days": 14 },
-  { "id": "couscous", "display": "Couscous", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "quinoa", "display": "Quinoa", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "noodle_egg", "display": "Egg noodles", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "noodle_rice", "display": "Rice noodles", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "polenta", "display": "Polenta", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "tinned_black_bean", "display": "Black beans", "section": "pantry", "shelf_life_days": 730 },
-  { "id": "baking_powder", "display": "Baking powder", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "yeast", "display": "Yeast", "section": "pantry", "shelf_life_days": 90 },
-  { "id": "vanilla", "display": "Vanilla extract", "section": "pantry", "shelf_life_days": 730 },
-  { "id": "turmeric", "display": "Turmeric", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "sesame_oil", "display": "Sesame oil", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "dijon", "display": "Dijon mustard", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "mayo", "display": "Mayonnaise", "section": "pantry", "shelf_life_days": 90 },
-  { "id": "sriracha", "display": "Sriracha", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "maple_syrup", "display": "Maple syrup", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "dark_chocolate", "display": "Dark chocolate", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "cocoa", "display": "Cocoa powder", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "almond", "display": "Almonds", "section": "pantry", "shelf_life_days": 180 },
-  { "id": "cashew", "display": "Cashews", "section": "pantry", "shelf_life_days": 180 },
-  { "id": "walnut", "display": "Walnuts", "section": "pantry", "shelf_life_days": 180 },
-  { "id": "raisin", "display": "Raisins", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "corn_frozen", "display": "Frozen corn", "section": "frozen", "shelf_life_days": 180 },
-  { "id": "pastry_filo", "display": "Filo pastry", "section": "frozen", "shelf_life_days": 120 },
-  { "id": "tofu", "display": "Tofu", "section": "pantry", "shelf_life_days": 30 },
-  { "id": "miso", "display": "Miso paste", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "nori", "display": "Nori sheets", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "kimchi", "display": "Kimchi", "section": "dairy", "shelf_life_days": 60 },
-  { "id": "gochujang", "display": "Gochujang", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "cream_cheese", "display": "Cream cheese", "section": "dairy", "shelf_life_days": 30 },
-  { "id": "worcestershire", "display": "Worcestershire", "section": "pantry", "shelf_life_days": 730 },
-  { "id": "stock_beef", "display": "Beef stock", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "passionfruit", "display": "Passionfruit", "section": "produce", "shelf_life_days": 10 },
-  { "id": "paneer", "display": "Paneer", "section": "dairy", "shelf_life_days": 14 },
-  { "id": "chicken_wing", "display": "Chicken wings", "section": "meat", "shelf_life_days": 3 },
-  { "id": "pork_shoulder", "display": "Pork shoulder", "section": "meat", "shelf_life_days": 4 },
-  { "id": "tomato_paste", "display": "Tomato paste", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "rosemary", "display": "Rosemary", "section": "produce", "shelf_life_days": 14 },
-  { "id": "thyme", "display": "Thyme", "section": "produce", "shelf_life_days": 14 },
-  { "id": "oregano", "display": "Oregano", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "olive", "display": "Olives", "section": "pantry", "shelf_life_days": 180 },
-  { "id": "caper", "display": "Capers", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "chocolate_chip", "display": "Chocolate chips", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "tea_chai", "display": "Chai tea", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "ice_cream_vanilla", "display": "Vanilla ice cream", "section": "frozen", "shelf_life_days": 180 },
-  { "id": "banana_frozen", "display": "Frozen banana", "section": "frozen", "shelf_life_days": 90 },
-  { "id": "smoked_salmon", "display": "Smoked salmon", "section": "meat", "shelf_life_days": 7 },
-  { "id": "pork_chop", "display": "Pork chops", "section": "meat", "shelf_life_days": 4 },
-  { "id": "beef_brisket", "display": "Beef brisket", "section": "meat", "shelf_life_days": 4 },
-  { "id": "tahini", "display": "Tahini", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "preserved_lemon", "display": "Preserved lemon", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "sumac", "display": "Sumac", "section": "pantry", "shelf_life_days": 365 },
-  { "id": "pine_nut", "display": "Pine nuts", "section": "pantry", "shelf_life_days": 180 },
-  { "id": "pecan", "display": "Pecans", "section": "pantry", "shelf_life_days": 180 },
-  { "id": "hazelnut", "display": "Hazelnuts", "section": "pantry", "shelf_life_days": 180 },
-  { "id": "fig", "display": "Figs", "section": "produce", "shelf_life_days": 5 },
-  { "id": "pear", "display": "Pears", "section": "produce", "shelf_life_days": 10 },
-  { "id": "peach", "display": "Peaches", "section": "produce", "shelf_life_days": 5 },
-  { "id": "cherry", "display": "Cherries", "section": "produce", "shelf_life_days": 7 },
-  { "id": "kiwi", "display": "Kiwifruit", "section": "produce", "shelf_life_days": 10 },
-  { "id": "buttermilk", "display": "Buttermilk", "section": "dairy", "shelf_life_days": 14 },
-  { "id": "saffron", "display": "Saffron", "section": "pantry", "shelf_life_days": 730 },
-  { "id": "bay_leaf", "display": "Bay leaves", "section": "pantry", "shelf_life_days": 730 },
-  { "id": "star_anise", "display": "Star anise", "section": "pantry", "shelf_life_days": 730 }
+  {
+    "id": "banana",
+    "display": "Bananas",
+    "section": "produce",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "apple",
+    "display": "Apples",
+    "section": "produce",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "lemon",
+    "display": "Lemons",
+    "section": "produce",
+    "shelf_life_days": 21
+  },
+  {
+    "id": "lime",
+    "display": "Limes",
+    "section": "produce",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "avocado",
+    "display": "Avocados",
+    "section": "produce",
+    "shelf_life_days": 4
+  },
+  {
+    "id": "tomato",
+    "display": "Tomatoes",
+    "section": "produce",
+    "shelf_life_days": 6
+  },
+  {
+    "id": "cherry_tomato",
+    "display": "Cherry tomatoes",
+    "section": "produce",
+    "shelf_life_days": 6
+  },
+  {
+    "id": "roma_tomato",
+    "display": "Roma tomatoes",
+    "section": "produce",
+    "shelf_life_days": 7
+  },
+  {
+    "id": "onion_brown",
+    "display": "Brown onions",
+    "section": "produce",
+    "shelf_life_days": 30
+  },
+  {
+    "id": "onion_red",
+    "display": "Red onions",
+    "section": "produce",
+    "shelf_life_days": 30
+  },
+  {
+    "id": "spring_onion",
+    "display": "Spring onions",
+    "section": "produce",
+    "shelf_life_days": 7
+  },
+  {
+    "id": "garlic",
+    "display": "Garlic",
+    "section": "produce",
+    "shelf_life_days": 30
+  },
+  {
+    "id": "ginger",
+    "display": "Ginger",
+    "section": "produce",
+    "shelf_life_days": 21
+  },
+  {
+    "id": "capsicum_red",
+    "display": "Red capsicum",
+    "section": "produce",
+    "shelf_life_days": 8
+  },
+  {
+    "id": "capsicum_green",
+    "display": "Green capsicum",
+    "section": "produce",
+    "shelf_life_days": 8
+  },
+  {
+    "id": "chilli",
+    "display": "Red chilli",
+    "section": "produce",
+    "shelf_life_days": 10
+  },
+  {
+    "id": "carrot",
+    "display": "Carrots",
+    "section": "produce",
+    "shelf_life_days": 21
+  },
+  {
+    "id": "potato",
+    "display": "Potatoes",
+    "section": "produce",
+    "shelf_life_days": 30
+  },
+  {
+    "id": "sweet_potato",
+    "display": "Sweet potato",
+    "section": "produce",
+    "shelf_life_days": 21
+  },
+  {
+    "id": "broccoli",
+    "display": "Broccoli",
+    "section": "produce",
+    "shelf_life_days": 7
+  },
+  {
+    "id": "cauliflower",
+    "display": "Cauliflower",
+    "section": "produce",
+    "shelf_life_days": 8
+  },
+  {
+    "id": "spinach",
+    "display": "Baby spinach",
+    "section": "produce",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "rocket",
+    "display": "Rocket",
+    "section": "produce",
+    "shelf_life_days": 4
+  },
+  {
+    "id": "lettuce",
+    "display": "Lettuce",
+    "section": "produce",
+    "shelf_life_days": 6
+  },
+  {
+    "id": "cucumber",
+    "display": "Cucumber",
+    "section": "produce",
+    "shelf_life_days": 7
+  },
+  {
+    "id": "zucchini",
+    "display": "Zucchini",
+    "section": "produce",
+    "shelf_life_days": 7
+  },
+  {
+    "id": "mushroom",
+    "display": "Mushrooms",
+    "section": "produce",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "coriander",
+    "display": "Coriander",
+    "section": "produce",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "parsley",
+    "display": "Parsley",
+    "section": "produce",
+    "shelf_life_days": 6
+  },
+  {
+    "id": "basil",
+    "display": "Basil",
+    "section": "produce",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "mint",
+    "display": "Mint",
+    "section": "produce",
+    "shelf_life_days": 6
+  },
+  {
+    "id": "sage",
+    "display": "Sage",
+    "section": "produce",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "corn",
+    "display": "Corn",
+    "section": "produce",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "pumpkin",
+    "display": "Pumpkin",
+    "section": "produce",
+    "shelf_life_days": 30
+  },
+  {
+    "id": "chicken_breast",
+    "display": "Chicken breast",
+    "section": "meat",
+    "shelf_life_days": 3
+  },
+  {
+    "id": "chicken_thigh",
+    "display": "Chicken thigh",
+    "section": "meat",
+    "shelf_life_days": 3
+  },
+  {
+    "id": "chicken_whole",
+    "display": "Whole chicken",
+    "section": "meat",
+    "shelf_life_days": 3
+  },
+  {
+    "id": "beef_mince",
+    "display": "Beef mince",
+    "section": "meat",
+    "shelf_life_days": 2
+  },
+  {
+    "id": "pork_mince",
+    "display": "Pork mince",
+    "section": "meat",
+    "shelf_life_days": 2
+  },
+  {
+    "id": "beef_steak",
+    "display": "Beef steak",
+    "section": "meat",
+    "shelf_life_days": 4
+  },
+  {
+    "id": "lamb_cutlet",
+    "display": "Lamb cutlets",
+    "section": "meat",
+    "shelf_life_days": 3
+  },
+  {
+    "id": "snags",
+    "display": "Snags",
+    "section": "meat",
+    "shelf_life_days": 4
+  },
+  {
+    "id": "bacon",
+    "display": "Bacon",
+    "section": "meat",
+    "shelf_life_days": 7
+  },
+  {
+    "id": "prawns",
+    "display": "Prawns",
+    "section": "meat",
+    "shelf_life_days": 2
+  },
+  {
+    "id": "salmon",
+    "display": "Salmon",
+    "section": "meat",
+    "shelf_life_days": 2
+  },
+  {
+    "id": "barramundi",
+    "display": "Barramundi",
+    "section": "meat",
+    "shelf_life_days": 2
+  },
+  {
+    "id": "ham_sliced",
+    "display": "Sliced ham",
+    "section": "meat",
+    "shelf_life_days": 7
+  },
+  {
+    "id": "milk",
+    "display": "Milk",
+    "section": "dairy",
+    "shelf_life_days": 7
+  },
+  {
+    "id": "butter",
+    "display": "Butter",
+    "section": "dairy",
+    "shelf_life_days": 30
+  },
+  {
+    "id": "eggs",
+    "display": "Eggs",
+    "section": "dairy",
+    "shelf_life_days": 21
+  },
+  {
+    "id": "cheddar",
+    "display": "Cheddar",
+    "section": "dairy",
+    "shelf_life_days": 21
+  },
+  {
+    "id": "parmesan",
+    "display": "Parmesan",
+    "section": "dairy",
+    "shelf_life_days": 30
+  },
+  {
+    "id": "feta",
+    "display": "Feta",
+    "section": "dairy",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "yoghurt",
+    "display": "Greek yoghurt",
+    "section": "dairy",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "cream",
+    "display": "Thickened cream",
+    "section": "dairy",
+    "shelf_life_days": 10
+  },
+  {
+    "id": "mozzarella",
+    "display": "Mozzarella",
+    "section": "dairy",
+    "shelf_life_days": 10
+  },
+  {
+    "id": "haloumi",
+    "display": "Haloumi",
+    "section": "dairy",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "pasta",
+    "display": "Pasta",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "spaghetti",
+    "display": "Spaghetti",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "rice_jasmine",
+    "display": "Jasmine rice",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "rice_basmati",
+    "display": "Basmati rice",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "bread",
+    "display": "Bread",
+    "section": "pantry",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "wrap",
+    "display": "Wraps",
+    "section": "pantry",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "olive_oil",
+    "display": "Olive oil",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "vegetable_oil",
+    "display": "Vegetable oil",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "soy_sauce",
+    "display": "Soy sauce",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "fish_sauce",
+    "display": "Fish sauce",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "oyster_sauce",
+    "display": "Oyster sauce",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "vinegar_balsamic",
+    "display": "Balsamic vinegar",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "salt",
+    "display": "Sea salt",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "pepper",
+    "display": "Black pepper",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "sugar",
+    "display": "Sugar",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "flour",
+    "display": "Plain flour",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "tinned_tomato",
+    "display": "Tinned tomatoes",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "tinned_chickpea",
+    "display": "Tinned chickpeas",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "tinned_bean",
+    "display": "Tinned beans",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "tinned_tuna",
+    "display": "Tinned tuna",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "coconut_milk",
+    "display": "Coconut milk",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "curry_paste_red",
+    "display": "Red curry paste",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "curry_paste_green",
+    "display": "Green curry paste",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "stock_chicken",
+    "display": "Chicken stock",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "stock_veg",
+    "display": "Vegetable stock",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "honey",
+    "display": "Honey",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "peanut_butter",
+    "display": "Peanut butter",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "vegemite",
+    "display": "Vegemite",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "weetbix",
+    "display": "Weet-Bix",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "oats",
+    "display": "Rolled oats",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "muesli",
+    "display": "Muesli",
+    "section": "pantry",
+    "shelf_life_days": 90
+  },
+  {
+    "id": "cumin",
+    "display": "Ground cumin",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "paprika",
+    "display": "Smoked paprika",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "chilli_powder",
+    "display": "Chilli powder",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "cinnamon",
+    "display": "Cinnamon",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "curry_powder",
+    "display": "Curry powder",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "chickpea_dry",
+    "display": "Dried chickpeas",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "lentil_red",
+    "display": "Red lentils",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "breadcrumbs",
+    "display": "Breadcrumbs",
+    "section": "pantry",
+    "shelf_life_days": 120
+  },
+  {
+    "id": "tortilla",
+    "display": "Tortillas",
+    "section": "pantry",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "peas_frozen",
+    "display": "Frozen peas",
+    "section": "frozen",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "berries_frozen",
+    "display": "Frozen berries",
+    "section": "frozen",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "pastry_puff",
+    "display": "Puff pastry",
+    "section": "frozen",
+    "shelf_life_days": 120
+  },
+  {
+    "id": "ice_cream",
+    "display": "Ice cream",
+    "section": "frozen",
+    "shelf_life_days": 90
+  },
+  {
+    "id": "coffee",
+    "display": "Coffee beans",
+    "section": "other",
+    "shelf_life_days": 60
+  },
+  {
+    "id": "tea",
+    "display": "Tea bags",
+    "section": "other",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "wine_white",
+    "display": "White wine",
+    "section": "other",
+    "shelf_life_days": 30
+  },
+  {
+    "id": "wine_red",
+    "display": "Red wine",
+    "section": "other",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "beer",
+    "display": "Beer",
+    "section": "other",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "eggplant",
+    "display": "Eggplant",
+    "section": "produce",
+    "shelf_life_days": 7
+  },
+  {
+    "id": "green_bean",
+    "display": "Green beans",
+    "section": "produce",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "celery",
+    "display": "Celery",
+    "section": "produce",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "kale",
+    "display": "Kale",
+    "section": "produce",
+    "shelf_life_days": 6
+  },
+  {
+    "id": "leek",
+    "display": "Leek",
+    "section": "produce",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "asparagus",
+    "display": "Asparagus",
+    "section": "produce",
+    "shelf_life_days": 4
+  },
+  {
+    "id": "beetroot",
+    "display": "Beetroot",
+    "section": "produce",
+    "shelf_life_days": 21
+  },
+  {
+    "id": "snow_pea",
+    "display": "Snow peas",
+    "section": "produce",
+    "shelf_life_days": 4
+  },
+  {
+    "id": "bok_choy",
+    "display": "Bok choy",
+    "section": "produce",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "cabbage",
+    "display": "Cabbage",
+    "section": "produce",
+    "shelf_life_days": 21
+  },
+  {
+    "id": "strawberry",
+    "display": "Strawberries",
+    "section": "produce",
+    "shelf_life_days": 4
+  },
+  {
+    "id": "blueberry",
+    "display": "Blueberries",
+    "section": "produce",
+    "shelf_life_days": 7
+  },
+  {
+    "id": "orange",
+    "display": "Oranges",
+    "section": "produce",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "grape",
+    "display": "Grapes",
+    "section": "produce",
+    "shelf_life_days": 7
+  },
+  {
+    "id": "mango",
+    "display": "Mango",
+    "section": "produce",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "pineapple",
+    "display": "Pineapple",
+    "section": "produce",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "lamb_mince",
+    "display": "Lamb mince",
+    "section": "meat",
+    "shelf_life_days": 2
+  },
+  {
+    "id": "pork_belly",
+    "display": "Pork belly",
+    "section": "meat",
+    "shelf_life_days": 3
+  },
+  {
+    "id": "chorizo",
+    "display": "Chorizo",
+    "section": "meat",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "duck",
+    "display": "Duck breast",
+    "section": "meat",
+    "shelf_life_days": 3
+  },
+  {
+    "id": "scallop",
+    "display": "Scallops",
+    "section": "meat",
+    "shelf_life_days": 2
+  },
+  {
+    "id": "mussel",
+    "display": "Mussels",
+    "section": "meat",
+    "shelf_life_days": 2
+  },
+  {
+    "id": "calamari",
+    "display": "Calamari",
+    "section": "meat",
+    "shelf_life_days": 2
+  },
+  {
+    "id": "ricotta",
+    "display": "Ricotta",
+    "section": "dairy",
+    "shelf_life_days": 10
+  },
+  {
+    "id": "brie",
+    "display": "Brie",
+    "section": "dairy",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "mascarpone",
+    "display": "Mascarpone",
+    "section": "dairy",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "sour_cream",
+    "display": "Sour cream",
+    "section": "dairy",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "couscous",
+    "display": "Couscous",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "quinoa",
+    "display": "Quinoa",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "noodle_egg",
+    "display": "Egg noodles",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "noodle_rice",
+    "display": "Rice noodles",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "polenta",
+    "display": "Polenta",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "tinned_black_bean",
+    "display": "Black beans",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "baking_powder",
+    "display": "Baking powder",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "yeast",
+    "display": "Yeast",
+    "section": "pantry",
+    "shelf_life_days": 90
+  },
+  {
+    "id": "vanilla",
+    "display": "Vanilla extract",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "turmeric",
+    "display": "Turmeric",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "sesame_oil",
+    "display": "Sesame oil",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "dijon",
+    "display": "Dijon mustard",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "mayo",
+    "display": "Mayonnaise",
+    "section": "pantry",
+    "shelf_life_days": 90
+  },
+  {
+    "id": "sriracha",
+    "display": "Sriracha",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "maple_syrup",
+    "display": "Maple syrup",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "dark_chocolate",
+    "display": "Dark chocolate",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "cocoa",
+    "display": "Cocoa powder",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "almond",
+    "display": "Almonds",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "cashew",
+    "display": "Cashews",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "walnut",
+    "display": "Walnuts",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "raisin",
+    "display": "Raisins",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "corn_frozen",
+    "display": "Frozen corn",
+    "section": "frozen",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "pastry_filo",
+    "display": "Filo pastry",
+    "section": "frozen",
+    "shelf_life_days": 120
+  },
+  {
+    "id": "tofu",
+    "display": "Tofu",
+    "section": "pantry",
+    "shelf_life_days": 30
+  },
+  {
+    "id": "miso",
+    "display": "Miso paste",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "nori",
+    "display": "Nori sheets",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "kimchi",
+    "display": "Kimchi",
+    "section": "dairy",
+    "shelf_life_days": 60
+  },
+  {
+    "id": "gochujang",
+    "display": "Gochujang",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "cream_cheese",
+    "display": "Cream cheese",
+    "section": "dairy",
+    "shelf_life_days": 30
+  },
+  {
+    "id": "worcestershire",
+    "display": "Worcestershire",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "stock_beef",
+    "display": "Beef stock",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "passionfruit",
+    "display": "Passionfruit",
+    "section": "produce",
+    "shelf_life_days": 10
+  },
+  {
+    "id": "paneer",
+    "display": "Paneer",
+    "section": "dairy",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "chicken_wing",
+    "display": "Chicken wings",
+    "section": "meat",
+    "shelf_life_days": 3
+  },
+  {
+    "id": "pork_shoulder",
+    "display": "Pork shoulder",
+    "section": "meat",
+    "shelf_life_days": 4
+  },
+  {
+    "id": "tomato_paste",
+    "display": "Tomato paste",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "rosemary",
+    "display": "Rosemary",
+    "section": "produce",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "thyme",
+    "display": "Thyme",
+    "section": "produce",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "oregano",
+    "display": "Oregano",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "olive",
+    "display": "Olives",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "caper",
+    "display": "Capers",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "chocolate_chip",
+    "display": "Chocolate chips",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "tea_chai",
+    "display": "Chai tea",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "ice_cream_vanilla",
+    "display": "Vanilla ice cream",
+    "section": "frozen",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "banana_frozen",
+    "display": "Frozen banana",
+    "section": "frozen",
+    "shelf_life_days": 90
+  },
+  {
+    "id": "smoked_salmon",
+    "display": "Smoked salmon",
+    "section": "meat",
+    "shelf_life_days": 7
+  },
+  {
+    "id": "pork_chop",
+    "display": "Pork chops",
+    "section": "meat",
+    "shelf_life_days": 4
+  },
+  {
+    "id": "beef_brisket",
+    "display": "Beef brisket",
+    "section": "meat",
+    "shelf_life_days": 4
+  },
+  {
+    "id": "tahini",
+    "display": "Tahini",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "preserved_lemon",
+    "display": "Preserved lemon",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "sumac",
+    "display": "Sumac",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "pine_nut",
+    "display": "Pine nuts",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "pecan",
+    "display": "Pecans",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "hazelnut",
+    "display": "Hazelnuts",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "fig",
+    "display": "Figs",
+    "section": "produce",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "pear",
+    "display": "Pears",
+    "section": "produce",
+    "shelf_life_days": 10
+  },
+  {
+    "id": "peach",
+    "display": "Peaches",
+    "section": "produce",
+    "shelf_life_days": 5
+  },
+  {
+    "id": "cherry",
+    "display": "Cherries",
+    "section": "produce",
+    "shelf_life_days": 7
+  },
+  {
+    "id": "kiwi",
+    "display": "Kiwifruit",
+    "section": "produce",
+    "shelf_life_days": 10
+  },
+  {
+    "id": "buttermilk",
+    "display": "Buttermilk",
+    "section": "dairy",
+    "shelf_life_days": 14
+  },
+  {
+    "id": "saffron",
+    "display": "Saffron",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "bay_leaf",
+    "display": "Bay leaves",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "star_anise",
+    "display": "Star anise",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "rice_arborio",
+    "display": "Arborio rice",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "pastry_shortcrust",
+    "display": "Shortcrust pastry",
+    "section": "frozen",
+    "shelf_life_days": 120
+  },
+  {
+    "id": "coconut_desiccated",
+    "display": "Desiccated coconut",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "icing_sugar",
+    "display": "Icing sugar",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "meringue",
+    "display": "Meringue nests",
+    "section": "pantry",
+    "shelf_life_days": 90
+  },
+  {
+    "id": "marshmallow",
+    "display": "Marshmallows",
+    "section": "pantry",
+    "shelf_life_days": 240
+  }
 ]
