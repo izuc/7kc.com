@@ -296,6 +296,12 @@ h3 {
   text-overflow: ellipsis;
 }
 
+/* ---- Parse preview: "maybe" (low-confidence) match ---- */
+.parse-preview li.maybe { background: var(--amber-2); }
+.parse-preview li.maybe .raw { color: var(--amber-ink); }
+.parse-preview li.maybe .match em { font-style: italic; color: var(--amber-ink); }
+.parse-preview li.maybe .tick { background: var(--amber); border-color: var(--amber); color: var(--paper); }
+
 /* ---- Favourite (saved) button ---- */
 .btn.fav-on { color: var(--accent); border-color: color-mix(in oklch, var(--accent) 40%, var(--line)); }
 

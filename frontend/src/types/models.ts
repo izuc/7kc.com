@@ -147,5 +147,5 @@ export interface FeedEvent {
 export interface ParsedItem {
   raw: string;
   clean: string;
-  match: { id: string; display: string; section: Section } | null;
+  match: { id: string; display: string; section: Section; confidence?: 'confident' | 'maybe' } | null;
 }

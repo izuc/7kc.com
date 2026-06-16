@@ -578,7 +578,18 @@ snags for the bbq`;
           </p>
           <ul className="parse-preview">
             {parsed.map((p, i) => (
-              <li key={i} className={p.skip ? 'skip' : p.match ? 'matched' : 'unmatched'}>
+              <li
+                key={i}
+                className={
+                  p.skip
+                    ? 'skip'
+                    : p.match
+                    ? p.match.confidence === 'maybe'
+                      ? 'maybe'
+                      : 'matched'
+                    : 'unmatched'
+                }
+              >
                 <button
                   className="tick"
                   aria-pressed={!p.skip}
@@ -595,7 +606,7 @@ snags for the bbq`;
                   <span className="match">
                     <IngredientIcon id={p.match.id} section={p.match.section} size={22} title={p.match.display} />
                     <span className={`section-dot section-dot-${p.match.section}`} />
-                    {p.match.display}
+                    {p.match.confidence === 'maybe' ? <em>{p.match.display}?</em> : p.match.display}
                   </span>
                 ) : (
                   <span className="unmatched-label">add as "{p.clean || p.raw}"</span>
