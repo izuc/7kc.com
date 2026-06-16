@@ -21,6 +21,10 @@ final class CommentSuggestionAction
         $userId = (string)$req->getAttribute('user_id');
         $groupId = $this->users->groupIdFor($userId);
         if (!$groupId) return Json::error($res, 'forbidden', 'Not in a group', 403);
+        $sug = $this->groups->findSuggestion($args['id']);
+        if (!$sug || $sug['group_id'] !== $groupId) {
+            return Json::error($res, 'not_found', 'Suggestion not found', 404);
+        }
         $body = (array)($req->getParsedBody() ?? []);
         $content = trim((string)($body['content'] ?? ''));
         if ($content === '') return Json::error($res, 'bad_request', 'Content required', 400);

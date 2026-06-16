@@ -24,7 +24,7 @@ final class CookRecipeAction
     {
         $userId = (string)$req->getAttribute('user_id');
         $groupId = $this->users->groupIdFor($userId);
-        $recipe = $this->recipes->findBySlug($args['slug']);
+        $recipe = $this->recipes->findBySlugForUser($args['slug'], $userId, $groupId);
         if (!$recipe) return Json::error($res, 'not_found', 'Recipe not found', 404);
 
         $body = (array)($req->getParsedBody() ?? []);

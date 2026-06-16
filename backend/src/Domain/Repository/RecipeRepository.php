@@ -42,6 +42,23 @@ final class RecipeRepository
         return $r ? $this->withDetails($this->hydrate($r)) : null;
     }
 
+    /** Seeded (public) recipes are visible to all; custom recipes only to their owner/group. */
+    public function findBySlugForUser(string $slug, string $userId, ?string $groupId): ?array
+    {
+        $sql = 'SELECT * FROM recipes WHERE slug = ? AND (is_custom = 0 OR owner_user_id = ?' . ($groupId ? ' OR group_id = ?' : '') . ')';
+        $params = [$slug, $userId];
+        if ($groupId) $params[] = $groupId;
+        $r = $this->db->fetchAssociative($sql, $params);
+        return $r ? $this->withDetails($this->hydrate($r)) : null;
+    }
+
+    /** Only the curated, non-custom catalog is exposed on the public (no-auth) endpoint. */
+    public function findPublicBySlug(string $slug): ?array
+    {
+        $r = $this->db->fetchAssociative('SELECT * FROM recipes WHERE slug = ? AND is_custom = 0', [$slug]);
+        return $r ? $this->withDetails($this->hydrate($r)) : null;
+    }
+
     public function findById(string $id): ?array
     {
         $r = $this->db->fetchAssociative('SELECT * FROM recipes WHERE id = ?', [$id]);

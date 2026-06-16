@@ -110,22 +110,45 @@ final class GroupRepository
         ]);
     }
 
+    public function findSuggestion(string $id): ?array
+    {
+        $row = $this->db->fetchAssociative('SELECT * FROM meal_suggestions WHERE id = ?', [$id]);
+        return $row ?: null;
+    }
+
     public function suggestions(string $groupId): array
     {
         $rows = $this->db->fetchAllAssociative(
             'SELECT * FROM meal_suggestions WHERE group_id = ? ORDER BY created_at DESC',
             [$groupId]
         );
+        if (!$rows) return [];
+
+        // Batch likes + comments for all suggestions (avoids 1+2N queries).
+        $ids = array_column($rows, 'id');
+        $ph = implode(',', array_fill(0, count($ids), '?'));
+        $likeRows = $this->db->fetchAllAssociative(
+            "SELECT suggestion_id, user_id FROM suggestion_likes WHERE suggestion_id IN ($ph)",
+            $ids
+        );
+        $commentRows = $this->db->fetchAllAssociative(
+            "SELECT suggestion_id, id, user_id, content, created_at FROM suggestion_comments WHERE suggestion_id IN ($ph) ORDER BY created_at ASC",
+            $ids
+        );
+        $likesBy = [];
+        foreach ($likeRows as $l) $likesBy[$l['suggestion_id']][] = $l['user_id'];
+        $commentsBy = [];
+        foreach ($commentRows as $c) {
+            $commentsBy[$c['suggestion_id']][] = [
+                'id' => $c['id'],
+                'user_id' => $c['user_id'],
+                'content' => $c['content'],
+                'created_at' => (int)$c['created_at'],
+            ];
+        }
+
         $out = [];
         foreach ($rows as $r) {
-            $likes = $this->db->fetchAllAssociative(
-                'SELECT user_id, created_at FROM suggestion_likes WHERE suggestion_id = ?',
-                [$r['id']]
-            );
-            $comments = $this->db->fetchAllAssociative(
-                'SELECT id, user_id, content, created_at FROM suggestion_comments WHERE suggestion_id = ? ORDER BY created_at ASC',
-                [$r['id']]
-            );
             $out[] = [
                 'id' => $r['id'],
                 'group_id' => $r['group_id'],
@@ -135,13 +158,8 @@ final class GroupRepository
                 'suggested_for_date' => $r['suggested_for_date'],
                 'created_at' => (int)$r['created_at'],
                 'cooked_meal_id' => $r['cooked_meal_id'],
-                'likes' => array_map(fn ($l) => $l['user_id'], $likes),
-                'comments' => array_map(fn ($c) => [
-                    'id' => $c['id'],
-                    'user_id' => $c['user_id'],
-                    'content' => $c['content'],
-                    'created_at' => (int)$c['created_at'],
-                ], $comments),
+                'likes' => $likesBy[$r['id']] ?? [],
+                'comments' => $commentsBy[$r['id']] ?? [],
             ];
         }
         return $out;

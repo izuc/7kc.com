@@ -72,7 +72,28 @@ final class ShoppingListRepository
             'SELECT * FROM shopping_list_items WHERE list_id = ? ORDER BY is_bought ASC, sort_order ASC, added_at ASC',
             [$listId]
         );
-        return array_map(fn ($r) => [
+        return array_map([$this, 'hydrateItem'], $rows);
+    }
+
+    /** Batch-load items for many lists in one query (avoids N+1 in ListListsAction). */
+    public function itemsForLists(array $listIds): array
+    {
+        if (!$listIds) return [];
+        $ph = implode(',', array_fill(0, count($listIds), '?'));
+        $rows = $this->db->fetchAllAssociative(
+            "SELECT * FROM shopping_list_items WHERE list_id IN ($ph) ORDER BY list_id, is_bought ASC, sort_order ASC, added_at ASC",
+            array_values($listIds)
+        );
+        $byList = [];
+        foreach ($rows as $r) {
+            $byList[$r['list_id']][] = $this->hydrateItem($r);
+        }
+        return $byList;
+    }
+
+    private function hydrateItem(array $r): array
+    {
+        return [
             'id' => $r['id'],
             'list_id' => $r['list_id'],
             'ingredient_id' => $r['ingredient_id'],
@@ -86,7 +107,7 @@ final class ShoppingListRepository
             'added_at' => (int)$r['added_at'],
             'moved_to_pantry' => (bool)$r['moved_to_pantry'],
             'sort_order' => (int)$r['sort_order'],
-        ], $rows);
+        ];
     }
 
     public function create(string $ownerId, ?string $groupId, string $name): string

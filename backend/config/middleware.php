@@ -25,7 +25,6 @@ return function (App $app): void {
             ->withHeader('Access-Control-Allow-Origin', $settings['cors']['origin'])
             ->withHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,PUT,DELETE,OPTIONS')
             ->withHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-            ->withHeader('Access-Control-Allow-Credentials', 'true')
             ->withHeader('Vary', 'Origin');
     });
 

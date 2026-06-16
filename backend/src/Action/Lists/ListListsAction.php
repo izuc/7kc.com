@@ -21,9 +21,11 @@ final class ListListsAction
         $userId = (string)$req->getAttribute('user_id');
         $groupId = $this->users->groupIdFor($userId);
         $lists = $this->lists->forUser($userId, $groupId);
+        $itemsByList = $this->lists->itemsForLists(array_column($lists, 'id'));
         foreach ($lists as &$l) {
-            $l['items'] = $this->lists->items($l['id']);
+            $l['items'] = $itemsByList[$l['id']] ?? [];
         }
+        unset($l);
         return Json::send($res, ['lists' => $lists]);
     }
 }

@@ -10,8 +10,8 @@ use SevenKC\Domain\Repository\RecipeRepository;
 use SevenKC\Infrastructure\Http\Json;
 
 /**
- * Public, SEO-friendly recipe endpoint. Same recipe payload, but callable without auth,
- * and includes a ready-to-render Schema.org Recipe JSON-LD fragment for the landing page.
+ * Public, SEO-friendly recipe endpoint. Serves ONLY the curated (non-custom) catalogue
+ * without auth, and includes a ready-to-render Schema.org Recipe JSON-LD fragment.
  */
 final class PublicRecipeAction
 {
@@ -22,11 +22,15 @@ final class PublicRecipeAction
 
     public function __invoke(ServerRequestInterface $req, ResponseInterface $res, array $args): ResponseInterface
     {
-        $recipe = $this->recipes->findBySlug($args['slug']);
+        $recipe = $this->recipes->findPublicBySlug($args['slug']);
         if (!$recipe) return Json::error($res, 'not_found', 'Recipe not found', 404);
 
-        // increment view count — async-safe enough for v1
+        // increment view count — only ever fires for public (non-custom) recipes now
         $this->db->executeStatement('UPDATE recipes SET view_count = view_count + 1 WHERE id = ?', [$recipe['id']]);
+
+        $origin = $req->getUri()->getScheme() . '://' . $req->getUri()->getHost();
+        if ($req->getUri()->getPort()) $origin .= ':' . $req->getUri()->getPort();
+        $base = rtrim($_ENV['PUBLIC_WEB_ORIGIN'] ?? $origin, '/');
 
         $ingredientStrings = array_map(
             fn ($i) => trim(($i['amount'] ? $i['amount'] . ' ' : '') . ($i['display'] ?? $i['ingredient_id'] ?? '')),
@@ -42,6 +46,8 @@ final class PublicRecipeAction
             '@type' => 'Recipe',
             'name' => $recipe['title'],
             'description' => $recipe['description'],
+            // Recipe rich results require an image — fall back to the brand card when none.
+            'image' => !empty($recipe['image_url']) ? $recipe['image_url'] : $base . '/og-default.png',
             'recipeIngredient' => array_values(array_filter($ingredientStrings)),
             'recipeInstructions' => $steps,
             'recipeYield' => $recipe['servings'] . ' servings',
@@ -50,7 +56,6 @@ final class PublicRecipeAction
             'totalTime' => 'PT' . ($recipe['prep_time'] + $recipe['cook_time']) . 'M',
             'keywords' => implode(', ', $recipe['tags']),
         ];
-        if (!empty($recipe['image_url'])) $schema['image'] = $recipe['image_url'];
 
         return Json::send($res, [
             'recipe' => $recipe,

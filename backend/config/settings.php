@@ -4,7 +4,9 @@ declare(strict_types=1);
 return [
     'app' => [
         'env' => $_ENV['APP_ENV'] ?? 'production',
-        'debug' => filter_var($_ENV['APP_DEBUG'] ?? false, FILTER_VALIDATE_BOOLEAN),
+        // Debug detail is never exposed in production, regardless of APP_DEBUG.
+        'debug' => ($_ENV['APP_ENV'] ?? 'production') !== 'production'
+            && filter_var($_ENV['APP_DEBUG'] ?? false, FILTER_VALIDATE_BOOLEAN),
     ],
     'db' => [
         'driver' => $_ENV['DB_DRIVER'] ?? 'sqlite',
@@ -35,7 +37,12 @@ return [
         'alg' => 'HS256',
     ],
     'cors' => [
-        'origin' => $_ENV['CORS_ALLOW_ORIGIN'] ?? '*',
+        // Never wildcard in production: require an explicit origin there, allow '*' only in dev.
+        'origin' => (static function (): string {
+            $o = $_ENV['CORS_ALLOW_ORIGIN'] ?? ($_ENV['PUBLIC_WEB_ORIGIN'] ?? '');
+            if ($o !== '') return $o;
+            return (($_ENV['APP_ENV'] ?? 'production') === 'production') ? '' : '*';
+        })(),
     ],
     'paths' => [
         'root' => dirname(__DIR__),
