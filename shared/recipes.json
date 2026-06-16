@@ -375,7 +375,7 @@
         "detail": "Fold the pasta through the sauce with a big splash of reserved water — it should look a little loose; it'll drink up more in the oven. Tip into a baking dish. Tear mozzarella into chunks and dot evenly across the top — don't carpet it flat, you want molten pockets and crispy edges."
       },
       {
-        "content": "Bake 15 min at 200°C until bubbly.",
+        "content": "Bake 15 min at 220°C until bubbly.",
         "detail": "220°C oven for 15 min till the top is bubbling and blistered with gold patches. If it's looking pale, flash under the grill for 90 seconds — watch it like a hawk, cheese goes from gold to burnt in seconds. Rest 5 min before scooping — the sauce sets up and stops being molten. Tear basil over the top."
       }
     ]
@@ -664,7 +664,7 @@
     "title": "BBQ Snag Sanga",
     "description": "Bread, snag, grilled onions, sauce. A national treasure.",
     "prep_time": 5,
-    "cook_time": 15,
+    "cook_time": 20,
     "servings": 4,
     "tags": [
       "bbq",
@@ -1035,6 +1035,10 @@
       {
         "id": "lemon",
         "amount": "1/2"
+      },
+      {
+        "id": "anchovy",
+        "amount": "4 fillets"
       }
     ],
     "steps": [
@@ -1878,12 +1882,11 @@
     "title": "Veggie Wrap",
     "description": "Lunch for humans who hate the sad desk salad.",
     "prep_time": 8,
-    "cook_time": 0,
+    "cook_time": 5,
     "servings": 1,
     "tags": [
       "vegetarian",
-      "quick",
-      "no-cook"
+      "quick"
     ],
     "palette": [
       "#65a30d",
@@ -2066,7 +2069,7 @@
       },
       {
         "content": "Fold in bananas, flour, cinnamon.",
-        "detail": "Fold in the mashed banana with a spatula. Sift in 2 cups of self-raising flour and 1 tsp cinnamon. Fold in big sweeping strokes till JUST combined — overmixing develops gluten and gives you a tough, rubbery loaf. Streaks of flour are fine to stop at."
+        "detail": "Fold in the mashed banana with a spatula. Sift in 2 cups of plain flour, the 2 tsp baking powder and 1 tsp cinnamon. Fold in big sweeping strokes till JUST combined — overmixing develops gluten and gives you a tough, rubbery loaf. Streaks of flour are fine to stop at."
       },
       {
         "content": "Bake 55 min at 170°C.",
@@ -2106,6 +2109,11 @@
       {
         "id": "butter",
         "amount": "knob"
+      },
+      {
+        "id": "vinegar_white",
+        "amount": "splash (for poaching)",
+        "is_optional": true
       }
     ],
     "steps": [
@@ -2487,6 +2495,14 @@
       {
         "id": "parmesan",
         "amount": "to serve"
+      },
+      {
+        "id": "celery",
+        "amount": "2 stalks"
+      },
+      {
+        "id": "garlic",
+        "amount": "2 cloves"
       }
     ],
     "steps": [
@@ -2688,6 +2704,10 @@
       {
         "id": "basil",
         "amount": "handful"
+      },
+      {
+        "id": "garlic",
+        "amount": "2 cloves"
       }
     ],
     "steps": [
@@ -2827,6 +2847,10 @@
       {
         "id": "sesame_oil",
         "amount": "1 tsp"
+      },
+      {
+        "id": "spring_onion",
+        "amount": "2"
       }
     ],
     "steps": [
@@ -2900,6 +2924,14 @@
       {
         "id": "oregano",
         "amount": "1 tsp"
+      },
+      {
+        "id": "tomato",
+        "amount": "1"
+      },
+      {
+        "id": "onion_red",
+        "amount": "1/2"
       }
     ],
     "steps": [
@@ -3096,7 +3128,7 @@
       },
       {
         "content": "Simmer 35 min till thick.",
-        "detail": "Bring to a bubble, drop to a simmer, lid slightly ajar. 35 min stirring every 10 min so lentils don't catch on the bottom. They break down into a thick, meaty-textured ragu. A splash of milk or a knob of butter at the end rounds the edges off the tomato acid."
+        "detail": "Bring to a bubble, drop to a simmer, lid slightly ajar. 35 min stirring every 10 min so lentils don't catch on the bottom. They break down into a thick, meaty-textured ragu. A splash of milk or a knob of butter at the end (plant milk or olive oil to keep it vegan) rounds the edges off the tomato acid."
       },
       {
         "content": "Toss with cooked spaghetti.",
@@ -3218,6 +3250,10 @@
       {
         "id": "mozzarella",
         "amount": "150 g"
+      },
+      {
+        "id": "garlic",
+        "amount": "2 cloves"
       }
     ],
     "steps": [
@@ -3338,7 +3374,7 @@
     "steps": [
       {
         "content": "Whisk dry, then wet ingredients.",
-        "detail": "In one bowl: 1.5 cups self-raising flour, 2 tbsp sugar, pinch of salt. Whisk to break up lumps. In a separate jug: 1.5 cups milk, 1 egg, 50g melted cooled butter. Beat with a fork. Tip wet into dry and whisk just till combined — lumps are FINE. Overmixed batter makes tough, flat pancakes. Gluten is the enemy here."
+        "detail": "In one bowl: 1.5 cups plain flour, 2 tbsp sugar, pinch of salt. Whisk to break up lumps. In a separate jug: 1.5 cups milk, 1 egg, 50g melted cooled butter. Beat with a fork. Tip wet into dry and whisk just till combined — lumps are FINE. Overmixed batter makes tough, flat pancakes. Gluten is the enemy here."
       },
       {
         "content": "Rest 10 min.",
@@ -3612,7 +3648,7 @@
       },
       {
         "id": "garlic",
-        "amount": "3 cloves"
+        "amount": "5 cloves"
       },
       {
         "id": "cumin",
@@ -3732,6 +3768,14 @@
       {
         "id": "lime",
         "amount": "1"
+      },
+      {
+        "id": "vinegar_white",
+        "amount": "1/3 cup"
+      },
+      {
+        "id": "sugar",
+        "amount": "2 tbsp"
       }
     ],
     "steps": [
@@ -3851,16 +3895,16 @@
     "dish_form": "baked-slice",
     "ingredients": [
       {
-        "id": "raisin",
+        "id": "dates",
         "amount": "250 g"
       },
       {
         "id": "butter",
-        "amount": "125 g"
+        "amount": "245 g (125 g pudding + 120 g sauce)"
       },
       {
         "id": "sugar",
-        "amount": "1 cup"
+        "amount": "2 cups brown sugar (1 pudding + 1 sauce)"
       },
       {
         "id": "eggs",
@@ -3872,7 +3916,7 @@
       },
       {
         "id": "baking_powder",
-        "amount": "1 tsp"
+        "amount": "1 tsp + 1 tsp bicarb"
       },
       {
         "id": "vanilla",
@@ -3880,13 +3924,13 @@
       },
       {
         "id": "cream",
-        "amount": "to serve"
+        "amount": "300 ml thickened (for sauce), plus extra to serve"
       }
     ],
     "steps": [
       {
-        "content": "Soak raisins in 1 cup boiling water, 10 min.",
-        "detail": "Pit raisins if they're not already (you'll know — if you bite one, you'll know fast). Chop roughly. Cover with 1 cup boiling water and 1 tsp bicarb (the bicarb breaks down the raisins and neutralises their acidity). Rest 10 min — they swell and soften into a paste. Mash gently with a fork."
+        "content": "Soak dates in 1 cup boiling water, 10 min.",
+        "detail": "Pit the dates if they're not already (you'll know — if you bite one, you'll know fast). Chop roughly. Cover with 1 cup boiling water and 1 tsp bicarb (the bicarb breaks down the dates and neutralises their acidity). Rest 10 min — they swell and soften into a paste. Mash gently with a fork."
       },
       {
         "content": "Cream butter and sugar, beat in eggs.",
@@ -4179,8 +4223,8 @@
     "dish_form": "roast-plate",
     "ingredients": [
       {
-        "id": "pork_belly",
-        "amount": "2 kg ribs"
+        "id": "pork_ribs",
+        "amount": "2 kg"
       },
       {
         "id": "paprika",
@@ -4513,7 +4557,7 @@
         "amount": "handful"
       },
       {
-        "id": "vinegar_balsamic",
+        "id": "vinegar_white",
         "amount": "splash (for poaching)",
         "is_optional": true
       }
@@ -4759,7 +4803,7 @@
     "steps": [
       {
         "content": "Whisk flour, baking powder, sugar.",
-        "detail": "Big bowl: 2 cups flour, 2 tsp baking powder, 3 tbsp sugar, pinch of salt. Whisk together to break up lumps and distribute the raising agent evenly. The bicarb is activated by the buttermilk acids later — patches of it unmixed will leave bitter spots."
+        "detail": "Big bowl: 2 cups flour, 2 tsp baking powder, 3 tbsp sugar, pinch of salt. Whisk together to break up lumps and distribute the raising agent evenly. The baking powder lifts once it hits the wet ingredients and the pan's heat — patches of it unmixed will leave bitter spots."
       },
       {
         "content": "Mix eggs, buttermilk, melted butter, vanilla.",
@@ -4988,7 +5032,7 @@
       },
       {
         "id": "baking_powder",
-        "amount": "1 tsp"
+        "amount": "1 tsp + 1/2 tsp bicarb"
       },
       {
         "id": "walnut",
@@ -5608,7 +5652,7 @@
       },
       {
         "content": "Top with herbs, chilli, lime wedge.",
-        "detail": "Plate of herbs at the table: torn Thai basil (or regular), coriander, bean sprouts, sliced chilli, lime wedges. Each person adds to their own bowl to taste. A splash of hoisin or sriracha for the sauce, but purists frown. Eat with both chopsticks and a spoon."
+        "detail": "Plate of herbs at the table: torn Thai basil (or regular), coriander, bean sprouts, sliced chilli, sliced spring onion, lime wedges. Each person adds to their own bowl to taste. A splash of hoisin or sriracha for the sauce, but purists frown. Eat with both chopsticks and a spoon."
       }
     ]
   },
@@ -6568,7 +6612,7 @@
       },
       {
         "content": "Line pie tin with pastry, fill with mince, top with another pastry sheet.",
-        "detail": "Grease a pie tin. Roll out one sheet of shortcrust pastry to line, letting it overhang the edges — you'll trim later. Fill with the cold mince mixture. Lay a second sheet of pastry on top (puff pastry traditionally for a flaky lid). Press the edges together and crimp with a fork."
+        "detail": "Grease a pie tin. Roll out one sheet of puff pastry to line, letting it overhang the edges — you'll trim later. Fill with the cold mince mixture. Lay the second sheet of puff pastry on top for a flaky lid. Press the edges together and crimp with a fork."
       },
       {
         "content": "Egg wash lid, cut a vent.",
@@ -7239,6 +7283,10 @@
       {
         "id": "cream",
         "amount": "to serve"
+      },
+      {
+        "id": "brown_sugar",
+        "amount": "1/2 cup"
       }
     ],
     "steps": [
@@ -7616,7 +7664,7 @@
       },
       {
         "id": "icing_sugar",
-        "amount": "3 cups"
+        "amount": "2 cups"
       }
     ],
     "steps": [
@@ -7707,6 +7755,10 @@
       {
         "id": "rice_jasmine",
         "amount": "1.5 cups"
+      },
+      {
+        "id": "cornflour",
+        "amount": "3 tbsp"
       }
     ],
     "steps": [
@@ -7985,7 +8037,7 @@
         "detail": "Reserve 2/3 of the sauce for serving (never dip cooked food back into raw marinade — food safety basics). Brush the remaining 1/3 over the chicken skewers, coating all sides. Rest 10 min — even quick marinades build flavour."
       },
       {
-        "content": "Grill 5 min a side.",
+        "content": "Grill ~8 min, turning every 2 min.",
         "detail": "BBQ or griddle pan blazing-hot, oil the grills. Skewers on, don't move for 2 min — let char marks form. Turn every 2 min, 8 min total for cooked-through juicy chicken. Internal temp 72°C. Watch carefully — the peanut sugar catches fast. Medium-high, not max."
       },
       {
@@ -8054,6 +8106,10 @@
       {
         "id": "sesame_oil",
         "amount": "1 tbsp"
+      },
+      {
+        "id": "lime",
+        "amount": "1"
       }
     ],
     "steps": [
@@ -8751,8 +8807,8 @@
         "detail": "Crack in 2 eggs one at a time, beating between each. 2 tsp vanilla. Mix till combined — should look silky and glossy. If it looks split, another 30 sec of beating usually fixes it."
       },
       {
-        "content": "Fold in flour, bicarb, pinch of salt.",
-        "detail": "Sift 2.25 cups flour, 1 tsp bicarb, pinch of salt into the bowl. Mix on LOW speed just till combined — no flour streaks. Overmixing develops gluten and gives you tough cookies. Stop the moment it's uniform."
+        "content": "Fold in flour, baking powder, pinch of salt.",
+        "detail": "Sift 2.25 cups flour, 1 tsp baking powder, pinch of salt into the bowl. Mix on LOW speed just till combined — no flour streaks. Overmixing develops gluten and gives you tough cookies. Stop the moment it's uniform."
       },
       {
         "content": "Stir through chocolate chips.",
@@ -8982,7 +9038,7 @@
       },
       {
         "content": "Stir everything through chocolate.",
-        "detail": "Into the slightly cooled chocolate: walnuts, 1/2 cup almonds, 1/2 cup raisins, chopped glacé cherries (traditional pink marshmallows also work). Stir till every piece is coated in chocolate. Work fast — chocolate thickens as it cools."
+        "detail": "Into the slightly cooled chocolate: walnuts, 1/2 cup almonds, 1/2 cup raisins, chopped glacé cherries , and 2 cups marshmallows (pink ones are traditional). Stir till every piece is coated in chocolate. Work fast — chocolate thickens as it cools."
       },
       {
         "content": "Tip into lined tin, press flat.",
@@ -9703,15 +9759,15 @@
         "detail": "Pour the liquid into the pot with any leftover rub. Scrape up the fond from the pork searing — that's pure flavour. Pork back in. Liquid should come about a third up the meat; not drowning. Lid on tight."
       },
       {
-        "content": "Shred with forks, toss in pan juices.",
+        "content": "Braise 4 hr at 150C, low and slow.",
         "detail": "150°C oven (LOW and slow is the whole philosophy). 4 HOURS. Don't open the oven for the first 2 hours. After 3, check — meat should be falling-apart tender, a fork twists easily. If it's still resisting, another 30 min. Collagen needs time to transform to gelatin."
       },
       {
-        "content": "Shred cabbage and carrot, dress with mayo and vinegar for slaw.",
+        "content": "Shred pork with forks, toss in reduced juices.",
         "detail": "Lift pork onto a big board. Use two forks to shred — it should pull apart like old rope. Discard any huge lumps of fat. Skim the fat from the braising liquid, reduce on the stovetop for 5 min till glossy. Toss the shredded pork back through this reduced sauce."
       },
       {
-        "content": "Stack pork in rolls, pile slaw on top.",
+        "content": "Make slaw, stack pork in rolls.",
         "detail": "Shred 1/4 cabbage and 2 grated carrots in a bowl. Dress with 1/4 cup mayo, 2 tbsp vinegar, pinch salt. Toss. Rest 5 min — the cabbage softens slightly. Split the rolls, pile a generous handful of pork on the bottom half, pile slaw on top (the slaw's job is crunch against the rich pork), top half on. Eat with both hands over a plate. Paper towels."
       }
     ]
@@ -10394,6 +10450,10 @@
       {
         "id": "sesame_oil",
         "amount": "1 tbsp"
+      },
+      {
+        "id": "peanut",
+        "amount": "1/3 cup roasted, unsalted"
       }
     ],
     "steps": [
@@ -10419,7 +10479,7 @@
       },
       {
         "content": "Return chicken, sauce, toss till glossy.",
-        "detail": "Chicken back with resting juices. Pour sauce, toss 1 min till thick and sticky. Off heat: drizzle sesame oil, scatter green parts of spring onion."
+        "detail": "Chicken back with resting juices. Pour sauce, toss 1 min till thick and sticky. Off heat: drizzle sesame oil, scatter green parts of spring onion and the roasted peanuts."
       },
       {
         "content": "Over rice.",
@@ -11823,6 +11883,10 @@
       {
         "id": "cinnamon",
         "amount": "1 tsp"
+      },
+      {
+        "id": "nutmeg",
+        "amount": "whole, to grate"
       }
     ],
     "steps": [
@@ -12021,7 +12085,7 @@
       },
       {
         "content": "Spring onion, sesame seeds.",
-        "detail": "Platter, drizzle sesame oil, sliced spring onion, sprinkle of sesame seeds. Immediately. Plenty of napkins."
+        "detail": "Platter, drizzle sesame oil, sliced spring onion, sprinkle of sesame seeds if you have them. Immediately. Plenty of napkins."
       }
     ]
   },
@@ -15668,7 +15732,7 @@
       },
       {
         "id": "worcestershire",
-        "amount": "1 tsp"
+        "amount": "1 tsp (vegetarian)"
       },
       {
         "id": "eggs",

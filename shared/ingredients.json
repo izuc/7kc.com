@@ -1210,5 +1210,53 @@
     "display": "Marshmallows",
     "section": "pantry",
     "shelf_life_days": 240
+  },
+  {
+    "id": "anchovy",
+    "display": "Anchovy fillets",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "dates",
+    "display": "Pitted dates",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "pork_ribs",
+    "display": "Pork ribs",
+    "section": "meat",
+    "shelf_life_days": 4
+  },
+  {
+    "id": "cornflour",
+    "display": "Cornflour",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "peanut",
+    "display": "Roasted peanuts",
+    "section": "pantry",
+    "shelf_life_days": 180
+  },
+  {
+    "id": "nutmeg",
+    "display": "Nutmeg",
+    "section": "pantry",
+    "shelf_life_days": 1095
+  },
+  {
+    "id": "brown_sugar",
+    "display": "Brown sugar",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "vinegar_white",
+    "display": "White vinegar",
+    "section": "pantry",
+    "shelf_life_days": 1825
   }
 ]
