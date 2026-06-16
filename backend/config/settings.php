@@ -4,9 +4,26 @@ declare(strict_types=1);
 return [
     'app' => [
         'env' => $_ENV['APP_ENV'] ?? 'production',
+        // Public web origin — used to build absolute links in emails (unsubscribe etc.).
+        'url' => rtrim($_ENV['APP_URL'] ?? ($_ENV['PUBLIC_WEB_ORIGIN'] ?? ''), '/'),
         // Debug detail is never exposed in production, regardless of APP_DEBUG.
         'debug' => ($_ENV['APP_ENV'] ?? 'production') !== 'production'
             && filter_var($_ENV['APP_DEBUG'] ?? false, FILTER_VALIDATE_BOOLEAN),
+    ],
+    // Optional Web Push (VAPID). Empty = feature off; never throws.
+    'push' => [
+        'public_key' => $_ENV['VAPID_PUBLIC_KEY'] ?? '',
+        'private_key' => $_ENV['VAPID_PRIVATE_KEY'] ?? '',
+        'subject' => $_ENV['VAPID_SUBJECT'] ?? '',
+    ],
+    // Optional outbound mail (weekly digest). Empty = feature off; never throws.
+    'mail' => [
+        'dsn' => $_ENV['MAIL_DSN'] ?? '',
+        'host' => $_ENV['SMTP_HOST'] ?? '',
+        'port' => (int)($_ENV['SMTP_PORT'] ?? 587),
+        'user' => $_ENV['SMTP_USER'] ?? '',
+        'pass' => $_ENV['SMTP_PASS'] ?? '',
+        'from' => $_ENV['MAIL_FROM'] ?? '',
     ],
     'db' => [
         'driver' => $_ENV['DB_DRIVER'] ?? 'sqlite',

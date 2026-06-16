@@ -73,6 +73,38 @@ final class PantryRepository
         return array_map([$this, 'hydrate'], $this->db->fetchAllAssociative($sql, $params));
     }
 
+    /** A single user's items expiring within [$fromTs, $beforeTs] (for the weekly digest).
+     *  The lower bound is essential — without it the digest would nag forever about items
+     *  that expired long ago and were never deleted. */
+    public function expiringSoon(string $userId, ?string $groupId, int $fromTs, int $beforeTs): array
+    {
+        $sql = 'SELECT * FROM pantry_items WHERE expires_at IS NOT NULL AND expires_at >= ? AND expires_at <= ? AND (owner_user_id = ?'
+            . ($groupId ? ' OR group_id = ?' : '') . ') ORDER BY expires_at ASC';
+        $params = [$fromTs, $beforeTs, $userId];
+        if ($groupId) $params[] = $groupId;
+        return array_map([$this, 'hydrate'], $this->db->fetchAllAssociative($sql, $params));
+    }
+
+    /** Items expiring in [$now, $now + withinDays], grouped by owner — for the expiry push cron.
+     *  @return array<string, list<array{ingredient_id:?string,custom_name:?string,expires_at:int}>> */
+    public function expiringSoonByUser(int $now, int $withinDays = 3): array
+    {
+        $rows = $this->db->fetchAllAssociative(
+            'SELECT owner_user_id, ingredient_id, custom_name, expires_at FROM pantry_items
+             WHERE expires_at IS NOT NULL AND expires_at >= ? AND expires_at <= ? ORDER BY owner_user_id, expires_at',
+            [$now, $now + $withinDays * 86400]
+        );
+        $byUser = [];
+        foreach ($rows as $r) {
+            $byUser[$r['owner_user_id']][] = [
+                'ingredient_id' => $r['ingredient_id'],
+                'custom_name' => $r['custom_name'],
+                'expires_at' => (int)$r['expires_at'],
+            ];
+        }
+        return $byUser;
+    }
+
     /**
      * Insert, OR if the user/group already stocks this ingredient, refresh that row
      * (reset expiry, clear running_low) instead of creating a duplicate.

@@ -17,6 +17,10 @@
         "respect/validation": "^2.3",
         "robmorgan/phinx": "^0.16"
     },
+    "suggest": {
+        "minishlink/web-push": "Enables Web Push for expiring-food reminders via bin/notify-expiring.php. Needs ext-gmp + ext-bcmath and a VAPID keypair (VAPID_PUBLIC_KEY / VAPID_PRIVATE_KEY / VAPID_SUBJECT). Deploy host only — without it the push CLI no-ops.",
+        "symfony/mailer": "Enables the weekly use-it-up digest email via bin/send-digest.php. Set MAIL_DSN (or SMTP_HOST/PORT/USER/PASS) + MAIL_FROM + APP_URL. Without it the digest CLI no-ops."
+    },
     "autoload": {
         "psr-4": {
             "SevenKC\\": "src/"

@@ -79,6 +79,43 @@ final class UserRepository
         $this->db->executeStatement('UPDATE users SET token_version = token_version + 1 WHERE id = ?', [$userId]);
     }
 
+    public function digestOptin(string $userId): bool
+    {
+        return (bool)$this->db->fetchOne('SELECT digest_optin FROM users WHERE id = ?', [$userId]);
+    }
+
+    /** Opt in/out of the weekly digest. Enabling backfills the unsubscribe token. */
+    public function setDigestOptin(string $userId, bool $enabled): void
+    {
+        if ($enabled) $this->ensureUnsubscribeToken($userId);
+        $this->db->update('users', ['digest_optin' => $enabled ? 1 : 0], ['id' => $userId]);
+    }
+
+    /** Idempotently ensure the user has an unguessable unsubscribe token; returns it. */
+    public function ensureUnsubscribeToken(string $userId): string
+    {
+        $token = (string)($this->db->fetchOne('SELECT unsubscribe_token FROM users WHERE id = ?', [$userId]) ?: '');
+        if ($token === '') {
+            $token = Uid::token(24);
+            $this->db->update('users', ['unsubscribe_token' => $token], ['id' => $userId]);
+        }
+        return $token;
+    }
+
+    public function byUnsubscribeToken(string $token): ?array
+    {
+        $row = $this->db->fetchAssociative('SELECT * FROM users WHERE unsubscribe_token = ?', [$token]);
+        return $row ?: null;
+    }
+
+    /** Opted-in users with an email — for the weekly digest CLI. */
+    public function optedInUsers(): array
+    {
+        return $this->db->fetchAllAssociative(
+            "SELECT id, email, display_name, group_id, unsubscribe_token FROM users WHERE digest_optin = 1 AND email IS NOT NULL AND email != ''"
+        );
+    }
+
     public function markFeedSeen(string $userId, int $ts): void
     {
         $this->db->update('users', ['last_seen_feed_at' => $ts], ['id' => $userId]);
@@ -116,6 +153,8 @@ final class UserRepository
             $db->executeStatement('DELETE FROM cooked_meals WHERE user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM pantry_removals WHERE user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM recipe_favourites WHERE user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM push_subscriptions WHERE user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM meal_plan WHERE owner_user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM pantry_items WHERE owner_user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM shopping_list_items WHERE added_by_user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM shopping_lists WHERE owner_user_id = ?', [$userId]);

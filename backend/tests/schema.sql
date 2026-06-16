@@ -4,7 +4,8 @@ CREATE TABLE ingredients (
 );
 CREATE TABLE users (
   id TEXT PRIMARY KEY, email TEXT, password_hash TEXT, display_name TEXT, group_id TEXT, created_at INTEGER,
-  diet_json TEXT, last_seen_feed_at INTEGER, token_version INTEGER NOT NULL DEFAULT 0
+  diet_json TEXT, last_seen_feed_at INTEGER, token_version INTEGER NOT NULL DEFAULT 0,
+  digest_optin INTEGER NOT NULL DEFAULT 0, unsubscribe_token TEXT
 );
 CREATE TABLE shopping_lists (
   id TEXT PRIMARY KEY, owner_user_id TEXT, group_id TEXT, name TEXT, created_at INTEGER, archived_at INTEGER
@@ -40,6 +41,10 @@ CREATE TABLE meal_plan (
   id TEXT PRIMARY KEY, owner_user_id TEXT, group_id TEXT, plan_date TEXT,
   recipe_id TEXT, recipe_title TEXT, created_at INTEGER,
   UNIQUE (owner_user_id, plan_date)
+);
+CREATE TABLE push_subscriptions (
+  id TEXT PRIMARY KEY, user_id TEXT, endpoint TEXT, p256dh TEXT, auth TEXT, created_at INTEGER,
+  UNIQUE (endpoint)
 );
 CREATE TABLE rate_limits (
   bucket TEXT PRIMARY KEY, count INTEGER DEFAULT 0, window_start INTEGER
