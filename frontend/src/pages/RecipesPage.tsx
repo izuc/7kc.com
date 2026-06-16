@@ -305,6 +305,11 @@ function RecipeCard({ entry }: { entry: RankedRecipe }) {
           <span className="mono small">{recipe.prep_time + recipe.cook_time} min</span>
           <span className="mono small muted">·</span>
           <span className="mono small">{recipe.servings} serves</span>
+          {recipe.sponsored_by && (
+            <span className="tag tag-amber small" style={{ marginLeft: 'auto' }}>
+              Sponsored
+            </span>
+          )}
         </div>
         <h3>{recipe.title}</h3>
         <div

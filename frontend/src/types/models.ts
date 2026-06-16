@@ -63,6 +63,7 @@ export interface RecipeSummary {
   tags: string[];
   palette: [string, string];
   image_url: string | null;
+  sponsored_by?: string | null;
   is_custom: boolean;
   owner_user_id: string | null;
   group_id: string | null;

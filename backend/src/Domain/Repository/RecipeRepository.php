@@ -179,6 +179,7 @@ final class RecipeRepository
             'tags' => $r['tags_json'] ? (array)json_decode((string)$r['tags_json'], true) : [],
             'palette' => $r['palette_json'] ? (array)json_decode((string)$r['palette_json'], true) : ['#8c8c8c','#d4d4d4'],
             'image_url' => $r['image_url'],
+            'sponsored_by' => $r['sponsored_by'] ?? null,
             'is_custom' => (bool)$r['is_custom'],
             'owner_user_id' => $r['owner_user_id'],
             'group_id' => $r['group_id'],
