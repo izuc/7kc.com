@@ -9,7 +9,7 @@ import type { RankedRecipe } from '../types/models';
 
 const PAGE_SIZE = 24;
 
-type Filter = 'all' | 'can-make' | 'quick' | 'expiring' | 'veg';
+type Filter = 'all' | 'can-make' | 'quick' | 'expiring' | 'veg' | 'saved';
 
 export function RecipesPage() {
   const navigate = useNavigate();
@@ -28,6 +28,10 @@ export function RecipesPage() {
     queryFn: () => api.cookedRecipes(),
   });
   const cooked = cookedData?.cooked ?? [];
+  const { data: favData } = useQuery({ queryKey: ['favourites'], queryFn: () => api.favouriteRecipes() });
+  const favSet = useMemo(() => new Set((favData?.recipes ?? []).map((r) => r.id)), [favData]);
+  const { data: statsData } = useQuery({ queryKey: ['stats'], queryFn: () => api.stats() });
+  const mealsThisWeek = statsData?.stats?.meals_this_week ?? 0;
 
   const ranked = data?.ranked ?? [];
   const filtered = useMemo<RankedRecipe[]>(() => {
@@ -43,9 +47,10 @@ export function RecipesPage() {
       if (filter === 'quick') return r.prep_time + r.cook_time <= 25;
       if (filter === 'expiring') return entry.expiring_hits > 0;
       if (filter === 'veg') return r.tags.includes('vegetarian') || r.tags.includes('vegan');
+      if (filter === 'saved') return favSet.has(r.id);
       return true;
     });
-  }, [ranked, filter, q]);
+  }, [ranked, filter, q, favSet]);
 
   // reset pagination whenever filters change
   useEffect(() => {
@@ -156,7 +161,15 @@ export function RecipesPage() {
 
       {cooked.length > 0 && (
         <div className="cooked-rail">
-          <div className="eyebrow">Recently cooked</div>
+          <div className="eyebrow">
+            Recently cooked
+            {mealsThisWeek > 0 && (
+              <>
+                <span className="dot-sep">·</span>
+                <span className="mono">{mealsThisWeek} this week</span>
+              </>
+            )}
+          </div>
           <div className="cooked-rail-track">
             {cooked.map((c) => (
               <Link key={c.recipe.id} className="cooked-card" to={`/recipes/${c.recipe.slug}`}>
@@ -186,6 +199,7 @@ export function RecipesPage() {
             ['expiring', "Use what's expiring"],
             ['quick', 'Under 25 min'],
             ['veg', 'Vegetarian'],
+            ['saved', 'Saved'],
           ] as [Filter, string][]
         ).map(([id, label]) => (
           <button
@@ -202,6 +216,8 @@ export function RecipesPage() {
                   ? ranked.filter((r) => r.recipe.prep_time + r.recipe.cook_time <= 25).length
                   : id === 'expiring'
                   ? ranked.filter((r) => r.expiring_hits > 0).length
+                  : id === 'saved'
+                  ? ranked.filter((r) => favSet.has(r.recipe.id)).length
                   : ranked.filter((r) => r.recipe.tags.includes('vegetarian') || r.recipe.tags.includes('vegan')).length}
               </span>
             )}

@@ -296,6 +296,9 @@ h3 {
   text-overflow: ellipsis;
 }
 
+/* ---- Favourite (saved) button ---- */
+.btn.fav-on { color: var(--accent); border-color: color-mix(in oklch, var(--accent) 40%, var(--line)); }
+
 /* ---- Waste & savings card (PantryPage) ---- */
 .waste-card { display: flex; flex-direction: column; gap: 10px; }
 .waste-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }

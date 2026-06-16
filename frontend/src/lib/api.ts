@@ -139,9 +139,15 @@ export const api = {
   seedStaples: () =>
     request<{ added: number; items: PantryItem[] }>('/pantry/seed-staples', { method: 'POST' }),
   stats: () =>
-    request<{ stats: { rescued: number; tossed: number; rescue_rate: number | null; since: number } }>(
-      '/stats'
-    ),
+    request<{
+      stats: {
+        rescued: number;
+        tossed: number;
+        rescue_rate: number | null;
+        meals_this_week: number;
+        since: number;
+      };
+    }>('/stats'),
 
   // recipes
   recipes: (q?: string, tags?: string[]) => {
@@ -154,6 +160,9 @@ export const api = {
   recipe: (slug: string) => request<{ recipe: Recipe }>(`/recipes/${slug}`),
   suggestions: () => request<{ ranked: RankedRecipe[] }>('/recipes/suggestions'),
   cookedRecipes: () => request<{ cooked: CookedRecipe[] }>('/recipes/cooked'),
+  favouriteRecipes: () => request<{ recipes: RecipeSummary[] }>('/recipes/favourites'),
+  toggleFavourite: (slug: string) =>
+    request<{ favourited: boolean }>(`/recipes/${slug}/favourite`, { method: 'POST' }),
   createRecipe: (payload: Partial<Recipe> & { title: string }) =>
     request<{ recipe: Recipe }>('/recipes', { method: 'POST', body: JSON.stringify(payload) }),
   cookRecipe: (slug: string, removeIds: string[]) =>

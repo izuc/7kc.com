@@ -27,6 +27,7 @@ export function RecipeDetailPage() {
 
   const { data: pantryData } = useQuery({ queryKey: ['pantry'], queryFn: () => api.pantry() });
   const { data: listsData } = useQuery({ queryKey: ['lists'], queryFn: () => api.lists() });
+  const { data: favData } = useQuery({ queryKey: ['favourites'], queryFn: () => api.favouriteRecipes() });
 
   const activeList = listsData?.lists.find((l) => !l.archived_at);
 
@@ -47,6 +48,7 @@ export function RecipeDetailPage() {
   if (!recipeData?.recipe) return <div className="empty">Recipe not found.</div>;
 
   const recipe = recipeData.recipe;
+  const isFav = (favData?.recipes ?? []).some((r) => r.id === recipe.id);
   const pct = recipe.ingredients.length
     ? have.length / recipe.ingredients.filter((i) => i.ingredient_id).length || 0
     : 0;
@@ -118,6 +120,21 @@ export function RecipeDetailPage() {
           <div className="recipe-detail-actions">
             <button className="btn btn-primary" onClick={() => navigate(`/cook/${recipe.slug}`)}>
               <Icon name="chef" size={14} /> I'm cooking this
+            </button>
+            <button
+              className={`btn btn-ghost ${isFav ? 'fav-on' : ''}`}
+              aria-pressed={isFav}
+              onClick={async () => {
+                try {
+                  const r = await api.toggleFavourite(recipe.slug);
+                  qc.invalidateQueries({ queryKey: ['favourites'] });
+                  toast(r.favourited ? 'Saved to favourites' : 'Removed from favourites');
+                } catch {
+                  /* ignore */
+                }
+              }}
+            >
+              <Icon name="heart" size={14} /> {isFav ? 'Saved' : 'Save'}
             </button>
             {missing.length > 0 && (
               <button className="btn btn-ghost" onClick={addMissingToList}>

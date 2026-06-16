@@ -47,7 +47,15 @@ export function TodayPage() {
 
       <div className="today-grid">
         <div className="today-card today-cook">
-          <div className="eyebrow sage">Cook tonight</div>
+          <div className="eyebrow sage">
+            Cook tonight
+            {stats && stats.meals_this_week > 0 && (
+              <>
+                <span className="dot-sep">·</span>
+                <span className="mono">{stats.meals_this_week} cooked this week</span>
+              </>
+            )}
+          </div>
           {topPicks.length > 0 && topPicks[0].pantry_match >= 0.3 ? (
             <div className="today-picks">
               {topPicks.map((p) => (
