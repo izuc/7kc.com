@@ -200,6 +200,8 @@ export const api = {
     }),
   leaveGroup: () => request<{ ok: boolean }>('/groups/leave', { method: 'POST' }),
   feed: () => request<{ feed: FeedEvent[] }>('/groups/feed'),
+  unreadFeed: () => request<{ unread: number }>('/groups/unread'),
+  markFeedSeen: () => request<{ ok: boolean }>('/groups/feed/seen', { method: 'POST' }),
   listSuggestions: () => request<{ suggestions: Suggestion[] }>('/groups/suggestions'),
   createSuggestion: (payload: { recipe_slug?: string; recipe_title?: string; suggested_for_date?: string }) =>
     request<{ suggestions: Suggestion[] }>('/groups/suggestions', {

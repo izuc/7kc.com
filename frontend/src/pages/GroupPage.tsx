@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
@@ -32,6 +32,13 @@ export function GroupPage() {
   });
   const recipeByTitle = new Map<string, RecipeSummary>();
   for (const r of recipesData?.recipes ?? []) recipeByTitle.set(r.title, r);
+
+  // Viewing the group marks the feed seen → clears the unread badge in the nav.
+  const feedCount = feedData?.feed.length ?? 0;
+  useEffect(() => {
+    if (!user?.group_id || !feedData) return;
+    api.markFeedSeen().then(() => qc.invalidateQueries({ queryKey: ['feed-unread'] })).catch(() => {});
+  }, [user?.group_id, feedData, feedCount, qc]);
 
   if (!user?.group_id) {
     return (

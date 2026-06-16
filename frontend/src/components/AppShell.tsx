@@ -21,6 +21,15 @@ export function AppShell({ children }: { children: ReactNode }) {
     queryFn: () => api.pantry(),
   });
 
+  const inGroup = Boolean(user?.group_id);
+  const { data: unreadData } = useQuery({
+    queryKey: ['feed-unread'],
+    queryFn: () => api.unreadFeed(),
+    enabled: inGroup,
+    refetchInterval: 60_000,
+  });
+  const unread = unreadData?.unread ?? 0;
+
   const activeItemsCount =
     listsData?.lists
       .filter((l) => !l.archived_at)
@@ -32,8 +41,6 @@ export function AppShell({ children }: { children: ReactNode }) {
       const d = daysUntil(p.expires_at * 1000);
       return d >= 0 && d <= 3;
     }).length ?? 0;
-
-  const inGroup = Boolean(user?.group_id);
 
   return (
     <div className={`app accent-${accent} density-${density}`}>
@@ -73,7 +80,9 @@ export function AppShell({ children }: { children: ReactNode }) {
             badge={expiringCount || undefined}
             amber={expiringCount > 0}
           />
-          {inGroup && <NavItem to="/group" icon="group" label="Group" />}
+          {inGroup && (
+            <NavItem to="/group" icon="group" label="Group" badge={unread || undefined} amber={unread > 0} />
+          )}
           <NavItem to="/settings" icon="settings" label="Settings" />
         </nav>
 
@@ -117,7 +126,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <MobileNavItem to="/lists" icon="list" label="Shopping" />
         <MobileNavItem to="/pantry" icon="pantry" label="Pantry" />
         <MobileNavItem to="/recipes" icon="chef" label="Recipes" />
-        {inGroup && <MobileNavItem to="/group" icon="group" label="Group" />}
+        {inGroup && <MobileNavItem to="/group" icon="group" label="Group" dot={unread > 0} />}
         <MobileNavItem to="/settings" icon="settings" label="More" />
       </nav>
     </div>
@@ -149,10 +158,23 @@ function NavItem({
   );
 }
 
-function MobileNavItem({ to, icon, label }: { to: string; icon: string; label: string }) {
+function MobileNavItem({
+  to,
+  icon,
+  label,
+  dot,
+}: {
+  to: string;
+  icon: string;
+  label: string;
+  dot?: boolean;
+}) {
   return (
     <NavLink to={to} className={({ isActive }) => (isActive ? 'active' : '')}>
-      <Icon name={icon} />
+      <span className="mobile-nav-icon">
+        <Icon name={icon} />
+        {dot && <span className="nav-dot" aria-hidden />}
+      </span>
       <span>{label}</span>
     </NavLink>
   );
