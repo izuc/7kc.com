@@ -16,27 +16,27 @@ tests/rate-limiting/account-deletion.
 
 ## Phase 0 — Latent bug fixes (fast, concrete)
 
-- [ ] **Duplicate pantry rows on re-buy** — `MoveBoughtToPantryAction` blindly inserts; re-buying a running-low staple creates a duplicate beside the flagged one. Make it **upsert by `ingredient_id`** (update `expires_at`, clear `running_low`). *(Folds into #1.)*
+- [x] **Duplicate pantry rows on re-buy** — `MoveBoughtToPantryAction` blindly inserts; re-buying a running-low staple creates a duplicate beside the flagged one. Make it **upsert by `ingredient_id`** (update `expires_at`, clear `running_low`). *(Folds into #1.)*
 - [ ] **Parser false positives** — greedy substring/single-token fallback returns confident wrong matches (`tomato sauce`→soy sauce, `frozen pizza`→frozen peas, `green onions`→brown onions). *(Fixed properly in #3.)*
 - [ ] **Wrong diet tags** — hand-set and contradictory (a `vegetarian` recipe contains bacon; `vegan` recipes contain dairy). *(Fixed in #14.)*
-- [ ] **`backend/composer.lock` is git-ignored** (untracked, 122 KB) → install/version drift; violates FLIPPING.md's own checklist. Un-ignore and commit it.
+- [x] **`backend/composer.lock` is git-ignored** (untracked, 122 KB) → install/version drift; violates FLIPPING.md's own checklist. Un-ignore and commit it.
 
 ## Phase 1 — Quick wins (highest impact-per-hour)
 
-- [ ] **#1 · Close the running-low → next-list restock loop** `H/L` — the loop the product *markets* ("queued for next week's list automatically") but never completes.
-  - [ ] `PantryRepository::runningLow(userId, groupId)` + `POST /lists/{id}/restock` reusing `AddListItemsAction` batch + section resolution.
-  - [ ] ListsPage: "Restock (N)" button by "Paste list" + a "Running low (N) — add" chip-row when a list is open; dedup against existing items.
-  - [ ] The upsert bug fix from Phase 0.
+- [x] **#1 · Close the running-low → next-list restock loop** `H/L` — the loop the product *markets* ("queued for next week's list automatically") but never completes.
+  - [x] `PantryRepository::runningLow(userId, groupId)` + `POST /lists/{id}/restock` reusing `AddListItemsAction` batch + section resolution.
+  - [x] ListsPage: "Restock (N)" button by "Paste list" + a "Running low (N) — add" chip-row when a list is open; dedup against existing items.
+  - [x] The upsert bug fix from Phase 0.
 - [ ] **#7 · Undo on destructive actions + guided empty-pantry state** `H/L`
   - [ ] Action-bearing toast with **deferred-commit undo** (drop from the react-query cache, hold the API delete until the toast expires, restore on Undo — not reinsert) for list-item delete, pantry delete, "Toss it". Extend `store/ui.ts` toast model + `Toasts.tsx`.
-  - [ ] Banner on RecipesPage when pantry empty or top match < 0.5, reframing the 0% grid as "browse the library" with Go-to-pantry / Start-a-list CTAs.
-- [ ] **#8 · Monetize + share the recipe pages** `H/L`
-  - [ ] Render `AffiliateButtons` on `PublicRecipePage` + `RecipeDetailPage` (add slug to the `trackEvent` payload).
-  - [ ] Native `navigator.share` button (clipboard fallback) on both, using the public `/r/` URL.
-  - [ ] `/register?from=<slug>` with recipe-aware copy + post-signup redirect to that recipe.
+  - [x] Banner on RecipesPage when pantry empty or top match < 0.5, reframing the 0% grid as "browse the library" with Go-to-pantry / Start-a-list CTAs.
+- [x] **#8 · Monetize + share the recipe pages** `H/L`
+  - [x] Render `AffiliateButtons` on `PublicRecipePage` + `RecipeDetailPage` (add slug to the `trackEvent` payload).
+  - [x] Native `navigator.share` button (clipboard fallback) on both, using the public `/r/` URL.
+  - [x] `/register?from=<slug>` with recipe-aware copy + post-signup redirect to that recipe.
 - [ ] **#5b · Shareable group invite link** `L/M` — turn the raw clipboard token into `${origin}/join/<token>` + a `/join/:token` landing (one small public token-resolve endpoint returning only group name + inviter) + share sheet.
 - [ ] **Trivial wins**
-  - [ ] Commit `composer.lock` (Phase 0).
+  - [x] Commit `composer.lock` (Phase 0).
   - [ ] Surface dormant **Sponsored** recipe inventory (`sponsored_by`/`sponsored_url` shipped but never SELECTed) — plumb through + badge.
   - [ ] **Haptics** (`navigator.vibrate`) on tick-off / mark-all / move-to-pantry / cook "Next step", behind a capability + reduced-motion + settings guard.
   - [ ] **iOS install card** ("Tap Share → Add to Home Screen") instead of `InstallPrompt` silently returning null; add a `share` glyph to `Icon.tsx`.
