@@ -21,7 +21,16 @@ return [
         ],
     ],
     'jwt' => [
-        'secret' => $_ENV['JWT_SECRET'] ?? 'change-me',
+        'secret' => (static function (): string {
+            $s = (string)($_ENV['JWT_SECRET'] ?? '');
+            if ($s === '' || $s === 'change-me' || strlen($s) < 32) {
+                throw new \RuntimeException(
+                    'JWT_SECRET is missing, too short (<32 chars), or still the placeholder. '
+                    . 'Set a strong value in backend/.env — e.g. `openssl rand -base64 48`.'
+                );
+            }
+            return $s;
+        })(),
         'ttl_hours' => (int)($_ENV['JWT_TTL_HOURS'] ?? 168),
         'alg' => 'HS256',
     ],

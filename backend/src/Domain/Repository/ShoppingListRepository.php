@@ -41,6 +41,31 @@ final class ShoppingListRepository
         return $list;
     }
 
+    /** Ownership-scoped lookup: returns the list only if the user owns it or shares its group. */
+    public function findForUser(string $id, string $userId, ?string $groupId): ?array
+    {
+        $sql = 'SELECT * FROM shopping_lists WHERE id = ? AND (owner_user_id = ?' . ($groupId ? ' OR group_id = ?' : '') . ')';
+        $params = [$id, $userId];
+        if ($groupId) $params[] = $groupId;
+        $row = $this->db->fetchAssociative($sql, $params);
+        return $row ? $this->hydrate($row) : null;
+    }
+
+    public function findWithItemsForUser(string $id, string $userId, ?string $groupId): ?array
+    {
+        $list = $this->findForUser($id, $userId, $groupId);
+        if (!$list) return null;
+        $list['items'] = $this->items($id);
+        return $list;
+    }
+
+    /** The list a given item belongs to (used to verify an item is inside an authorized list). */
+    public function itemListId(string $itemId): ?string
+    {
+        $row = $this->db->fetchAssociative('SELECT list_id FROM shopping_list_items WHERE id = ?', [$itemId]);
+        return $row['list_id'] ?? null;
+    }
+
     public function items(string $listId): array
     {
         $rows = $this->db->fetchAllAssociative(
