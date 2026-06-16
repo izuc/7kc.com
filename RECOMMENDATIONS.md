@@ -66,7 +66,7 @@ tests/rate-limiting/account-deletion.
 ## Phase 4 — Growth & SEO flywheel
 
 - [x] **#12 · Prerender `/r/:slug`** `H/H` — postbuild script walks `sitemap.xml`, fetches `/public/recipes/{slug}`, writes `dist/r/<slug>/index.html` with per-page title/description/canonical + the JSON-LD `PublicRecipeAction` already builds. (Served by the static host, not Slim.)
-- [ ] **#18 · Per-recipe OG images + richer schema + collection pages** `M/M` — render `dishArtwork.tsx` to per-recipe OG PNGs (Node `renderToString` + resvg/sharp); add `author`/`recipeCuisine`/`suitableForDiet` once diet (#14) exists; public `/collection/:tag` + `/ingredient/:id` pages (scope to ~12–15 top tags; cross-link the orphaned catalogue).
+- [x] **#18 · Per-recipe OG images + richer schema + collection pages** `M/M` *(collection/tag landing pages — prerendered + live SPA route + sitemap + tag cross-linking, plus `author` in the recipe schema. Per-recipe OG images deferred — needs a Node rasteriser for dishArtwork.)* — render `dishArtwork.tsx` to per-recipe OG PNGs (Node `renderToString` + resvg/sharp); add `author`/`recipeCuisine`/`suitableForDiet` once diet (#14) exists; public `/collection/:tag` + `/ingredient/:id` pages (scope to ~12–15 top tags; cross-link the orphaned catalogue).
 - [x] **#19 · Client-side parser + harden aliases** `M/M` — port the hardened match logic to `frontend/src/lib/parser.ts` from a build-time JSON bundle (instant + offline, as spec'd); expand aliases (scallion→spring onion, cilantro→coriander, courgette→zucchini, ketchup/tomato sauce…); log unmatched inputs to grow the dictionary (197 → 1,500+ target).
 
 ## Phase 5 — Strategic bets (the big value)
