@@ -46,4 +46,45 @@ final class UserRepository
         $row = $this->db->fetchAssociative('SELECT group_id FROM users WHERE id = ?', [$userId]);
         return $row['group_id'] ?? null;
     }
+
+    /**
+     * Hard-delete a user and all their data in one transaction. Any group they OWN is
+     * handed to the longest-tenured remaining member, or dissolved if they were the
+     * only one. Mirrors the cascade documented in docs/ADMIN.md (plus the newer tables).
+     */
+    public function deleteAccount(string $userId): void
+    {
+        $this->db->transactional(function ($db) use ($userId): void {
+            foreach ($db->fetchAllAssociative('SELECT id FROM groups WHERE owner_user_id = ?', [$userId]) as $g) {
+                $gid = $g['id'];
+                $next = $db->fetchOne(
+                    'SELECT user_id FROM group_members WHERE group_id = ? AND user_id != ? ORDER BY joined_at ASC LIMIT 1',
+                    [$gid, $userId]
+                );
+                if ($next) {
+                    $db->update('groups', ['owner_user_id' => $next], ['id' => $gid]);
+                    $db->update('group_members', ['role' => 'owner'], ['group_id' => $gid, 'user_id' => $next]);
+                } else {
+                    $db->executeStatement('DELETE FROM group_feed_events WHERE group_id = ?', [$gid]);
+                    $db->executeStatement('DELETE FROM meal_suggestions WHERE group_id = ?', [$gid]);
+                    $db->executeStatement('DELETE FROM group_members WHERE group_id = ?', [$gid]);
+                    $db->delete('groups', ['id' => $gid]);
+                }
+            }
+
+            $db->executeStatement('DELETE FROM suggestion_comments WHERE user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM suggestion_likes WHERE user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM meal_suggestions WHERE suggested_by_user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM group_feed_events WHERE user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM cooked_meals WHERE user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM pantry_removals WHERE user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM recipe_favourites WHERE user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM pantry_items WHERE owner_user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM shopping_list_items WHERE added_by_user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM shopping_lists WHERE owner_user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM recipes WHERE owner_user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM group_members WHERE user_id = ?', [$userId]);
+            $db->delete('users', ['id' => $userId]);
+        });
+    }
 }

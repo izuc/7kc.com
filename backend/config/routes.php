@@ -2,6 +2,8 @@
 declare(strict_types=1);
 
 use SevenKC\Action\Auth\LoginAction;
+use SevenKC\Action\Auth\DeleteUserAction;
+use SevenKC\Action\Auth\ExportUserAction;
 use SevenKC\Action\Auth\MeAction;
 use SevenKC\Action\Auth\RegisterAction;
 use SevenKC\Action\Groups\CreateGroupAction;
@@ -77,6 +79,8 @@ return function (App $app): void {
         // authenticated
         $g->group('', function (RouteCollectorProxy $a) {
             $a->get('/auth/me', MeAction::class);
+            $a->get('/auth/me/export', ExportUserAction::class);
+            $a->delete('/auth/me', DeleteUserAction::class);
             $a->get('/stats', StatsAction::class);
 
             $a->get('/lists', ListListsAction::class);
