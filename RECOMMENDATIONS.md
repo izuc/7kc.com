@@ -18,7 +18,7 @@ tests/rate-limiting/account-deletion.
 
 - [x] **Duplicate pantry rows on re-buy** — `MoveBoughtToPantryAction` blindly inserts; re-buying a running-low staple creates a duplicate beside the flagged one. Make it **upsert by `ingredient_id`** (update `expires_at`, clear `running_low`). *(Folds into #1.)*
 - [ ] **Parser false positives** — greedy substring/single-token fallback returns confident wrong matches (`tomato sauce`→soy sauce, `frozen pizza`→frozen peas, `green onions`→brown onions). *(Fixed properly in #3.)*
-- [ ] **Wrong diet tags** — hand-set and contradictory (a `vegetarian` recipe contains bacon; `vegan` recipes contain dairy). *(Fixed in #14.)*
+- [x] **Wrong diet tags** — hand-set and contradictory (a `vegetarian` recipe contains bacon; `vegan` recipes contain dairy). *(Fixed in #14 — flags now derived from ingredients, not the hand tags.)*
 - [x] **`backend/composer.lock` is git-ignored** (untracked, 122 KB) → install/version drift; violates FLIPPING.md's own checklist. Un-ignore and commit it.
 
 ## Phase 1 — Quick wins (highest impact-per-hour)
@@ -76,7 +76,7 @@ tests/rate-limiting/account-deletion.
   - [ ] Slice 2: web push (custom SW via VitePWA `injectManifest`, `push_subscriptions` table + subscribe endpoint, `minishlink/web-push`, CLI cron scanning the 0–3-day expiry window).
   - [ ] Slice 3: weekly "use-it-up" digest email (SMTP, `users.digest_optin` + unsubscribe). Strictly transactional/opt-in.
 - [ ] **#13 · Offline write queue + cache `/lists` & `/pantry`** `H/H` — optimistic local updates (absent today) + IndexedDB outbox flushed on reconnect (Workbox BackgroundSync is already a transitive dep) + NetworkFirst caching. ⚠️ `toggle-bought` is a server-side **flip** (not idempotent) — queue a desired target state or dedupe per item.
-- [ ] **#14 · Dietary profile + derived, validated diet tags** `H/M` — `users.diet_json` + Settings card; enforce in `SuggestionsAction` *before* the sort; derive flags from ingredient sections; seed-time/CI validator that fails on tag↔ingredient contradictions.
+- [x] **#14 · Dietary profile + derived, validated diet tags** `H/M` — `users.diet_json` + Settings card; enforce in `SuggestionsAction` *before* the sort; derive flags from ingredient sections; seed-time/CI validator that fails on tag↔ingredient contradictions. ✅ `RecipeRepository.dietFor()` derives vegetarian/vegan/dairy-free/gluten-free/nut-free from a recipe's *actual* ingredients (authoritative over the unreliable hand tags) and attaches to every recipe response; `users.diet_json` profile (POST `/auth/diet`, returned by `/auth/me`) filtered in `SuggestionsAction` before ranking (verified: diet=vegetarian drops suggestions 157→83, all veg); Settings "Dietary" card; `scripts/validate-diet.mjs` CI job (found 5 contradictions).
 - [ ] **#20 · Recipe import from URL (+ the missing manual-create UI)** `M/H` — `api.createRecipe` has **zero callers** today, so there's no custom-recipe UI at all. Add "New recipe" (Import-from-link + Enter-manually). Import = SSRF-guarded `POST /recipes/import {url}` extracting schema.org JSON-LD → Parser → draft-confirm in the PasteParseModal preview.
 - [ ] **#21 · Content pipeline + scale catalogue toward 300–500** `H/H` — data-driven `dish_form` field (instead of the 156-line slug→artwork registry) + Node/CI validator (unknown ingredient_id / missing dish_form / palette) + author recipes consuming the 37 orphan ingredients; backfill `timer_seconds` + `is_optional`.
 
