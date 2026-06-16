@@ -9,6 +9,8 @@ import type {
   RecipeSummary,
   RecipeDraft,
   NewRecipePayload,
+  MealPlanWeek,
+  MealPlanEntry,
   ShoppingList,
   Suggestion,
   User,
@@ -187,6 +189,22 @@ export const api = {
     request<{ cooked_meal_id: string; removed: number }>(`/recipes/${slug}/cook`, {
       method: 'POST',
       body: JSON.stringify({ remove_ingredient_ids: removeIds }),
+    }),
+
+  // meal plan
+  getMealPlan: (weekStart: string) =>
+    request<MealPlanWeek>(`/meal-plan?week_start=${encodeURIComponent(weekStart)}`),
+  setMealPlan: (date: string, recipeSlug: string) =>
+    request<{ entry: MealPlanEntry }>('/meal-plan', {
+      method: 'PUT',
+      body: JSON.stringify({ date, recipe_slug: recipeSlug }),
+    }),
+  clearMealPlan: (date: string) =>
+    request<{ ok: boolean }>(`/meal-plan?date=${encodeURIComponent(date)}`, { method: 'DELETE' }),
+  buildListFromWeek: (weekStart: string) =>
+    request<{ list: ShoppingList; added: number }>('/meal-plan/build-list', {
+      method: 'POST',
+      body: JSON.stringify({ week_start: weekStart }),
     }),
 
   // groups

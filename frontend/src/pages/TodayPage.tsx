@@ -4,6 +4,7 @@ import { api } from '../lib/api';
 import { daysUntil } from '../lib/format';
 import { Icon } from '../components/Icon';
 import { MealPlate } from '../components/MealPlate';
+import { WeekPlanner } from '../components/WeekPlanner';
 import { useAuth } from '../store/auth';
 
 /**
@@ -129,6 +130,8 @@ export function TodayPage() {
           </Link>
         )}
       </div>
+
+      <WeekPlanner />
     </div>
   );
 }

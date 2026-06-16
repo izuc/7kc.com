@@ -23,6 +23,34 @@ export function fmtRelative(ts: number): string {
   return `${Math.round(s / 86_400)}d ago`;
 }
 
+export const DAY_NAMES = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+/** Local-date ISO string (YYYY-MM-DD) — NOT toISOString(), which is UTC and can shift the day. */
+export function isoDate(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+/** Monday 00:00 (local) of the week containing `d`. */
+export function weekStart(d: Date = new Date()): Date {
+  const x = new Date(d);
+  x.setHours(0, 0, 0, 0);
+  const dow = (x.getDay() + 6) % 7; // Mon=0 … Sun=6
+  x.setDate(x.getDate() - dow);
+  return x;
+}
+
+/** The 7 Mon→Sun days of the week starting at `start`. */
+export function weekDays(start: Date = weekStart()): { date: string; dow: string; dayOfMonth: number }[] {
+  return Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(start);
+    d.setDate(start.getDate() + i);
+    return { date: isoDate(d), dow: DAY_NAMES[i], dayOfMonth: d.getDate() };
+  });
+}
+
 export const SECTIONS = [
   { id: 'produce', label: 'Produce' },
   { id: 'meat', label: 'Meat & seafood' },

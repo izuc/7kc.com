@@ -173,6 +173,18 @@ export interface RecipeDraft {
   steps: { content: string }[];
 }
 
+export interface MealPlanEntry {
+  date: string;
+  recipe_id: string | null;
+  recipe_title: string | null;
+  recipe: RecipeSummary | null;
+}
+
+export interface MealPlanWeek {
+  week_start: string;
+  entries: MealPlanEntry[];
+}
+
 export interface NewRecipePayload {
   title: string;
   description?: string;
