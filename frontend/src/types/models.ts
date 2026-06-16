@@ -160,3 +160,29 @@ export interface ParsedItem {
   clean: string;
   match: { id: string; display: string; section: Section; confidence?: 'confident' | 'maybe' } | null;
 }
+
+export interface RecipeDraft {
+  title: string;
+  description: string;
+  prep_time: number;
+  cook_time: number;
+  servings: number;
+  source: string | null;
+  image_url: string | null;
+  ingredients: ParsedItem[];
+  steps: { content: string }[];
+}
+
+export interface NewRecipePayload {
+  title: string;
+  description?: string;
+  prep_time?: number;
+  cook_time?: number;
+  servings?: number;
+  tags?: string[];
+  source?: string | null;
+  image_url?: string | null;
+  share_with_group?: boolean;
+  ingredients?: { ingredient_id?: string | null; amount?: string | null; is_optional?: boolean }[];
+  steps?: { content: string }[];
+}

@@ -7,6 +7,8 @@ import type {
   CookedRecipe,
   Recipe,
   RecipeSummary,
+  RecipeDraft,
+  NewRecipePayload,
   ShoppingList,
   Suggestion,
   User,
@@ -173,8 +175,10 @@ export const api = {
   favouriteRecipes: () => request<{ recipes: RecipeSummary[] }>('/recipes/favourites'),
   toggleFavourite: (slug: string) =>
     request<{ favourited: boolean }>(`/recipes/${slug}/favourite`, { method: 'POST' }),
-  createRecipe: (payload: Partial<Recipe> & { title: string }) =>
+  createRecipe: (payload: NewRecipePayload) =>
     request<{ recipe: Recipe }>('/recipes', { method: 'POST', body: JSON.stringify(payload) }),
+  importRecipe: (url: string) =>
+    request<{ draft: RecipeDraft }>('/recipes/import', { method: 'POST', body: JSON.stringify({ url }) }),
   cookRecipe: (slug: string, removeIds: string[]) =>
     request<{ cooked_meal_id: string; removed: number }>(`/recipes/${slug}/cook`, {
       method: 'POST',

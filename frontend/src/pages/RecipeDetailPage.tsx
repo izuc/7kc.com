@@ -171,11 +171,12 @@ export function RecipeDetailPage() {
           <ul className="recipe-ings">
             {recipe.ingredients.map((i, idx) => {
               const has = i.ingredient_id && have.includes(i.ingredient_id);
+              const named = i.display || i.ingredient_id;
               return (
                 <li key={idx} className={has ? 'have' : 'miss'}>
                   <span className="dot">{has ? <Icon name="check" size={11} /> : ''}</span>
-                  <span className="ing-name">{i.display || i.ingredient_id}</span>
-                  <span className="ing-amt mono small muted">{i.amount}</span>
+                  <span className="ing-name">{named || i.amount}</span>
+                  <span className="ing-amt mono small muted">{named ? i.amount : ''}</span>
                 </li>
               );
             })}

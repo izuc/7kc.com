@@ -5,6 +5,7 @@ import { api } from '../lib/api';
 import { Icon } from '../components/Icon';
 import { MealPlate } from '../components/MealPlate';
 import { SkeletonRecipeGrid } from '../components/Skeleton';
+import { NewRecipeModal } from '../components/NewRecipeModal';
 import type { RankedRecipe } from '../types/models';
 
 const PAGE_SIZE = 24;
@@ -17,6 +18,7 @@ export function RecipesPage() {
   const [filter, setFilter] = useState<Filter>((searchParams.get('filter') as Filter) || 'all');
   const [q, setQ] = useState('');
   const [page, setPage] = useState(1);
+  const [showNew, setShowNew] = useState(false);
   const gridAnchor = useRef<HTMLDivElement | null>(null);
 
   const { data, isLoading } = useQuery({
@@ -98,8 +100,13 @@ export function RecipesPage() {
             <Icon name="search" size={14} />
             <input placeholder="Search recipes or tags…" value={q} onChange={(e) => setQ(e.target.value)} />
           </div>
+          <button className="btn btn-primary" onClick={() => setShowNew(true)}>
+            <Icon name="plus" size={14} /> New recipe
+          </button>
         </div>
       </div>
+
+      {showNew && <NewRecipeModal onClose={() => setShowNew(false)} />}
 
       {(!topPick || topPick.pantry_match < 0.5) && (
         <div className="empty">
