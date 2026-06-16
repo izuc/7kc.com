@@ -277,12 +277,25 @@ function PantryCard({ item, onChanged }: { item: HydratedItem; onChanged: () => 
 
 function AddPantryModal({ onClose, onAdded }: { onClose: () => void; onAdded: () => void }) {
   const [q, setQ] = useState('');
+  const toast = useUi((s) => s.toast);
   const { data } = useQuery({
     queryKey: ['ingredients', q],
     queryFn: () => api.ingredients(q),
     staleTime: 60_000,
   });
   const matches = data?.items ?? [];
+
+  const add = async (payload: { ingredient_id?: string; custom_name?: string }) => {
+    try {
+      await api.addPantryItem(payload);
+      trackEvent('pantry_item_added');
+      onAdded();
+      onClose();
+    } catch {
+      toast("Couldn't add that — please try again.");
+    }
+  };
+
   return (
     <Modal small title="Add to pantry" onClose={onClose}>
       <input
@@ -291,33 +304,25 @@ function AddPantryModal({ onClose, onAdded }: { onClose: () => void; onAdded: ()
         placeholder="Search ingredients…"
         value={q}
         onChange={(e) => setQ(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && matches[0]) void add({ ingredient_id: matches[0].id });
+        }}
       />
       <ul className="typeahead inline">
         {matches.slice(0, 20).map((i) => (
-          <li
-            key={i.id}
-            onClick={async () => {
-              await api.addPantryItem({ ingredient_id: i.id });
-              trackEvent('pantry_item_added');
-              onAdded();
-              onClose();
-            }}
-          >
-            <IngredientIcon id={i.id} section={i.section} size={28} title={i.display} />
-            {i.display}
-            <span className="mono muted small">{i.shelf_life_days}d shelf</span>
+          <li key={i.id}>
+            <button type="button" className="typeahead-row" onClick={() => void add({ ingredient_id: i.id })}>
+              <IngredientIcon id={i.id} section={i.section} size={28} title={i.display} />
+              {i.display}
+              <span className="mono muted small">{i.shelf_life_days}d shelf</span>
+            </button>
           </li>
         ))}
         {q.trim() && !matches.some((m) => m.display.toLowerCase() === q.toLowerCase()) && (
-          <li
-            className="custom"
-            onClick={async () => {
-              await api.addPantryItem({ custom_name: q.trim() });
-              onAdded();
-              onClose();
-            }}
-          >
-            <Icon name="plus" size={12} /> Add as custom: <b>"{q}"</b>
+          <li className="custom">
+            <button type="button" className="typeahead-row" onClick={() => void add({ custom_name: q.trim() })}>
+              <Icon name="plus" size={12} /> Add as custom: <b>"{q}"</b>
+            </button>
           </li>
         )}
       </ul>

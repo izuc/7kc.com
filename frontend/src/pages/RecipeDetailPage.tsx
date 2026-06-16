@@ -71,14 +71,23 @@ export function RecipeDetailPage() {
   };
 
   const addMissingToList = async () => {
-    if (!activeList) {
-      toast('No active list — create one first');
-      return;
+    try {
+      // No list yet? Create one so the action never dead-ends.
+      let listId = activeList?.id;
+      let listName = activeList?.name ?? 'Shopping';
+      if (!listId) {
+        const created = await api.createList('Shopping');
+        listId = created.list.id;
+        listName = created.list.name;
+      }
+      const items = missing.map((id) => ({ ingredient_id: id, section: 'other' }));
+      const res = await api.addListItems(listId, items);
+      qc.invalidateQueries({ queryKey: ['lists'] });
+      const n = res.added?.length ?? items.length;
+      toast(`Added ${n} item${n === 1 ? '' : 's'} to "${listName}"`);
+    } catch {
+      toast("Couldn't add to your list — please try again.");
     }
-    const items = missing.map((id) => ({ ingredient_id: id, section: 'other' }));
-    await api.addListItems(activeList.id, items);
-    qc.invalidateQueries({ queryKey: ['lists'] });
-    toast(`Added ${missing.length} to "${activeList.name}"`);
   };
 
   return (
@@ -141,7 +150,7 @@ export function RecipeDetailPage() {
                   qc.invalidateQueries({ queryKey: ['favourites'] });
                   toast(r.favourited ? 'Saved to favourites' : 'Removed from favourites');
                 } catch {
-                  /* ignore */
+                  toast("Couldn't update favourites — please try again.");
                 }
               }}
             >

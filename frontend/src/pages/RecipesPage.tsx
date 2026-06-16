@@ -98,7 +98,12 @@ export function RecipesPage() {
         <div className="screen-head-right">
           <div className="search-input">
             <Icon name="search" size={14} />
-            <input placeholder="Search recipes or tags…" value={q} onChange={(e) => setQ(e.target.value)} />
+            <input
+              aria-label="Search recipes or tags"
+              placeholder="Search recipes or tags…"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+            />
           </div>
           <button className="btn btn-primary" onClick={() => setShowNew(true)}>
             <Icon name="plus" size={14} /> New recipe
@@ -131,6 +136,14 @@ export function RecipesPage() {
           className="hero-pick"
           onClick={() => navigate(`/recipes/${topPick.recipe.slug}`)}
           role="button"
+          tabIndex={0}
+          aria-label={`Top pick: ${topPick.recipe.title}`}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              navigate(`/recipes/${topPick.recipe.slug}`);
+            }
+          }}
         >
           <MealPlate
             recipe={topPick.recipe}

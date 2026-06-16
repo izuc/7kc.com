@@ -1114,13 +1114,19 @@
   .pantry-stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .recipe-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
 
+  /* The mobile nav renders <a> (NavLink), so target those — not `button`, which
+     never matched and left the labels clipping in 6-item group mode. */
+  .mobile-nav a,
   .mobile-nav button {
     min-height: 56px;
-    padding: 7px 4px;
+    padding: 7px 3px;
     font-size: 9px;
   }
-  .mobile-nav button > span {
-    /* Hide labels on ultra-narrow to keep icons prominent and avoid wrap. */
+  .mobile-nav a > span:last-child {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 

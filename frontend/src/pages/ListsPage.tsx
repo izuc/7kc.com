@@ -491,14 +491,18 @@ function QuickAdd({ listId, onAdded }: { listId: string; onAdded: () => void }) 
       {open && q && (
         <ul className="typeahead">
           {matches.slice(0, 6).map((i) => (
-            <li key={i.id} onMouseDown={() => void add(i)}>
-              <IngredientIcon id={i.id} section={i.section} size={28} title={i.display} />
-              {i.display}
-              <span className="muted small">{i.section}</span>
+            <li key={i.id}>
+              <button type="button" className="typeahead-row" onClick={() => void add(i)}>
+                <IngredientIcon id={i.id} section={i.section} size={28} title={i.display} />
+                {i.display}
+                <span className="muted small">{i.section}</span>
+              </button>
             </li>
           ))}
-          <li className="custom" onMouseDown={() => void add(null)}>
-            <Icon name="plus" size={12} /> Add as custom: <b>"{q}"</b>
+          <li className="custom">
+            <button type="button" className="typeahead-row" onClick={() => void add(null)}>
+              <Icon name="plus" size={12} /> Add as custom: <b>"{q}"</b>
+            </button>
           </li>
         </ul>
       )}

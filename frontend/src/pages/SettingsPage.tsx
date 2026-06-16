@@ -149,7 +149,8 @@ export function SettingsPage() {
                   key={a}
                   className={`swatch-btn swatch-${a} ${accent === a ? 'active' : ''}`}
                   onClick={() => setAccent(a)}
-                  aria-label={a}
+                  aria-label={`${a} accent`}
+                  aria-pressed={accent === a}
                 />
               ))}
             </div>
@@ -157,10 +158,18 @@ export function SettingsPage() {
           <div className="tweak-row">
             <label>Density</label>
             <div className="segmented">
-              <button className={density === 'compact' ? 'active' : ''} onClick={() => setDensity('compact')}>
+              <button
+                className={density === 'compact' ? 'active' : ''}
+                aria-pressed={density === 'compact'}
+                onClick={() => setDensity('compact')}
+              >
                 Compact
               </button>
-              <button className={density === 'roomy' ? 'active' : ''} onClick={() => setDensity('roomy')}>
+              <button
+                className={density === 'roomy' ? 'active' : ''}
+                aria-pressed={density === 'roomy'}
+                onClick={() => setDensity('roomy')}
+              >
                 Roomy
               </button>
             </div>

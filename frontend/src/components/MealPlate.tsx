@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useId, useMemo } from 'react';
 import { dishArtworkFor } from '../lib/dishArtwork';
 import type { RecipeSummary, Recipe, RecipeIngredient } from '../types/models';
 
@@ -31,6 +31,7 @@ export function MealPlate({ recipe, size = 240, className, rounded = true, ingre
 
   const slug = recipe.slug || recipe.title || 'unknown';
   const palette: [string, string] = (recipe.palette as [string, string]) ?? ['#c89e6b', '#fef3c7'];
+  const bgId = useId(); // unique per instance — same recipe can render twice on a page
 
   return (
     <svg
@@ -44,12 +45,12 @@ export function MealPlate({ recipe, size = 240, className, rounded = true, ingre
       style={{ display: 'block', borderRadius: rounded ? 14 : 0 }}
     >
       <defs>
-        <radialGradient id={`bg-${slug}`} cx="50%" cy="40%" r="85%">
+        <radialGradient id={bgId} cx="50%" cy="40%" r="85%">
           <stop offset="0%" stopColor={palette[1]} stopOpacity={0.9} />
           <stop offset="100%" stopColor={palette[1]} stopOpacity={0.4} />
         </radialGradient>
       </defs>
-      <rect width="400" height="400" fill={`url(#bg-${slug})`} />
+      <rect width="400" height="400" fill={`url(#${bgId})`} />
       {dishArtworkFor(slug, palette, garnishIds, recipe.dish_form)}
     </svg>
   );
@@ -67,6 +68,7 @@ export function MealPlateMini({ recipe, size = 140, className, ingredientIds }: 
 
   const slug = recipe.slug || recipe.title || 'unknown';
   const palette: [string, string] = (recipe.palette as [string, string]) ?? ['#c89e6b', '#fef3c7'];
+  const bgId = useId();
 
   return (
     <svg
@@ -81,12 +83,12 @@ export function MealPlateMini({ recipe, size = 140, className, ingredientIds }: 
       preserveAspectRatio="xMidYMid slice"
     >
       <defs>
-        <radialGradient id={`mini-bg-${slug}`} cx="50%" cy="40%" r="85%">
+        <radialGradient id={bgId} cx="50%" cy="40%" r="85%">
           <stop offset="0%" stopColor={palette[1]} stopOpacity={0.9} />
           <stop offset="100%" stopColor={palette[1]} stopOpacity={0.4} />
         </radialGradient>
       </defs>
-      <rect width="400" height="400" fill={`url(#mini-bg-${slug})`} />
+      <rect width="400" height="400" fill={`url(#${bgId})`} />
       {dishArtworkFor(slug, palette, garnishIds, recipe.dish_form)}
     </svg>
   );

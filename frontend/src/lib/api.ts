@@ -119,7 +119,7 @@ export const api = {
     listId: string,
     items: { ingredient_id?: string | null; custom_name?: string | null; section?: string }[]
   ) =>
-    request<{ list: ShoppingList }>(`/lists/${listId}/items`, {
+    request<{ list: ShoppingList; added: string[] }>(`/lists/${listId}/items`, {
       method: 'POST',
       body: JSON.stringify({ items }),
     }),
