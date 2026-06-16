@@ -155,6 +155,37 @@ final class RecipeRepository
         return $id;
     }
 
+    /** Distinct recipes the user has cooked, newest first, with cook counts (for the "Recently cooked" rail). */
+    public function cookedSummary(string $userId, int $limit = 12): array
+    {
+        $rows = $this->db->fetchAllAssociative(
+            'SELECT recipe_id, COUNT(*) AS cooked_count, MAX(cooked_at) AS last_cooked FROM cooked_meals WHERE user_id = ? GROUP BY recipe_id ORDER BY last_cooked DESC LIMIT ' . (int)$limit,
+            [$userId]
+        );
+        if (!$rows) return [];
+
+        $ids = array_column($rows, 'recipe_id');
+        $ph = implode(',', array_fill(0, count($ids), '?'));
+        $byId = [];
+        foreach ($this->db->fetchAllAssociative("SELECT * FROM recipes WHERE id IN ($ph)", $ids) as $r) {
+            $byId[$r['id']] = $this->hydrate($r);
+        }
+        $ings = $this->ingredientIdsForAll();
+
+        $out = [];
+        foreach ($rows as $row) {
+            $rec = $byId[$row['recipe_id']] ?? null;
+            if (!$rec) continue;
+            $rec['ingredient_ids'] = $ings[$rec['id']] ?? [];
+            $out[] = [
+                'recipe' => $rec,
+                'cooked_count' => (int)$row['cooked_count'],
+                'last_cooked' => (int)$row['last_cooked'],
+            ];
+        }
+        return $out;
+    }
+
     public function recentlyCookedIds(string $userId, int $since): array
     {
         return array_map(

@@ -33,8 +33,10 @@ use SevenKC\Action\Lists\ToggleBoughtAction;
 use SevenKC\Action\Pantry\AddPantryItemAction;
 use SevenKC\Action\Pantry\DeletePantryItemAction;
 use SevenKC\Action\Pantry\ListPantryAction;
+use SevenKC\Action\Pantry\SeedStaplesAction;
 use SevenKC\Action\Pantry\UpdatePantryItemAction;
 use SevenKC\Action\Recipes\CookRecipeAction;
+use SevenKC\Action\Recipes\CookedRecipesAction;
 use SevenKC\Action\Recipes\CreateRecipeAction;
 use SevenKC\Action\Recipes\GetRecipeAction;
 use SevenKC\Action\Recipes\ListRecipesAction;
@@ -86,12 +88,14 @@ return function (App $app): void {
             $a->post('/lists/{id}/restock', RestockListAction::class);
 
             $a->get('/pantry', ListPantryAction::class);
+            $a->post('/pantry/seed-staples', SeedStaplesAction::class);
             $a->post('/pantry/items', AddPantryItemAction::class);
             $a->patch('/pantry/items/{id}', UpdatePantryItemAction::class);
             $a->delete('/pantry/items/{id}', DeletePantryItemAction::class);
 
             $a->get('/recipes', ListRecipesAction::class);
             $a->get('/recipes/suggestions', SuggestionsAction::class);
+            $a->get('/recipes/cooked', CookedRecipesAction::class);
             $a->get('/recipes/{slug}', GetRecipeAction::class);
             $a->post('/recipes', CreateRecipeAction::class);
             $a->post('/recipes/{slug}/cook', CookRecipeAction::class);
