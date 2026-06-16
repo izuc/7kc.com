@@ -6,6 +6,8 @@ import { Icon } from '../components/Icon';
 import { Modal } from '../components/Modal';
 import { MealPlate } from '../components/MealPlate';
 import { MethodBlock } from '../components/MethodBlock';
+import { AffiliateButtons } from '../components/AffiliateButtons';
+import { trackEvent } from '../lib/analytics';
 import { useAuth } from '../store/auth';
 import { useUi } from '../store/ui';
 
@@ -48,6 +50,21 @@ export function RecipeDetailPage() {
   const pct = recipe.ingredients.length
     ? have.length / recipe.ingredients.filter((i) => i.ingredient_id).length || 0
     : 0;
+
+  const shareRecipe = async () => {
+    const url = `${window.location.origin}/r/${recipe.slug}`;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: recipe.title, text: recipe.description || '', url });
+      } else {
+        await navigator.clipboard.writeText(url);
+        toast('Link copied to clipboard');
+      }
+      trackEvent('recipe_share', { recipe: recipe.slug });
+    } catch {
+      /* user dismissed the share sheet */
+    }
+  };
 
   const addMissingToList = async () => {
     if (!activeList) {
@@ -112,6 +129,9 @@ export function RecipeDetailPage() {
                 <Icon name="group" size={14} /> Suggest to group
               </button>
             )}
+            <button className="btn btn-ghost" onClick={shareRecipe}>
+              <Icon name="share" size={14} /> Share
+            </button>
             <button className="btn btn-ghost print-btn" onClick={() => window.print()}>
               <Icon name="print" size={14} /> Print / Save PDF
             </button>
@@ -134,6 +154,11 @@ export function RecipeDetailPage() {
               );
             })}
           </ul>
+          <AffiliateButtons
+            query={recipe.ingredients.map((i) => i.display || i.ingredient_id).filter(Boolean).join(', ')}
+            unboughtCount={recipe.ingredients.length}
+            slug={recipe.slug}
+          />
         </div>
         <div>
           <MethodBlock steps={recipe.steps} />

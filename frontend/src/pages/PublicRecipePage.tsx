@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Icon } from '../components/Icon';
 import { MealPlate } from '../components/MealPlate';
 import { MethodBlock } from '../components/MethodBlock';
+import { AffiliateButtons } from '../components/AffiliateButtons';
 import type { Recipe } from '../types/models';
 
 /**
@@ -13,6 +14,7 @@ import type { Recipe } from '../types/models';
  */
 export function PublicRecipePage() {
   const { slug } = useParams();
+  const [copied, setCopied] = useState(false);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ['public-recipe', slug],
@@ -55,6 +57,21 @@ export function PublicRecipePage() {
 
   const { recipe } = data;
 
+  const shareRecipe = async () => {
+    const url = `${window.location.origin}/r/${recipe.slug}`;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: recipe.title, text: recipe.description || '', url });
+      } else {
+        await navigator.clipboard.writeText(url);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    } catch {
+      /* user dismissed the share sheet */
+    }
+  };
+
   return (
     <div className="public-shell">
       <header className="public-head">
@@ -72,7 +89,7 @@ export function PublicRecipePage() {
         </Link>
         <div className="row-inline" style={{ gap: 10 }}>
           <Link to="/recipes" className="btn btn-ghost">Browse recipes</Link>
-          <Link to="/register" className="btn btn-primary">
+          <Link to={`/register?from=${slug}`} className="btn btn-primary">
             <Icon name="sparkle" size={14} /> Save to my pantry
           </Link>
         </div>
@@ -100,9 +117,12 @@ export function PublicRecipePage() {
               </div>
             </div>
             <div className="recipe-detail-actions">
-              <Link to="/register" className="btn btn-primary">
+              <Link to={`/register?from=${slug}`} className="btn btn-primary">
                 <Icon name="chef" size={14} /> Cook it &amp; track your pantry
               </Link>
+              <button className="btn btn-ghost" onClick={shareRecipe}>
+                <Icon name="share" size={14} /> {copied ? 'Copied!' : 'Share'}
+              </button>
               <button className="btn btn-ghost print-btn" onClick={() => window.print()}>
                 <Icon name="print" size={14} /> Print / Save PDF
               </button>
@@ -122,6 +142,11 @@ export function PublicRecipePage() {
                 </li>
               ))}
             </ul>
+            <AffiliateButtons
+              query={recipe.ingredients.map((i) => i.display || i.ingredient_id).filter(Boolean).join(', ')}
+              unboughtCount={recipe.ingredients.length}
+              slug={recipe.slug}
+            />
           </div>
           <div>
             <MethodBlock steps={recipe.steps} />
@@ -134,7 +159,7 @@ export function PublicRecipePage() {
             <div>Eat what you love.</div>
             <div>Waste nothing.</div>
           </div>
-          <Link to="/register" className="btn btn-primary">
+          <Link to={`/register?from=${slug}`} className="btn btn-primary">
             Start your pantry — free
           </Link>
         </footer>

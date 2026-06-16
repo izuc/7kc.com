@@ -12,7 +12,15 @@ async function fetchRetailers(query: string): Promise<Retailer[]> {
   return body.retailers ?? [];
 }
 
-export function AffiliateButtons({ query, unboughtCount }: { query: string; unboughtCount: number }) {
+export function AffiliateButtons({
+  query,
+  unboughtCount,
+  slug,
+}: {
+  query: string;
+  unboughtCount: number;
+  slug?: string;
+}) {
   const { data: retailers } = useQuery({
     queryKey: ['retailers'],
     queryFn: () => fetchRetailers(''),
@@ -31,7 +39,7 @@ export function AffiliateButtons({ query, unboughtCount }: { query: string; unbo
           target="_blank"
           rel="noopener sponsored"
           href={r.basket_url.replace(/\{query\}|%7Bquery%7D/g, encodeURIComponent(query))}
-          onClick={() => trackEvent('affiliate_click', { retailer: r.id })}
+          onClick={() => trackEvent('affiliate_click', { retailer: r.id, ...(slug ? { recipe: slug } : {}) })}
         >
           <Icon name="cart" size={12} /> {r.display}
         </a>

@@ -27,6 +27,8 @@ export function ListsPage() {
   const [ocrSeedText, setOcrSeedText] = useState<string | null>(null);
 
   const { data, isLoading } = useQuery({ queryKey: ['lists'], queryFn: () => api.lists() });
+  const { data: pantryData } = useQuery({ queryKey: ['pantry'], queryFn: () => api.pantry() });
+  const lowCount = (pantryData?.items ?? []).filter((p) => p.running_low).length;
   const lists = data?.lists ?? [];
   const activeLists = lists.filter((l) => !l.archived_at);
   const list =
@@ -126,6 +128,26 @@ export function ListsPage() {
           </div>
         </div>
         <div className="screen-head-right">
+          {lowCount > 0 && (
+            <button
+              className="btn btn-ghost"
+              title="Add running-low pantry items to this list"
+              onClick={() =>
+                guard(async () => {
+                  const r = await api.restockList(list.id);
+                  invalidate();
+                  qc.invalidateQueries({ queryKey: ['pantry'] });
+                  toast(
+                    r.added > 0
+                      ? `Added ${r.added} running-low item${r.added === 1 ? '' : 's'}`
+                      : 'Running-low items already on the list'
+                  );
+                })
+              }
+            >
+              <Icon name="low" size={14} /> Restock ({lowCount})
+            </button>
+          )}
           <button
             className="btn btn-ghost"
             disabled={list.items.length === 0}

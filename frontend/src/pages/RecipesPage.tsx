@@ -90,6 +90,24 @@ export function RecipesPage() {
         </div>
       </div>
 
+      {(!topPick || topPick.pantry_match < 0.5) && (
+        <div className="empty">
+          <Icon name="pantry" size={26} />
+          <p>
+            <b>Your pantry's nearly empty.</b> Add a few staples and recipes rank themselves by what
+            you can actually cook right now — browse the library below in the meantime.
+          </p>
+          <div className="row-inline" style={{ gap: 10 }}>
+            <button className="btn btn-primary" onClick={() => navigate('/pantry')}>
+              <Icon name="pantry" size={14} /> Stock your pantry
+            </button>
+            <button className="btn btn-ghost" onClick={() => navigate('/lists')}>
+              <Icon name="list" size={14} /> Start a shopping list
+            </button>
+          </div>
+        </div>
+      )}
+
       {topPick && topPick.pantry_match >= 0.7 && (
         <div
           className="hero-pick"

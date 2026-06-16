@@ -53,6 +53,14 @@ const paths: Record<string, ReactNode> = {
       <path d="M3 4h3l2.5 12h11L21 8H7" />
     </>
   ),
+  share: (
+    <>
+      <circle cx="18" cy="5" r="2.5" />
+      <circle cx="6" cy="12" r="2.5" />
+      <circle cx="18" cy="19" r="2.5" />
+      <path d="M8.2 10.8l7.6-4.6M8.2 13.2l7.6 4.6" />
+    </>
+  ),
 };
 
 export function Icon({ name, size = 18 }: { name: keyof typeof paths | string; size?: number }) {

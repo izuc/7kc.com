@@ -1,11 +1,13 @@
 import { FormEvent, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../store/auth';
 import { ApiError } from '../lib/api';
 
 export function RegisterPage() {
   const { register } = useAuth();
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const fromSlug = params.get('from');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
@@ -18,7 +20,7 @@ export function RegisterPage() {
     setBusy(true);
     try {
       await register(email.trim(), password, displayName.trim() || undefined);
-      navigate('/lists', { replace: true });
+      navigate(fromSlug ? `/recipes/${fromSlug}` : '/lists', { replace: true });
     } catch (e) {
       setErr(e instanceof ApiError ? e.message : 'Could not create your account');
     } finally {
@@ -67,6 +69,9 @@ export function RegisterPage() {
             New account
           </div>
           <h2>Start your pantry.</h2>
+          {fromSlug && (
+            <p className="muted small">Create your account and your recipe will be waiting inside.</p>
+          )}
           {err && <div className="error" role="alert">{err}</div>}
           <div className="auth-field">
             <label htmlFor="reg-name">Your name (optional)</label>

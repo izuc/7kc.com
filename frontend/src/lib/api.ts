@@ -111,6 +111,8 @@ export const api = {
       method: 'POST',
       body: JSON.stringify({ exclude_item_ids: exclude }),
     }),
+  restockList: (listId: string) =>
+    request<{ list: ShoppingList; added: number }>(`/lists/${listId}/restock`, { method: 'POST' }),
 
   // pantry
   pantry: () => request<{ items: PantryItem[] }>('/pantry'),
