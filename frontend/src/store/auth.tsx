@@ -8,6 +8,7 @@ interface AuthState {
   login: (email: string, password: string) => Promise<User>;
   register: (email: string, password: string, displayName?: string) => Promise<User>;
   logout: () => void;
+  signOutEverywhere: () => Promise<void>;
   refresh: () => Promise<void>;
 }
 
@@ -65,7 +66,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null);
   }, []);
 
-  const value = useMemo<AuthState>(() => ({ user, loading, login, register, logout, refresh }), [user, loading, login, register, logout, refresh]);
+  // Revoke every token for this account server-side, then drop this device locally.
+  const signOutEverywhere = useCallback(async () => {
+    try {
+      await api.signOutEverywhere();
+    } finally {
+      setToken(null);
+      setUser(null);
+    }
+  }, []);
+
+  const value = useMemo<AuthState>(
+    () => ({ user, loading, login, register, logout, signOutEverywhere, refresh }),
+    [user, loading, login, register, logout, signOutEverywhere, refresh]
+  );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

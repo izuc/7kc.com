@@ -7,7 +7,7 @@ import { Icon } from '../components/Icon';
 import { Modal } from '../components/Modal';
 
 export function SettingsPage() {
-  const { user, refresh, logout } = useAuth();
+  const { user, refresh, logout, signOutEverywhere } = useAuth();
   const qc = useQueryClient();
   const { accent, setAccent, density, setDensity, toast } = useUi();
   const [showCreate, setShowCreate] = useState(false);
@@ -72,6 +72,19 @@ export function SettingsPage() {
             </button>
             <button className="btn btn-ghost" onClick={exportData}>
               Export my data
+            </button>
+            <button
+              className="btn btn-ghost"
+              onClick={async () => {
+                if (!confirm('Sign out of every device, including this one? You’ll need to sign in again.')) return;
+                try {
+                  await signOutEverywhere();
+                } catch {
+                  toast('Could not sign out everywhere — please try again.');
+                }
+              }}
+            >
+              Sign out everywhere
             </button>
           </div>
           <button

@@ -71,6 +71,7 @@ export const api = {
     request<{ diet: string[] }>('/auth/diet', { method: 'POST', body: JSON.stringify({ diet }) }),
   deleteAccount: () => request<{ ok: boolean }>('/auth/me', { method: 'DELETE' }),
   exportData: () => request<Record<string, unknown>>('/auth/me/export'),
+  signOutEverywhere: () => request<{ ok: boolean }>('/auth/sign-out-everywhere', { method: 'POST' }),
 
   // ingredients
   ingredients: (q?: string) =>
