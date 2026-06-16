@@ -29,19 +29,19 @@ final class CookRecipeAction
 
         $body = (array)($req->getParsedBody() ?? []);
         $removeIds = array_values((array)($body['remove_ingredient_ids'] ?? []));
-        if ($removeIds) {
-            $this->pantry->removeByIngredientIds($userId, $groupId, $removeIds);
-        }
+        // Actual rows deleted — not the requested count, which inflates if the client
+        // sends ids that aren't actually in the pantry (and would skew the rescued stats).
+        $removed = $removeIds ? $this->pantry->removeByIngredientIds($userId, $groupId, $removeIds) : 0;
         $cookedId = $this->recipes->recordCooked($userId, $groupId, $recipe['id'], $removeIds);
 
         if ($groupId) {
             $this->groups->pushEvent($groupId, $userId, 'cooked', [
                 'recipe_id' => $recipe['id'],
                 'recipe_title' => $recipe['title'],
-                'removed_count' => count($removeIds),
+                'removed_count' => $removed,
             ]);
         }
 
-        return Json::send($res, ['cooked_meal_id' => $cookedId, 'removed' => count($removeIds)]);
+        return Json::send($res, ['cooked_meal_id' => $cookedId, 'removed' => $removed]);
     }
 }
