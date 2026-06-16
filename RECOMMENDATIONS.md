@@ -51,7 +51,7 @@ tests/rate-limiting/account-deletion.
 - [~] **#11 · "Your kitchen" cook history** `H/M` — `cooked_meals` is captured but only used to demote. *(Recently-cooked rail + cook counts shipped; favourites + streak chip pending.)*
   - [ ] `GET /recipes/cooked` (group by recipe) → "Recently cooked" rail + "Cook it again" + "cooked Nx" badge + streak chip.
   - [ ] `recipe_favourites` table + heart on detail/cards (mirror `suggestion_likes`); replace the dead-end cook done-screen with Save / Cook-again.
-- [ ] **#16 · "Your kitchen today" home dashboard** `H/M` — new default authed screen (`/today`) composing existing queries (expiring items, top matches, active list, group feed when in a group). Best sequenced after #9 + #11. *(Spec lists "Home" first.)*
+- [x] **#16 · "Your kitchen today" home dashboard** `H/M` — new default authed screen (`/today`) composing existing queries (expiring items, top matches, active list, group feed when in a group). Best sequenced after #9 + #11. *(Spec lists "Home" first.)*
 
 ## Phase 3 — Trust & launch-readiness (due-diligence blockers)
 
