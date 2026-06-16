@@ -21,6 +21,8 @@ export function PantryPage() {
   const [seeding, setSeeding] = useState(false);
 
   const { data, isLoading } = useQuery({ queryKey: ['pantry'], queryFn: () => api.pantry() });
+  const { data: statsData } = useQuery({ queryKey: ['stats'], queryFn: () => api.stats() });
+  const stats = statsData?.stats;
   const { byId } = useIngredients();
 
   const items: HydratedItem[] = useMemo(() => {
@@ -106,6 +108,29 @@ export function PantryPage() {
           <div className="stat-label">running low</div>
         </div>
       </div>
+
+      {stats && (stats.rescued > 0 || stats.tossed > 0) && (
+        <div className="waste-card">
+          <div className="eyebrow sage">Waste &amp; savings · this month</div>
+          <div className="waste-stats">
+            <div className="stat">
+              <div className="stat-num">{stats.rescued}</div>
+              <div className="stat-label">rescued</div>
+            </div>
+            <div className="stat">
+              <div className="stat-num">{stats.tossed}</div>
+              <div className="stat-label">tossed</div>
+            </div>
+            <div className="stat">
+              <div className="stat-num">
+                {stats.rescue_rate ?? '–'}
+                {stats.rescue_rate != null ? '%' : ''}
+              </div>
+              <div className="stat-label">rescue rate</div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {items.length === 0 ? (
         <div className="empty">
@@ -222,7 +247,8 @@ function PantryCard({ item, onChanged }: { item: HydratedItem; onChanged: () => 
               softDelete({
                 queryKey: ['pantry'],
                 optimistic: (old) => ({ ...old, items: old.items.filter((x: any) => x.id !== item.id) }),
-                commit: () => api.deletePantryItem(item.id),
+                commit: () => api.deletePantryItem(item.id, 'tossed'),
+                invalidateKeys: [['stats']],
                 text: `Tossed ${item.display}`,
               })
             }

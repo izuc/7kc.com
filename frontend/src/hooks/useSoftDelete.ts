@@ -11,6 +11,8 @@ interface SoftDeleteOpts {
   commit: () => Promise<unknown>;
   /** toast text, e.g. "Removed eggs" */
   text: string;
+  /** extra query keys to invalidate after a successful commit (e.g. derived stats) */
+  invalidateKeys?: unknown[][];
   graceMs?: number;
 }
 
@@ -35,6 +37,7 @@ export function useSoftDelete() {
       try {
         await opts.commit();
         qc.invalidateQueries({ queryKey: opts.queryKey });
+        for (const k of opts.invalidateKeys ?? []) qc.invalidateQueries({ queryKey: k });
       } catch (e) {
         qc.setQueryData(opts.queryKey, snapshot);
         if (!(e instanceof ApiError && e.status === 401)) toast('Could not delete — restored it.');

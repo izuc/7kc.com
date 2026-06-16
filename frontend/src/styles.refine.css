@@ -222,6 +222,10 @@ h3 {
     border-color: color-mix(in oklch, var(--accent) 30%, var(--line));
   }
 }
+/* ---- Waste & savings card (PantryPage) ---- */
+.waste-card { display: flex; flex-direction: column; gap: 10px; }
+.waste-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+
 .cooked-card-plate { aspect-ratio: 5 / 4; overflow: hidden; }
 .cooked-card-body { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 2px; }
 .cooked-card-title {

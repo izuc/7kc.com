@@ -132,10 +132,16 @@ export const api = {
       method: 'PATCH',
       body: JSON.stringify(payload),
     }),
-  deletePantryItem: (id: string) =>
-    request<{ ok: boolean }>(`/pantry/items/${id}`, { method: 'DELETE' }),
+  deletePantryItem: (id: string, reason?: string) =>
+    request<{ ok: boolean }>(`/pantry/items/${id}${reason ? `?reason=${reason}` : ''}`, {
+      method: 'DELETE',
+    }),
   seedStaples: () =>
     request<{ added: number; items: PantryItem[] }>('/pantry/seed-staples', { method: 'POST' }),
+  stats: () =>
+    request<{ stats: { rescued: number; tossed: number; rescue_rate: number | null; since: number } }>(
+      '/stats'
+    ),
 
   // recipes
   recipes: (q?: string, tags?: string[]) => {

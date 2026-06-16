@@ -56,6 +56,8 @@ export function CookPage() {
       const r = await api.cookRecipe(recipe.slug, [...effectiveToRemove]);
       qc.invalidateQueries({ queryKey: ['pantry'] });
       qc.invalidateQueries({ queryKey: ['recipe-suggestions'] });
+      qc.invalidateQueries({ queryKey: ['cooked-recipes'] });
+      qc.invalidateQueries({ queryKey: ['stats'] });
       qc.invalidateQueries({ queryKey: ['feed'] });
       setRemoved(r.removed);
       setDone(true);
