@@ -2020,7 +2020,7 @@
   {
     "slug": "banana-bread",
     "title": "Banana Bread",
-    "description": "Speckled bananas, brown butter, the kindest loaf.",
+    "description": "Speckled bananas, soft butter, the kindest loaf.",
     "prep_time": 10,
     "cook_time": 55,
     "servings": 8,
@@ -4364,9 +4364,9 @@
   {
     "slug": "chorizo-pasta",
     "title": "One-Pan Chorizo Pasta",
-    "description": "Smoky chorizo, tomato, a hit of chilli. One pan, twelve minutes.",
+    "description": "Smoky chorizo, tomato, a hit of chilli. One pan, twenty minutes.",
     "prep_time": 5,
-    "cook_time": 12,
+    "cook_time": 20,
     "servings": 2,
     "tags": [
       "quick",
@@ -4539,7 +4539,7 @@
     "ingredients": [
       {
         "id": "eggs",
-        "amount": "4"
+        "amount": "6"
       },
       {
         "id": "ham_sliced",
@@ -4682,8 +4682,7 @@
     "servings": 2,
     "tags": [
       "quick",
-      "asian",
-      "one-pot"
+      "asian"
     ],
     "palette": [
       "#92400e",
@@ -4947,7 +4946,7 @@
     "ingredients": [
       {
         "id": "scallop",
-        "amount": "12"
+        "amount": "6"
       },
       {
         "id": "peas_frozen",
@@ -8042,7 +8041,7 @@
         "detail": "Whisk 1/2 cup peanut butter, 200ml coconut milk, 2 tbsp soy, 2 grated garlic cloves, a thumb of grated ginger, 1 tbsp honey, juice of half a lime. Whisk till completely smooth. Should be the consistency of thick cream — thin with a splash of water if stiff, thicken with more peanut butter if runny."
       },
       {
-        "content": "Brush half over skewers, marinate 10 min.",
+        "content": "Brush a third over skewers, marinate 10 min.",
         "detail": "Reserve 2/3 of the sauce for serving (never dip cooked food back into raw marinade — food safety basics). Brush the remaining 1/3 over the chicken skewers, coating all sides. Rest 10 min — even quick marinades build flavour."
       },
       {
@@ -10139,7 +10138,6 @@
     "tags": [
       "breakfast",
       "brunch",
-      "no-cook",
       "quick"
     ],
     "palette": [
@@ -11176,7 +11174,6 @@
     "servings": 4,
     "tags": [
       "vietnamese",
-      "no-cook",
       "fresh",
       "asian"
     ],
@@ -14631,7 +14628,7 @@
   {
     "slug": "roast-grape-ricotta-toast",
     "title": "Roast Grape & Ricotta Toast",
-    "description": "Grapes blistered jammy in the oven, piled on creamy ricotta toast with honey and thyme. Brunch that looks fancy, takes ten minutes.",
+    "description": "Grapes blistered jammy in the oven, piled on creamy ricotta toast with honey and thyme. Brunch that looks fancy, ready in about 25 minutes, mostly hands-off.",
     "prep_time": 5,
     "cook_time": 20,
     "servings": 2,
