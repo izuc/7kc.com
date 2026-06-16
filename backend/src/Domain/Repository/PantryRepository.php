@@ -110,6 +110,20 @@ final class PantryRepository
         $this->db->delete('pantry_items', ['id' => $id]);
     }
 
+    /** Record a removal (e.g. an item tossed/expired) for the waste & savings stats. */
+    public function logRemoval(string $userId, ?string $groupId, ?string $ingId, ?string $customName, string $reason): void
+    {
+        $this->db->insert('pantry_removals', [
+            'id' => Uid::new(),
+            'user_id' => $userId,
+            'group_id' => $groupId,
+            'ingredient_id' => $ingId,
+            'custom_name' => $customName,
+            'reason' => $reason,
+            'removed_at' => time(),
+        ]);
+    }
+
     public function removeByIngredientIds(string $userId, ?string $groupId, array $ingIds): int
     {
         if (!$ingIds) return 0;

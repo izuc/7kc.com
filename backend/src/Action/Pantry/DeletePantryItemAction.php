@@ -20,9 +20,16 @@ final class DeletePantryItemAction
     {
         $userId = (string)$req->getAttribute('user_id');
         $groupId = $this->users->groupIdFor($userId);
-        if (!$this->pantry->deleteForUser($args['id'], $userId, $groupId)) {
+        $item = $this->pantry->findForUser($args['id'], $userId, $groupId);
+        if (!$item) {
             return Json::error($res, 'not_found', 'Pantry item not found', 404);
         }
+        // 'tossed' is logged for the waste stats; a plain remove (correcting a mistake) is not.
+        $reason = (string)($req->getQueryParams()['reason'] ?? 'removed');
+        if ($reason === 'tossed') {
+            $this->pantry->logRemoval($userId, $groupId, $item['ingredient_id'], $item['custom_name'], 'tossed');
+        }
+        $this->pantry->delete($args['id']);
         return Json::send($res, ['ok' => true]);
     }
 }

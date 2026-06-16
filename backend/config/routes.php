@@ -19,6 +19,7 @@ use SevenKC\Action\Ingredients\ParseAction;
 use SevenKC\Action\Recipes\PublicRecipeAction;
 use SevenKC\Action\Recipes\SitemapAction;
 use SevenKC\Action\Retailers\ListRetailersAction;
+use SevenKC\Action\Stats\StatsAction;
 use SevenKC\Action\Lists\AddListItemsAction;
 use SevenKC\Action\Lists\ArchiveListAction;
 use SevenKC\Action\Lists\CreateListAction;
@@ -74,6 +75,7 @@ return function (App $app): void {
         // authenticated
         $g->group('', function (RouteCollectorProxy $a) {
             $a->get('/auth/me', MeAction::class);
+            $a->get('/stats', StatsAction::class);
 
             $a->get('/lists', ListListsAction::class);
             $a->post('/lists', CreateListAction::class);
