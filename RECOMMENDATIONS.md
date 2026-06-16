@@ -48,7 +48,7 @@ tests/rate-limiting/account-deletion.
   - [ ] Log tosses (add `removed_at`/`removed_reason` or a removals log; "Toss it" currently hard-deletes with no trace).
   - [ ] `GET /api/v1/stats` aggregating `cooked_meals.removed_pantry_json` (rescued) vs tossed/expired; "Waste & savings" card on PantryPage.
   - [ ] *(Defer/premium:)* the "~$Y saved" figure (needs price data; only ever an estimate per the "presence not quantity" principle).
-- [~] **#11 · "Your kitchen" cook history** `H/M` — `cooked_meals` is captured but only used to demote. *(Recently-cooked rail + cook counts shipped; favourites + streak chip pending.)*
+- [x] **#11 · "Your kitchen" cook history** `H/M` — `cooked_meals` is captured but only used to demote. *(Shipped: recently-cooked rail, cook counts, favourites/heart + Saved filter, and a meals-this-week streak.)*
   - [ ] `GET /recipes/cooked` (group by recipe) → "Recently cooked" rail + "Cook it again" + "cooked Nx" badge + streak chip.
   - [ ] `recipe_favourites` table + heart on detail/cards (mirror `suggestion_likes`); replace the dead-end cook done-screen with Save / Cook-again.
 - [x] **#16 · "Your kitchen today" home dashboard** `H/M` — new default authed screen (`/today`) composing existing queries (expiring items, top matches, active list, group feed when in a group). Best sequenced after #9 + #11. *(Spec lists "Home" first.)*
