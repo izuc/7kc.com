@@ -399,3 +399,23 @@ h3 {
 @media print {
   .servings-stepper { display: none !important; }
 }
+
+/* Live-camera OCR capture */
+.ocr-camera-view {
+  position: relative; /* containing block for the frame guide = the video only */
+}
+.ocr-camera-view video {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius-sm, 10px);
+  background: #000;
+  display: block;
+}
+.ocr-frame-guide {
+  position: absolute;
+  inset: 12% 8%;
+  border: 2px dashed rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  pointer-events: none;
+}

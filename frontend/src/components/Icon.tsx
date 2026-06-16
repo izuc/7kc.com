@@ -13,6 +13,12 @@ const paths: Record<string, ReactNode> = {
   ),
   plus: <path d="M12 5v14M5 12h14" />,
   minus: <path d="M5 12h14" />,
+  camera: (
+    <>
+      <path d="M3 9a2 2 0 0 1 2-2h2l1.4-2h7.2L17 7h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      <circle cx="12" cy="13" r="3.2" />
+    </>
+  ),
   check: <path d="M5 12l5 5L20 7" />,
   x: <path d="M6 6l12 12M18 6L6 18" />,
   clock: (
