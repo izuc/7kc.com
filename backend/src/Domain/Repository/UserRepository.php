@@ -47,6 +47,19 @@ final class UserRepository
         return $row['group_id'] ?? null;
     }
 
+    /** @return list<string> the diet keys the user requires (e.g. ['vegetarian','gluten_free']) */
+    public function dietFor(string $userId): array
+    {
+        $row = $this->db->fetchAssociative('SELECT diet_json FROM users WHERE id = ?', [$userId]);
+        $d = $row && $row['diet_json'] ? json_decode((string)$row['diet_json'], true) : [];
+        return is_array($d) ? array_values(array_filter($d, 'is_string')) : [];
+    }
+
+    public function setDiet(string $userId, array $diet): void
+    {
+        $this->db->update('users', ['diet_json' => json_encode(array_values($diet))], ['id' => $userId]);
+    }
+
     /**
      * Hard-delete a user and all their data in one transaction. Any group they OWN is
      * handed to the longest-tenured remaining member, or dissolved if they were the

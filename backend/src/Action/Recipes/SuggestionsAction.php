@@ -41,9 +41,21 @@ final class SuggestionsAction
 
         $recentlyCooked = array_flip($this->recipes->recentlyCookedIds($userId, $now - 7 * 86400));
         $recipeIngredientMap = $this->recipes->ingredientIdsForAll();
+        $diet = $this->users->dietFor($userId);
         $recipes = $this->recipes->all($userId, $groupId);
         $ranked = [];
         foreach ($recipes as $r) {
+            // Enforce the user's dietary profile before ranking, so the hero pick + grid are safe.
+            if ($diet) {
+                $passes = true;
+                foreach ($diet as $d) {
+                    if (empty($r['diet'][$d])) {
+                        $passes = false;
+                        break;
+                    }
+                }
+                if (!$passes) continue;
+            }
             $ings = $recipeIngredientMap[$r['id']] ?? [];
             $have = array_filter($ings, fn ($id) => isset($pantryIds[$id]));
             $missing = array_values(array_diff($ings, $have));

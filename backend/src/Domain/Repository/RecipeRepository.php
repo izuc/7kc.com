@@ -10,6 +10,47 @@ final class RecipeRepository
 {
     public function __construct(private readonly Connection $db) {}
 
+    /** @var array<string, list<string>>|null cached ingredient-id sets by diet concern */
+    private ?array $dietSetsCache = null;
+
+    private function dietSets(): array
+    {
+        if ($this->dietSetsCache !== null) return $this->dietSetsCache;
+        $meat = [];
+        $dairy = [];
+        foreach ($this->db->fetchAllAssociative('SELECT id, section FROM ingredients') as $r) {
+            if ($r['section'] === 'meat') $meat[] = $r['id']; // meat section also holds seafood
+            if ($r['section'] === 'dairy') $dairy[] = $r['id'];
+        }
+        return $this->dietSetsCache = [
+            'meat' => $meat,
+            'dairy' => $dairy,
+            'gluten' => ['flour', 'pasta', 'spaghetti', 'bread', 'breadcrumbs', 'soy_sauce', 'couscous', 'tortilla', 'noodles'],
+            'nut' => ['almond', 'cashew', 'walnut', 'peanut', 'pistachio', 'pecan', 'hazelnut', 'pine_nut'],
+        ];
+    }
+
+    /**
+     * Diet flags DERIVED from a recipe's ingredients (authoritative — the hand-set tags
+     * are demonstrably wrong, e.g. a "vegetarian" recipe containing bacon).
+     */
+    public function dietFor(array $ingredientIds): array
+    {
+        $sets = $this->dietSets();
+        $has = fn (array $set) => count(array_intersect($ingredientIds, $set)) > 0;
+        $meat = $has($sets['meat']);
+        $dairy = $has($sets['dairy']);
+        $egg = in_array('eggs', $ingredientIds, true);
+        $honey = in_array('honey', $ingredientIds, true);
+        return [
+            'vegetarian' => !$meat,
+            'vegan' => !$meat && !$dairy && !$egg && !$honey,
+            'dairy_free' => !$dairy,
+            'gluten_free' => !$has($sets['gluten']),
+            'nut_free' => !$has($sets['nut']),
+        ];
+    }
+
     public function all(?string $userId = null, ?string $groupId = null): array
     {
         $sql = 'SELECT * FROM recipes WHERE is_custom = 0';
@@ -31,6 +72,7 @@ final class RecipeRepository
         $byRecipe = $this->ingredientIdsForAll();
         foreach ($recipes as &$r) {
             $r['ingredient_ids'] = $byRecipe[$r['id']] ?? [];
+            $r['diet'] = $this->dietFor($r['ingredient_ids']);
         }
         unset($r);
         return $recipes;
@@ -104,6 +146,10 @@ final class RecipeRepository
             'detail' => $r['detail'] ?: null,
             'timer_seconds' => $r['timer_seconds'] !== null ? (int)$r['timer_seconds'] : null,
         ], $steps);
+        $recipe['diet'] = $this->dietFor(array_values(array_filter(array_map(
+            fn ($i) => $i['ingredient_id'],
+            $recipe['ingredients']
+        ))));
         return $recipe;
     }
 
