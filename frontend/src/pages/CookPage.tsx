@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../lib/api';
 import { useUi } from '../store/ui';
 import { haptic } from '../lib/haptics';
+import { useWakeLock } from '../lib/useWakeLock';
 import { trackEvent } from '../lib/analytics';
 import { Icon } from '../components/Icon';
 
@@ -24,6 +25,9 @@ export function CookPage() {
   const { data: pantryData } = useQuery({ queryKey: ['pantry'], queryFn: () => api.pantry() });
 
   const recipe = recipeData?.recipe;
+
+  // Keep the screen awake while actively cooking (released on the done card + unmount).
+  useWakeLock(!!recipe && !done);
 
   const pantryIngIds = useMemo(() => {
     const s = new Set<string>();
@@ -112,6 +116,9 @@ export function CookPage() {
         <div className="cook-step">
           <div className="cook-step-num mono">{step + 1}</div>
           <p>{recipe.steps[step].content}</p>
+          {recipe.steps[step].detail && (
+            <p className="cook-step-detail">{recipe.steps[step].detail}</p>
+          )}
           <div className="cook-actions">
             {step > 0 && (
               <button className="btn btn-ghost" onClick={() => setStep(step - 1)}>
