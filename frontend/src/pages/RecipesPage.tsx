@@ -54,6 +54,19 @@ export function RecipesPage() {
     });
   }, [ranked, filter, q, favSet]);
 
+  // Filter-chip counts depend only on the catalogue + favourites — compute once,
+  // not four full scans on every search keystroke.
+  const chipCounts = useMemo<Record<string, number>>(
+    () => ({
+      'can-make': ranked.filter((r) => r.pantry_match === 1).length,
+      quick: ranked.filter((r) => r.recipe.prep_time + r.recipe.cook_time <= 25).length,
+      expiring: ranked.filter((r) => r.expiring_hits > 0).length,
+      saved: ranked.filter((r) => favSet.has(r.recipe.id)).length,
+      veg: ranked.filter((r) => r.recipe.diet?.vegetarian).length,
+    }),
+    [ranked, favSet]
+  );
+
   // reset pagination whenever filters change
   useEffect(() => {
     setPage(1);
@@ -228,19 +241,7 @@ export function RecipesPage() {
             onClick={() => setFilter(id)}
           >
             {label}
-            {id !== 'all' && (
-              <span className="mono small">
-                {id === 'can-make'
-                  ? ranked.filter((r) => r.pantry_match === 1).length
-                  : id === 'quick'
-                  ? ranked.filter((r) => r.recipe.prep_time + r.recipe.cook_time <= 25).length
-                  : id === 'expiring'
-                  ? ranked.filter((r) => r.expiring_hits > 0).length
-                  : id === 'saved'
-                  ? ranked.filter((r) => favSet.has(r.recipe.id)).length
-                  : ranked.filter((r) => r.recipe.diet?.vegetarian).length}
-              </span>
-            )}
+            {id !== 'all' && <span className="mono small">{chipCounts[id] ?? 0}</span>}
           </button>
         ))}
       </div>
