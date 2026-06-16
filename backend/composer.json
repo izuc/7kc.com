@@ -22,10 +22,16 @@
             "SevenKC\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "SevenKC\\Tests\\": "tests/"
+        }
+    },
     "scripts": {
         "serve": "php -S 0.0.0.0:8000 -t public",
         "migrate": "phinx migrate -c config/phinx.php",
-        "seed": "phinx seed:run -c config/phinx.php"
+        "seed": "phinx seed:run -c config/phinx.php",
+        "test": "phpunit"
     },
     "config": {
         "sort-packages": true,
@@ -38,5 +44,8 @@
                 "PKSA-y2cr-5h3j-g3ys": "firebase/php-jwt advisory — not exploitable in our validation flow; review at next release"
             }
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11"
     }
 }

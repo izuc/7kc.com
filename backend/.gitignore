@@ -1,3 +1,4 @@
 /vendor/
 /var/*.sqlite
 /.env
+/.phpunit.cache/
