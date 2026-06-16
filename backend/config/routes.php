@@ -59,6 +59,9 @@ use SevenKC\Action\MealPlan\ClearMealPlanAction;
 use SevenKC\Action\MealPlan\BuildListFromWeekAction;
 use SevenKC\Action\Recipes\CreateRecipeAction;
 use SevenKC\Action\Recipes\ImportRecipeAction;
+use SevenKC\Action\Recipes\ListRecipeCommentsAction;
+use SevenKC\Action\Recipes\AddRecipeCommentAction;
+use SevenKC\Action\Recipes\DeleteRecipeCommentAction;
 use SevenKC\Action\Recipes\GetRecipeAction;
 use SevenKC\Action\Recipes\ListRecipesAction;
 use SevenKC\Action\Recipes\SuggestionsAction;
@@ -135,6 +138,9 @@ return function (App $app): void {
             $a->post('/recipes/import', ImportRecipeAction::class);
             $a->post('/recipes/{slug}/cook', CookRecipeAction::class);
             $a->post('/recipes/{slug}/favourite', ToggleFavouriteAction::class);
+            $a->get('/recipes/{slug}/comments', ListRecipeCommentsAction::class);
+            $a->post('/recipes/{slug}/comments', AddRecipeCommentAction::class);
+            $a->delete('/recipes/{slug}/comments/{id}', DeleteRecipeCommentAction::class);
 
             $a->get('/meal-plan', GetMealPlanAction::class);
             $a->put('/meal-plan', SetMealPlanAction::class);

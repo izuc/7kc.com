@@ -176,6 +176,14 @@ export interface RecipeDraft {
   steps: { content: string }[];
 }
 
+export interface RecipeComment {
+  id: string;
+  user_id: string;
+  author: string;
+  content: string;
+  created_at: number;
+}
+
 export interface MealPlanEntry {
   date: string;
   recipe_id: string | null;

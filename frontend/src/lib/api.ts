@@ -7,6 +7,7 @@ import type {
   CookedRecipe,
   Recipe,
   RecipeSummary,
+  RecipeComment,
   RecipeDraft,
   NewRecipePayload,
   MealPlanWeek,
@@ -199,6 +200,15 @@ export const api = {
       method: 'POST',
       body: JSON.stringify({ remove_ingredient_ids: removeIds }),
     }),
+  recipeComments: (slug: string) =>
+    request<{ comments: RecipeComment[] }>(`/recipes/${slug}/comments`),
+  addRecipeComment: (slug: string, content: string) =>
+    request<{ comments: RecipeComment[] }>(`/recipes/${slug}/comments`, {
+      method: 'POST',
+      body: JSON.stringify({ content }),
+    }),
+  deleteRecipeComment: (slug: string, id: string) =>
+    request<{ ok: boolean }>(`/recipes/${slug}/comments/${id}`, { method: 'DELETE' }),
 
   // meal plan
   getMealPlan: (weekStart: string) =>

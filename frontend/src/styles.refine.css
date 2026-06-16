@@ -547,6 +547,73 @@ h3 {
   font-weight: 500;
 }
 
+/* Recipe comments */
+.recipe-comments {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line, #e7ddd1);
+}
+.recipe-comments > h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+.comment-compose {
+  margin-bottom: 16px;
+}
+.comment-compose textarea {
+  resize: vertical;
+  width: 100%;
+}
+.comment-compose-foot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+.comment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.comment {
+  display: flex;
+  gap: 10px;
+}
+.comment-body {
+  flex: 1;
+  min-width: 0;
+}
+.comment-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.comment-body p {
+  margin: 2px 0 0;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.comment-delete {
+  margin-left: auto;
+  border: none;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 6px;
+}
+.comment-delete:hover {
+  color: var(--danger, #b91c1c);
+  background: var(--cream-2);
+}
+
 /* First-run tour step dots */
 .tour-dots {
   display: flex;

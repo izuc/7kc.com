@@ -153,6 +153,7 @@ final class UserRepository
             $db->executeStatement('DELETE FROM cooked_meals WHERE user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM pantry_removals WHERE user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM recipe_favourites WHERE user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM recipe_comments WHERE user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM push_subscriptions WHERE user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM meal_plan WHERE owner_user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM pantry_items WHERE owner_user_id = ?', [$userId]);

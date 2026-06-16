@@ -46,6 +46,9 @@ CREATE TABLE push_subscriptions (
   id TEXT PRIMARY KEY, user_id TEXT, endpoint TEXT, p256dh TEXT, auth TEXT, created_at INTEGER,
   UNIQUE (endpoint)
 );
+CREATE TABLE recipe_comments (
+  id TEXT PRIMARY KEY, recipe_id TEXT, user_id TEXT, content TEXT, created_at INTEGER
+);
 CREATE TABLE rate_limits (
   bucket TEXT PRIMARY KEY, count INTEGER DEFAULT 0, window_start INTEGER
 );

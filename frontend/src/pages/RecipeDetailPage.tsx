@@ -7,6 +7,7 @@ import { Modal } from '../components/Modal';
 import { MealPlate } from '../components/MealPlate';
 import { MethodBlock } from '../components/MethodBlock';
 import { AffiliateButtons } from '../components/AffiliateButtons';
+import { RecipeComments } from '../components/RecipeComments';
 import { trackEvent } from '../lib/analytics';
 import { scaleAmount } from '../lib/scaleAmount';
 import { useAuth } from '../store/auth';
@@ -216,6 +217,8 @@ export function RecipeDetailPage() {
           <MethodBlock steps={recipe.steps} />
         </div>
       </div>
+
+      <RecipeComments slug={recipe.slug} />
 
       {showSuggest && (
         <SuggestModal
