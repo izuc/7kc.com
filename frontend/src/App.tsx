@@ -6,6 +6,7 @@ import { AppShell } from './components/AppShell';
 import { Toasts } from './components/Toasts';
 import { Loading } from './components/Loading';
 import { InstallPrompt } from './components/InstallPrompt';
+import { TourOverlay } from './components/TourOverlay';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
@@ -137,6 +138,7 @@ export function App() {
       </ErrorBoundary>
       <Toasts />
       <InstallPrompt />
+      <TourOverlay />
     </AppShell>
   );
 }
