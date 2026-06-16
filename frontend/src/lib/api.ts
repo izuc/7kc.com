@@ -65,6 +65,8 @@ export const api = {
       body: JSON.stringify({ email, password }),
     }),
   me: () => request<User>('/auth/me'),
+  setDiet: (diet: string[]) =>
+    request<{ diet: string[] }>('/auth/diet', { method: 'POST', body: JSON.stringify({ diet }) }),
   deleteAccount: () => request<{ ok: boolean }>('/auth/me', { method: 'DELETE' }),
   exportData: () => request<Record<string, unknown>>('/auth/me/export'),
 

@@ -46,7 +46,7 @@ export function RecipesPage() {
       if (filter === 'can-make') return entry.pantry_match === 1;
       if (filter === 'quick') return r.prep_time + r.cook_time <= 25;
       if (filter === 'expiring') return entry.expiring_hits > 0;
-      if (filter === 'veg') return r.tags.includes('vegetarian') || r.tags.includes('vegan');
+      if (filter === 'veg') return !!r.diet?.vegetarian;
       if (filter === 'saved') return favSet.has(r.id);
       return true;
     });
@@ -218,7 +218,7 @@ export function RecipesPage() {
                   ? ranked.filter((r) => r.expiring_hits > 0).length
                   : id === 'saved'
                   ? ranked.filter((r) => favSet.has(r.recipe.id)).length
-                  : ranked.filter((r) => r.recipe.tags.includes('vegetarian') || r.recipe.tags.includes('vegan')).length}
+                  : ranked.filter((r) => r.recipe.diet?.vegetarian).length}
               </span>
             )}
           </button>

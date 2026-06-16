@@ -5,6 +5,15 @@ export interface User {
   email: string;
   display_name: string | null;
   group_id: string | null;
+  diet?: string[];
+}
+
+export interface DietFlags {
+  vegetarian: boolean;
+  vegan: boolean;
+  dairy_free: boolean;
+  gluten_free: boolean;
+  nut_free: boolean;
 }
 
 export interface Ingredient {
@@ -64,6 +73,8 @@ export interface RecipeSummary {
   palette: [string, string];
   image_url: string | null;
   sponsored_by?: string | null;
+  /** diet flags derived from the recipe's ingredients (authoritative) */
+  diet?: DietFlags;
   is_custom: boolean;
   owner_user_id: string | null;
   group_id: string | null;

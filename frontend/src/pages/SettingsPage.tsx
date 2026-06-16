@@ -111,6 +111,44 @@ export function SettingsPage() {
           </div>
         </div>
 
+        <div className="setting-card">
+          <h3>Dietary</h3>
+          <p className="muted small">Suggestions only show recipes that fit.</p>
+          <div className="chip-row">
+            {(
+              [
+                ['vegetarian', 'Vegetarian'],
+                ['vegan', 'Vegan'],
+                ['dairy_free', 'Dairy-free'],
+                ['gluten_free', 'Gluten-free'],
+                ['nut_free', 'Nut-free'],
+              ] as [string, string][]
+            ).map(([key, label]) => {
+              const on = (user?.diet ?? []).includes(key);
+              return (
+                <button
+                  key={key}
+                  className={`chip ${on ? 'active' : ''}`}
+                  aria-pressed={on}
+                  onClick={async () => {
+                    const current = user?.diet ?? [];
+                    const next = on ? current.filter((d) => d !== key) : [...current, key];
+                    try {
+                      await api.setDiet(next);
+                      await refresh();
+                      qc.invalidateQueries({ queryKey: ['recipe-suggestions'] });
+                    } catch {
+                      toast('Could not save — please try again.');
+                    }
+                  }}
+                >
+                  {label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         {!user?.group_id ? (
           <div className="setting-card solo-banner">
             <div className="eyebrow sage">Solo mode</div>
