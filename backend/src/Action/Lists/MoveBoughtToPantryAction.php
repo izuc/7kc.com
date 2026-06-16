@@ -38,7 +38,7 @@ final class MoveBoughtToPantryAction
                 $shelf = $this->ingredients->shelfLife($it['ingredient_id']);
                 $expires = time() + $shelf * 86400;
             }
-            $this->pantry->add($userId, $groupId, $it['ingredient_id'], $it['custom_name'], $expires);
+            $this->pantry->addOrRefresh($userId, $groupId, $it['ingredient_id'], $it['custom_name'], $expires);
             $moved[] = $it['id'];
         }
         $this->lists->markMoved($moved);

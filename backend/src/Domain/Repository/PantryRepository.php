@@ -63,6 +63,37 @@ final class PantryRepository
         return $id;
     }
 
+    public function runningLow(string $userId, ?string $groupId): array
+    {
+        $sql = 'SELECT * FROM pantry_items WHERE running_low = 1 AND (owner_user_id = ?' . ($groupId ? ' OR group_id = ?' : '') . ')';
+        $params = [$userId];
+        if ($groupId) $params[] = $groupId;
+        return array_map([$this, 'hydrate'], $this->db->fetchAllAssociative($sql, $params));
+    }
+
+    /**
+     * Insert, OR if the user/group already stocks this ingredient, refresh that row
+     * (reset expiry, clear running_low) instead of creating a duplicate.
+     */
+    public function addOrRefresh(string $ownerId, ?string $groupId, ?string $ingId, ?string $customName, ?int $expiresAt): string
+    {
+        if ($ingId) {
+            $sql = 'SELECT id FROM pantry_items WHERE ingredient_id = ? AND (owner_user_id = ?' . ($groupId ? ' OR group_id = ?' : '') . ') LIMIT 1';
+            $params = [$ingId, $ownerId];
+            if ($groupId) $params[] = $groupId;
+            $existingId = $this->db->fetchOne($sql, $params);
+            if ($existingId !== false && $existingId !== null) {
+                $this->db->update('pantry_items', [
+                    'expires_at' => $expiresAt,
+                    'running_low' => 0,
+                    'added_at' => time(),
+                ], ['id' => $existingId]);
+                return (string)$existingId;
+            }
+        }
+        return $this->add($ownerId, $groupId, $ingId, $customName, $expiresAt, false);
+    }
+
     public function update(string $id, array $fields): void
     {
         $allowed = array_intersect_key($fields, array_flip(['expires_at', 'running_low', 'notes', 'custom_name']));

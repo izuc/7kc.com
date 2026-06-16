@@ -27,6 +27,7 @@ use SevenKC\Action\Lists\ListListsAction;
 use SevenKC\Action\Lists\MarkAllBoughtAction;
 use SevenKC\Action\Lists\MoveBoughtToPantryAction;
 use SevenKC\Action\Lists\RenameListAction;
+use SevenKC\Action\Lists\RestockListAction;
 use SevenKC\Action\Lists\ToggleBoughtAction;
 use SevenKC\Action\Pantry\AddPantryItemAction;
 use SevenKC\Action\Pantry\DeletePantryItemAction;
@@ -80,6 +81,7 @@ return function (App $app): void {
             $a->post('/lists/{id}/items/{itemId}/toggle-bought', ToggleBoughtAction::class);
             $a->post('/lists/{id}/mark-all-bought', MarkAllBoughtAction::class);
             $a->post('/lists/{id}/move-bought-to-pantry', MoveBoughtToPantryAction::class);
+            $a->post('/lists/{id}/restock', RestockListAction::class);
 
             $a->get('/pantry', ListPantryAction::class);
             $a->post('/pantry/items', AddPantryItemAction::class);
