@@ -27,3 +27,5 @@ Thumbs.db
 
 # recipe-QA scratch
 scripts/.qa-*
+_slice.txt
+_*.tmp
