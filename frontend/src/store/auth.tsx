@@ -2,7 +2,6 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import { useQueryClient } from '@tanstack/react-query';
 import type { User } from '../types/models';
 import { api, getToken, setToken } from '../lib/api';
-import { outboxClear } from '../lib/outbox';
 
 interface AuthState {
   user: User | null;
@@ -72,11 +71,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return r.user;
   }, [qc]);
 
+  // Note: the offline outbox is NOT cleared here. Each op is tagged with its account
+  // id and flushOutbox replays only the current user's ops (purging foreign ones), so
+  // there's no cross-account replay — and a user's own un-synced ops survive for their
+  // next sign-in. A blind clear here would race a fast logout→login and wipe the new
+  // user's freshly-queued ops.
   const logout = useCallback(() => {
     setToken(null);
     setUser(null);
     qc.clear();
-    void outboxClear(); // drop any unsynced offline ops on an explicit sign-out
   }, [qc]);
 
   // Revoke every token for this account server-side, then drop this device locally.
@@ -87,7 +90,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setToken(null);
       setUser(null);
       qc.clear();
-      void outboxClear();
     }
   }, [qc]);
 

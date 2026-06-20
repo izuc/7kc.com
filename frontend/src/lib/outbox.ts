@@ -170,20 +170,6 @@ export async function outboxAdd(op: OutboxOp): Promise<void> {
   db.close();
 }
 
-/** Drop the entire queue (e.g. on logout/login) so one account's ops can't replay under another. */
-export async function outboxClear(): Promise<void> {
-  mem.length = 0;
-  if (!hasIDB) return;
-  const db = await openDb();
-  await new Promise<void>((resolve, reject) => {
-    const tx = db.transaction(STORE, 'readwrite');
-    tx.objectStore(STORE).clear();
-    tx.oncomplete = () => resolve();
-    tx.onerror = () => reject(tx.error);
-  });
-  db.close();
-}
-
 export async function outboxAll(): Promise<OutboxEntry[]> {
   if (!hasIDB) return [...mem];
   const db = await openDb();

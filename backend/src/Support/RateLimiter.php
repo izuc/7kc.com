@@ -33,10 +33,15 @@ final class RateLimiter
         // lost-update race a read-modify-write SELECT+UPDATE has — parallel requests
         // can't all read the same stale count and each write count+1. The window guard
         // skips a window a concurrent request just reset via REPLACE.
-        $this->db->executeStatement(
+        $affected = $this->db->executeStatement(
             'UPDATE rate_limits SET count = count + 1 WHERE bucket = ? AND window_start = ?',
             [$bucket, (int)$row['window_start']]
         );
+        if ($affected === 0) {
+            // A concurrent request reset the window (REPLACE) between our SELECT and UPDATE,
+            // so our increment didn't apply — treat this as the first hit of the fresh window.
+            return null;
+        }
         $count = (int)$this->db->fetchOne('SELECT count FROM rate_limits WHERE bucket = ?', [$bucket]);
         if ($count > $limit) {
             return ((int)$row['window_start'] + $windowSec) - $now;

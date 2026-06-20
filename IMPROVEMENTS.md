@@ -63,5 +63,41 @@ _(Skipped as already-done: global `focus-visible` styling, `role="alert"` on for
 - Recipe **notes / annotations**; shopping-list **templates**.
 
 ---
-*Generated 2026-06-17 from a 107-agent review (11 review dimensions + per-rec adversarial verification).
+
+## Deep bug hunt (round 2) — 23 confirmed bugs, 21 fixed ✅
+
+A 12-subsystem adversarial bug hunt (agents reading full code paths, every finding
+verified) found 23 real, triggerable bugs. Fixed in batches G/H/I (all verified live):
+
+**Batch G — auth & cross-account security**
+- [x] (high) Deleted-account JWTs stayed valid up to 7 days — AuthMiddleware now loads the user and 401s if the row is gone.
+- [x] (high) Rate-limiter lost-update race → bypass; now an atomic `count=count+1`.
+- [x] (high) Query cache never cleared on login/logout → account B saw A's data; `qc.clear()` on every transition.
+- [x] (high) Global offline outbox replayed A's queued writes into B's account; ops now tagged + filtered by user.
+- [x] (med) `clientIp` trusted a forged X-Forwarded-For; now REMOTE_ADDR unless a TRUSTED_PROXY.
+- [x] (low) `favourites()` leaked a group recipe after the user left; added the visibility predicate.
+
+**Batch H — backend correctness & data integrity**
+- [x] Seeder never re-synced ingredient display/section/shelf_life (stale → wrong diet flags).
+- [x] Move-bought could duplicate pantry rows on double-click; now an idempotent per-row claim.
+- [x] "Rescued" waste stat inflated on phantom/duplicate ids; persist only truly-deleted ids.
+- [x] Thrown 4xx/5xx responses lacked CORS headers; CORS now wraps the error middleware.
+- [x] `createCustom` non-transactional + unbounded amount → orphaned partial recipe; transaction + length caps.
+- [x] Account/group deletion left orphaned list-items + suggestion likes/comments; delete children by parent.
+- [x] Manual pantry-add bypassed dedup; now routes through `addOrRefresh`.
+- [x] Owner leaving a surviving group left a dangling owner; promote a remaining member.
+- [x] phinx vs app disagreed on absolute `DB_SQLITE_PATH`; aligned the resolution.
+
+**Batch I — frontend correctness**
+- [x] `useSoftDelete` reverted concurrent sibling edits on Undo; targeted re-insert into the current cache.
+- [x] Archived lists unreachable once no active list remained; surfaced in the empty state.
+- [x] ErrorBoundary never reset → wedged across navigation; resets on route change.
+
+**Deferred (cosmetic, need a migration / row-locking):**
+- [ ] (low) Unread badge drops a feed event created in the same wall-clock second as mark-seen (needs a monotonic seq column).
+- [ ] (low) Group 8-member cap is a join-time TOCTOU (needs `SELECT … FOR UPDATE` or a count constraint).
+
+---
+*Generated 2026-06-17 from a 107-agent review (11 review dimensions + per-rec adversarial verification),
+then a 35-agent deep bug hunt (12 subsystems + per-bug verification).
 Items already covered by `RECOMMENDATIONS.md` are intentionally excluded.*
