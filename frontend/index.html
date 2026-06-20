@@ -27,6 +27,31 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet" />
     <title>7 Day Kitchen — Use what you've got.</title>
+
+    <!-- Site-level structured data (Organization + WebSite with search) -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "7 Day Kitchen",
+        "url": "https://7kc.com/",
+        "logo": "https://7kc.com/pwa-512x512.png",
+        "description": "Pantry-first kitchen management. Use what you've got. Eat what you love. Waste nothing."
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "7 Day Kitchen",
+        "url": "https://7kc.com/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": { "@type": "EntryPoint", "urlTemplate": "https://7kc.com/recipes?q={search_term_string}" },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+    </script>
   </head>
   <body>
     <div id="root"></div>

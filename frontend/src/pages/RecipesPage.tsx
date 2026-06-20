@@ -16,7 +16,8 @@ export function RecipesPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [filter, setFilter] = useState<Filter>((searchParams.get('filter') as Filter) || 'all');
-  const [q, setQ] = useState('');
+  // Seed from ?q= so a shared/searched URL (and the WebSite SearchAction) pre-filters.
+  const [q, setQ] = useState(searchParams.get('q') || '');
   const [page, setPage] = useState(1);
   const [showNew, setShowNew] = useState(false);
   const gridAnchor = useRef<HTMLDivElement | null>(null);

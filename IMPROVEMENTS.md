@@ -47,11 +47,11 @@ _(Skipped as already-done: global `focus-visible` styling, `role="alert"` on for
 - [ ] Print/share a shopping list.
 - [ ] Confirm/undo on "Move bought to pantry" (destructive, irreversible today).
 
-## Batch F — SEO, growth & analytics `M/L`
-- [ ] Fire `signup_completed`/`signup_started` with source (recipe / group-invite / landing).
-- [ ] `Organization` + `WebSite` (SearchAction) JSON-LD on the landing page.
-- [ ] Loop-moment events not yet wired (`expiring_seen`, `recipe_saved`).
-- [ ] Public ingredient landing pages `/ingredient/:id` (prerendered + sitemap) for long-tail SEO.
+## Batch F — SEO, growth & analytics `M/L` ✅ (ingredient pages → bigger bets)
+- [x] Fire `signup_started` (mount) + `signup_completed` (success) with source (recipe / group-invite / landing) — the most critical conversion event was dark.
+- [x] `Organization` + `WebSite` (SearchAction) JSON-LD on the homepage; RecipesPage now seeds search from `?q=` so the SearchAction target actually filters.
+- [x] Loop-moment events `expiring_seen` (TodayPage, once/mount when items expiring) + `recipe_saved` (favourite).
+- [→] Public ingredient landing pages `/ingredient/:id` — moved to bigger bets (substantial: backend action+repo, page, prerender, sitemap, router).
 
 ## Bigger bets — need product steer (not auto-actioned)
 - Recipe **cost estimation** + budget-aware suggestions (needs price data).

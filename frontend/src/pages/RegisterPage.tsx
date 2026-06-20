@@ -1,7 +1,8 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../store/auth';
 import { api, ApiError } from '../lib/api';
+import { trackEvent } from '../lib/analytics';
 
 export function RegisterPage() {
   const { register } = useAuth();
@@ -16,12 +17,20 @@ export function RegisterPage() {
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
+  // Measure funnel drop-off: started vs completed, bucketed by where they came from.
+  useEffect(() => {
+    trackEvent('signup_started', { source: fromSlug ? 'recipe' : joinToken ? 'group_invite' : 'landing' });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     setErr(null);
     setBusy(true);
+    const source = fromSlug ? 'recipe' : joinToken ? 'group_invite' : 'landing';
     try {
       await register(email.trim(), password, displayName.trim() || undefined);
+      trackEvent('signup_completed', { source });
       if (joinToken) {
         try {
           await api.joinGroup(joinToken);

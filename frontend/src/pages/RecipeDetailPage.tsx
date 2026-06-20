@@ -176,6 +176,7 @@ export function RecipeDetailPage() {
                 try {
                   const r = await api.toggleFavourite(recipe.slug);
                   qc.invalidateQueries({ queryKey: ['favourites'] });
+                  if (r.favourited) trackEvent('recipe_saved', { recipe: recipe.slug });
                   toast(r.favourited ? 'Saved to favourites' : 'Removed from favourites');
                 } catch {
                   toast("Couldn't update favourites — please try again.");

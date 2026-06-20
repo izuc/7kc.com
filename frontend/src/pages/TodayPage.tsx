@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { api } from '../lib/api';
@@ -6,6 +7,7 @@ import { Icon } from '../components/Icon';
 import { MealPlate } from '../components/MealPlate';
 import { WeekPlanner } from '../components/WeekPlanner';
 import { useAuth } from '../store/auth';
+import { trackEvent } from '../lib/analytics';
 
 /**
  * "Your kitchen today" — the home hub. Composes existing cached queries (no new
@@ -28,6 +30,16 @@ export function TodayPage() {
     return d >= 0 && d <= 3;
   });
   const lowCount = pantry.filter((p) => p.running_low).length;
+
+  // Loop-moment metric: did the user actually see expiring items today? Fire once
+  // per mount, only when there's something expiring to see.
+  const expiringTracked = useRef(false);
+  useEffect(() => {
+    if (!expiringTracked.current && expiringSoon.length > 0) {
+      expiringTracked.current = true;
+      trackEvent('expiring_seen', { count: expiringSoon.length });
+    }
+  }, [expiringSoon.length]);
 
   const topPicks = (suggData?.ranked ?? []).slice(0, 3);
   const activeList = (listsData?.lists ?? []).find((l) => !l.archived_at);
