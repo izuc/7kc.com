@@ -24,8 +24,8 @@ final class CreateRecipeAction
 
         // Bound user-authored fields before they reach the DB — a single malicious
         // or runaway client shouldn't be able to store megabytes of text per recipe.
-        if (mb_strlen((string)$body['title']) > 200) {
-            return Json::error($res, 'bad_request', 'Title is too long (max 200 characters)', 400);
+        if (mb_strlen((string)$body['title']) > 160) {
+            return Json::error($res, 'bad_request', 'Title is too long (max 160 characters)', 400);
         }
         if (isset($body['description']) && mb_strlen((string)$body['description']) > 4000) {
             return Json::error($res, 'bad_request', 'Description is too long (max 4000 characters)', 400);

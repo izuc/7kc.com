@@ -45,7 +45,7 @@ final class CreateSuggestionAction
             }
         }
         if ($title === '') return Json::error($res, 'bad_request', 'recipe_slug or recipe_title required', 400);
-        if (mb_strlen($title) > 200) $title = mb_substr($title, 0, 200);
+        if (mb_strlen($title) > 160) $title = mb_substr($title, 0, 160); // matches the DB column limit
 
         $id = $this->groups->createSuggestion($groupId, $userId, $title, $recipeId, $date);
         $this->groups->pushEvent($groupId, $userId, 'suggest', [
