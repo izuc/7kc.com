@@ -18,10 +18,11 @@ because the app is mature and some candidates turned out partly done.
 - [x] `.sr-only` utility added.
 _(Skipped as already-done: global `focus-visible` styling, `role="alert"` on form errors, toast/sync `aria-live`.)_
 
-## Batch B — Frontend performance `M/L`
-- [ ] `React.memo` on `RecipeCard` and list `ItemRow`s (re-render on pagination/filter today).
-- [ ] Longer `staleTime`/`gcTime` on static reads (ingredient dictionary, recipes, retailers).
-- [ ] Memoize `MealPlate` ingredient-id array derivation.
+## Batch B — Frontend performance `M/L` ✅
+- [x] `React.memo` on `RecipeCard` (the 204-card grid) — shipped in Batch A.
+- [x] `React.memo` on `MealPlate`/`MealPlateMini` (cooked-rail plates pass stable refs but re-rendered on every page-state change).
+- [~] Static-read `staleTime`/`gcTime` — **already done** (dictionary/ingredients/retailers carry 1h staleTime+gcTime); no change needed.
+- [skip] `ItemRow` memo — low ROI (lists are small; callsites pass fresh callbacks → would need a refactor for marginal gain).
 
 ## Batch C — PWA & offline `H/L` ✅ (update-prompt deferred)
 - [x] Runtime-cache all recipe sub-paths (suggestions/cooked/favourites/{slug}/comments) + ingredients + group feed/suggestions, bounded (300 entries / 1 day). Ranked feed, history, favourites & group browse now work offline.

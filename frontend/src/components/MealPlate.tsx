@@ -1,4 +1,4 @@
-import { useId, useMemo } from 'react';
+import { memo, useId, useMemo } from 'react';
 import { dishArtworkFor } from '../lib/dishArtwork';
 import type { RecipeSummary, Recipe, RecipeIngredient } from '../types/models';
 
@@ -20,7 +20,7 @@ interface Props {
   ingredientIds?: string[];
 }
 
-export function MealPlate({ recipe, size = 240, className, rounded = true, ingredientIds }: Props) {
+export const MealPlate = memo(function MealPlate({ recipe, size = 240, className, rounded = true, ingredientIds }: Props) {
   const garnishIds = useMemo(() => {
     if (ingredientIds && ingredientIds.length) return ingredientIds;
     if (recipe.ingredient_ids?.length) return recipe.ingredient_ids;
@@ -54,10 +54,10 @@ export function MealPlate({ recipe, size = 240, className, rounded = true, ingre
       {dishArtworkFor(slug, palette, garnishIds, recipe.dish_form)}
     </svg>
   );
-}
+});
 
 /** Horizontal band version for suggestion cards (group page). */
-export function MealPlateMini({ recipe, size = 140, className, ingredientIds }: Props) {
+export const MealPlateMini = memo(function MealPlateMini({ recipe, size = 140, className, ingredientIds }: Props) {
   const garnishIds = useMemo(() => {
     if (ingredientIds && ingredientIds.length) return ingredientIds;
     if (recipe.ingredient_ids?.length) return recipe.ingredient_ids;
@@ -92,4 +92,4 @@ export function MealPlateMini({ recipe, size = 140, className, ingredientIds }: 
       {dishArtworkFor(slug, palette, garnishIds, recipe.dish_form)}
     </svg>
   );
-}
+});
