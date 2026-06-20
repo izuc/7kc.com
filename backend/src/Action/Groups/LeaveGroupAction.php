@@ -28,6 +28,9 @@ final class LeaveGroupAction
         if ($this->groups->countMembers($groupId) === 0) {
             $this->groups->delete($groupId);
         } else {
+            // If the owner left a surviving group, hand ownership to a remaining member
+            // so the group isn't left with a non-member owner.
+            $this->groups->reassignOwnerIfNeeded($groupId, $userId);
             $this->groups->pushEvent($groupId, $userId, 'member_left', []);
         }
         return Json::send($res, ['ok' => true]);

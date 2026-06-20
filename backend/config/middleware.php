@@ -14,7 +14,19 @@ return function (App $app): void {
 
     $app->add(new JsonBodyParserMiddleware());
 
-    // CORS
+    $app->addRoutingMiddleware();
+
+    $errorMiddleware = $app->addErrorMiddleware(
+        (bool)$settings['app']['debug'],
+        true,
+        true
+    );
+    $errorMiddleware->setDefaultErrorHandler(new ErrorHandler((bool)$settings['app']['debug']));
+
+    // CORS — registered AFTER the error middleware so it WRAPS it (Slim middleware is
+    // LIFO). This way a thrown 4xx/5xx response also carries the CORS headers; if CORS
+    // sat inside the error middleware, an exception would skip its post-handle code and
+    // the SPA couldn't read cross-origin error bodies.
     $app->add(function (ServerRequestInterface $request, RequestHandlerInterface $handler) use ($settings): ResponseInterface {
         if ($request->getMethod() === 'OPTIONS') {
             $response = new \Slim\Psr7\Response();
@@ -33,15 +45,6 @@ return function (App $app): void {
         }
         return $response;
     });
-
-    $app->addRoutingMiddleware();
-
-    $errorMiddleware = $app->addErrorMiddleware(
-        (bool)$settings['app']['debug'],
-        true,
-        true
-    );
-    $errorMiddleware->setDefaultErrorHandler(new ErrorHandler((bool)$settings['app']['debug']));
 
     // Outermost: tag every request/response with a correlation id (echoed + readable by the error handler).
     $app->add(function (ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface {

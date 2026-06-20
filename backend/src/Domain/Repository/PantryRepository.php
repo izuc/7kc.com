@@ -109,7 +109,7 @@ final class PantryRepository
      * Insert, OR if the user/group already stocks this ingredient, refresh that row
      * (reset expiry, clear running_low) instead of creating a duplicate.
      */
-    public function addOrRefresh(string $ownerId, ?string $groupId, ?string $ingId, ?string $customName, ?int $expiresAt): string
+    public function addOrRefresh(string $ownerId, ?string $groupId, ?string $ingId, ?string $customName, ?int $expiresAt, bool $runningLow = false): string
     {
         if ($ingId) {
             $sql = 'SELECT id FROM pantry_items WHERE ingredient_id = ? AND (owner_user_id = ?' . ($groupId ? ' OR group_id = ?' : '') . ') LIMIT 1';
@@ -119,13 +119,13 @@ final class PantryRepository
             if ($existingId !== false && $existingId !== null) {
                 $this->db->update('pantry_items', [
                     'expires_at' => $expiresAt,
-                    'running_low' => 0,
+                    'running_low' => $runningLow ? 1 : 0,
                     'added_at' => time(),
                 ], ['id' => $existingId]);
                 return (string)$existingId;
             }
         }
-        return $this->add($ownerId, $groupId, $ingId, $customName, $expiresAt, false);
+        return $this->add($ownerId, $groupId, $ingId, $customName, $expiresAt, $runningLow);
     }
 
     public function update(string $id, array $fields): void
@@ -160,13 +160,34 @@ final class PantryRepository
 
     public function removeByIngredientIds(string $userId, ?string $groupId, array $ingIds): int
     {
-        if (!$ingIds) return 0;
+        return count($this->removeByIngredientIdsReturning($userId, $groupId, $ingIds));
+    }
+
+    /**
+     * Delete the user's/group's pantry rows for the given ingredient ids and return the
+     * distinct ingredient ids that were actually removed. Phantom ids (not in the pantry)
+     * and duplicates are dropped, so callers can persist a truthful "rescued" set rather
+     * than the raw requested list (which would inflate the waste & savings stats).
+     * @return list<string>
+     */
+    public function removeByIngredientIdsReturning(string $userId, ?string $groupId, array $ingIds): array
+    {
+        $ingIds = array_values(array_unique($ingIds));
+        if (!$ingIds) return [];
         $placeholders = implode(',', array_fill(0, count($ingIds), '?'));
         $where = '(owner_user_id = ?' . ($groupId ? ' OR group_id = ?' : '') . ') AND ingredient_id IN (' . $placeholders . ')';
         $params = [$userId];
         if ($groupId) $params[] = $groupId;
         $params = array_merge($params, $ingIds);
-        return (int)$this->db->executeStatement("DELETE FROM pantry_items WHERE $where", $params);
+
+        $matched = $this->db->fetchFirstColumn(
+            "SELECT DISTINCT ingredient_id FROM pantry_items WHERE $where",
+            $params
+        );
+        if (!$matched) return [];
+
+        $this->db->executeStatement("DELETE FROM pantry_items WHERE $where", $params);
+        return array_values(array_map('strval', $matched));
     }
 
     private function hydrate(array $r): array

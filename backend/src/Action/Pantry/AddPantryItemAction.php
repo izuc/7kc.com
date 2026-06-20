@@ -31,7 +31,9 @@ final class AddPantryItemAction
         if (!$expires && $ingId) {
             $expires = time() + $this->ingredients->shelfLife($ingId) * 86400;
         }
-        $id = $this->pantry->add($userId, $groupId, $ingId, $custom, $expires, !empty($body['running_low']));
+        // addOrRefresh dedups an already-stocked ingredient instead of inserting a second
+        // row (custom-name-only adds still fall through to a fresh insert).
+        $id = $this->pantry->addOrRefresh($userId, $groupId, $ingId, $custom, $expires, !empty($body['running_low']));
         return Json::send($res, ['item' => $this->pantry->find($id)], 201);
     }
 }

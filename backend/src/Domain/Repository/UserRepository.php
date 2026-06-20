@@ -140,6 +140,10 @@ final class UserRepository
                     $db->update('group_members', ['role' => 'owner'], ['group_id' => $gid, 'user_id' => $next]);
                 } else {
                     $db->executeStatement('DELETE FROM group_feed_events WHERE group_id = ?', [$gid]);
+                    // Delete suggestion children (other members' likes/comments) BEFORE the
+                    // suggestions, while the subquery can still resolve their ids.
+                    $db->executeStatement('DELETE FROM suggestion_likes WHERE suggestion_id IN (SELECT id FROM meal_suggestions WHERE group_id = ?)', [$gid]);
+                    $db->executeStatement('DELETE FROM suggestion_comments WHERE suggestion_id IN (SELECT id FROM meal_suggestions WHERE group_id = ?)', [$gid]);
                     $db->executeStatement('DELETE FROM meal_suggestions WHERE group_id = ?', [$gid]);
                     $db->executeStatement('DELETE FROM group_members WHERE group_id = ?', [$gid]);
                     $db->delete('groups', ['id' => $gid]);
@@ -157,7 +161,10 @@ final class UserRepository
             $db->executeStatement('DELETE FROM push_subscriptions WHERE user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM meal_plan WHERE owner_user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM pantry_items WHERE owner_user_id = ?', [$userId]);
+            // Items the user added to OTHER people's lists, plus every item on the user's
+            // OWN lists (incl. items other members added) — delete by list before the lists.
             $db->executeStatement('DELETE FROM shopping_list_items WHERE added_by_user_id = ?', [$userId]);
+            $db->executeStatement('DELETE FROM shopping_list_items WHERE list_id IN (SELECT id FROM shopping_lists WHERE owner_user_id = ?)', [$userId]);
             $db->executeStatement('DELETE FROM shopping_lists WHERE owner_user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM recipes WHERE owner_user_id = ?', [$userId]);
             $db->executeStatement('DELETE FROM group_members WHERE user_id = ?', [$userId]);

@@ -29,10 +29,12 @@ final class CookRecipeAction
 
         $body = (array)($req->getParsedBody() ?? []);
         $removeIds = array_values((array)($body['remove_ingredient_ids'] ?? []));
-        // Actual rows deleted — not the requested count, which inflates if the client
-        // sends ids that aren't actually in the pantry (and would skew the rescued stats).
-        $removed = $removeIds ? $this->pantry->removeByIngredientIds($userId, $groupId, $removeIds) : 0;
-        $cookedId = $this->recipes->recordCooked($userId, $groupId, $recipe['id'], $removeIds);
+        // Only the ids whose rows were actually deleted — not the raw requested list, which
+        // inflates if the client sends phantom or duplicate ids (and would skew the rescued
+        // stat, since StatsAction counts the persisted removed_pantry_json verbatim).
+        $removedIds = $removeIds ? $this->pantry->removeByIngredientIdsReturning($userId, $groupId, $removeIds) : [];
+        $removed = count($removedIds);
+        $cookedId = $this->recipes->recordCooked($userId, $groupId, $recipe['id'], $removedIds);
 
         if ($groupId) {
             $this->groups->pushEvent($groupId, $userId, 'cooked', [

@@ -29,9 +29,15 @@ if ($driver === 'mysql') {
         'collation' => 'utf8mb4_unicode_ci',
     ];
 } else {
+    $sqlitePath = $_ENV['DB_SQLITE_PATH'] ?? 'var/sevenkc.sqlite';
+    // Match ConnectionFactory::create(): only prepend $root for RELATIVE paths,
+    // so migrations and the running app always point at the same SQLite file.
+    if (!str_starts_with($sqlitePath, '/') && !preg_match('#^[A-Z]:\\\\#i', $sqlitePath)) {
+        $sqlitePath = $root . '/' . $sqlitePath;
+    }
     $envs['default'] = [
         'adapter' => 'sqlite',
-        'name' => $root . '/' . ($_ENV['DB_SQLITE_PATH'] ?? 'var/sevenkc.sqlite'),
+        'name' => $sqlitePath,
         'suffix' => '',
     ];
 }

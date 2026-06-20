@@ -191,6 +191,9 @@ final class RecipeRepository
     {
         $id = Uid::new();
         $slug = $this->slugify($payload['title']);
+        // Atomic: if a child insert fails (e.g. an over-length amount_text on strict
+        // MariaDB), the recipes row rolls back too — no orphaned half-written recipe.
+        $this->db->transactional(function () use ($id, $slug, $ownerId, $groupId, $payload): void {
         $this->db->insert('recipes', [
             'id' => $id,
             'slug' => $slug . '-' . substr($id, 0, 6),
@@ -228,6 +231,7 @@ final class RecipeRepository
                 'timer_seconds' => is_array($step) ? ($step['timer_seconds'] ?? null) : null,
             ]);
         }
+        });
         $this->ingredientIdsCache = null; // a new recipe's ingredients changed the map
         return $id;
     }

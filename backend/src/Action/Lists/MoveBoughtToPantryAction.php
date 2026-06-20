@@ -30,25 +30,30 @@ final class MoveBoughtToPantryAction
             return Json::error($res, 'not_found', 'List not found', 404);
         }
         $body = (array)($req->getParsedBody() ?? []);
-        $exclude = $body['exclude_item_ids'] ?? [];
+        $exclude = (array)($body['exclude_item_ids'] ?? []);
 
-        $items = $this->lists->itemsToMove($args['id'], $exclude);
-
-        // Atomic: either every bought item lands in the pantry AND is marked moved,
-        // or nothing changes — a mid-loop failure can't leave items half-migrated.
-        $movedCount = $this->db->transactional(function () use ($items, $userId, $groupId): int {
-            $moved = [];
-            foreach ($items as $it) {
+        // Atomic AND idempotent: read inside the transaction and CLAIM each row with a
+        // guarded UPDATE (moved_to_pantry 0→1). A concurrent/double-clicked second request
+        // sees the row already claimed (0 affected) and skips it, so addOrRefresh runs
+        // exactly once per item — no duplicate pantry rows.
+        $args_id = (string)$args['id'];
+        $movedCount = $this->db->transactional(function () use ($args_id, $exclude, $userId, $groupId): int {
+            $moved = 0;
+            foreach ($this->lists->itemsToMove($args_id, $exclude) as $it) {
+                $claimed = $this->db->executeStatement(
+                    'UPDATE shopping_list_items SET moved_to_pantry = 1 WHERE id = ? AND moved_to_pantry = 0',
+                    [$it['id']]
+                );
+                if ($claimed === 0) continue; // another request already moved this item
                 $expires = null;
                 if ($it['ingredient_id']) {
                     $shelf = $this->ingredients->shelfLife($it['ingredient_id']);
                     $expires = time() + $shelf * 86400;
                 }
                 $this->pantry->addOrRefresh($userId, $groupId, $it['ingredient_id'], $it['custom_name'], $expires);
-                $moved[] = $it['id'];
+                $moved++;
             }
-            $this->lists->markMoved($moved);
-            return count($moved);
+            return $moved;
         });
 
         return Json::send($res, ['moved' => $movedCount]);

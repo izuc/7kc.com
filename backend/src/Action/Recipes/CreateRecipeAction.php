@@ -38,6 +38,18 @@ final class CreateRecipeAction
         if (count($steps) > 60) {
             return Json::error($res, 'bad_request', 'Too many steps (max 60)', 400);
         }
+        // Per-ingredient bounds matching the DB columns (amount_text 120, ingredient_id 64),
+        // so an over-length value is a clean 400 instead of a 500 mid-insert.
+        foreach ($ingredients as $ing) {
+            if (!is_array($ing)) continue;
+            if (isset($ing['amount']) && mb_strlen((string)$ing['amount']) > 120) {
+                return Json::error($res, 'bad_request', 'Ingredient amount is too long (max 120 characters)', 400);
+            }
+            $iid = $ing['ingredient_id'] ?? $ing['id'] ?? null;
+            if ($iid !== null && mb_strlen((string)$iid) > 64) {
+                return Json::error($res, 'bad_request', 'Ingredient id is too long (max 64 characters)', 400);
+            }
+        }
 
         $groupId = !empty($body['share_with_group']) ? $this->users->groupIdFor($userId) : null;
         $id = $this->recipes->createCustom($userId, $groupId, $body);

@@ -43,8 +43,15 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
         foreach ($ingredients as $i) {
             $aliasesJson = json_encode($aliasesByIngredient[$i['id']] ?? [], JSON_UNESCAPED_UNICODE);
             if (isset($existingIngIdSet[$i['id']])) {
+                // Re-sync ALL editable columns (not just aliases) so an in-place edit to
+                // shared/ingredients.json — display, section, shelf_life_days — lands on an
+                // existing DB without a reset. section in particular drives the DERIVED diet
+                // flags, so a stale value silently mis-tags every recipe using the ingredient.
                 $this->getAdapter()->execute(
-                    'UPDATE ingredients SET aliases_json = ' . $pdo->quote($aliasesJson) .
+                    'UPDATE ingredients SET display = ' . $pdo->quote((string)$i['display']) .
+                    ', section = ' . $pdo->quote((string)$i['section']) .
+                    ', shelf_life_days = ' . (int)$i['shelf_life_days'] .
+                    ', aliases_json = ' . $pdo->quote($aliasesJson) .
                     ' WHERE id = ' . $pdo->quote($i['id'])
                 );
                 continue;

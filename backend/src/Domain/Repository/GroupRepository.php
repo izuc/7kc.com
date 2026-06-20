@@ -86,8 +86,31 @@ final class GroupRepository
     {
         $this->db->executeStatement('DELETE FROM group_members WHERE group_id = ?', [$groupId]);
         $this->db->executeStatement('DELETE FROM group_feed_events WHERE group_id = ?', [$groupId]);
+        // Suggestion children (likes/comments) before the suggestions, so the subquery resolves.
+        $this->db->executeStatement('DELETE FROM suggestion_likes WHERE suggestion_id IN (SELECT id FROM meal_suggestions WHERE group_id = ?)', [$groupId]);
+        $this->db->executeStatement('DELETE FROM suggestion_comments WHERE suggestion_id IN (SELECT id FROM meal_suggestions WHERE group_id = ?)', [$groupId]);
         $this->db->executeStatement('DELETE FROM meal_suggestions WHERE group_id = ?', [$groupId]);
         $this->db->delete('groups', ['id' => $groupId]);
+    }
+
+    /**
+     * If the user who just left was the group's owner, promote the longest-tenured
+     * remaining member to owner so the group never has a dangling/non-member owner.
+     * Call AFTER removeMember (so the leaver isn't a candidate).
+     */
+    public function reassignOwnerIfNeeded(string $groupId, string $leftUserId): void
+    {
+        $currentOwner = $this->db->fetchOne('SELECT owner_user_id FROM groups WHERE id = ?', [$groupId]);
+        if ($currentOwner === false || $currentOwner === null || (string)$currentOwner !== $leftUserId) {
+            return; // the leaver wasn't the owner — nothing to do
+        }
+        $next = $this->db->fetchOne(
+            'SELECT user_id FROM group_members WHERE group_id = ? ORDER BY joined_at ASC LIMIT 1',
+            [$groupId]
+        );
+        if (!$next) return; // no members left (caller deletes the group in that case)
+        $this->db->update('groups', ['owner_user_id' => $next], ['id' => $groupId]);
+        $this->db->update('group_members', ['role' => 'owner'], ['group_id' => $groupId, 'user_id' => $next]);
     }
 
     public function feed(string $groupId, int $limit = 50): array
