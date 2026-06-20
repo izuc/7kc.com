@@ -224,11 +224,11 @@ export function SettingsPage() {
               </span>
             </label>
             {canPush ? (
-              <div className="segmented">
-                <button className={pushOn ? 'active' : ''} disabled={pushBusy} onClick={() => !pushOn && togglePush()}>
+              <div className="segmented" role="group" aria-label="Expiring-food push notifications">
+                <button className={pushOn ? 'active' : ''} aria-pressed={pushOn} disabled={pushBusy} onClick={() => !pushOn && togglePush()}>
                   On
                 </button>
-                <button className={!pushOn ? 'active' : ''} disabled={pushBusy} onClick={() => pushOn && togglePush()}>
+                <button className={!pushOn ? 'active' : ''} aria-pressed={!pushOn} disabled={pushBusy} onClick={() => pushOn && togglePush()}>
                   Off
                 </button>
               </div>
@@ -243,15 +243,17 @@ export function SettingsPage() {
                 We only email when you have expiring or low items. Unsubscribe any time.
               </span>
             </label>
-            <div className="segmented">
+            <div className="segmented" role="group" aria-label="Weekly use-it-up email">
               <button
                 className={user?.digest_optin ? 'active' : ''}
+                aria-pressed={!!user?.digest_optin}
                 onClick={() => !user?.digest_optin && toggleDigest()}
               >
                 On
               </button>
               <button
                 className={!user?.digest_optin ? 'active' : ''}
+                aria-pressed={!user?.digest_optin}
                 onClick={() => user?.digest_optin && toggleDigest()}
               >
                 Off
@@ -349,6 +351,7 @@ function DeleteAccountModal({ onClose }: { onClose: () => void }) {
       </p>
       <input
         className="text-input"
+        aria-label="Type DELETE to confirm account deletion"
         value={confirm}
         onChange={(e) => setConfirm(e.target.value)}
         placeholder="DELETE"
@@ -387,9 +390,10 @@ function CreateGroupModal({ onClose, onDone }: { onClose: () => void; onDone: ()
   const [err, setErr] = useState<string | null>(null);
   return (
     <Modal small title="Create a group" eyebrow="Invite later" onClose={onClose}>
-      {err && <div className="error">{err}</div>}
-      <label className="field-label">Group name</label>
+      {err && <div className="error" role="alert">{err}</div>}
+      <label className="field-label" htmlFor="group-name-input">Group name</label>
       <input
+        id="group-name-input"
         className="text-input"
         placeholder="e.g. The Wilsons"
         value={name}

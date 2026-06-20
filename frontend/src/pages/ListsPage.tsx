@@ -329,6 +329,7 @@ export function ListsPage() {
         <Modal small title="New list" onClose={() => setShowNew(false)}>
           <input
             className="text-input"
+            aria-label="New list name"
             placeholder="e.g. Weekend BBQ"
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
@@ -475,6 +476,7 @@ function QuickAdd({ listId, onAdded }: { listId: string; onAdded: () => void }) 
       <div className="quickadd-row">
         <Icon name="plus" size={16} />
         <input
+          aria-label="Add an item to the list"
           placeholder="Add an item…"
           value={q}
           onChange={(e) => {

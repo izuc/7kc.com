@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { api } from '../lib/api';
@@ -242,6 +242,7 @@ export function RecipesPage() {
           <button
             key={id}
             className={`filter-chip ${filter === id ? 'active' : ''}`}
+            aria-pressed={filter === id}
             onClick={() => setFilter(id)}
           >
             {label}
@@ -262,11 +263,13 @@ export function RecipesPage() {
         </div>
       ) : (
         <>
-          <div className="recipe-grid stagger-in">
+          <ul className="recipe-grid stagger-in" role="list">
             {paginated.map((entry) => (
-              <RecipeCard key={entry.recipe.id} entry={entry} />
+              <li key={entry.recipe.id} className="recipe-card-li">
+                <RecipeCard entry={entry} />
+              </li>
             ))}
-          </div>
+          </ul>
 
           <Pagination
             page={safePage}
@@ -363,11 +366,17 @@ function pageNumbers(current: number, total: number): (number | '…')[] {
   return pages;
 }
 
-function RecipeCard({ entry }: { entry: RankedRecipe }) {
+const RecipeCard = memo(function RecipeCard({ entry }: { entry: RankedRecipe }) {
   const { recipe, pantry_match, have_ingredient_ids, missing_ingredient_ids, expiring_hits } = entry;
   const allIngredientIds = [...have_ingredient_ids, ...missing_ingredient_ids];
+  const totalTime = recipe.prep_time + recipe.cook_time;
+  const cardLabel =
+    `${recipe.title}, ${totalTime} minutes, serves ${recipe.servings}, ` +
+    `${Math.round(pantry_match * 100)}% pantry match` +
+    (pantry_match === 1 ? ', ready to cook' : `, need ${missing_ingredient_ids.length} more`) +
+    (expiring_hits > 0 ? ', uses expiring items' : '');
   return (
-    <Link className="recipe-card" to={`/recipes/${recipe.slug}`}>
+    <Link className="recipe-card" to={`/recipes/${recipe.slug}`} aria-label={cardLabel}>
       <div style={{ aspectRatio: '5 / 4', overflow: 'hidden' }}>
         <MealPlate recipe={recipe} ingredientIds={allIngredientIds} size={280} rounded={false} />
       </div>
@@ -404,4 +413,4 @@ function RecipeCard({ entry }: { entry: RankedRecipe }) {
       </div>
     </Link>
   );
-}
+});

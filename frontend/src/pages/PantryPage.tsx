@@ -75,14 +75,14 @@ export function PantryPage() {
           <h1 className="screen-title">What you've got</h1>
         </div>
         <div className="screen-head-right">
-          <div className="segmented">
-            <button className={view === 'section' ? 'active' : ''} onClick={() => setView('section')}>
+          <div className="segmented" role="group" aria-label="Sort pantry by">
+            <button className={view === 'section' ? 'active' : ''} aria-pressed={view === 'section'} onClick={() => setView('section')}>
               By section
             </button>
-            <button className={view === 'expiry' ? 'active' : ''} onClick={() => setView('expiry')}>
+            <button className={view === 'expiry' ? 'active' : ''} aria-pressed={view === 'expiry'} onClick={() => setView('expiry')}>
               By expiry
             </button>
-            <button className={view === 'alpha' ? 'active' : ''} onClick={() => setView('alpha')}>
+            <button className={view === 'alpha' ? 'active' : ''} aria-pressed={view === 'alpha'} onClick={() => setView('alpha')}>
               A–Z
             </button>
           </div>

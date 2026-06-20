@@ -532,6 +532,21 @@ a { color: var(--accent-ink); }
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 16px;
 }
+/* List semantics for the recipe grid without altering layout: the <li> provides
+   no box, so each .recipe-card stays the direct grid item (pixel-identical). */
+ul.recipe-grid { list-style: none; margin: 0; padding: 0; }
+.recipe-card-li { display: contents; }
+
+/* Screen-reader-only text: visually hidden, still announced. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 .recipe-card {
   display: flex; flex-direction: column;
   background: var(--paper);

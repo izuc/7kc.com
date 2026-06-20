@@ -29,3 +29,4 @@ Thumbs.db
 scripts/.qa-*
 _slice.txt
 _*.tmp
+scripts/.review-findings.md
