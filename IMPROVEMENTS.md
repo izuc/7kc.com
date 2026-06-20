@@ -23,11 +23,11 @@ _(Skipped as already-done: global `focus-visible` styling, `role="alert"` on for
 - [ ] Longer `staleTime`/`gcTime` on static reads (ingredient dictionary, recipes, retailers).
 - [ ] Memoize `MealPlate` ingredient-id array derivation.
 
-## Batch C — PWA & offline `H/L`
-- [ ] Runtime-cache `/recipes/suggestions|cooked|favourites` + group feed/suggestions (only base `/recipes` is cached now) so the ranked feed, history and group browse work offline.
-- [ ] Outbox: keep the queue on transient (5xx/429) failures instead of dropping the op; add a Retry affordance.
-- [ ] Manifest: app shortcuts (Today / Pantry / Lists), categories.
-- [ ] SW update-available prompt (refresh-to-update) + lifecycle analytics.
+## Batch C — PWA & offline `H/L` ✅ (update-prompt deferred)
+- [x] Runtime-cache all recipe sub-paths (suggestions/cooked/favourites/{slug}/comments) + ingredients + group feed/suggestions, bounded (300 entries / 1 day). Ranked feed, history, favourites & group browse now work offline.
+- [x] Outbox: keep the queue on transient (5xx/429/offline/401) failures and only drop a 4xx server-verdict; backed-off auto-retry + a "Retry now" button in the sync banner.
+- [x] Manifest: app shortcuts (Today / Pantry / Lists) + categories.
+- [ ] SW update-available prompt — deferred (registerType is already `autoUpdate`; an explicit refresh prompt is a UX call).
 
 ## Batch D — Backend correctness & security `M/L`
 - [ ] Wrap `MoveBoughtToPantryAction` in a transaction (currently multi-step, no atomicity) _(verify)_.

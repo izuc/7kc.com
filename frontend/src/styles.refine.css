@@ -340,6 +340,19 @@ h3 {
   background: #fef3c7;
   border-color: #fcd34d;
 }
+.sync-banner .sync-retry {
+  margin-left: auto;
+  flex: 0 0 auto;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: inherit;
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+  cursor: pointer;
+}
+.sync-banner .sync-retry:hover { background: color-mix(in srgb, currentColor 20%, transparent); }
 .sync-banner .sync-dot {
   width: 8px;
   height: 8px;

@@ -14,6 +14,8 @@ interface SyncState {
   online: boolean;
   pending: number;
   syncing: boolean;
+  /** Set when a flush stalls on a transient server error (5xx/429); cleared on a clean drain. */
+  retrying: boolean;
 }
 
 /** Connectivity + pending-write state, surfaced in the nav as a small indicator. */
@@ -21,6 +23,7 @@ export const useSync = create<SyncState>(() => ({
   online: typeof navigator === 'undefined' ? true : navigator.onLine,
   pending: 0,
   syncing: false,
+  retrying: false,
 }));
 
 async function refreshPending() {
@@ -51,16 +54,44 @@ function replay(op: OutboxOp): Promise<unknown> {
 }
 
 let flushing = false;
+let retryTimer: ReturnType<typeof setTimeout> | null = null;
+let retryAttempt = 0;
 
-/** Drain the outbox in order. Stops at the first network failure (still offline); drops server-rejected ops so one poison entry can't wedge the queue. */
+/** Back off on transient failures: 5s, 15s, 45s, … capped at ~5 min. */
+function scheduleRetry(qc?: QueryClient) {
+  if (retryTimer) return; // one timer in flight at a time
+  const delay = Math.min(5000 * 3 ** retryAttempt, 5 * 60 * 1000);
+  retryAttempt += 1;
+  retryTimer = setTimeout(() => {
+    retryTimer = null;
+    flushOutbox(qc);
+  }, delay);
+}
+
+function clearRetry() {
+  if (retryTimer) clearTimeout(retryTimer);
+  retryTimer = null;
+  retryAttempt = 0;
+}
+
+/**
+ * Drain the outbox in order. Keeps the queue intact on transient failures —
+ * still offline (fetch-level), auth-expired (401), or a busy/erroring server
+ * (429/5xx) — and only drops a *server-rejected* op (4xx verdict) so one poison
+ * entry can't wedge the queue. Transient stops schedule a backed-off retry.
+ */
 export async function flushOutbox(qc?: QueryClient): Promise<void> {
   if (flushing || (typeof navigator !== 'undefined' && !navigator.onLine)) return;
   const raw = await outboxAll();
-  if (raw.length === 0) return;
+  if (raw.length === 0) {
+    clearRetry();
+    useSync.setState({ retrying: false });
+    return;
+  }
 
   flushing = true;
   useSync.setState({ syncing: true });
-  let stoppedOffline = false;
+  let stopped = false; // transient stop — leave the rest queued
   try {
     for (const item of planFlush(raw)) {
       if (item.op === null) {
@@ -72,10 +103,11 @@ export async function flushOutbox(qc?: QueryClient): Promise<void> {
         await replay(item.op);
       } catch (e) {
         if (e instanceof ApiError) {
-          if (e.status === 401) break; // auth expired — keep the queue, retry after re-login
-          // 404/409/422 etc: the server reached a verdict; dropping avoids a wedged queue
+          if (e.status === 401) { stopped = true; break; } // auth expired — keep the queue, retry after re-login
+          if (e.status === 429 || e.status >= 500) { stopped = true; break; } // server busy/erroring — keep the op, retry later
+          // 400/404/409/422 etc: the server reached a verdict; dropping avoids a wedged queue
         } else {
-          stoppedOffline = true; // fetch-level failure → still offline, leave the rest queued
+          stopped = true; // fetch-level failure → still offline, leave the rest queued
           break;
         }
       }
@@ -83,11 +115,17 @@ export async function flushOutbox(qc?: QueryClient): Promise<void> {
     }
   } finally {
     flushing = false;
-    await refreshPending();
-    useSync.setState({ syncing: false });
-    if (qc && !stoppedOffline) {
-      qc.invalidateQueries({ queryKey: ['lists'] });
-      qc.invalidateQueries({ queryKey: ['pantry'] });
+    const left = await outboxCount();
+    useSync.setState({ pending: left, syncing: false, retrying: stopped && left > 0 });
+    if (stopped && left > 0) {
+      // a transient stop with work still queued → retry with backoff
+      if (navigator.onLine) scheduleRetry(qc);
+    } else {
+      clearRetry();
+      if (qc) {
+        qc.invalidateQueries({ queryKey: ['lists'] });
+        qc.invalidateQueries({ queryKey: ['pantry'] });
+      }
     }
   }
 }
@@ -125,6 +163,12 @@ export async function mutateWithOutbox(opts: {
   }
 }
 
+/** User-initiated retry (e.g. a "Retry" button) — reset backoff and flush now. */
+export function retryNow(qc: QueryClient): void {
+  clearRetry();
+  flushOutbox(qc);
+}
+
 let wired = false;
 
 /** Wire connectivity listeners + an initial flush. Safe to call once on app start. */
@@ -134,6 +178,7 @@ export function initOfflineSync(qc: QueryClient): void {
 
   const goOnline = () => {
     useSync.setState({ online: true });
+    clearRetry(); // reconnect → flush now, backoff starts fresh
     flushOutbox(qc);
   };
   window.addEventListener('online', goOnline);

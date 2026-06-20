@@ -1,11 +1,11 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 import { daysUntil } from '../lib/format';
 import { useAuth } from '../store/auth';
 import { useUi } from '../store/ui';
 import { Icon } from './Icon';
-import { useSync } from '../lib/offlineSync';
+import { useSync, retryNow } from '../lib/offlineSync';
 import type { ReactNode } from 'react';
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -31,8 +31,9 @@ export function AppShell({ children }: { children: ReactNode }) {
   });
   const unread = unreadData?.unread ?? 0;
 
-  const { online, pending, syncing } = useSync();
+  const { online, pending, syncing, retrying } = useSync();
   const showSync = !online || pending > 0;
+  const qc = useQueryClient();
 
   const activeItemsCount =
     listsData?.lists
@@ -127,11 +128,20 @@ export function AppShell({ children }: { children: ReactNode }) {
         {showSync && (
           <div className={`sync-banner ${online ? '' : 'offline'}`} role="status" aria-live="polite">
             <span className="sync-dot" aria-hidden />
-            {!online
-              ? `Offline — ${pending} change${pending === 1 ? '' : 's'} saved here, will sync when you're back`
-              : syncing
-              ? `Syncing ${pending} change${pending === 1 ? '' : 's'}…`
-              : `${pending} change${pending === 1 ? '' : 's'} waiting to sync`}
+            <span>
+              {!online
+                ? `Offline — ${pending} change${pending === 1 ? '' : 's'} saved here, will sync when you're back`
+                : syncing
+                ? `Syncing ${pending} change${pending === 1 ? '' : 's'}…`
+                : retrying
+                ? `Sync hit a snag — ${pending} change${pending === 1 ? '' : 's'} will retry`
+                : `${pending} change${pending === 1 ? '' : 's'} waiting to sync`}
+            </span>
+            {online && !syncing && pending > 0 && (
+              <button className="sync-retry" onClick={() => retryNow(qc)}>
+                Retry now
+              </button>
+            )}
           </div>
         )}
         {children}

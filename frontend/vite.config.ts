@@ -36,6 +36,13 @@ export default defineConfig(({ mode }) => {
             enctype: 'application/x-www-form-urlencoded',
             params: { title: 'title', text: 'text', url: 'url' },
           },
+          categories: ['food', 'lifestyle', 'productivity'],
+          // Long-press / jump-list shortcuts into the core screens.
+          shortcuts: [
+            { name: "Today", short_name: 'Today', url: '/today', description: "Today's kitchen" },
+            { name: 'Pantry', short_name: 'Pantry', url: '/pantry', description: 'Your pantry' },
+            { name: 'Shopping lists', short_name: 'Lists', url: '/lists', description: 'Your shopping lists' },
+          ],
         },
         workbox: {
           globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
@@ -56,9 +63,17 @@ export default defineConfig(({ mode }) => {
               },
             },
             {
-              urlPattern: /\/api\/v1\/(ingredients|recipes)(\?|$)/,
+              // Recipe reads incl. sub-paths (/recipes/suggestions, /cooked,
+              // /favourites, /{slug}, /{slug}/comments), the ingredient dictionary,
+              // and group feed/suggestions — so the ranked feed, cook history,
+              // favourites and group browse all work offline. GET-only (Workbox
+              // default), so POSTs (import, comments) are never served from cache.
+              urlPattern: /\/api\/v1\/(ingredients|recipes|groups)(\/|\?|$)/,
               handler: 'StaleWhileRevalidate',
-              options: { cacheName: 'api-reads' },
+              options: {
+                cacheName: 'api-reads',
+                expiration: { maxEntries: 300, maxAgeSeconds: 60 * 60 * 24 },
+              },
             },
             {
               // Lists & pantry must render offline (the supermarket case) — serve the
