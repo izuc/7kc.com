@@ -3,6 +3,7 @@ import type { QueryClient, QueryKey } from '@tanstack/react-query';
 import { api, ApiError } from './api';
 import {
   type OutboxOp,
+  currentUserId,
   outboxAdd,
   outboxAll,
   outboxCount,
@@ -82,17 +83,27 @@ function clearRetry() {
  */
 export async function flushOutbox(qc?: QueryClient): Promise<void> {
   if (flushing || (typeof navigator !== 'undefined' && !navigator.onLine)) return;
-  const raw = await outboxAll();
-  if (raw.length === 0) {
-    clearRetry();
-    useSync.setState({ retrying: false });
-    return;
-  }
-
+  // Claim the lock synchronously — before the first await — so two triggers
+  // firing in the same tick can't both pass the check and double-drain.
   flushing = true;
-  useSync.setState({ syncing: true });
   let stopped = false; // transient stop — leave the rest queued
   try {
+    const all = await outboxAll();
+    // Never replay another account's queued ops under the current bearer token
+    // (e.g. A added a pantry item offline, signed out, B signed in on this device).
+    // Drop foreign + legacy-untagged ops; only the current user's ops are replayed.
+    const me = currentUserId();
+    const raw = all.filter((r) => r.userId === me);
+    for (const r of all) {
+      if (r.userId !== me) await outboxDelete(r.seq);
+    }
+    if (raw.length === 0) {
+      clearRetry();
+      useSync.setState({ retrying: false, pending: await outboxCount() });
+      return;
+    }
+
+    useSync.setState({ syncing: true });
     for (const item of planFlush(raw)) {
       if (item.op === null) {
         // collapsed to nothing (e.g. add+delete offline) — just purge the rows
@@ -113,8 +124,6 @@ export async function flushOutbox(qc?: QueryClient): Promise<void> {
       }
       for (const seq of item.seqs) await outboxDelete(seq);
     }
-  } finally {
-    flushing = false;
     const left = await outboxCount();
     useSync.setState({ pending: left, syncing: false, retrying: stopped && left > 0 });
     if (stopped && left > 0) {
@@ -127,6 +136,8 @@ export async function flushOutbox(qc?: QueryClient): Promise<void> {
         qc.invalidateQueries({ queryKey: ['pantry'] });
       }
     }
+  } finally {
+    flushing = false;
   }
 }
 

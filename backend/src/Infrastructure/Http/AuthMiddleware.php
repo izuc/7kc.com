@@ -30,12 +30,18 @@ final class AuthMiddleware implements MiddlewareInterface
             return self::unauthorized('Invalid token: ' . $e->getMessage());
         }
         $userId = $payload['sub'] ?? null;
-        // Token-generation check: "sign out everywhere" bumps the user's token_version.
-        // A legacy token with no `tv` claim reads as 0, matching new users' default,
-        // so already-issued tokens keep working until the user revokes them.
+        // Load the user so a token for a DELETED account fails closed — a missing row
+        // must not read as token_version 0 (which would match a default tv=0 token and
+        // hand a ghost identity full write access until the JWT expires).
+        // Token-generation check: "sign out everywhere" bumps the user's token_version;
+        // a legacy token with no `tv` claim reads as 0, matching new users' default.
         if ($userId !== null) {
+            $u = $this->users->findById((string)$userId);
+            if ($u === null) {
+                return self::unauthorized('Token revoked');
+            }
             $tokenTv = isset($payload['tv']) ? (int)$payload['tv'] : 0;
-            if ($tokenTv !== $this->users->tokenVersion($userId)) {
+            if ($tokenTv !== (int)($u['token_version'] ?? 0)) {
                 return self::unauthorized('Token revoked');
             }
         }

@@ -29,22 +29,42 @@ final class RateLimiter
             );
             return null;
         }
-        $count = (int)$row['count'] + 1;
+        // Atomic increment (single locked statement on MariaDB + SQLite) avoids the
+        // lost-update race a read-modify-write SELECT+UPDATE has — parallel requests
+        // can't all read the same stale count and each write count+1. The window guard
+        // skips a window a concurrent request just reset via REPLACE.
+        $this->db->executeStatement(
+            'UPDATE rate_limits SET count = count + 1 WHERE bucket = ? AND window_start = ?',
+            [$bucket, (int)$row['window_start']]
+        );
+        $count = (int)$this->db->fetchOne('SELECT count FROM rate_limits WHERE bucket = ?', [$bucket]);
         if ($count > $limit) {
             return ((int)$row['window_start'] + $windowSec) - $now;
         }
-        $this->db->executeStatement('UPDATE rate_limits SET count = ? WHERE bucket = ?', [$count, $bucket]);
         return null;
     }
 
     public static function clientIp(ServerRequestInterface $req): string
     {
-        $xff = $req->getHeaderLine('X-Forwarded-For');
-        if ($xff !== '') {
-            $first = trim(explode(',', $xff)[0]);
-            if ($first !== '') return $first;
+        // Never trust a client-supplied X-Forwarded-For unless the direct peer is a
+        // configured trusted proxy — otherwise per-IP limits are bypassable by rotating
+        // a forged header. With TRUSTED_PROXIES unset (default), key strictly on REMOTE_ADDR.
+        $remote = (string)($req->getServerParams()['REMOTE_ADDR'] ?? '');
+        $trusted = array_values(array_filter(array_map('trim', explode(',', (string)($_ENV['TRUSTED_PROXIES'] ?? '')))));
+        if ($remote !== '' && in_array($remote, $trusted, true)) {
+            $xff = $req->getHeaderLine('X-Forwarded-For');
+            if ($xff !== '') {
+                $hops = array_map('trim', explode(',', $xff));
+                // Walk right-to-left; the first hop that isn't one of our trusted proxies
+                // is the real client (left-most entries are attacker-controllable).
+                for ($i = count($hops) - 1; $i >= 0; $i--) {
+                    if ($hops[$i] !== '' && !in_array($hops[$i], $trusted, true)) {
+                        return $hops[$i];
+                    }
+                }
+            }
         }
-        return (string)($req->getServerParams()['REMOTE_ADDR'] ?? 'unknown');
+        return $remote !== '' ? $remote : 'unknown';
     }
 
     public static function tooMany(ResponseInterface $res, int $retry): ResponseInterface

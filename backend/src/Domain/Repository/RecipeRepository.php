@@ -288,12 +288,18 @@ final class RecipeRepository
         return true;
     }
 
-    public function favourites(string $userId): array
+    public function favourites(string $userId, ?string $groupId = null): array
     {
-        $rows = $this->db->fetchAllAssociative(
-            'SELECT r.* FROM recipe_favourites f JOIN recipes r ON r.id = f.recipe_id WHERE f.user_id = ? ORDER BY f.created_at DESC',
-            [$userId]
-        );
+        // Same visibility predicate as all()/findBySlugForUser(): a favourited custom
+        // recipe must stay hidden once the user no longer owns it or shares its group
+        // (e.g. they favourited a group member's recipe, then left the group).
+        $sql = 'SELECT r.* FROM recipe_favourites f JOIN recipes r ON r.id = f.recipe_id'
+            . ' WHERE f.user_id = ? AND (r.is_custom = 0 OR r.owner_user_id = ?'
+            . ($groupId ? ' OR r.group_id = ?' : '') . ')'
+            . ' ORDER BY f.created_at DESC';
+        $params = [$userId, $userId];
+        if ($groupId) $params[] = $groupId;
+        $rows = $this->db->fetchAllAssociative($sql, $params);
         $recipes = array_map([$this, 'hydrate'], $rows);
         $ings = $this->ingredientIdsForAll();
         foreach ($recipes as &$r) {

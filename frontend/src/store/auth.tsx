@@ -1,6 +1,8 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import type { User } from '../types/models';
 import { api, getToken, setToken } from '../lib/api';
+import { outboxClear } from '../lib/outbox';
 
 interface AuthState {
   user: User | null;
@@ -17,6 +19,7 @@ const AuthContext = createContext<AuthState | null>(null);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const qc = useQueryClient();
 
   const refresh = useCallback(async () => {
     if (!getToken()) {
@@ -42,29 +45,39 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // If any API call gets a 401 (expired/revoked token), drop to the login screen
   // instead of leaving the UI wedged in a permanent loading/error state.
   useEffect(() => {
-    const onUnauthorized = () => setUser(null);
+    const onUnauthorized = () => {
+      setUser(null);
+      qc.clear(); // revoked token → purge the cache so no stale private data lingers
+    };
     window.addEventListener('7kc:unauthorized', onUnauthorized);
     return () => window.removeEventListener('7kc:unauthorized', onUnauthorized);
-  }, []);
+  }, [qc]);
 
+  // Clearing the React Query cache on every identity change stops the previous
+  // account's private data (lists/pantry/feed/badges) from being read out of the
+  // still-warm cache by the next account in the same tab.
   const login = useCallback(async (email: string, password: string) => {
     const r = await api.login(email, password);
+    qc.clear();
     setToken(r.token);
     setUser(r.user);
     return r.user;
-  }, []);
+  }, [qc]);
 
   const register = useCallback(async (email: string, password: string, displayName?: string) => {
     const r = await api.register(email, password, displayName);
+    qc.clear();
     setToken(r.token);
     setUser(r.user);
     return r.user;
-  }, []);
+  }, [qc]);
 
   const logout = useCallback(() => {
     setToken(null);
     setUser(null);
-  }, []);
+    qc.clear();
+    void outboxClear(); // drop any unsynced offline ops on an explicit sign-out
+  }, [qc]);
 
   // Revoke every token for this account server-side, then drop this device locally.
   const signOutEverywhere = useCallback(async () => {
@@ -73,8 +86,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } finally {
       setToken(null);
       setUser(null);
+      qc.clear();
+      void outboxClear();
     }
-  }, []);
+  }, [qc]);
 
   const value = useMemo<AuthState>(
     () => ({ user, loading, login, register, logout, signOutEverywhere, refresh }),

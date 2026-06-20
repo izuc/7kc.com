@@ -31,6 +31,8 @@ export interface PantryPatch {
 
 export interface OutboxEntry {
   seq: number;
+  /** The user who created the op, so it's never replayed under a different account. */
+  userId?: string | null;
   op: OutboxOp;
 }
 
@@ -40,8 +42,22 @@ export interface PlanItem {
   seqs: number[];
 }
 
+import { getToken } from './api';
+
 const DB_NAME = '7kc-outbox';
 const STORE = 'ops';
+
+/** The current account id, parsed from the JWT `sub` — used to tag/scope outbox ops. */
+export function currentUserId(): string | null {
+  const t = getToken();
+  if (!t) return null;
+  try {
+    const json = JSON.parse(atob(t.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
+    return json?.sub != null ? String(json.sub) : null;
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Build an ordered flush plan from the raw queue, collapsing redundant ops while
@@ -139,14 +155,29 @@ function openDb(): Promise<IDBDatabase> {
 }
 
 export async function outboxAdd(op: OutboxOp): Promise<void> {
+  const userId = currentUserId();
   if (!hasIDB) {
-    mem.push({ seq: ++memSeq, op });
+    mem.push({ seq: ++memSeq, userId, op });
     return;
   }
   const db = await openDb();
   await new Promise<void>((resolve, reject) => {
     const tx = db.transaction(STORE, 'readwrite');
-    tx.objectStore(STORE).add({ op });
+    tx.objectStore(STORE).add({ userId, op }); // keyPath 'seq' still autoIncrements
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+  db.close();
+}
+
+/** Drop the entire queue (e.g. on logout/login) so one account's ops can't replay under another. */
+export async function outboxClear(): Promise<void> {
+  mem.length = 0;
+  if (!hasIDB) return;
+  const db = await openDb();
+  await new Promise<void>((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readwrite');
+    tx.objectStore(STORE).clear();
     tx.oncomplete = () => resolve();
     tx.onerror = () => reject(tx.error);
   });
