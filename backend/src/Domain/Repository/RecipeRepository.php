@@ -171,14 +171,20 @@ final class RecipeRepository
         return $recipe;
     }
 
+    /** @var array<string, list<string>>|null per-request memo of the recipe→ingredient-ids map */
+    private ?array $ingredientIdsCache = null;
+
     public function ingredientIdsForAll(): array
     {
+        // Ranking (SuggestionsAction) and hydration (all/summariesFor/cooked) each
+        // ask for this full map; memoize so the identical query runs once per request.
+        if ($this->ingredientIdsCache !== null) return $this->ingredientIdsCache;
         $rows = $this->db->fetchAllAssociative('SELECT recipe_id, ingredient_id FROM recipe_ingredients WHERE ingredient_id IS NOT NULL');
         $out = [];
         foreach ($rows as $r) {
             $out[$r['recipe_id']][] = $r['ingredient_id'];
         }
-        return $out;
+        return $this->ingredientIdsCache = $out;
     }
 
     public function createCustom(string $ownerId, ?string $groupId, array $payload): string
@@ -222,6 +228,7 @@ final class RecipeRepository
                 'timer_seconds' => is_array($step) ? ($step['timer_seconds'] ?? null) : null,
             ]);
         }
+        $this->ingredientIdsCache = null; // a new recipe's ingredients changed the map
         return $id;
     }
 

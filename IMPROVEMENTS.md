@@ -30,14 +30,16 @@ _(Skipped as already-done: global `focus-visible` styling, `role="alert"` on for
 - [x] Manifest: app shortcuts (Today / Pantry / Lists) + categories.
 - [ ] SW update-available prompt — deferred (registerType is already `autoUpdate`; an explicit refresh prompt is a UX call).
 
-## Batch D — Backend correctness & security `M/L`
-- [ ] Wrap `MoveBoughtToPantryAction` in a transaction (currently multi-step, no atomicity) _(verify)_.
-- [ ] Field-size validation on user-authored recipe/list inputs (titles, notes) before insert.
-- [ ] Rate-limit the remaining state-changing open-ish endpoints (suggestion create, digest unsubscribe) _(verify)_.
-- [ ] Add indexes for hot queries (`shopping_list_items`, `rate_limits.bucket`) _(verify)_.
-- [ ] `(user_id, endpoint)` uniqueness / race-safety on push subscriptions _(verify; endpoint-unique today)_.
-- [ ] Harden `week_start` parsing (bounded, no ReDoS) _(verify)_.
-- [ ] CORS: refuse to echo an empty/origin-mismatched `Access-Control-Allow-Origin` _(verify)_.
+## Batch D — Backend correctness & security `M/L` ✅
+- [x] Wrap `MoveBoughtToPantryAction` in a DBAL transaction — atomic move (verified live: `{moved:2}`, pantry populated).
+- [x] Field-size validation on `CreateRecipeAction` (title ≤200, desc ≤4000, ≤100 ingredients, ≤60 steps) + cap suggestion title; verified 400/201.
+- [x] Rate-limit `CreateSuggestionAction` (20/min/user) — digest-unsubscribe was **already** limited.
+- [x] CORS: never emit a blank `Access-Control-Allow-Origin` (prod fails closed).
+- [x] Memoize `ingredientIdsForAll()` per request (called twice per suggestions request) — the real "N+1".
+- [skip] `(user_id,endpoint)` push uniqueness — **already** `endpoint`-UNIQUE, which is the *correct* design (a push endpoint is globally one browser).
+- [skip] `week_start` ReDoS — regex is `^\d{4}-\d{2}-\d{2}$`, anchored & linear; no ReDoS.
+- [skip] `shopping_list_items`/`rate_limits` indexes — list-items always queried by indexed `list_id`; `rate_limits.bucket` is the PK. Both already covered.
+- [skip] `MealPlan.upsertSlot` race — **already** catches `UniqueConstraintViolationException`.
 
 ## Batch E — UX wins `M/L–M`
 - [ ] Archived-lists view with Restore (backend `archiveList` exists; no UI to see/restore).

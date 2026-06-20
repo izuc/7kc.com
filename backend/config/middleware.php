@@ -21,11 +21,17 @@ return function (App $app): void {
         } else {
             $response = $handler->handle($request);
         }
-        return $response
-            ->withHeader('Access-Control-Allow-Origin', $settings['cors']['origin'])
+        $response = $response
             ->withHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,PUT,DELETE,OPTIONS')
             ->withHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization')
             ->withHeader('Vary', 'Origin');
+        // Only advertise an allowed origin when one is actually configured (prod with
+        // no CORS_ALLOW_ORIGIN fails closed — never emit an empty/blank ACAO header).
+        $origin = (string)$settings['cors']['origin'];
+        if ($origin !== '') {
+            $response = $response->withHeader('Access-Control-Allow-Origin', $origin);
+        }
+        return $response;
     });
 
     $app->addRoutingMiddleware();
