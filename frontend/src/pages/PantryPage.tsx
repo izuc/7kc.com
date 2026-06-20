@@ -234,6 +234,8 @@ function PantryCard({ item, onChanged }: { item: HydratedItem; onChanged: () => 
             softDelete({
               queryKey: ['pantry'],
               optimistic: (old) => ({ ...old, items: old.items.filter((x: any) => x.id !== item.id) }),
+              restore: (old) =>
+                old.items.some((x: any) => x.id === item.id) ? old : { ...old, items: [...old.items, item] },
               commit: () => api.deletePantryItem(item.id),
               text: `Removed ${item.display}`,
             })
@@ -261,6 +263,8 @@ function PantryCard({ item, onChanged }: { item: HydratedItem; onChanged: () => 
               softDelete({
                 queryKey: ['pantry'],
                 optimistic: (old) => ({ ...old, items: old.items.filter((x: any) => x.id !== item.id) }),
+                restore: (old) =>
+                  old.items.some((x: any) => x.id === item.id) ? old : { ...old, items: [...old.items, item] },
                 commit: () => api.deletePantryItem(item.id, 'tossed'),
                 invalidateKeys: [['stats']],
                 text: `Tossed ${item.display}`,

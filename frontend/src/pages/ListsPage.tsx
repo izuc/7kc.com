@@ -110,6 +110,36 @@ export function ListsPage() {
       }
     });
 
+  // Rendered in BOTH the empty state and the main view so archived lists are never
+  // stranded — archiving your last active list must still let you restore it.
+  const archivedModal = showArchived && (
+    <Modal small title="Archived lists" onClose={() => setShowArchived(false)}>
+      {archivedLists.length === 0 ? (
+        <p className="muted small">No archived lists.</p>
+      ) : (
+        <ul className="archived-list" role="list">
+          {archivedLists.map((l) => (
+            <li key={l.id} className="archived-row">
+              <div className="archived-row-info">
+                <span className="archived-row-name">{l.name}</span>
+                <span className="mono muted small">{l.items.length} items</span>
+              </div>
+              <button
+                className="btn btn-ghost"
+                onClick={() => {
+                  setArchived(l.id, false);
+                  setShowArchived(false);
+                }}
+              >
+                <Icon name="refresh" size={13} /> Restore
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </Modal>
+  );
+
   if (isLoading) {
     return (
       <div className="screen">
@@ -136,7 +166,13 @@ export function ListsPage() {
           >
             Create one
           </button>
+          {archivedLists.length > 0 && (
+            <button className="btn btn-ghost" onClick={() => setShowArchived(true)}>
+              <Icon name="archive" size={14} /> Archived ({archivedLists.length})
+            </button>
+          )}
         </div>
+        {archivedModal}
       </div>
     );
   }
@@ -263,7 +299,8 @@ export function ListsPage() {
             key={it.id}
             item={it}
             onToggle={() => setBought(list.id, it.id, !it.is_bought)}
-            onRemove={() =>
+            onRemove={() => {
+              const idx = list.items.findIndex((x) => x.id === it.id);
               softDelete({
                 queryKey: ['lists'],
                 optimistic: (old) => ({
@@ -272,10 +309,18 @@ export function ListsPage() {
                     l.id === list.id ? { ...l, items: l.items.filter((x: any) => x.id !== it.id) } : l
                   ),
                 }),
+                restore: (old) => ({
+                  ...old,
+                  lists: old.lists.map((l: any) =>
+                    l.id === list.id && !l.items.some((x: any) => x.id === it.id)
+                      ? { ...l, items: [...l.items.slice(0, idx), it, ...l.items.slice(idx)] }
+                      : l
+                  ),
+                }),
                 commit: () => api.deleteListItem(list.id, it.id),
                 text: 'Item removed',
-              })
-            }
+              });
+            }}
           />
         )}
         emptyHint={
@@ -317,7 +362,8 @@ export function ListsPage() {
                 key={it.id}
                 item={it}
                 onToggle={() => setBought(list.id, it.id, !it.is_bought)}
-                onRemove={() =>
+                onRemove={() => {
+                  const idx = list.items.findIndex((x) => x.id === it.id);
                   softDelete({
                     queryKey: ['lists'],
                     optimistic: (old) => ({
@@ -326,10 +372,18 @@ export function ListsPage() {
                         l.id === list.id ? { ...l, items: l.items.filter((x: any) => x.id !== it.id) } : l
                       ),
                     }),
+                    restore: (old) => ({
+                      ...old,
+                      lists: old.lists.map((l: any) =>
+                        l.id === list.id && !l.items.some((x: any) => x.id === it.id)
+                          ? { ...l, items: [...l.items.slice(0, idx), it, ...l.items.slice(idx)] }
+                          : l
+                      ),
+                    }),
                     commit: () => api.deleteListItem(list.id, it.id),
                     text: 'Item removed',
-                  })
-                }
+                  });
+                }}
               />
             ))}
           </ul>
@@ -388,33 +442,7 @@ export function ListsPage() {
         </Modal>
       )}
 
-      {showArchived && (
-        <Modal small title="Archived lists" onClose={() => setShowArchived(false)}>
-          {archivedLists.length === 0 ? (
-            <p className="muted small">No archived lists.</p>
-          ) : (
-            <ul className="archived-list" role="list">
-              {archivedLists.map((l) => (
-                <li key={l.id} className="archived-row">
-                  <div className="archived-row-info">
-                    <span className="archived-row-name">{l.name}</span>
-                    <span className="mono muted small">{l.items.length} items</span>
-                  </div>
-                  <button
-                    className="btn btn-ghost"
-                    onClick={() => {
-                      setArchived(l.id, false);
-                      setShowArchived(false);
-                    }}
-                  >
-                    <Icon name="refresh" size={13} /> Restore
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </Modal>
-      )}
+      {archivedModal}
     </div>
   );
 }

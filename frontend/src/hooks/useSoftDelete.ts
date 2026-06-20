@@ -7,6 +7,8 @@ interface SoftDeleteOpts {
   queryKey: unknown[];
   /** return a copy of the cached value with the item removed */
   optimistic: (old: any) => any;
+  /** re-insert the item into the CURRENT cached value (mirror of optimistic) */
+  restore: (old: any) => any;
   /** the real API delete, run only after the grace window elapses */
   commit: () => Promise<unknown>;
   /** toast text, e.g. "Removed eggs" */
@@ -18,9 +20,10 @@ interface SoftDeleteOpts {
 
 /**
  * Deferred-commit delete: drop the item from the cache immediately, show an "Undo"
- * toast, and hold the actual API call until the grace window passes. Undo restores
- * the exact snapshot (no lossy re-insert, and the server still has the row). On
- * commit failure the snapshot is restored too.
+ * toast, and hold the actual API call until the grace window passes. Undo (and a
+ * commit failure) re-insert the item into the CURRENT cache via a targeted updater
+ * — NOT a stale whole-query snapshot — so any sibling edit made during the grace
+ * window (e.g. ticking another item bought) is preserved.
  */
 export function useSoftDelete() {
   const qc = useQueryClient();
@@ -28,8 +31,8 @@ export function useSoftDelete() {
 
   return function softDelete(opts: SoftDeleteOpts) {
     const grace = opts.graceMs ?? 5000;
-    const snapshot = qc.getQueryData(opts.queryKey);
     qc.setQueryData(opts.queryKey, (old: any) => (old ? opts.optimistic(old) : old));
+    const restore = () => qc.setQueryData(opts.queryKey, (old: any) => (old ? opts.restore(old) : old));
 
     let undone = false;
     const timer = setTimeout(async () => {
@@ -39,7 +42,7 @@ export function useSoftDelete() {
         qc.invalidateQueries({ queryKey: opts.queryKey });
         for (const k of opts.invalidateKeys ?? []) qc.invalidateQueries({ queryKey: k });
       } catch (e) {
-        qc.setQueryData(opts.queryKey, snapshot);
+        restore();
         if (!(e instanceof ApiError && e.status === 401)) toast('Could not delete — restored it.');
       }
     }, grace);
@@ -51,7 +54,7 @@ export function useSoftDelete() {
         run: () => {
           undone = true;
           clearTimeout(timer);
-          qc.setQueryData(opts.queryKey, snapshot);
+          restore();
         },
       },
       grace

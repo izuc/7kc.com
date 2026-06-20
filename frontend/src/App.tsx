@@ -61,7 +61,7 @@ export function App() {
   if (location.pathname.startsWith('/r/') || location.pathname.startsWith('/collection/')) {
     return (
       <div className={`accent-${accent} density-${density}`}>
-        <ErrorBoundary>
+        <ErrorBoundary resetKey={location.pathname}>
           <Suspense fallback={<Loading label="Loading…" />}>
             <Routes>
               <Route path="/r/:slug" element={<PublicRecipePage />} />
@@ -81,7 +81,7 @@ export function App() {
   if (location.pathname.startsWith('/join/')) {
     return (
       <div className={`accent-${accent} density-${density}`}>
-        <ErrorBoundary>
+        <ErrorBoundary resetKey={location.pathname}>
           <Suspense fallback={<Loading />}>
             <Routes>
               <Route path="/join/:token" element={<JoinPage />} />
@@ -96,7 +96,7 @@ export function App() {
   if (!user) {
     return (
       <div className={`accent-${accent} density-${density}`}>
-        <ErrorBoundary>
+        <ErrorBoundary resetKey={location.pathname}>
           <Suspense fallback={<Loading />}>
             <Routes>
               <Route path="/" element={<LandingPage />} />
@@ -118,7 +118,7 @@ export function App() {
 
   return (
     <AppShell>
-      <ErrorBoundary>
+      <ErrorBoundary resetKey={location.pathname}>
         <Suspense fallback={<Loading label="Loading…" />}>
           <Routes>
             <Route index element={<Navigate to="/today" replace />} />
