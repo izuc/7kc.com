@@ -657,6 +657,8 @@ ul.recipe-grid { list-style: none; margin: 0; padding: 0; }
 .cook-done { align-items: center; justify-content: center; min-height: 70vh; }
 .cook-done-card { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 420px; margin: 0 auto; }
 .cook-done-check { width: 88px; height: 88px; border-radius: 50%; background: var(--sage-2); color: var(--sage); display: inline-flex; align-items: center; justify-content: center; }
+.cook-done-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 8px; }
+.cook-done-actions .btn-primary { flex-basis: 100%; justify-content: center; }
 
 /* ---- Group ---- */
 .member-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin-top: 12px; }

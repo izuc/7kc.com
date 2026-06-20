@@ -1452,4 +1452,33 @@ input:focus-visible {
     animation: none !important;
     transition: none !important;
   }
+
+  /* Shopping list: print just the items, no app chrome or controls. */
+  .screen-head-right,
+  .lists-tabs,
+  .progress-row,
+  .quickadd,
+  .sync-banner,
+  .item .tick,
+  .item .x {
+    display: none !important;
+  }
+  .item {
+    page-break-inside: avoid;
+    padding: 5pt 0 !important;
+    border-bottom: 1px solid #ddd !important;
+    list-style: none !important;
+  }
+  .item.bought .item-name {
+    text-decoration: line-through;
+    color: #777 !important;
+  }
+  .item-name {
+    font-size: 12pt !important;
+  }
+  .section-head {
+    font-size: 9pt !important;
+    margin-top: 10pt !important;
+    page-break-after: avoid;
+  }
 }

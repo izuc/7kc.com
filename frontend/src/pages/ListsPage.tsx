@@ -30,12 +30,14 @@ export function ListsPage() {
   const [newName, setNewName] = useState('');
   const [showOcr, setShowOcr] = useState(false);
   const [ocrSeedText, setOcrSeedText] = useState<string | null>(null);
+  const [showArchived, setShowArchived] = useState(false);
 
   const { data, isLoading } = useQuery({ queryKey: ['lists'], queryFn: () => api.lists() });
   const { data: pantryData } = useQuery({ queryKey: ['pantry'], queryFn: () => api.pantry() });
   const lowCount = (pantryData?.items ?? []).filter((p) => p.running_low).length;
   const lists = data?.lists ?? [];
   const activeLists = lists.filter((l) => !l.archived_at);
+  const archivedLists = lists.filter((l) => l.archived_at);
   const list =
     lists.find((l) => l.id === params.id) ?? activeLists[0] ?? null;
 
@@ -94,6 +96,19 @@ export function ListsPage() {
     },
     onError: () => toast("Couldn't create the list — please try again."),
   });
+
+  const setArchived = (id: string, archived: boolean) =>
+    guard(async () => {
+      await api.archiveList(id, archived);
+      invalidate();
+      toast(archived ? 'List archived' : 'List restored');
+      if (archived && id === list?.id) {
+        const next = activeLists.find((l) => l.id !== id);
+        navigate(next ? `/lists/${next.id}` : '/lists', { replace: true });
+      } else if (!archived) {
+        navigate(`/lists/${id}`);
+      }
+    });
 
   if (isLoading) {
     return (
@@ -156,6 +171,11 @@ export function ListsPage() {
             <button className="list-tab add" onClick={() => setShowNew(true)}>
               <Icon name="plus" size={14} /> New
             </button>
+            {archivedLists.length > 0 && (
+              <button className="list-tab" onClick={() => setShowArchived(true)}>
+                Archived <span className="mono muted small">{archivedLists.length}</span>
+              </button>
+            )}
           </div>
         </div>
         <div className="screen-head-right">
@@ -201,6 +221,21 @@ export function ListsPage() {
             title="Scan a handwritten list"
           >
             <Icon name="sparkle" size={14} /> Scan photo
+          </button>
+          <button
+            className="btn btn-ghost"
+            title="Print this shopping list"
+            disabled={list.items.length === 0}
+            onClick={() => window.print()}
+          >
+            <Icon name="print" size={14} /> Print
+          </button>
+          <button
+            className="btn btn-ghost"
+            title="Archive this list (you can restore it later)"
+            onClick={() => setArchived(list.id, true)}
+          >
+            <Icon name="archive" size={14} /> Archive
           </button>
           <button className="btn btn-primary" onClick={() => setShowPaste(true)}>
             <Icon name="sparkle" size={14} /> Paste list
@@ -350,6 +385,34 @@ export function ListsPage() {
               Create
             </button>
           </div>
+        </Modal>
+      )}
+
+      {showArchived && (
+        <Modal small title="Archived lists" onClose={() => setShowArchived(false)}>
+          {archivedLists.length === 0 ? (
+            <p className="muted small">No archived lists.</p>
+          ) : (
+            <ul className="archived-list" role="list">
+              {archivedLists.map((l) => (
+                <li key={l.id} className="archived-row">
+                  <div className="archived-row-info">
+                    <span className="archived-row-name">{l.name}</span>
+                    <span className="mono muted small">{l.items.length} items</span>
+                  </div>
+                  <button
+                    className="btn btn-ghost"
+                    onClick={() => {
+                      setArchived(l.id, false);
+                      setShowArchived(false);
+                    }}
+                  >
+                    <Icon name="refresh" size={13} /> Restore
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
         </Modal>
       )}
     </div>

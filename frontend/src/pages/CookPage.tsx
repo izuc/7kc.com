@@ -67,9 +67,26 @@ export function CookPage() {
       qc.invalidateQueries({ queryKey: ['feed'] });
       setRemoved(r.removed);
       setDone(true);
-      setTimeout(() => navigate(`/recipes/${recipe.slug}`), 1600);
     } catch {
       toast('Could not finish cooking — please try again.');
+    }
+  };
+
+  const cookAgain = () => {
+    setStep(0);
+    setToRemove(null);
+    setRemoved(null);
+    setDone(false);
+  };
+
+  const saveFavourite = async () => {
+    try {
+      const r = await api.toggleFavourite(recipe.slug);
+      qc.invalidateQueries({ queryKey: ['favourites'] });
+      if (r.favourited) trackEvent('recipe_saved', { recipe: recipe.slug });
+      toast(r.favourited ? 'Saved to favourites' : 'Removed from favourites');
+    } catch {
+      toast("Couldn't update favourites — please try again.");
     }
   };
 
@@ -85,6 +102,20 @@ export function CookPage() {
             {removed ?? 0} ingredient{removed === 1 ? '' : 's'} removed from pantry.
           </p>
           <div className="mono small muted">{recipe.title}</div>
+          <div className="cook-done-actions">
+            <button className="btn btn-primary" onClick={saveFavourite}>
+              <Icon name="heart" size={14} /> Save to favourites
+            </button>
+            <button className="btn btn-ghost" onClick={cookAgain}>
+              <Icon name="chef" size={14} /> Cook again
+            </button>
+            <button className="btn btn-ghost" onClick={() => navigate(`/recipes/${recipe.slug}`)}>
+              View recipe
+            </button>
+            <button className="btn btn-ghost" onClick={() => navigate('/recipes')}>
+              Find another
+            </button>
+          </div>
         </div>
       </div>
     );
