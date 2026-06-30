@@ -49,7 +49,11 @@
 .accent-ink  { --accent: oklch(0.28 0.02 60); --accent-2: oklch(0.93 0.012 75); --accent-ink: oklch(0.2 0.02 60); }
 .accent-plum { --accent: oklch(0.45 0.11 340); --accent-2: oklch(0.93 0.03 340); --accent-ink: oklch(0.3 0.1 340); }
 
-.density-compact { --pad: 14px; --gap: 10px; --radius: 10px; }
+/* Compact density: tighter radii/gaps/spacing + slightly smaller type. Applied to
+   the density wrapper (a descendant of body), so font-size lives here — not on
+   `body`, which the wrapper can never reach. Roomy leaves the vars at their
+   :root/fallback defaults, so it stays pixel-identical. */
+.density-compact { --pad: 14px; --gap: 10px; --radius: 10px; --screen-gap: 13px; font-size: 13.5px; }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -62,7 +66,6 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-.density-compact body { font-size: 14px; }
 
 h1, h2, h3 { font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; margin: 0; color: var(--ink); }
 h1 { font-size: 40px; line-height: 1.05; }
@@ -175,7 +178,7 @@ a { color: var(--accent-ink); }
 .dot-sep { opacity: 0.5; }
 
 /* ---- Screen head ---- */
-.screen { display: flex; flex-direction: column; gap: 20px; }
+.screen { display: flex; flex-direction: column; gap: var(--screen-gap, 20px); }
 .screen-head {
   display: flex; justify-content: space-between; align-items: flex-end;
   gap: 24px;

@@ -564,7 +564,7 @@
   }
 
   .screen {
-    gap: 18px;
+    gap: var(--screen-gap, 18px);
   }
 
   /* ----- compact top bar ------------------------------------- */
