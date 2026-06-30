@@ -1,7 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { Modal } from './Modal';
 import { Icon } from './Icon';
 import { trackEvent } from '../lib/analytics';
+import { api } from '../lib/api';
+
+/** Read a File as a base64 data URL to POST to the server's scan endpoint. */
+function fileToDataUrl(file: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const fr = new FileReader();
+    fr.onload = () => resolve(String(fr.result));
+    fr.onerror = () => reject(fr.error ?? new Error('Could not read the image file.'));
+    fr.readAsDataURL(file);
+  });
+}
 
 const cameraSupported =
   typeof navigator !== 'undefined' &&
@@ -33,6 +45,12 @@ export function OcrModal({
   const streamRef = useRef<MediaStream | null>(null);
   const aliveRef = useRef(true);
   const acquiringRef = useRef(false);
+
+  // Whether the SERVER has AI photo scanning configured (.env). Cached.
+  const { data: cfg } = useQuery({ queryKey: ['config'], queryFn: () => api.config(), staleTime: 5 * 60 * 1000 });
+  const aiReady = cfg?.features?.ai_scan ?? false;
+  const [useAi, setUseAi] = useState(true); // prefer AI when the server offers it
+  const aiMode = aiReady && useAi;
 
   const stopCamera = () => {
     streamRef.current?.getTracks().forEach((t) => t.stop());
@@ -155,14 +173,51 @@ export function OcrModal({
     }
   };
 
+  // Send the actual image to the server, which forwards it to the operator-configured
+  // vision LLM (LM Studio / Ollama / OpenAI), and feed its transcription into the parse flow.
+  const runAi = async () => {
+    if (!file) return;
+    setBusy(true);
+    setErr(null);
+    setProgress(0);
+    setStatus('reading with AI…');
+    try {
+      const dataUrl = await fileToDataUrl(file);
+      const { text } = await api.scanImage(dataUrl);
+      if (!text.trim()) {
+        setErr('The AI didn’t find any list items in that image.');
+        setBusy(false);
+        return;
+      }
+      trackEvent('ocr_ai_scan');
+      onText(text.trim());
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : 'AI scan failed.');
+    } finally {
+      setBusy(false);
+    }
+  };
+
   return (
     <Modal onClose={onClose} eyebrow="Photo to list" title="Scan a handwritten list">
       <p className="muted small">
-        Works best on a clean white background with dark ink. All processing happens in your browser —
-        nothing is sent to our server.
+        Works best on a clean background with clear writing.{' '}
+        {aiMode
+          ? 'This sends the photo to the app to read your list with AI.'
+          : 'Reading happens on-device — nothing leaves your browser.'}
       </p>
-      {err && <div className="error">{err}</div>}
-      {camErr && <div className="error">{camErr}</div>}
+      {aiReady && (
+        <div className="segmented" role="group" aria-label="Scan method" style={{ marginBottom: 4 }}>
+          <button className={useAi ? 'active' : ''} aria-pressed={useAi} disabled={busy} onClick={() => setUseAi(true)}>
+            <Icon name="sparkle" size={13} /> AI
+          </button>
+          <button className={!useAi ? 'active' : ''} aria-pressed={!useAi} disabled={busy} onClick={() => setUseAi(false)}>
+            On-device
+          </button>
+        </div>
+      )}
+      {err && <div className="error" role="alert">{err}</div>}
+      {camErr && <div className="error" role="alert">{camErr}</div>}
 
       {!preview && mode === 'camera' ? (
         <div className="ocr-camera">
@@ -215,8 +270,14 @@ export function OcrModal({
 
       {busy && (
         <div className="progress-row" style={{ marginTop: 12 }}>
-          <div className="progress"><div className="progress-fill" style={{ width: `${progress}%` }} /></div>
-          <span className="mono small muted">{status} · {progress}%</span>
+          {aiMode ? (
+            <span className="mono small muted">{status}</span>
+          ) : (
+            <>
+              <div className="progress"><div className="progress-fill" style={{ width: `${progress}%` }} /></div>
+              <span className="mono small muted">{status} · {progress}%</span>
+            </>
+          )}
         </div>
       )}
 
@@ -230,8 +291,8 @@ export function OcrModal({
               Choose another
             </button>
           )}
-          <button className="btn btn-primary" onClick={run} disabled={!file || busy}>
-            {busy ? 'Reading…' : 'Read text'}
+          <button className="btn btn-primary" onClick={aiMode ? runAi : run} disabled={!file || busy}>
+            {busy ? 'Reading…' : aiMode ? (<><Icon name="sparkle" size={14} /> Read with AI</>) : 'Read text'}
           </button>
         </div>
       )}

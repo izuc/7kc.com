@@ -85,6 +85,9 @@ export const api = {
   pushUnsubscribe: (endpoint: string) =>
     request<{ ok: boolean }>('/push/unsubscribe', { method: 'POST', body: JSON.stringify({ endpoint }) }),
 
+  // server feature flags (e.g. whether AI photo scanning is configured in .env)
+  config: () => request<{ features: { ai_scan: boolean } }>('/config'),
+
   // ingredients
   ingredients: (q?: string) =>
     request<{ items: Ingredient[] }>(`/ingredients${q ? `?q=${encodeURIComponent(q)}` : ''}`),
@@ -92,6 +95,12 @@ export const api = {
     request<{ items: ParsedItem[] }>(`/ingredients/parse`, {
       method: 'POST',
       body: JSON.stringify({ text }),
+    }),
+  // Send a base64 image data URL to the server's configured vision LLM; returns its transcription.
+  scanImage: (image: string) =>
+    request<{ text: string }>(`/ingredients/scan-image`, {
+      method: 'POST',
+      body: JSON.stringify({ image }),
     }),
   dictionary: () =>
     request<{ ingredients: { id: string; display: string; section: string }[]; aliases: Record<string, string> }>(

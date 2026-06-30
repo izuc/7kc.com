@@ -28,6 +28,8 @@ use SevenKC\Action\Groups\CreateSuggestionAction;
 use SevenKC\Action\Ingredients\DictionaryAction;
 use SevenKC\Action\Ingredients\ListIngredientsAction;
 use SevenKC\Action\Ingredients\ParseAction;
+use SevenKC\Action\Ingredients\ScanImageAction;
+use SevenKC\Action\ConfigAction;
 use SevenKC\Action\Recipes\PublicCollectionAction;
 use SevenKC\Action\Recipes\PublicRecipeAction;
 use SevenKC\Action\Recipes\SitemapAction;
@@ -87,6 +89,7 @@ return function (App $app): void {
         $g->post('/auth/login', LoginAction::class);
 
         // public utility endpoints (no auth for ingredient lookup)
+        $g->get('/config', ConfigAction::class);
         $g->get('/ingredients', ListIngredientsAction::class);
         $g->get('/ingredients/dictionary', DictionaryAction::class);
         $g->post('/ingredients/parse', ParseAction::class);
@@ -101,6 +104,7 @@ return function (App $app): void {
         // authenticated
         $g->group('', function (RouteCollectorProxy $a) {
             $a->get('/auth/me', MeAction::class);
+            $a->post('/ingredients/scan-image', ScanImageAction::class);
             $a->post('/auth/diet', SetDietAction::class);
             $a->post('/auth/sign-out-everywhere', SignOutEverywhereAction::class);
             $a->post('/auth/digest-optin', SetDigestOptinAction::class);

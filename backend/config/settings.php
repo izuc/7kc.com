@@ -61,6 +61,14 @@ return [
             return (($_ENV['APP_ENV'] ?? 'production') === 'production') ? '' : '*';
         })(),
     ],
+    // Optional vision-LLM photo scanning. Configured by the SITE OPERATOR via .env
+    // (not per user). Point it at any OpenAI-compatible endpoint — a local LM Studio
+    // / Ollama on the host, or OpenAI. Feature is OFF unless endpoint + model are set.
+    'ai_scan' => [
+        'endpoint' => trim((string)($_ENV['AI_SCAN_ENDPOINT'] ?? '')),
+        'model' => trim((string)($_ENV['AI_SCAN_MODEL'] ?? '')),
+        'api_key' => trim((string)($_ENV['AI_SCAN_API_KEY'] ?? '')),
+    ],
     'paths' => [
         'root' => dirname(__DIR__),
         'shared' => dirname(__DIR__, 2) . '/shared',
