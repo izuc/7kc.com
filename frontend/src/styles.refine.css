@@ -642,3 +642,76 @@ h3 {
 .tour-dots span.on {
   background: var(--accent);
 }
+
+/* ============================================================
+   Mobile responsiveness fixes (from the mobile audit). This file
+   loads LAST, so these scoped overrides win on the cascade. Every
+   rule is gated to a mobile width or a coarse pointer, so the
+   desktop layout is left exactly as it was.
+   ============================================================ */
+@media (max-width: 900px) {
+  /* Recipe thumbnails: the MealPlate renders at a fixed 280px; on a ~150px
+     phone card that fixed SVG was clipped to a zoomed top-left fragment.
+     Scale it to the card so the whole (centred) dish shows, like desktop. */
+  .recipe-card > div > svg { width: 100%; height: auto; display: block; }
+
+  /* Pantry name must be allowed to shrink + ellipsise, or it pushes the
+     remove (×) button off the overflow:hidden card and makes it untappable. */
+  .pantry-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pantry-card .x { width: 40px; height: 40px; min-width: 40px; margin: -8px -6px -8px 0; }
+  .pantry-actions { flex-wrap: wrap; }
+  .pantry-actions .chip { white-space: nowrap; }
+
+  /* Button rows that can't fit two nowrap buttons → wrap instead of
+     overflowing the page sideways (the empty-pantry CTA, the solo/group
+     banners, settings rows). */
+  .empty .row-inline { flex-wrap: wrap; justify-content: center; }
+  .setting-card .row-inline,
+  .solo-banner .row-inline { flex-wrap: wrap; }
+
+  /* Cook-finish ingredient checklist: bigger tick + roomier rows. */
+  .remove-list li .tick { width: 36px; height: 36px; min-width: 36px; }
+  .remove-list li { padding: 12px 14px; min-height: var(--mob-tap); }
+
+  /* Settings toggles, dietary chips, and the cook done-screen buttons all
+     reach a comfortable tap height on phones. */
+  .setting-card .segmented { padding: 4px; }
+  .setting-card .segmented button { min-height: 40px; padding: 8px 14px; }
+  .setting-card .chip-row .chip { min-height: 40px; padding: 8px 12px; }
+  .cook-done-actions .btn { min-height: 44px; justify-content: center; }
+
+  /* Group suggestion art column matches the 64px MealPlate (was 52px → the
+     art butted against the title). */
+  .suggestion-card { grid-template-columns: 64px 1fr; }
+}
+
+@media (max-width: 640px) {
+  /* Week-planner clear-day "×": bigger box + a hit-area expander that grows
+     up/sideways only (not down, to avoid mis-taps on the day button below). */
+  .week-cell-x { position: relative; width: 30px; height: 30px; }
+  .week-cell-x::after { content: ''; position: absolute; top: -10px; right: -8px; left: -8px; bottom: 0; }
+  /* Landing "Sign in" link: give the inline anchor a real 44px tap height. */
+  .lp-nav a.lp-nav-link { min-height: 44px; display: inline-flex; align-items: center; }
+}
+
+@media (max-width: 600px) {
+  .today-week-head .btn-sm { min-height: 40px; }
+  /* Landing dict-preview rows: collapse the 4-track table so the mono strings
+     get a full-width line instead of wrapping in a ~100px column. */
+  .lp-dict-preview li { grid-template-columns: auto 1fr; row-gap: 2px; }
+  .lp-dict-preview .arrow { display: none; }
+  .lp-dict-preview .raw,
+  .lp-dict-preview .match,
+  .lp-dict-preview .unmatched-label { grid-column: 2; }
+}
+
+/* Touch devices only (a desktop mouse never matches), so the visible chrome
+   stays compact on desktop while small icon-only targets grow on phones. */
+@media (hover: none) and (pointer: coarse) {
+  .servings-stepper .step-btn { width: 44px; height: 44px; }
+  .swatch-btn { width: 40px; height: 40px; }
+  .affiliate-row a.chip { min-height: 40px; display: inline-flex; align-items: center; }
+  /* Keep the 28px list-tick circle, but expand its clickable area to ~44px. */
+  .item .tick { position: relative; }
+  .item .tick::after { content: ''; position: absolute; inset: -8px; }
+}
