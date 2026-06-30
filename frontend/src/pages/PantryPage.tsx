@@ -1,9 +1,10 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { api } from '../lib/api';
 import { daysUntil, fmtExpiry, SECTIONS } from '../lib/format';
 import { Icon } from '../components/Icon';
 import { Modal } from '../components/Modal';
+import { OcrModal } from '../components/OcrModal';
 import { useIngredients, displayFor, sectionFor } from '../hooks/useIngredients';
 import { useSoftDelete } from '../hooks/useSoftDelete';
 import { useUi } from '../store/ui';
@@ -11,7 +12,7 @@ import { trackEvent } from '../lib/analytics';
 import { SkeletonGrid } from '../components/Skeleton';
 import { IngredientIcon } from '../lib/ingredientIcons';
 import { mutateWithOutbox } from '../lib/offlineSync';
-import type { PantryItem } from '../types/models';
+import type { PantryItem, ParsedItem } from '../types/models';
 
 type HydratedItem = PantryItem & { display: string; section: string; daysLeft: number | null };
 
@@ -20,7 +21,13 @@ export function PantryPage() {
   const toast = useUi((s) => s.toast);
   const [view, setView] = useState<'section' | 'expiry' | 'alpha'>('section');
   const [showAdd, setShowAdd] = useState(false);
+  const [showScan, setShowScan] = useState(false);
+  const [scanText, setScanText] = useState<string | null>(null);
   const [seeding, setSeeding] = useState(false);
+
+  const { data: cfg } = useQuery({ queryKey: ['config'], queryFn: () => api.config(), staleTime: 5 * 60 * 1000 });
+  const canScan = cfg?.features?.ai_scan ?? false;
+  const scanTiles = cfg?.features?.ai_scan_tiles ?? 1;
 
   const { data, isLoading } = useQuery({ queryKey: ['pantry'], queryFn: () => api.pantry() });
   const { data: statsData } = useQuery({ queryKey: ['stats'], queryFn: () => api.stats() });
@@ -86,6 +93,11 @@ export function PantryPage() {
               A–Z
             </button>
           </div>
+          {canScan && (
+            <button className="btn btn-ghost" onClick={() => setShowScan(true)}>
+              <Icon name="camera" size={14} /> Scan photo
+            </button>
+          )}
           <button className="btn btn-primary" onClick={() => setShowAdd(true)}>
             <Icon name="plus" size={14} /> Add
           </button>
@@ -192,7 +204,96 @@ export function PantryPage() {
       )}
 
       {showAdd && <AddPantryModal onClose={() => setShowAdd(false)} onAdded={invalidate} />}
+      {showScan && (
+        <OcrModal
+          scanMode="pantry"
+          tiles={scanTiles}
+          onClose={() => setShowScan(false)}
+          onText={(text) => {
+            setShowScan(false);
+            setScanText(text);
+          }}
+        />
+      )}
+      {scanText !== null && (
+        <PantryScanConfirm text={scanText} onClose={() => setScanText(null)} onAdded={invalidate} />
+      )}
     </div>
+  );
+}
+
+/** Confirm + add the items detected in a fridge/pantry photo. The scanned text is
+ * run through the parser so items map to known ingredients; the user reviews first. */
+function PantryScanConfirm({ text, onClose, onAdded }: { text: string; onClose: () => void; onAdded: () => void }) {
+  const toast = useUi((s) => s.toast);
+  const { data, isLoading } = useQuery({ queryKey: ['parse', text], queryFn: () => api.parse(text), staleTime: Infinity });
+  const items: ParsedItem[] = data?.items ?? [];
+  const [checked, setChecked] = useState<boolean[]>([]);
+  const [saving, setSaving] = useState(false);
+
+  // default every recognised item to ticked once parsing returns
+  useEffect(() => {
+    setChecked(items.map(() => true));
+  }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const selectedCount = checked.filter(Boolean).length;
+
+  const addAll = async () => {
+    setSaving(true);
+    let added = 0;
+    for (let i = 0; i < items.length; i++) {
+      if (!checked[i]) continue;
+      const it = items[i];
+      try {
+        await api.addPantryItem(it.match ? { ingredient_id: it.match.id } : { custom_name: it.clean || it.raw });
+        added++;
+      } catch {
+        /* skip failures, keep going */
+      }
+    }
+    setSaving(false);
+    trackEvent('pantry_scan_added');
+    toast(added ? `Added ${added} item${added === 1 ? '' : 's'} to your pantry.` : 'Nothing was added.');
+    onAdded();
+    onClose();
+  };
+
+  return (
+    <Modal onClose={onClose} eyebrow="Photo to pantry" title="Add what we spotted">
+      {isLoading ? (
+        <p className="muted small">Matching items…</p>
+      ) : items.length === 0 ? (
+        <p className="muted small">No items recognised — try a clearer photo or better lighting.</p>
+      ) : (
+        <>
+          <p className="muted small">Untick anything that’s wrong, then add the rest to your pantry.</p>
+          <ul style={{ listStyle: 'none', padding: 0, margin: '8px 0', maxHeight: '46vh', overflowY: 'auto' }}>
+            {items.map((it, i) => (
+              <li key={i}>
+                <label className="row-inline" style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer', padding: '6px 0' }}>
+                  <input
+                    type="checkbox"
+                    checked={checked[i] ?? false}
+                    onChange={() => setChecked((c) => c.map((v, j) => (j === i ? !v : v)))}
+                  />
+                  <span>{it.match ? it.match.display : it.clean || it.raw}</span>
+                  {!it.match && <span className="chip" style={{ fontSize: 11 }}>new</span>}
+                  {it.match?.confidence === 'maybe' && <span className="chip" style={{ fontSize: 11 }}>maybe</span>}
+                </label>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+      <div className="modal-actions">
+        <button className="btn btn-ghost" onClick={onClose} disabled={saving}>
+          Cancel
+        </button>
+        <button className="btn btn-primary" onClick={addAll} disabled={saving || selectedCount === 0}>
+          {saving ? 'Adding…' : `Add ${selectedCount} to pantry`}
+        </button>
+      </div>
+    </Modal>
   );
 }
 

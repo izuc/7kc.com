@@ -15,9 +15,12 @@ final class ConfigAction
 
     public function __invoke(ServerRequestInterface $req, ResponseInterface $res): ResponseInterface
     {
+        $on = $this->scanner->isConfigured();
         return Json::send($res, [
             'features' => [
-                'ai_scan' => $this->scanner->isConfigured(),
+                'ai_scan' => $on,
+                // grid size per axis for pantry/fridge tiling (the client cuts this many tiles)
+                'ai_scan_tiles' => $on ? $this->scanner->tiles() : 1,
             ],
         ]);
     }

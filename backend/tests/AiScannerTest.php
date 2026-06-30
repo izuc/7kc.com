@@ -55,4 +55,31 @@ final class AiScannerTest extends PHPUnitTestCase
         $this->assertSame($dataUrl, $image['image_url']['url'], 'the image data URL is sent');
         $this->assertTrue($hasText, 'the payload includes the instruction text');
     }
+
+    public function testTilesClampedToOneThroughFour(): void
+    {
+        $this->assertSame(1, $this->scanner()->tiles(), 'defaults to 1 when unset');
+        $this->assertSame(1, $this->scanner(['tiles' => 0])->tiles());
+        $this->assertSame(3, $this->scanner(['tiles' => 3])->tiles());
+        $this->assertSame(4, $this->scanner(['tiles' => 9])->tiles(), 'clamped to 4');
+    }
+
+    public function testCleanItemStripsBulletsAndNumbering(): void
+    {
+        $this->assertSame('milk', AiScanner::cleanItem('- milk'));
+        $this->assertSame('carrots', AiScanner::cleanItem('2. carrots'));
+        $this->assertSame('cheddar cheese', AiScanner::cleanItem('• cheddar cheese'));
+        $this->assertSame('', AiScanner::cleanItem('   '));
+    }
+
+    public function testMergeItemsDedupesAcrossTilesPreservingOrder(): void
+    {
+        // (fences are stripped per-tile in request() before mergeItems sees the text)
+        $merged = AiScanner::mergeItems([
+            "milk\ncarrots\n- eggs",
+            "Carrots\nbutter\nmilk", // dup carrots (case-insensitive) + dup milk
+            "cheese",
+        ]);
+        $this->assertSame(['milk', 'carrots', 'eggs', 'butter', 'cheese'], $merged);
+    }
 }

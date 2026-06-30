@@ -68,6 +68,9 @@ return [
         'endpoint' => trim((string)($_ENV['AI_SCAN_ENDPOINT'] ?? '')),
         'model' => trim((string)($_ENV['AI_SCAN_MODEL'] ?? '')),
         'api_key' => trim((string)($_ENV['AI_SCAN_API_KEY'] ?? '')),
+        // Pantry/fridge tiling: grid size per axis (1 = whole image, 2 = 2×2, … up to 4 = 4×4).
+        // Higher = better recall on dense shelves, but that many more model calls per photo.
+        'tiles' => max(1, min(4, (int)($_ENV['AI_SCAN_TILES'] ?? 1))),
     ],
     'paths' => [
         'root' => dirname(__DIR__),

@@ -29,6 +29,7 @@ use SevenKC\Action\Ingredients\DictionaryAction;
 use SevenKC\Action\Ingredients\ListIngredientsAction;
 use SevenKC\Action\Ingredients\ParseAction;
 use SevenKC\Action\Ingredients\ScanImageAction;
+use SevenKC\Action\Ingredients\ScanPantryAction;
 use SevenKC\Action\ConfigAction;
 use SevenKC\Action\Recipes\PublicCollectionAction;
 use SevenKC\Action\Recipes\PublicRecipeAction;
@@ -105,6 +106,7 @@ return function (App $app): void {
         $g->group('', function (RouteCollectorProxy $a) {
             $a->get('/auth/me', MeAction::class);
             $a->post('/ingredients/scan-image', ScanImageAction::class);
+            $a->post('/ingredients/scan-pantry', ScanPantryAction::class);
             $a->post('/auth/diet', SetDietAction::class);
             $a->post('/auth/sign-out-everywhere', SignOutEverywhereAction::class);
             $a->post('/auth/digest-optin', SetDigestOptinAction::class);

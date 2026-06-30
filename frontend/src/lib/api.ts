@@ -86,7 +86,7 @@ export const api = {
     request<{ ok: boolean }>('/push/unsubscribe', { method: 'POST', body: JSON.stringify({ endpoint }) }),
 
   // server feature flags (e.g. whether AI photo scanning is configured in .env)
-  config: () => request<{ features: { ai_scan: boolean } }>('/config'),
+  config: () => request<{ features: { ai_scan: boolean; ai_scan_tiles: number } }>('/config'),
 
   // ingredients
   ingredients: (q?: string) =>
@@ -101,6 +101,12 @@ export const api = {
     request<{ text: string }>(`/ingredients/scan-image`, {
       method: 'POST',
       body: JSON.stringify({ image }),
+    }),
+  // Send fridge/pantry photo tiles; the server detects items per tile and returns a merged, deduped list.
+  scanPantry: (images: string[]) =>
+    request<{ items: string[]; text: string }>(`/ingredients/scan-pantry`, {
+      method: 'POST',
+      body: JSON.stringify({ images }),
     }),
   dictionary: () =>
     request<{ ingredients: { id: string; display: string; section: string }[]; aliases: Record<string, string> }>(

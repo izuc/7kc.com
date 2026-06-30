@@ -4,6 +4,7 @@ import { Modal } from './Modal';
 import { Icon } from './Icon';
 import { trackEvent } from '../lib/analytics';
 import { api } from '../lib/api';
+import { tileImage } from '../lib/imageTiles';
 
 /** Read a File as a base64 data URL to POST to the server's scan endpoint. */
 function fileToDataUrl(file: Blob): Promise<string> {
@@ -21,17 +22,25 @@ const cameraSupported =
   typeof navigator.mediaDevices.getUserMedia === 'function';
 
 /**
- * OCR modal. Tesseract.js is dynamically imported so the 2MB WASM only loads
- * when the user actually opens this modal. Supports a file/photo upload or, where
- * available, a live rear-camera capture with a framing guide.
+ * Photo scan modal. Two modes:
+ *  - 'list' (default): transcribe a shopping list. Uses the server vision LLM when
+ *    configured (AI), otherwise on-device Tesseract.js (dynamically imported).
+ *  - 'pantry': detect groceries in a fridge/pantry photo. Tiles the image client-side
+ *    (per `tiles`) and sends the tiles to the server scan — AI only.
+ * Supports file/photo upload or a live rear-camera capture with a framing guide.
  */
 export function OcrModal({
   onClose,
   onText,
+  scanMode = 'list',
+  tiles = 1,
 }: {
   onClose: () => void;
   onText: (text: string) => void;
+  scanMode?: 'list' | 'pantry';
+  tiles?: number;
 }) {
+  const isPantry = scanMode === 'pantry';
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [progress, setProgress] = useState(0);
@@ -50,7 +59,8 @@ export function OcrModal({
   const { data: cfg } = useQuery({ queryKey: ['config'], queryFn: () => api.config(), staleTime: 5 * 60 * 1000 });
   const aiReady = cfg?.features?.ai_scan ?? false;
   const [useAi, setUseAi] = useState(true); // prefer AI when the server offers it
-  const aiMode = aiReady && useAi;
+  // Pantry mode is AI-only (no on-device fallback for object detection).
+  const aiMode = isPantry ? aiReady : aiReady && useAi;
 
   const stopCamera = () => {
     streamRef.current?.getTracks().forEach((t) => t.stop());
@@ -173,23 +183,29 @@ export function OcrModal({
     }
   };
 
-  // Send the actual image to the server, which forwards it to the operator-configured
-  // vision LLM (LM Studio / Ollama / OpenAI), and feed its transcription into the parse flow.
+  // Send the image to the server, which forwards it to the operator-configured vision LLM
+  // (LM Studio / Ollama / OpenAI). List mode → one transcription; pantry mode → tile the
+  // photo client-side and let the server detect + merge items. Result feeds the parse flow.
   const runAi = async () => {
     if (!file) return;
     setBusy(true);
     setErr(null);
     setProgress(0);
-    setStatus('reading with AI…');
+    setStatus(isPantry && tiles > 1 ? `reading ${tiles * tiles} sections with AI…` : 'reading with AI…');
     try {
-      const dataUrl = await fileToDataUrl(file);
-      const { text } = await api.scanImage(dataUrl);
+      let text: string;
+      if (isPantry) {
+        const imgs = await tileImage(file, tiles);
+        text = (await api.scanPantry(imgs)).text;
+      } else {
+        text = (await api.scanImage(await fileToDataUrl(file))).text;
+      }
       if (!text.trim()) {
-        setErr('The AI didn’t find any list items in that image.');
+        setErr(isPantry ? 'The AI didn’t spot any items in that photo.' : 'The AI didn’t find any list items in that image.');
         setBusy(false);
         return;
       }
-      trackEvent('ocr_ai_scan');
+      trackEvent(isPantry ? 'pantry_ai_scan' : 'ocr_ai_scan');
       onText(text.trim());
     } catch (e) {
       setErr(e instanceof Error ? e.message : 'AI scan failed.');
@@ -199,14 +215,27 @@ export function OcrModal({
   };
 
   return (
-    <Modal onClose={onClose} eyebrow="Photo to list" title="Scan a handwritten list">
+    <Modal
+      onClose={onClose}
+      eyebrow={isPantry ? 'Photo to pantry' : 'Photo to list'}
+      title={isPantry ? 'Scan your fridge or pantry' : 'Scan a handwritten list'}
+    >
       <p className="muted small">
-        Works best on a clean background with clear writing.{' '}
-        {aiMode
-          ? 'This sends the photo to the app to read your list with AI.'
-          : 'Reading happens on-device — nothing leaves your browser.'}
+        {isPantry ? (
+          <>
+            Snap a clear photo of your shelves or fridge and the AI will list what it sees — you confirm
+            before anything’s added.{tiles > 1 ? ` Read in ${tiles}×${tiles} sections for better detail.` : ''}
+          </>
+        ) : (
+          <>
+            Works best on a clean background with clear writing.{' '}
+            {aiMode
+              ? 'This sends the photo to the app to read your list with AI.'
+              : 'Reading happens on-device — nothing leaves your browser.'}
+          </>
+        )}
       </p>
-      {aiReady && (
+      {aiReady && !isPantry && (
         <div className="segmented" role="group" aria-label="Scan method" style={{ marginBottom: 4 }}>
           <button className={useAi ? 'active' : ''} aria-pressed={useAi} disabled={busy} onClick={() => setUseAi(true)}>
             <Icon name="sparkle" size={13} /> AI
@@ -292,7 +321,7 @@ export function OcrModal({
             </button>
           )}
           <button className="btn btn-primary" onClick={aiMode ? runAi : run} disabled={!file || busy}>
-            {busy ? 'Reading…' : aiMode ? (<><Icon name="sparkle" size={14} /> Read with AI</>) : 'Read text'}
+            {busy ? 'Reading…' : aiMode ? (<><Icon name="sparkle" size={14} /> {isPantry ? 'Scan items' : 'Read with AI'}</>) : 'Read text'}
           </button>
         </div>
       )}
