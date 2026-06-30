@@ -84,7 +84,10 @@ a { color: var(--accent-ink); }
 /* ---- Layout ---- */
 .app {
   display: grid;
-  grid-template-columns: 256px 1fr;
+  /* minmax(0, 1fr) — NOT 1fr — so the content column can shrink below its
+     content's min-content width instead of blowing the grid wider than the
+     viewport (the classic CSS-grid horizontal-overflow trap when narrowing). */
+  grid-template-columns: 256px minmax(0, 1fr);
   min-height: 100vh;
 }
 .sidebar {
@@ -745,7 +748,7 @@ ul.recipe-grid { list-style: none; margin: 0; padding: 0; }
 
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
-  .app { grid-template-columns: 1fr; }
+  .app { grid-template-columns: minmax(0, 1fr); }
   .sidebar {
     position: static;
     height: auto;
