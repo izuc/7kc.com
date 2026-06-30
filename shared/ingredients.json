@@ -1300,5 +1300,35 @@
     "display": "Self-raising flour",
     "section": "pantry",
     "shelf_life_days": 365
+  },
+  {
+    "id": "fermented_black_bean",
+    "display": "Fermented black beans",
+    "section": "pantry",
+    "shelf_life_days": 730
+  },
+  {
+    "id": "gnocchi",
+    "display": "Gnocchi",
+    "section": "pantry",
+    "shelf_life_days": 120
+  },
+  {
+    "id": "noodle_glass",
+    "display": "Sweet potato glass noodles",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "chilli_flakes",
+    "display": "Chilli flakes",
+    "section": "pantry",
+    "shelf_life_days": 365
+  },
+  {
+    "id": "tomato_sauce",
+    "display": "Tomato sauce",
+    "section": "pantry",
+    "shelf_life_days": 365
   }
 ]

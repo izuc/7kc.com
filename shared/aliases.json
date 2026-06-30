@@ -366,5 +366,16 @@
   "graham crackers": "biscuit_sweet",
   "linguine": "pasta_linguine",
   "self-raising flour": "flour_self_raising",
-  "self raising flour": "flour_self_raising"
+  "self raising flour": "flour_self_raising",
+  "fermented black beans": "fermented_black_bean",
+  "douchi": "fermented_black_bean",
+  "salted black beans": "fermented_black_bean",
+  "gnocchi": "gnocchi",
+  "glass noodles": "noodle_glass",
+  "sweet potato noodles": "noodle_glass",
+  "dangmyeon": "noodle_glass",
+  "chilli flakes": "chilli_flakes",
+  "chili flakes": "chilli_flakes",
+  "red pepper flakes": "chilli_flakes",
+  "tomato sauce": "tomato_sauce"
 }
