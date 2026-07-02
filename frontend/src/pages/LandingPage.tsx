@@ -22,7 +22,7 @@ export function LandingPage() {
     })();
     meta.setAttribute(
       'content',
-      "A pantry-first kitchen management app. Your shopping list becomes your pantry. Your pantry decides what's for dinner. 240 illustrated recipes, works offline, no subscription."
+      `A pantry-first kitchen management app. Your shopping list becomes your pantry. Your pantry decides what's for dinner. ${__RECIPE_COUNT__} illustrated recipes, works offline, no subscription.`
     );
   }, []);
 
@@ -101,7 +101,7 @@ function Hero() {
             <span className="dot">·</span>
             <span>Made in Australia</span>
             <span className="dot">·</span>
-            <span>240 recipes</span>
+            <span>{__RECIPE_COUNT__} recipes</span>
           </div>
           <h1 className="lp-h1 lp-reveal lp-reveal-2">
             Use what you've got<span className="period">.</span>
@@ -416,7 +416,7 @@ function pickBySlug(recipes: RecipeSummary[], slugs: string[]): RecipeSummary[] 
 
 /**
  * The dish shelf — a slow, full-bleed parade of real recipe artwork straight
- * from the generator. Ambient proof that every one of the 240 dishes is drawn.
+ * from the generator. Ambient proof that every one of the dishes is drawn.
  * Pauses on hover; static under prefers-reduced-motion.
  */
 function DishShelf({ recipes }: { recipes: RecipeSummary[] }) {
@@ -439,7 +439,7 @@ function DishShelf({ recipes }: { recipes: RecipeSummary[] }) {
         ))}
       </div>
       <div className="lp-shelf-caption mono">
-        240 recipes · every dish drawn from its own ingredients · <Link to="/browse">see them all →</Link>
+        {__RECIPE_COUNT__} recipes · every dish drawn from its own ingredients · <Link to="/browse">see them all →</Link>
       </div>
     </section>
   );
@@ -482,7 +482,7 @@ function RecipeMosaic({ recipes }: { recipes: RecipeSummary[] }) {
 
         <div className="lp-mosaic-cta">
           <Link to="/browse" className="btn btn-ghost btn-lg">
-            Browse all 240 recipes <span className="arrow-glyph">→</span>
+            Browse all {__RECIPE_COUNT__} recipes <span className="arrow-glyph">→</span>
           </Link>
         </div>
       </div>
@@ -535,7 +535,7 @@ function ContraSection() {
             <span className="mono-label">03 · No paywall</span>
             <span className="struck">Subscription to unlock basics</span>
             <p className="why">
-              Shopping lists, pantry, 240 illustrated recipes, offline, groups.
+              Shopping lists, pantry, {__RECIPE_COUNT__} illustrated recipes, offline, groups.
               <strong>&nbsp;All free&nbsp;</strong>forever. You can even use the list feature
               without an account. Sign up when you're ready, not when a modal
               demands it.

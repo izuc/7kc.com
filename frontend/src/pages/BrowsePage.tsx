@@ -36,7 +36,7 @@ export function BrowsePage() {
     const prev = meta?.getAttribute('content') ?? '';
     meta?.setAttribute(
       'content',
-      `Browse all ${recipes.length || 200}+ recipes on 7 Day Kitchen — every dish drawn, no account needed.`
+      `Browse all ${recipes.length || __RECIPE_COUNT__} recipes on 7 Day Kitchen — every dish drawn, no account needed.`
     );
     return () => {
       if (meta && prev) meta.setAttribute('content', prev);
@@ -90,7 +90,7 @@ export function BrowsePage() {
         <div className="browse-head">
           <div className="eyebrow">
             The library<span className="dot-sep">·</span>
-            <span className="mono">{recipes.length || '…'} recipes</span>
+            <span className="mono">{recipes.length || __RECIPE_COUNT__} recipes</span>
           </div>
           <h1 className="browse-title">Every dish, drawn.</h1>
           <p className="muted browse-sub">
@@ -158,7 +158,7 @@ export function BrowsePage() {
           <div>
             <h2>Cook from what you own</h2>
             <p className="muted">
-              Add your pantry once and these {recipes.length || ''} recipes rank themselves by what
+              Add your pantry once and these {recipes.length || __RECIPE_COUNT__} recipes rank themselves by what
               you can make tonight. Free, offline, no subscription.
             </p>
           </div>

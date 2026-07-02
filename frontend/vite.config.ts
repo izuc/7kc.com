@@ -1,10 +1,20 @@
+import { readFileSync } from 'node:fs';
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
+// The catalogue size, baked in at build time so marketing copy can never
+// drift from shared/recipes.json again.
+const RECIPE_COUNT = JSON.parse(
+  readFileSync(new URL('../shared/recipes.json', import.meta.url), 'utf8')
+).length;
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
+    define: {
+      __RECIPE_COUNT__: JSON.stringify(RECIPE_COUNT),
+    },
     plugins: [
       react(),
       VitePWA({
