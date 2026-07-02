@@ -116,7 +116,7 @@ final class RecipeRepository
     public function findBySlug(string $slug): ?array
     {
         $r = $this->db->fetchAssociative('SELECT * FROM recipes WHERE slug = ?', [$slug]);
-        return $r ? $this->withDetails($this->hydrate($r)) : null;
+        return $r ? $this->withDetails($this->hydrate($r, true)) : null;
     }
 
     /** Seeded (public) recipes are visible to all; custom recipes only to their owner/group. */
@@ -126,20 +126,20 @@ final class RecipeRepository
         $params = [$slug, $userId];
         if ($groupId) $params[] = $groupId;
         $r = $this->db->fetchAssociative($sql, $params);
-        return $r ? $this->withDetails($this->hydrate($r)) : null;
+        return $r ? $this->withDetails($this->hydrate($r, true)) : null;
     }
 
     /** Only the curated, non-custom catalog is exposed on the public (no-auth) endpoint. */
     public function findPublicBySlug(string $slug): ?array
     {
         $r = $this->db->fetchAssociative('SELECT * FROM recipes WHERE slug = ? AND is_custom = 0', [$slug]);
-        return $r ? $this->withDetails($this->hydrate($r)) : null;
+        return $r ? $this->withDetails($this->hydrate($r, true)) : null;
     }
 
     public function findById(string $id): ?array
     {
         $r = $this->db->fetchAssociative('SELECT * FROM recipes WHERE id = ?', [$id]);
-        return $r ? $this->withDetails($this->hydrate($r)) : null;
+        return $r ? $this->withDetails($this->hydrate($r, true)) : null;
     }
 
     public function withDetails(array $recipe): array
@@ -149,7 +149,7 @@ final class RecipeRepository
             [$recipe['id']]
         );
         $steps = $this->db->fetchAllAssociative(
-            'SELECT content, detail, timer_seconds, sort_order FROM recipe_steps WHERE recipe_id = ? ORDER BY sort_order',
+            'SELECT content, detail, timer_seconds, title, tips_json, warnings_json, ingredient_ids_json, sort_order FROM recipe_steps WHERE recipe_id = ? ORDER BY sort_order',
             [$recipe['id']]
         );
         $recipe['ingredients'] = array_map(fn ($r) => [
@@ -163,6 +163,10 @@ final class RecipeRepository
             'content' => $r['content'],
             'detail' => $r['detail'] ?: null,
             'timer_seconds' => $r['timer_seconds'] !== null ? (int)$r['timer_seconds'] : null,
+            'title' => ($r['title'] ?? '') !== '' ? $r['title'] : null,
+            'tips' => self::jsonList($r['tips_json'] ?? null),
+            'warnings' => self::jsonList($r['warnings_json'] ?? null),
+            'ingredient_ids' => self::jsonList($r['ingredient_ids_json'] ?? null),
         ], $steps);
         $recipe['diet'] = $this->dietFor(array_values(array_filter(array_map(
             fn ($i) => $i['ingredient_id'],
@@ -324,8 +328,18 @@ final class RecipeRepository
         );
     }
 
-    private function hydrate(array $r): array
+    private function hydrate(array $r, bool $guided = false): array
     {
+        // Kitchen-context fields ride only on detail responses ($guided) —
+        // list payloads (204 recipes) stay lean. difficulty is small and
+        // useful on cards, so summaries keep it.
+        $guidedFields = $guided ? [
+            'equipment' => self::jsonList($r['equipment_json'] ?? null),
+            'make_ahead' => ($r['make_ahead'] ?? '') !== '' ? $r['make_ahead'] : null,
+            'storage' => ($r['storage'] ?? '') !== '' ? $r['storage'] : null,
+            'leftovers' => ($r['leftovers'] ?? '') !== '' ? $r['leftovers'] : null,
+            'substitutions' => self::jsonList($r['substitutions_json'] ?? null),
+        ] : [];
         return [
             'id' => $r['id'],
             'slug' => $r['slug'],
@@ -334,6 +348,7 @@ final class RecipeRepository
             'prep_time' => (int)$r['prep_time'],
             'cook_time' => (int)$r['cook_time'],
             'servings' => (int)$r['servings'],
+            'difficulty' => ($r['difficulty'] ?? '') !== '' ? $r['difficulty'] : null,
             'tags' => $r['tags_json'] ? (array)json_decode((string)$r['tags_json'], true) : [],
             'palette' => $r['palette_json'] ? (array)json_decode((string)$r['palette_json'], true) : ['#8c8c8c','#d4d4d4'],
             'dish_form' => $r['dish_form'] ?? null,
@@ -342,7 +357,15 @@ final class RecipeRepository
             'is_custom' => (bool)$r['is_custom'],
             'owner_user_id' => $r['owner_user_id'],
             'group_id' => $r['group_id'],
-        ];
+        ] + $guidedFields;
+    }
+
+    /** Decode a JSON list column; NULL / '' / '[]' all become an empty array. */
+    private static function jsonList(?string $json): array
+    {
+        if ($json === null || $json === '') return [];
+        $v = json_decode($json, true);
+        return is_array($v) ? array_values($v) : [];
     }
 
     /** Keep a URL only if it's a well-formed http(s) link; otherwise null. */

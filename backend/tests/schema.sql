@@ -21,7 +21,8 @@ CREATE TABLE pantry_items (
 );
 CREATE TABLE recipes (
   id TEXT PRIMARY KEY, slug TEXT, title TEXT, description TEXT, prep_time INTEGER DEFAULT 0,
-  cook_time INTEGER DEFAULT 0, servings INTEGER DEFAULT 2, tags_json TEXT, palette_json TEXT,
+  cook_time INTEGER DEFAULT 0, servings INTEGER DEFAULT 2, difficulty TEXT, equipment_json TEXT,
+  make_ahead TEXT, storage TEXT, leftovers TEXT, substitutions_json TEXT, tags_json TEXT, palette_json TEXT,
   source TEXT, image_url TEXT, sponsored_by TEXT, sponsored_url TEXT, view_count INTEGER DEFAULT 0,
   is_custom INTEGER DEFAULT 0, owner_user_id TEXT, group_id TEXT, created_at INTEGER, dish_form TEXT
 );
@@ -29,7 +30,8 @@ CREATE TABLE recipe_ingredients (
   recipe_id TEXT, sort_order INTEGER, ingredient_id TEXT, amount_text TEXT, is_optional INTEGER DEFAULT 0
 );
 CREATE TABLE recipe_steps (
-  recipe_id TEXT, sort_order INTEGER, content TEXT, detail TEXT, timer_seconds INTEGER
+  recipe_id TEXT, sort_order INTEGER, title TEXT, content TEXT, detail TEXT, timer_seconds INTEGER,
+  tips_json TEXT, warnings_json TEXT, ingredient_ids_json TEXT
 );
 CREATE TABLE recipe_favourites (
   user_id TEXT, recipe_id TEXT, created_at INTEGER, PRIMARY KEY (user_id, recipe_id)

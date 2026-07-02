@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Icon } from '../components/Icon';
 import { MealPlate } from '../components/MealPlate';
 import { MethodBlock } from '../components/MethodBlock';
+import { GoodToKnow, KitchenPanel } from '../components/KitchenNotes';
 import { AffiliateButtons } from '../components/AffiliateButtons';
 import type { Recipe } from '../types/models';
 
@@ -124,6 +125,12 @@ export function PublicRecipePage() {
                 <div className="mono small muted">serves</div>
                 <div className="stat-num-sm">{recipe.servings}</div>
               </div>
+              {recipe.difficulty && (
+                <div>
+                  <div className="mono small muted">skill</div>
+                  <div className="stat-num-sm stat-word">{recipe.difficulty}</div>
+                </div>
+              )}
             </div>
             <div className="recipe-detail-actions">
               <Link to={`/register?from=${slug}`} className="btn btn-primary">
@@ -151,6 +158,7 @@ export function PublicRecipePage() {
                 </li>
               ))}
             </ul>
+            <KitchenPanel recipe={recipe} />
             <AffiliateButtons
               query={recipe.ingredients.map((i) => i.display || i.ingredient_id).filter(Boolean).join(', ')}
               unboughtCount={recipe.ingredients.length}
@@ -159,6 +167,7 @@ export function PublicRecipePage() {
           </div>
           <div>
             <MethodBlock steps={recipe.steps} />
+            <GoodToKnow recipe={recipe} />
           </div>
         </div>
 

@@ -42,7 +42,13 @@ final class PublicRecipeAction
             $recipe['ingredients']
         );
         $steps = array_map(
-            fn ($s) => ['@type' => 'HowToStep', 'text' => $s['content']],
+            function ($s) {
+                // Guided steps carry a name + the full beginner walkthrough — richer
+                // structured data than the one-line content alone.
+                $step = ['@type' => 'HowToStep', 'text' => $s['content'] . (!empty($s['detail']) ? ' ' . $s['detail'] : '')];
+                if (!empty($s['title'])) $step['name'] = $s['title'];
+                return $step;
+            },
             $recipe['steps']
         );
 

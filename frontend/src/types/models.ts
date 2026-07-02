@@ -83,6 +83,8 @@ export interface RecipeSummary {
   group_id: string | null;
   /** present on list responses, used by <MealPlate> */
   ingredient_ids?: string[];
+  /** guided-cooking rating; null on custom recipes */
+  difficulty?: 'easy' | 'medium' | 'hard' | null;
 }
 
 export interface RecipeIngredient {
@@ -97,11 +99,28 @@ export interface RecipeStep {
   content: string;
   detail?: string | null;
   timer_seconds: number | null;
+  /** guided-cooking layer (seeded catalogue; empty/null on custom recipes) */
+  title?: string | null;
+  tips?: string[];
+  warnings?: string[];
+  /** ids from the recipe's ingredient list used in this step */
+  ingredient_ids?: string[];
+}
+
+export interface RecipeSubstitution {
+  ingredient_id: string;
+  swap: string;
 }
 
 export interface Recipe extends RecipeSummary {
   ingredients: RecipeIngredient[];
   steps: RecipeStep[];
+  /** guided-cooking kitchen context (detail responses only) */
+  equipment?: string[];
+  make_ahead?: string | null;
+  storage?: string | null;
+  leftovers?: string | null;
+  substitutions?: RecipeSubstitution[];
 }
 
 export interface RankedRecipe {

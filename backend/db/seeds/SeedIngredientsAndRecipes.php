@@ -90,6 +90,12 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
                 'prep_time' => $r['prep_time'],
                 'cook_time' => $r['cook_time'],
                 'servings' => $r['servings'],
+                'difficulty' => $r['difficulty'] ?? null,
+                'equipment_json' => isset($r['equipment']) ? json_encode($r['equipment'], JSON_UNESCAPED_UNICODE) : null,
+                'make_ahead' => $r['make_ahead'] ?? null,
+                'storage' => $r['storage'] ?? null,
+                'leftovers' => $r['leftovers'] ?? null,
+                'substitutions_json' => isset($r['substitutions']) ? json_encode($r['substitutions'], JSON_UNESCAPED_UNICODE) : null,
                 'tags_json' => json_encode($r['tags']),
                 'palette_json' => json_encode($r['palette']),
                 'dish_form' => $r['dish_form'] ?? null,
@@ -119,7 +125,7 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
                     'detail' => $detail,
                     // Read from data when authored (pipeline ready for timer_seconds backfill).
                     'timer_seconds' => is_array($step) && isset($step['timer_seconds']) ? (int)$step['timer_seconds'] : null,
-                ];
+                ] + self::guidedStepColumns($step);
             }
         }
 
@@ -143,6 +149,12 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
                 ', prep_time = ' . (int)$r['prep_time'] .
                 ', cook_time = ' . (int)$r['cook_time'] .
                 ', servings = ' . (int)$r['servings'] .
+                ', difficulty = ' . (isset($r['difficulty']) ? $pdo->quote((string)$r['difficulty']) : 'NULL') .
+                ', equipment_json = ' . (isset($r['equipment']) ? $pdo->quote(json_encode($r['equipment'], JSON_UNESCAPED_UNICODE)) : 'NULL') .
+                ', make_ahead = ' . (isset($r['make_ahead']) ? $pdo->quote((string)$r['make_ahead']) : 'NULL') .
+                ', storage = ' . (isset($r['storage']) ? $pdo->quote((string)$r['storage']) : 'NULL') .
+                ', leftovers = ' . (isset($r['leftovers']) ? $pdo->quote((string)$r['leftovers']) : 'NULL') .
+                ', substitutions_json = ' . (isset($r['substitutions']) ? $pdo->quote(json_encode($r['substitutions'], JSON_UNESCAPED_UNICODE)) : 'NULL') .
                 ', tags_json = ' . $pdo->quote(json_encode($r['tags'])) .
                 ', palette_json = ' . $pdo->quote(json_encode($r['palette'])) .
                 // NULL-consistent with the insert path (don't coerce a missing form to '').
@@ -168,12 +180,17 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
             foreach ($r['steps'] as $idx => $step) {
                 [$content, $detail] = self::normaliseStep($step);
                 $timer = is_array($step) && isset($step['timer_seconds']) ? (int)$step['timer_seconds'] : null;
+                $g = self::guidedStepColumns($step);
                 $this->getAdapter()->execute(
-                    'INSERT INTO recipe_steps (recipe_id, sort_order, content, detail, timer_seconds) VALUES ('
+                    'INSERT INTO recipe_steps (recipe_id, sort_order, content, detail, timer_seconds, title, tips_json, warnings_json, ingredient_ids_json) VALUES ('
                     . $pdo->quote($rid) . ', ' . (int)$idx . ', '
                     . $pdo->quote($content) . ', '
                     . ($detail === null || $detail === '' ? 'NULL' : $pdo->quote($detail)) . ', '
-                    . ($timer === null ? 'NULL' : (int)$timer) . ')'
+                    . ($timer === null ? 'NULL' : (int)$timer) . ', '
+                    . ($g['title'] === null ? 'NULL' : $pdo->quote($g['title'])) . ', '
+                    . ($g['tips_json'] === null ? 'NULL' : $pdo->quote($g['tips_json'])) . ', '
+                    . ($g['warnings_json'] === null ? 'NULL' : $pdo->quote($g['warnings_json'])) . ', '
+                    . ($g['ingredient_ids_json'] === null ? 'NULL' : $pdo->quote($g['ingredient_ids_json'])) . ')'
                 );
             }
         }
@@ -186,5 +203,26 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
             return [(string)($step['content'] ?? ''), $step['detail'] ?? null];
         }
         return [(string)$step, null];
+    }
+
+    /**
+     * Guided-cooking step columns (title / tips / warnings / per-step
+     * ingredient ids). Always returns all four keys so bulk-insert rows stay
+     * homogeneous; empty arrays are stored as NULL, not "[]".
+     *
+     * @param mixed $step
+     * @return array{title: ?string, tips_json: ?string, warnings_json: ?string, ingredient_ids_json: ?string}
+     */
+    private static function guidedStepColumns($step): array
+    {
+        $arr = is_array($step) ? $step : [];
+        $json = fn (?array $v) => ($v !== null && $v !== []) ? json_encode($v, JSON_UNESCAPED_UNICODE) : null;
+        $title = isset($arr['title']) && $arr['title'] !== '' ? (string)$arr['title'] : null;
+        return [
+            'title' => $title,
+            'tips_json' => $json($arr['tips'] ?? null),
+            'warnings_json' => $json($arr['warnings'] ?? null),
+            'ingredient_ids_json' => $json($arr['ingredient_ids'] ?? null),
+        ];
     }
 }

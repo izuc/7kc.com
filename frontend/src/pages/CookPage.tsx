@@ -7,6 +7,8 @@ import { haptic } from '../lib/haptics';
 import { useWakeLock } from '../lib/useWakeLock';
 import { trackEvent } from '../lib/analytics';
 import { Icon } from '../components/Icon';
+import { StepTimer } from '../components/StepTimer';
+import type { Recipe, RecipeStep } from '../types/models';
 
 export function CookPage() {
   const { slug } = useParams();
@@ -145,10 +147,33 @@ export function CookPage() {
 
       {!isLastStep ? (
         <div className="cook-step">
-          <div className="cook-step-num mono">{step + 1}</div>
+          <div className="cook-step-top">
+            <div className="cook-step-num mono">{step + 1}</div>
+            {recipe.steps[step].title && (
+              <div className="cook-step-label mono">{recipe.steps[step].title}</div>
+            )}
+          </div>
           <p>{recipe.steps[step].content}</p>
+          <StepIngredients step={recipe.steps[step]} recipe={recipe} pantryIngIds={pantryIngIds} />
           {recipe.steps[step].detail && (
             <p className="cook-step-detail">{recipe.steps[step].detail}</p>
+          )}
+          {(recipe.steps[step].warnings?.length ?? 0) > 0 &&
+            recipe.steps[step].warnings!.map((w, j) => (
+              <div key={j} className="cook-callout warn">
+                <span className="mono small">careful</span>
+                {w}
+              </div>
+            ))}
+          {(recipe.steps[step].tips?.length ?? 0) > 0 &&
+            recipe.steps[step].tips!.map((t, j) => (
+              <div key={j} className="cook-callout tip">
+                <span className="mono small">tip</span>
+                {t}
+              </div>
+            ))}
+          {recipe.steps[step].timer_seconds != null && recipe.steps[step].timer_seconds! > 0 && (
+            <StepTimer key={step} seconds={recipe.steps[step].timer_seconds!} />
           )}
           <div className="cook-actions">
             {step > 0 && (
@@ -217,6 +242,44 @@ export function CookPage() {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+/** "In this step" — the ingredients this step actually uses, with amounts and
+ * a tick when they're already in the pantry. Quietly absent on recipes
+ * without the guided layer (customs). */
+function StepIngredients({
+  step,
+  recipe,
+  pantryIngIds,
+}: {
+  step: RecipeStep;
+  recipe: Recipe;
+  pantryIngIds: Set<string>;
+}) {
+  const ids = step.ingredient_ids ?? [];
+  if (ids.length === 0) return null;
+  const items = ids
+    .map((id) => recipe.ingredients.find((i) => i.ingredient_id === id))
+    .filter((i): i is NonNullable<typeof i> => !!i);
+  if (items.length === 0) return null;
+
+  return (
+    <div className="cook-step-ings">
+      <span className="mono small muted">In this step</span>
+      <ul>
+        {items.map((i) => {
+          const have = !!i.ingredient_id && pantryIngIds.has(i.ingredient_id);
+          return (
+            <li key={i.ingredient_id} className={have ? 'have' : ''}>
+              {have && <Icon name="check" size={11} />}
+              <span>{i.display || i.ingredient_id}</span>
+              {i.amount && <span className="mono small muted">{i.amount}</span>}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }

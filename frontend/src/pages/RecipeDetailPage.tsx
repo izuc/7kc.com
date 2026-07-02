@@ -6,6 +6,7 @@ import { Icon } from '../components/Icon';
 import { Modal } from '../components/Modal';
 import { MealPlate } from '../components/MealPlate';
 import { MethodBlock } from '../components/MethodBlock';
+import { GoodToKnow, KitchenPanel } from '../components/KitchenNotes';
 import { AffiliateButtons } from '../components/AffiliateButtons';
 import { RecipeComments } from '../components/RecipeComments';
 import { trackEvent } from '../lib/analytics';
@@ -157,6 +158,12 @@ export function RecipeDetailPage() {
               <div className="mono small muted">serves</div>
               <div className="stat-num-sm">{recipe.servings}</div>
             </div>
+            {recipe.difficulty && (
+              <div>
+                <div className="mono small muted">skill</div>
+                <div className="stat-num-sm stat-word">{recipe.difficulty}</div>
+              </div>
+            )}
             <div>
               <div className="mono small muted">match</div>
               <div className="stat-num-sm">
@@ -208,6 +215,7 @@ export function RecipeDetailPage() {
       <div className="recipe-detail-body">
         <div>
           <IngredientsPanel ingredients={recipe.ingredients} baseServings={recipe.servings} have={have} />
+          <KitchenPanel recipe={recipe} />
           <AffiliateButtons
             query={recipe.ingredients.map((i) => i.display || i.ingredient_id).filter(Boolean).join(', ')}
             unboughtCount={recipe.ingredients.length}
@@ -216,6 +224,7 @@ export function RecipeDetailPage() {
         </div>
         <div>
           <MethodBlock steps={recipe.steps} />
+          <GoodToKnow recipe={recipe} />
         </div>
       </div>
 

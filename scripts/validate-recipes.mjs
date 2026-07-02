@@ -77,6 +77,55 @@ for (const r of recipes) {
   if (!Array.isArray(steps) || steps.length === 0 || !steps.some((s) => stepText(s).trim())) {
     err(`"${slug}" has no usable steps`);
   }
+
+  // ---- guided-cooking layer (required on the seeded catalogue) ----
+  const recipeIngIds = new Set((r.ingredients || []).map((i) => i && (i.id ?? i.ingredient_id)).filter(Boolean));
+
+  if (!['easy', 'medium', 'hard'].includes(r.difficulty)) {
+    err(`"${slug}" has invalid difficulty "${r.difficulty}"`);
+  }
+  if (!Array.isArray(r.equipment) || r.equipment.length === 0 || r.equipment.length > 8
+    || !r.equipment.every((e) => typeof e === 'string' && e.trim())) {
+    err(`"${slug}" needs 1–8 non-empty equipment strings`);
+  }
+  if (typeof r.storage !== 'string' || !r.storage.trim()) {
+    err(`"${slug}" is missing storage guidance`);
+  }
+  for (const key of ['make_ahead', 'leftovers']) {
+    if (key in r && r[key] !== null && (typeof r[key] !== 'string' || !r[key].trim())) {
+      err(`"${slug}" has a blank ${key} (use null or omit instead)`);
+    }
+  }
+  for (const s of r.substitutions || []) {
+    if (!s || typeof s.swap !== 'string' || !s.swap.trim()) err(`"${slug}" has a substitution with no swap text`);
+    else if (!recipeIngIds.has(s.ingredient_id)) {
+      err(`"${slug}" substitution references "${s.ingredient_id}" which is not in the recipe`);
+    }
+  }
+  for (const [i, s] of steps.entries()) {
+    if (typeof s === 'string') { err(`"${slug}" step ${i + 1} is a bare string (guided steps must be objects)`); continue; }
+    if (typeof s.title !== 'string' || !s.title.trim() || s.title.length > 80) {
+      err(`"${slug}" step ${i + 1} needs a title (≤80 chars)`);
+    }
+    if ('timer_seconds' in s && s.timer_seconds !== null
+      && (!Number.isInteger(s.timer_seconds) || s.timer_seconds < 30 || s.timer_seconds > 14400)) {
+      err(`"${slug}" step ${i + 1} has implausible timer_seconds ${s.timer_seconds}`);
+    }
+    for (const key of ['tips', 'warnings']) {
+      const v = s[key];
+      if (v === undefined) continue;
+      if (!Array.isArray(v) || v.length > 2 || !v.every((t) => typeof t === 'string' && t.trim() && t.length <= 200)) {
+        err(`"${slug}" step ${i + 1} has invalid ${key} (array of ≤2 strings, each ≤200 chars)`);
+      }
+    }
+    if (!Array.isArray(s.ingredient_ids)) {
+      err(`"${slug}" step ${i + 1} is missing ingredient_ids (empty array is fine)`);
+    } else {
+      for (const id of s.ingredient_ids) {
+        if (!recipeIngIds.has(id)) err(`"${slug}" step ${i + 1} uses "${id}" which is not in the recipe`);
+      }
+    }
+  }
 }
 
 // Orphan ingredients (in the dictionary, used by no recipe) — warning only.

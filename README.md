@@ -85,6 +85,10 @@ The whole catalogue is browsable without an account at `/browse` — search, tag
 
 No stock photos: every recipe card, hero and thumbnail is an SVG illustration generated at render time from the recipe's own data — its ingredients pick the toppings, its palette sets the tones, and a slug-seeded RNG gives each recipe a stable, unique composition. 54 dish archetypes (pizza with a pulled slice, noodle bowls with chopsticks, traybakes with one square missing…) live in `frontend/src/lib/dishArt/`; the 222 ingredient icons share the same "ink & cream" language. Design history and rules: [`docs/DISH-ART-PLAN.md`](./docs/DISH-ART-PLAN.md). Visual QA harness: `node frontend/scripts/render-art-sheet.mjs` renders every dish/icon to contact-sheet PNGs.
 
+## Guided cooking
+
+Every one of the 204 seeded recipes carries a full beginner layer: each step has a short title, a plain-English walkthrough, technique tips and real-hazard warnings (raw-chicken hygiene, hot-oil-and-water, don't-open-the-oven), plus the ingredients that step actually uses. Recipes also know their difficulty, the equipment you'll need, easy ingredient swaps, and make-ahead / storage / leftover guidance — all food-safety checked (chicken to 74°C, cooked rice keeps 1 day, seafood 1–2 days). Cook Mode (`/cook/:slug`) walks you through step by step with per-step countdown timers (chime + vibration), pantry-aware "in this step" ingredient chips, and a screen wake-lock so the phone stays on at the stove. The whole layer lives in `shared/recipes.json` and is enforced by `scripts/validate-recipes.mjs`; authoring rules are in [`docs/GUIDED-COOKING.md`](./docs/GUIDED-COOKING.md).
+
 ## Optional AI photo scanning
 
 Off by default. If the server operator points `AI_SCAN_ENDPOINT` / `AI_SCAN_MODEL` (plus optional `AI_SCAN_API_KEY`, `AI_SCAN_TILES`) at any OpenAI-compatible vision endpoint (LM Studio, Ollama, OpenAI), users get two extras: "Scan a list" reads a photographed shopping list, and the pantry's "Scan photo" recognises groceries on fridge/pantry shelves (with confirm-before-add). The key stays server-side; recipe matching and ranking never use AI. See `backend/.env.example`.
@@ -105,6 +109,7 @@ Off by default. If the server operator points `AI_SCAN_ENDPOINT` / `AI_SCAN_MODE
 - ✅ Phase 4: Groups, shared lists/pantry, meal suggestions, likes, comments, feed
 - ✅ Phase 5: OCR (Tesseract.js), PWA install prompt, Plausible analytics, affiliate buttons (Woolies/Coles seeded), `/r/:slug` SEO recipe pages with Schema.org JSON-LD, sitemap generator, sponsored-recipe + view-count columns, FLIPPING/ADMIN docs
 - ✅ Phase 6: catalogue grown to 204 chef-reviewed recipes; dish artwork v2 (generated, seeded, 54 archetypes) + 222 redrawn ingredient icons; public `/browse` catalogue and landing-page art showcase; mobile responsiveness pass; optional operator-configured AI photo scanning (shopping lists + pantry/fridge shelves)
+- ✅ Phase 7: guided cooking — beginner walkthroughs on every step of all 204 recipes (titles, tips, safety warnings, per-step ingredients), difficulty/equipment/swaps/storage on every recipe, and a Cook Mode with per-step timers and pantry-aware ingredient chips
 
 ## Principles
 

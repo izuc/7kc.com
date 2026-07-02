@@ -535,9 +535,214 @@
    Method block — class-based detail visibility so print can force
    all beginner notes visible regardless of the toggle state.
    ============================================================ */
-.recipe-steps:not(.with-detail) .step-detail {
+.recipe-steps:not(.with-detail) .step-detail,
+.recipe-steps:not(.with-detail) .step-title,
+.recipe-steps:not(.with-detail) .step-notes {
   display: none;
 }
+
+/* ============================================================
+   Guided cooking — step titles, tips/warnings, per-step timers,
+   equipment / swaps / good-to-know panels, cook-mode callouts.
+   ============================================================ */
+
+/* step title label (guided layer, shows with beginner notes) */
+.step-title {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-ink, var(--accent));
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+.step-title .step-mins {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--muted);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+/* tips + warnings under a step */
+.step-notes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.step-notes li {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.step-note-tag {
+  flex: 0 0 auto;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.step-notes.tip .step-note-tag { background: var(--sage-2); color: var(--ink); }
+.step-notes.warn .step-note-tag { background: var(--amber-2); color: var(--amber-ink, var(--ink)); }
+
+/* ---- cook mode ---- */
+.cook-step-top {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.cook-step-label {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-ink, var(--accent));
+  font-weight: 600;
+}
+
+.cook-step-ings {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+.cook-step-ings > .mono { letter-spacing: 0.08em; text-transform: uppercase; }
+.cook-step-ings ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cook-step-ings li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  font-size: 13.5px;
+}
+.cook-step-ings li.have { border-color: var(--sage); }
+.cook-step-ings li.have svg { color: var(--sage); }
+
+.cook-callout {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin: 12px 0 0;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.cook-callout .mono {
+  flex: 0 0 auto;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.cook-callout.tip { background: var(--sage-2); }
+.cook-callout.tip .mono { background: var(--paper); color: var(--ink); }
+.cook-callout.warn { background: var(--amber-2); }
+.cook-callout.warn .mono { background: var(--paper); color: var(--amber-ink, var(--ink)); }
+
+/* per-step countdown */
+.step-timer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0 4px;
+  padding: 12px 16px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  background: var(--cream-2);
+}
+.step-timer.running { border-style: solid; border-color: var(--accent); }
+.step-timer.done { border-style: solid; border-color: var(--sage); background: var(--sage-2); }
+.step-timer-clock {
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
+  min-width: 3ch;
+}
+.step-timer .chip { cursor: pointer; }
+
+/* ---- equipment + swaps (under ingredients) ---- */
+.kitchen-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 24px;
+}
+.equipment-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.equipment-list li {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.swap-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.swap-list li {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.swap-list .swap-from { flex: 0 0 auto; font-weight: 500; }
+.swap-list .swap-arrow { flex: 0 0 auto; color: var(--muted); }
+.swap-list .swap-to { color: var(--ink-2); }
+
+/* ---- make ahead / storage / leftovers (after method) ---- */
+.good-to-know {
+  margin-top: 28px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+.good-to-know dl { margin: 12px 0 0; display: flex; flex-direction: column; gap: 12px; }
+.good-to-know .gtk-row { display: grid; grid-template-columns: 92px 1fr; gap: 12px; align-items: baseline; }
+.good-to-know dt { color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.good-to-know dd { margin: 0; font-size: 14px; line-height: 1.6; color: var(--ink-2); text-wrap: pretty; }
+@media (max-width: 480px) {
+  .good-to-know .gtk-row { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* difficulty reads as a word in the stats strip */
+.stat-num-sm.stat-word { font-size: 22px; text-transform: capitalize; padding-top: 3px; }
 
 /* ============================================================
    Mobile — a considered polish pass
@@ -1391,6 +1596,14 @@ input:focus-visible {
     line-height: 1.5 !important;
     color: #3f2410 !important;
   }
+  /* guided layer prints too — titles, tips and warnings */
+  .recipe-steps .step-title { display: flex !important; }
+  .recipe-steps .step-notes { display: flex !important; }
+  .step-notes li { font-size: 9.5pt !important; }
+  .step-notes.tip .step-note-tag { background: #e8edd8 !important; color: #3f2410 !important; }
+  .step-notes.warn .step-note-tag { background: #f6e3c0 !important; color: #3f2410 !important; }
+  .kitchen-panel, .good-to-know { page-break-inside: avoid; }
+  .good-to-know { border: 1pt solid #e6dcc4 !important; }
   .recipe-steps li {
     page-break-inside: avoid;
     gap: 10pt !important;
