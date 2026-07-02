@@ -1,14 +1,27 @@
 import { DishTemplate } from '../types';
-import { PastaBowl } from './bowls';
+import { BOWLS_FORMS } from './bowls';
+import { BOWLS2_FORMS } from './bowls2';
+import { PLATES_FORMS } from './plates';
+import { HANDHELD_FORMS } from './handheld';
+import { HANDHELD2_FORMS } from './handheld2';
+import { BAKES_FORMS } from './bakes';
+import { SWEETS_FORMS } from './sweets';
+import { WORLDLY_FORMS } from './worldly';
 
 /**
- * dish_form token → template. The single source of truth for valid dish_form
- * values (scripts/validate-recipes.mjs parses this map). Forms not yet listed
- * here fall back to the legacy dishArtwork.tsx templates in MealPlate.
- *
- * Keep entries in the literal `'token': (p) => <Component {...p} />` shape —
- * the validator regexes it.
+ * dish_form token → template, merged from the family registries. Valid tokens
+ * are the union of every family map plus (during the migration) the legacy
+ * dishArtwork.tsx templates — scripts/validate-recipes.mjs scans both. A form
+ * missing here falls back to legacy art in MealPlate, so partial registries
+ * are always safe to ship.
  */
 export const FORMS: Record<string, DishTemplate> = {
-  'pasta-bowl': (p) => <PastaBowl {...p} />,
+  ...BOWLS_FORMS,
+  ...BOWLS2_FORMS,
+  ...PLATES_FORMS,
+  ...HANDHELD_FORMS,
+  ...HANDHELD2_FORMS,
+  ...BAKES_FORMS,
+  ...SWEETS_FORMS,
+  ...WORLDLY_FORMS,
 };

@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { ICON_OVERRIDES } from './icons';
 
 /**
  * Flat illustrated SVG for every ingredient in the dictionary.
@@ -883,9 +884,10 @@ function fallbackFor(section: string): ReactNode {
 /**
  * Render the ingredient inside a 0..100 viewBox group. The caller supplies the
  * outer <svg> so multiple ingredients can be stamped into one plate.
+ * Icon v2 overrides (lib/icons/) win over this file's legacy ICONS map.
  */
 export function ingredientIcon(id: string, section: string = 'other'): ReactNode {
-  const builder = ICONS[id];
+  const builder = ICON_OVERRIDES[id] ?? ICONS[id];
   return builder ? builder() : fallbackFor(section);
 }
 

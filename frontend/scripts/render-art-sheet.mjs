@@ -70,8 +70,9 @@ export function dishSheets({ forms, slugs, chunk }) {
   return pages;
 }
 
-export function iconSheets({ chunk }) {
-  const cells = ingredients.map((ing) => {
+export function iconSheets({ chunk, ids }) {
+  const list = ids ? ingredients.filter((i) => ids.includes(i.id)) : ingredients;
+  const cells = list.map((ing) => {
     const big = uniquify(renderToStaticMarkup(React.createElement(IngredientIcon, { id: ing.id, section: ing.section, size: 64 })));
     const small = uniquify(renderToStaticMarkup(React.createElement(IngredientIcon, { id: ing.id, section: ing.section, size: 28 })));
     return '<div class="cell icon"><div class="art">' + big + small + '</div><div class="lbl">' + esc(ing.id) + '</div></div>';
@@ -112,7 +113,8 @@ const ssr = await import(pathToFileURL(bundlePath).href + `?v=${Date.now()}`);
 
 const forms = arg('forms')?.split(',').map((s) => s.trim());
 const slugs = arg('slugs')?.split(',').map((s) => s.trim());
-const pages = has('icons') ? ssr.iconSheets({ chunk: CHUNK * 3 }) : ssr.dishSheets({ forms, slugs, chunk: CHUNK });
+const ids = arg('ids')?.split(',').map((s) => s.trim());
+const pages = has('icons') ? ssr.iconSheets({ chunk: CHUNK * 3, ids }) : ssr.dishSheets({ forms, slugs, chunk: CHUNK });
 const prefix = has('icons') ? 'icons' : 'dishes';
 
 if (!pages.length) {

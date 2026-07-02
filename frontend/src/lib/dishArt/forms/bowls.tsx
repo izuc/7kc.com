@@ -2,7 +2,7 @@ import { INK, SW, PASTA_GOLD, PASTA_DARK, PASTA_LIGHT, SIMPLIFY_BELOW } from '..
 import { CardWash, TopBowl, Gloss, Steam } from '../primitives';
 import { ToppingScatter } from '../toppings';
 import { rngFor } from '../seed';
-import { DishProps } from '../types';
+import { DishProps, DishTemplate } from '../types';
 
 /**
  * Bowl-family dish templates. The reference art for this language lives in
@@ -77,3 +77,7 @@ export function PastaBowl({ tones, slug, toppingIds, size }: DishProps) {
     </>
   );
 }
+
+export const BOWLS_FORMS: Record<string, DishTemplate> = {
+  'pasta-bowl': (p) => <PastaBowl {...p} />,
+};

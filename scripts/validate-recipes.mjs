@@ -11,14 +11,27 @@ const ingredients = JSON.parse(fs.readFileSync(path.join(root, 'shared', 'ingred
 
 const ingredientIds = new Set(ingredients.map((i) => i.id));
 
-// Derive the valid dish_form tokens from the single source of truth — the
-// FORM_TEMPLATES map in frontend/src/lib/dishArtwork.tsx — so the two never drift.
-const artwork = fs.readFileSync(path.join(root, 'frontend', 'src', 'lib', 'dishArtwork.tsx'), 'utf8');
-const formsStart = artwork.indexOf('const FORM_TEMPLATES');
-const formsBlock = artwork.slice(formsStart, artwork.indexOf('};', formsStart));
-const DISH_FORMS = new Set([...formsBlock.matchAll(/['"]?([a-z][a-z-]*)['"]?\s*:\s*\(p\)\s*=>/g)].map((m) => m[1]));
-if (formsStart < 0 || DISH_FORMS.size === 0) {
-  console.error('could not read FORM_TEMPLATES from dishArtwork.tsx');
+// Derive the valid dish_form tokens from the template sources so the data and
+// the art never drift: the union of every dishArt/forms/*.tsx family registry
+// (v2) and — while it still exists during the migration — the legacy
+// FORM_TEMPLATES map in dishArtwork.tsx. Registry entries look like
+// `'token': (p) =>` in both systems.
+const DISH_FORMS = new Set();
+const collectTokens = (src) => {
+  for (const m of src.matchAll(/['"]?([a-z][a-z0-9-]*)['"]?\s*:\s*\(p\)\s*=>/g)) DISH_FORMS.add(m[1]);
+};
+const formsDir = path.join(root, 'frontend', 'src', 'lib', 'dishArt', 'forms');
+for (const f of fs.readdirSync(formsDir)) {
+  if (f.endsWith('.tsx')) collectTokens(fs.readFileSync(path.join(formsDir, f), 'utf8'));
+}
+const legacyPath = path.join(root, 'frontend', 'src', 'lib', 'dishArtwork.tsx');
+if (fs.existsSync(legacyPath)) {
+  const artwork = fs.readFileSync(legacyPath, 'utf8');
+  const formsStart = artwork.indexOf('const FORM_TEMPLATES');
+  if (formsStart >= 0) collectTokens(artwork.slice(formsStart, artwork.indexOf('};', formsStart)));
+}
+if (DISH_FORMS.size === 0) {
+  console.error('could not derive any dish_form tokens from the template sources');
   process.exit(2);
 }
 

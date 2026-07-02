@@ -90,9 +90,15 @@ export function mix(a: string, b: string, t: number): string {
  * ~175–258° get pulled hard toward a warm tan; purples (eggplant, grape) pass.
  */
 export function foodSafe(hex: string): string {
-  const [h, s] = rgbToHsl(...hexToRgb(hex));
+  const [h, s, l] = rgbToHsl(...hexToRgb(hex));
   const deg = h * 360;
+  // cold blues (tuna-tin cyan, ocean navy) → warm tan, hard
   if (deg > 175 && deg < 258 && s > 0.18) return mix(hex, '#d9a05c', 0.85);
+  // blue-violets (vivid eggplant brand hues) → plummy brown, softer;
+  // magentas/berries (>292°) pass — they are real food colours
+  if (deg >= 258 && deg < 292 && s > 0.25) return mix(hex, '#9a5a38', 0.72);
+  // near-greys (mushroom slate, dip grey) → warm taupe so nothing reads as concrete
+  if (s < 0.14 && l > 0.25 && l < 0.75) return mix(hex, '#b08d64', 0.5);
   return hex;
 }
 
