@@ -70,7 +70,7 @@ export function LoginPage() {
         <div className="auth-aside-foot">
           <span><span className="tick">✓</span>Free forever</span>
           <span><span className="tick">✓</span>No subscription</span>
-          <span><span className="tick">✓</span>No AI</span>
+          <span><span className="tick">✓</span>Works offline</span>
         </div>
       </aside>
 

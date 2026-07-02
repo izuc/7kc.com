@@ -22,7 +22,7 @@ export function LandingPage() {
     })();
     meta.setAttribute(
       'content',
-      "A pantry-first kitchen management app. Your shopping list becomes your pantry. Your pantry decides what's for dinner. 204 illustrated recipes, no AI required, no subscription."
+      "A pantry-first kitchen management app. Your shopping list becomes your pantry. Your pantry decides what's for dinner. 204 illustrated recipes, works offline, no subscription."
     );
   }, []);
 
@@ -101,7 +101,7 @@ function Hero() {
             <span className="dot">·</span>
             <span>Made in Australia</span>
             <span className="dot">·</span>
-            <span>No AI required</span>
+            <span>204 recipes</span>
           </div>
           <h1 className="lp-h1 lp-reveal lp-reveal-2">
             Use what you've got<span className="period">.</span>
@@ -123,7 +123,7 @@ function Hero() {
             </Link>
           </div>
           <div className="lp-reassurance lp-reveal lp-reveal-5">
-            <span className="lp-claim"><span className="tick">✓</span>Free forever</span> <span className="lp-claim"><span className="tick">✓</span>Works offline</span> <span className="lp-claim"><span className="tick">✓</span>No subscription</span> <span className="lp-claim"><span className="tick">✓</span>No AI required</span>
+            <span className="lp-claim"><span className="tick">✓</span>Free forever</span> <span className="lp-claim"><span className="tick">✓</span>Works offline</span> <span className="lp-claim"><span className="tick">✓</span>No subscription</span>
           </div>
         </div>
 
@@ -510,7 +510,7 @@ function ContraSection() {
 
         <div className="lp-contra">
           <div className="lp-contra-item">
-            <span className="mono-label">01 · No AI required</span>
+            <span className="mono-label">01 · No AI suggestions</span>
             <span className="struck">AI recipe suggestions</span>
             <p className="why">
               Our matcher is a <strong>2 KB dictionary</strong> and a fuzzy lookup. It
