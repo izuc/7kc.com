@@ -201,6 +201,8 @@ export const api = {
   recipe: (slug: string) => request<{ recipe: Recipe }>(`/recipes/${slug}`),
   collection: (tag: string) =>
     request<{ tag: string; recipes: RecipeSummary[] }>(`/public/collections/${encodeURIComponent(tag)}`),
+  // The whole public catalogue (no auth) — /browse and the landing showcase.
+  publicRecipes: () => request<{ recipes: RecipeSummary[] }>(`/public/recipes`),
   suggestions: () => request<{ ranked: RankedRecipe[] }>('/recipes/suggestions'),
   cookedRecipes: () => request<{ cooked: CookedRecipe[] }>('/recipes/cooked'),
   favouriteRecipes: () => request<{ recipes: RecipeSummary[] }>('/recipes/favourites'),

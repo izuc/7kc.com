@@ -88,7 +88,7 @@ export function PublicRecipePage() {
           </div>
         </Link>
         <div className="row-inline" style={{ gap: 10 }}>
-          <Link to="/recipes" className="btn btn-ghost">Browse recipes</Link>
+          <Link to="/browse" className="btn btn-ghost">Browse recipes</Link>
           <Link to={`/register?from=${slug}`} className="btn btn-primary">
             <Icon name="sparkle" size={14} /> Save to my pantry
           </Link>

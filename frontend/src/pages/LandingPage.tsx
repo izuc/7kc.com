@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { api } from '../lib/api';
 import { Icon } from '../components/Icon';
 import { MealPlate } from '../components/MealPlate';
+import type { RecipeSummary } from '../types/models';
 
 /**
  * Public landing page at /. Editorial food-magazine treatment with embedded
@@ -19,18 +22,27 @@ export function LandingPage() {
     })();
     meta.setAttribute(
       'content',
-      "A pantry-first kitchen management app. Your shopping list becomes your pantry. Your pantry decides what's for dinner. 150+ recipes, no AI, no subscription."
+      "A pantry-first kitchen management app. Your shopping list becomes your pantry. Your pantry decides what's for dinner. 204 illustrated recipes, no AI required, no subscription."
     );
   }, []);
+
+  // the public catalogue powers the dish shelf + mosaic (same cache as /browse)
+  const { data: pub } = useQuery({
+    queryKey: ['public-recipes'],
+    queryFn: () => api.publicRecipes(),
+    staleTime: 60 * 60 * 1000,
+  });
+  const recipes = pub?.recipes ?? [];
 
   return (
     <div className="lp">
       <Nav />
       <Hero />
+      <DishShelf recipes={recipes} />
       <Marquee />
       <LoopSection />
       <DictionarySection />
-      <RecipeMosaic />
+      <RecipeMosaic recipes={recipes} />
       <ContraSection />
       <ModesSection />
       <AuSection />
@@ -66,7 +78,7 @@ function Nav() {
         </Link>
         <div className="lp-nav-links">
           <a href="#loop" className="lp-nav-link">How it works</a>
-          <a href="#recipes" className="lp-nav-link">Recipes</a>
+          <Link to="/browse" className="lp-nav-link">Recipes</Link>
           <a href="#manifesto" className="lp-nav-link">Manifesto</a>
           <Link to="/login" className="lp-nav-link">Sign in</Link>
           <Link to="/register" className="btn btn-primary">Start free</Link>
@@ -89,7 +101,7 @@ function Hero() {
             <span className="dot">·</span>
             <span>Made in Australia</span>
             <span className="dot">·</span>
-            <span>No AI, ever</span>
+            <span>No AI required</span>
           </div>
           <h1 className="lp-h1 lp-reveal lp-reveal-2">
             Use what you've got<span className="period">.</span>
@@ -106,12 +118,12 @@ function Hero() {
               Start your pantry — free
               <span className="arrow-glyph">→</span>
             </Link>
-            <a href="#recipes" className="btn btn-ghost btn-lg">
-              Browse 150+ recipes
-            </a>
+            <Link to="/browse" className="btn btn-ghost btn-lg">
+              Browse every recipe
+            </Link>
           </div>
           <div className="lp-reassurance lp-reveal lp-reveal-5">
-            <span className="tick">✓</span>Free forever &nbsp; <span className="tick">✓</span>Works offline &nbsp; <span className="tick">✓</span>No subscription &nbsp; <span className="tick">✓</span>No AI
+            <span className="lp-claim"><span className="tick">✓</span>Free forever</span> <span className="lp-claim"><span className="tick">✓</span>Works offline</span> <span className="lp-claim"><span className="tick">✓</span>No subscription</span> <span className="lp-claim"><span className="tick">✓</span>No AI required</span>
           </div>
         </div>
 
@@ -386,74 +398,92 @@ function ParsedRow({ raw, to, sectionDot, matched, unmatched }: { raw: string; t
   );
 }
 
-/* ---------------- Recipe mosaic ---------------- */
+/* ---------------- Dish shelf + recipe mosaic ---------------- */
 
-const MOSAIC: Array<{
-  slug: string;
-  title: string;
-  meta: string;
-  tags: string;
-  palette: [string, string];
-  ingredient_ids: string[];
-}> = [
-  { slug: 'spaghetti-bolognese', title: 'Spaghetti Bolognese', meta: '50 min · 4 serves', tags: 'comfort · one-pot · family', palette: ['#c2410c', '#fde6d4'], ingredient_ids: ['spaghetti','beef_mince','tinned_tomato','onion_brown','garlic','parmesan'] },
-  { slug: 'green-thai-curry', title: 'Green Thai Curry', meta: '30 min · 4 serves', tags: 'thai · quick · gf', palette: ['#65a30d', '#e4f3cf'], ingredient_ids: ['chicken_thigh','curry_paste_green','coconut_milk','rice_jasmine','basil','chilli'] },
-  { slug: 'haloumi-grain-bowl', title: 'Haloumi Grain Bowl', meta: '35 min · 2 serves', tags: 'vego · quick', palette: ['#f59e0b', '#fff1d6'], ingredient_ids: ['haloumi','pumpkin','rocket','rice_basmati','lemon','cumin'] },
-  { slug: 'smashed-avo-toast', title: 'Smashed Avo', meta: '8 min · 2 serves', tags: 'brunch · veg', palette: ['#16a34a', '#d9f0d3'], ingredient_ids: ['avocado','bread','feta','lemon','chilli_powder','olive_oil'] },
-  { slug: 'chicken-tikka-masala', title: 'Chicken Tikka Masala', meta: '45 min · 4 serves', tags: 'indian · family', palette: ['#dc2626', '#fde2e2'], ingredient_ids: ['chicken_thigh','yoghurt','tinned_tomato','cream','rice_basmati','coriander'] },
-  { slug: 'sunday-roast-chook', title: 'Sunday Roast Chook', meta: '85 min · 4 serves', tags: 'sunday · family', palette: ['#ca8a04', '#fef5d4'], ingredient_ids: ['chicken_whole','lemon','garlic','potato','olive_oil','salt'] },
+/** Curated, archetype-diverse sets so the generated art shows its range. */
+const SHELF_SLUGS = [
+  'margherita-pizza', 'classic-beef-burger', 'pho', 'green-thai-curry', 'greek-salad',
+  'sunday-roast-chook', 'chocolate-brownies', 'paella', 'gyoza', 'smashed-avo-toast',
+  'fish-chips', 'pavlova', 'shakshuka', 'tandoori-chicken', 'lemon-tart',
+  'full-english-fry-up', 'berry-smoothie-bowl', 'bangers-and-mash-onion-gravy',
 ];
+const MOSAIC_SLUGS = SHELF_SLUGS.slice(0, 12);
 
-function RecipeMosaic() {
+function pickBySlug(recipes: RecipeSummary[], slugs: string[]): RecipeSummary[] {
+  const by = new Map(recipes.map((r) => [r.slug, r]));
+  return slugs.map((sl) => by.get(sl)).filter((r): r is RecipeSummary => Boolean(r));
+}
+
+/**
+ * The dish shelf — a slow, full-bleed parade of real recipe artwork straight
+ * from the generator. Ambient proof that every one of the 204 dishes is drawn.
+ * Pauses on hover; static under prefers-reduced-motion.
+ */
+function DishShelf({ recipes }: { recipes: RecipeSummary[] }) {
+  const shelf = pickBySlug(recipes, SHELF_SLUGS);
+  if (shelf.length < 8) return null;
+  return (
+    <section className="lp-shelf" aria-label="A parade of illustrated dishes from the recipe library">
+      <div className="lp-shelf-track">
+        {[...shelf, ...shelf].map((r, i) => (
+          <Link
+            key={`${r.slug}-${i}`}
+            to={`/r/${r.slug}`}
+            className="lp-shelf-item"
+            tabIndex={i >= shelf.length ? -1 : 0}
+            aria-hidden={i >= shelf.length ? true : undefined}
+            title={r.title}
+          >
+            <MealPlate recipe={r} ingredientIds={r.ingredient_ids} size={124} />
+          </Link>
+        ))}
+      </div>
+      <div className="lp-shelf-caption mono">
+        204 recipes · every dish drawn from its own ingredients · <Link to="/browse">see them all →</Link>
+      </div>
+    </section>
+  );
+}
+
+function RecipeMosaic({ recipes }: { recipes: RecipeSummary[] }) {
+  const tiles = pickBySlug(recipes, MOSAIC_SLUGS);
   return (
     <section id="recipes" className="lp-section" data-numeral="III">
       <div className="lp-wrap">
         <div className="lp-section-head">
           <div>
             <div className="lp-eyebrow">Chapter three <span className="dot">·</span> the library</div>
-            <h2>A hundred-fifty recipes, pre-seeded. Your pantry picks the one.</h2>
+            <h2>Two hundred and four recipes. Every plate drawn, not photographed.</h2>
           </div>
           <p className="lp-kicker">
-            A tight, hand-curated library. Spag bol, snag sanga, green curry,
-            haloumi bowls, a Sunday roast. Rank by what you've got, filter by
+            Spag bol to shakshuka, snag sangas to pavlova. Each illustration is
+            generated from the recipe itself — its ingredients pick the toppings,
+            its colours set the palette. Rank by what you've got, filter by
             what's expiring, cook, and the pantry updates itself.
           </p>
         </div>
 
         <div className="lp-mosaic">
-          {MOSAIC.map((r) => (
-            <a key={r.slug} className="lp-recipe-tile" href={`/r/${r.slug}`}>
+          {tiles.map((r) => (
+            <Link key={r.slug} className="lp-recipe-tile" to={`/r/${r.slug}`}>
               <div className="lp-recipe-plate" style={{ aspectRatio: '4/3' }}>
-                <MealPlate
-                  recipe={{
-                    id: r.slug,
-                    slug: r.slug,
-                    title: r.title,
-                    description: null,
-                    prep_time: 0,
-                    cook_time: 0,
-                    servings: 1,
-                    tags: [],
-                    palette: r.palette,
-                    image_url: null,
-                    is_custom: false,
-                    owner_user_id: null,
-                    group_id: null,
-                  }}
-                  ingredientIds={r.ingredient_ids}
-                  size={300}
-                  rounded={false}
-                />
+                <MealPlate recipe={r} ingredientIds={r.ingredient_ids} size={300} rounded={false} slice />
               </div>
               <div className="lp-recipe-body">
                 <div className="meta">
-                  <span>{r.meta}</span>
+                  <span>{r.prep_time + r.cook_time} min · {r.servings} serves</span>
                 </div>
                 <h4>{r.title}</h4>
-                <div className="tags">{r.tags}</div>
+                <div className="tags">{r.tags.slice(0, 3).join(' · ')}</div>
               </div>
-            </a>
+            </Link>
           ))}
+        </div>
+
+        <div className="lp-mosaic-cta">
+          <Link to="/browse" className="btn btn-ghost btn-lg">
+            Browse all 204 recipes <span className="arrow-glyph">→</span>
+          </Link>
         </div>
       </div>
     </section>
@@ -480,12 +510,14 @@ function ContraSection() {
 
         <div className="lp-contra">
           <div className="lp-contra-item">
-            <span className="mono-label">01 · No AI</span>
+            <span className="mono-label">01 · No AI required</span>
             <span className="struck">AI recipe suggestions</span>
             <p className="why">
               Our matcher is a <strong>2 KB dictionary</strong> and a fuzzy lookup. It
               runs in your browser, works offline, and never hallucinates an
-              ingredient you don't own. Curation beats inference.
+              ingredient you don't own. Curation beats inference. (One
+              exception: an optional photo-scan your server operator can switch
+              on — off by default, never used for recipes or ranking.)
             </p>
           </div>
 
@@ -503,7 +535,7 @@ function ContraSection() {
             <span className="mono-label">03 · No paywall</span>
             <span className="struck">Subscription to unlock basics</span>
             <p className="why">
-              Shopping lists, pantry, 150+ recipes, offline, groups.
+              Shopping lists, pantry, 204 illustrated recipes, offline, groups.
               <strong>&nbsp;All free&nbsp;</strong>forever. You can even use the list feature
               without an account. Sign up when you're ready, not when a modal
               demands it.
@@ -633,7 +665,7 @@ function FooterCta() {
             Start your pantry <span className="arrow-glyph">→</span>
           </Link>
           <div className="lp-reassurance" style={{ marginTop: 16 }}>
-            <span className="tick">✓</span>Takes 30 seconds &nbsp; <span className="tick">✓</span>No credit card &nbsp; <span className="tick">✓</span>Cancel anything you start
+            <span className="lp-claim"><span className="tick">✓</span>Takes 30 seconds</span> <span className="lp-claim"><span className="tick">✓</span>No credit card</span> <span className="lp-claim"><span className="tick">✓</span>Delete your data any time</span>
           </div>
         </div>
       </section>

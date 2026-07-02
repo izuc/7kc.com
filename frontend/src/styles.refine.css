@@ -715,3 +715,6 @@ h3 {
   .item .tick { position: relative; }
   .item .tick::after { content: ''; position: absolute; inset: -8px; }
 }
+
+/* Public /browse + collection cards are bare <Link>s — kill default link styling. */
+a.recipe-card { text-decoration: none; color: inherit; }

@@ -31,8 +31,9 @@ final class SitemapAction
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
-        // Only crawlable, no-auth routes: the landing page and the public /r/<slug> recipe pages.
+        // Only crawlable, no-auth routes: landing, /browse, and the public /r/<slug> recipe pages.
         $xml .= "  <url><loc>" . htmlspecialchars($base . '/') . "</loc><changefreq>weekly</changefreq></url>\n";
+        $xml .= "  <url><loc>" . htmlspecialchars($base . '/browse') . "</loc><changefreq>weekly</changefreq></url>\n";
         foreach ($rows as $r) {
             $xml .= "  <url><loc>" . htmlspecialchars($base . '/r/' . $r['slug']) . "</loc><changefreq>monthly</changefreq></url>\n";
         }

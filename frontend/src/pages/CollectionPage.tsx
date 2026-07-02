@@ -44,7 +44,7 @@ export function CollectionPage() {
           </div>
         </Link>
         <div className="row-inline" style={{ gap: 10 }}>
-          <Link to="/recipes" className="btn btn-ghost">
+          <Link to="/browse" className="btn btn-ghost">
             All recipes
           </Link>
           <Link to="/register" className="btn btn-primary">

@@ -33,6 +33,7 @@ use SevenKC\Action\Ingredients\ScanPantryAction;
 use SevenKC\Action\ConfigAction;
 use SevenKC\Action\Recipes\PublicCollectionAction;
 use SevenKC\Action\Recipes\PublicRecipeAction;
+use SevenKC\Action\Recipes\PublicRecipesAction;
 use SevenKC\Action\Recipes\SitemapAction;
 use SevenKC\Action\Retailers\ListRetailersAction;
 use SevenKC\Action\Stats\StatsAction;
@@ -96,6 +97,7 @@ return function (App $app): void {
         $g->post('/ingredients/parse', ParseAction::class);
 
         // public SEO / landing (no auth)
+        $g->get('/public/recipes', PublicRecipesAction::class);
         $g->get('/public/recipes/{slug}', PublicRecipeAction::class);
         $g->get('/public/collections/{tag}', PublicCollectionAction::class);
         $g->get('/public/retailers', ListRetailersAction::class);
