@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api';
+import { numberToWordsSentence } from '../lib/format';
 import { Icon } from '../components/Icon';
 import { MealPlate } from '../components/MealPlate';
 import type { RecipeSummary } from '../types/models';
@@ -453,7 +454,7 @@ function RecipeMosaic({ recipes }: { recipes: RecipeSummary[] }) {
         <div className="lp-section-head">
           <div>
             <div className="lp-eyebrow">Chapter three <span className="dot">·</span> the library</div>
-            <h2>Two hundred and four recipes. Every plate drawn, not photographed.</h2>
+            <h2>{numberToWordsSentence(__RECIPE_COUNT__)} recipes. Every plate drawn, not photographed.</h2>
           </div>
           <p className="lp-kicker">
             Spag bol to shakshuka, snag sangas to pavlova. Each illustration is

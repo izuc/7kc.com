@@ -51,6 +51,35 @@ export function weekDays(start: Date = weekStart()): { date: string; dow: string
   });
 }
 
+const ONES = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
+  'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+const TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+/**
+ * Spell an integer out in Australian English ("two hundred and forty") for
+ * editorial copy like the landing-page library headline. Falls back to digits
+ * outside 0–9999.
+ */
+export function numberToWords(n: number): string {
+  if (!Number.isInteger(n) || n < 0 || n > 9999) return String(n);
+  if (n < 20) return ONES[n];
+  if (n < 100) return TENS[Math.floor(n / 10)] + (n % 10 ? `-${ONES[n % 10]}` : '');
+  if (n < 1000) {
+    const rest = n % 100;
+    return `${ONES[Math.floor(n / 100)]} hundred` + (rest ? ` and ${numberToWords(rest)}` : '');
+  }
+  const rest = n % 1000;
+  const thousands = `${numberToWords(Math.floor(n / 1000))} thousand`;
+  if (!rest) return thousands;
+  return rest < 100 ? `${thousands} and ${numberToWords(rest)}` : `${thousands}, ${numberToWords(rest)}`;
+}
+
+/** numberToWords with the first letter capitalised — for starting a sentence. */
+export function numberToWordsSentence(n: number): string {
+  const w = numberToWords(n);
+  return w.charAt(0).toUpperCase() + w.slice(1);
+}
+
 export const SECTIONS = [
   { id: 'produce', label: 'Produce' },
   { id: 'meat', label: 'Meat & seafood' },
