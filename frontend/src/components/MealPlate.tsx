@@ -1,12 +1,17 @@
 import { memo, useId, useMemo } from 'react';
 import { dishArtworkFor } from '../lib/dishArtwork';
+import { FORMS } from '../lib/dishArt/forms';
+import { tonesFor } from '../lib/dishArt/palette';
+import { pickToppings } from '../lib/dishArt/toppings';
 import type { RecipeSummary, Recipe, RecipeIngredient } from '../types/models';
 
 /**
- * Renders a "finished dish" illustration for a recipe. Each recipe slug maps
- * to a dish archetype (pasta bowl, curry, soup, sandwich, tacos, roast, …)
- * which is coloured by the recipe's palette and lightly garnished with 2–3
- * of its primary ingredient icons.
+ * Renders the "finished dish" illustration for a recipe.
+ *
+ * dish_form → template from the dishArt v2 registry (ink & cream language,
+ * seeded per-recipe variation, ingredient-derived toppings). Forms that haven't
+ * been rebuilt yet fall back to the legacy dishArtwork templates so the app is
+ * correct at every step of the migration (see docs/DISH-ART-PLAN.md).
  */
 
 interface Props {
@@ -18,20 +23,41 @@ interface Props {
   className?: string;
   rounded?: boolean;
   ingredientIds?: string[];
+  /** MealPlateMini crops edge-to-edge instead of fitting */
+  slice?: boolean;
 }
 
-export const MealPlate = memo(function MealPlate({ recipe, size = 240, className, rounded = true, ingredientIds }: Props) {
-  const garnishIds = useMemo(() => {
+function useGarnishIds(recipe: Props['recipe'], ingredientIds?: string[]): string[] {
+  return useMemo(() => {
     if (ingredientIds && ingredientIds.length) return ingredientIds;
     if (recipe.ingredient_ids?.length) return recipe.ingredient_ids;
     return (recipe.ingredients ?? [])
       .map((i) => ('ingredient_id' in i ? i.ingredient_id : (i as { id: string }).id))
       .filter((id): id is string => Boolean(id));
   }, [recipe, ingredientIds]);
+}
 
+function PlateSvg({ recipe, size = 240, className, rounded = true, ingredientIds, slice = false }: Props) {
+  const garnishIds = useGarnishIds(recipe, ingredientIds);
   const slug = recipe.slug || recipe.title || 'unknown';
   const palette: [string, string] = (recipe.palette as [string, string]) ?? ['#c89e6b', '#fef3c7'];
-  const bgId = useId(); // unique per instance — same recipe can render twice on a page
+  const bgId = useId(); // legacy path only — unique per instance
+
+  const template = recipe.dish_form ? FORMS[recipe.dish_form] : undefined;
+  const art = template ? (
+    template({ tones: tonesFor(palette), slug, toppingIds: pickToppings(garnishIds), size })
+  ) : (
+    <>
+      <defs>
+        <radialGradient id={bgId} cx="50%" cy="40%" r="85%">
+          <stop offset="0%" stopColor={palette[1]} stopOpacity={0.9} />
+          <stop offset="100%" stopColor={palette[1]} stopOpacity={0.4} />
+        </radialGradient>
+      </defs>
+      <rect width="400" height="400" fill={`url(#${bgId})`} />
+      {dishArtworkFor(slug, palette, garnishIds, recipe.dish_form)}
+    </>
+  );
 
   return (
     <svg
@@ -42,54 +68,19 @@ export const MealPlate = memo(function MealPlate({ recipe, size = 240, className
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label={`${recipe.title}`}
-      style={{ display: 'block', borderRadius: rounded ? 14 : 0 }}
+      style={{ display: 'block', borderRadius: rounded && !slice ? 14 : 0 }}
+      preserveAspectRatio={slice ? 'xMidYMid slice' : undefined}
     >
-      <defs>
-        <radialGradient id={bgId} cx="50%" cy="40%" r="85%">
-          <stop offset="0%" stopColor={palette[1]} stopOpacity={0.9} />
-          <stop offset="100%" stopColor={palette[1]} stopOpacity={0.4} />
-        </radialGradient>
-      </defs>
-      <rect width="400" height="400" fill={`url(#${bgId})`} />
-      {dishArtworkFor(slug, palette, garnishIds, recipe.dish_form)}
+      {art}
     </svg>
   );
+}
+
+export const MealPlate = memo(function MealPlate(props: Props) {
+  return <PlateSvg {...props} />;
 });
 
 /** Horizontal band version for suggestion cards (group page). */
-export const MealPlateMini = memo(function MealPlateMini({ recipe, size = 140, className, ingredientIds }: Props) {
-  const garnishIds = useMemo(() => {
-    if (ingredientIds && ingredientIds.length) return ingredientIds;
-    if (recipe.ingredient_ids?.length) return recipe.ingredient_ids;
-    return (recipe.ingredients ?? [])
-      .map((i) => ('ingredient_id' in i ? i.ingredient_id : (i as { id: string }).id))
-      .filter((id): id is string => Boolean(id));
-  }, [recipe, ingredientIds]);
-
-  const slug = recipe.slug || recipe.title || 'unknown';
-  const palette: [string, string] = (recipe.palette as [string, string]) ?? ['#c89e6b', '#fef3c7'];
-  const bgId = useId();
-
-  return (
-    <svg
-      className={className}
-      width={size}
-      height={size}
-      viewBox="0 0 400 400"
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label={recipe.title}
-      style={{ display: 'block' }}
-      preserveAspectRatio="xMidYMid slice"
-    >
-      <defs>
-        <radialGradient id={bgId} cx="50%" cy="40%" r="85%">
-          <stop offset="0%" stopColor={palette[1]} stopOpacity={0.9} />
-          <stop offset="100%" stopColor={palette[1]} stopOpacity={0.4} />
-        </radialGradient>
-      </defs>
-      <rect width="400" height="400" fill={`url(#${bgId})`} />
-      {dishArtworkFor(slug, palette, garnishIds, recipe.dish_form)}
-    </svg>
-  );
+export const MealPlateMini = memo(function MealPlateMini({ size = 140, ...rest }: Props) {
+  return <PlateSvg {...rest} size={size} rounded={false} slice />;
 });
