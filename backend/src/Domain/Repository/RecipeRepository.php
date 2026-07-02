@@ -331,7 +331,7 @@ final class RecipeRepository
     private function hydrate(array $r, bool $guided = false): array
     {
         // Kitchen-context fields ride only on detail responses ($guided) —
-        // list payloads (204 recipes) stay lean. difficulty is small and
+        // list payloads (the full catalogue) stay lean. difficulty is small and
         // useful on cards, so summaries keep it.
         $guidedFields = $guided ? [
             'equipment' => self::jsonList($r['equipment_json'] ?? null),

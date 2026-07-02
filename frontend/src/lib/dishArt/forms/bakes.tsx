@@ -367,7 +367,7 @@ export function BakeDish({ tones, slug, toppingIds, size }: DishProps) {
 export function CookieScatter({ tones, slug, toppingIds, size }: DishProps) {
   const rnd = rngFor(slug + ':cookies');
   const simplified = size < SIMPLIFY_BELOW;
-  const roundCookies = /cookie|biscuit|anzac|snap|shortbread/.test(slug);
+  const roundCookies = /cookie|biscuit|anzac|snap|shortbread|ball/.test(slug);
   const face = mix(tones.food, '#eabc6e', 0.62);
   const faceHi = lighten(face, 0.14);
   const crack = darken(face, 0.16);

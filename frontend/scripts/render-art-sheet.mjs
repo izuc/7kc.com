@@ -5,7 +5,7 @@
  * shared/recipes.json + ingredients.json data to contact-sheet PNGs via
  * react-dom/server + the locally installed Chrome. Run from frontend/:
  *
- *   node scripts/render-art-sheet.mjs                          # all 204 dishes -> art-sheets/dishes-N.png
+ *   node scripts/render-art-sheet.mjs                          # every dish -> art-sheets/dishes-N.png
  *   node scripts/render-art-sheet.mjs --forms pasta-bowl,pizza-whole
  *   node scripts/render-art-sheet.mjs --slugs spaghetti-bolognese,margherita-pizza
  *   node scripts/render-art-sheet.mjs --icons                  # all ingredient icons
