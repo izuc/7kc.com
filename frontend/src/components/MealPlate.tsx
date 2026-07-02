@@ -1,5 +1,4 @@
-import { memo, useId, useMemo } from 'react';
-import { dishArtworkFor } from '../lib/dishArtwork';
+import { memo, useMemo } from 'react';
 import { FORMS } from '../lib/dishArt/forms';
 import { tonesFor } from '../lib/dishArt/palette';
 import { pickToppings } from '../lib/dishArt/toppings';
@@ -9,9 +8,8 @@ import type { RecipeSummary, Recipe, RecipeIngredient } from '../types/models';
  * Renders the "finished dish" illustration for a recipe.
  *
  * dish_form → template from the dishArt v2 registry (ink & cream language,
- * seeded per-recipe variation, ingredient-derived toppings). Forms that haven't
- * been rebuilt yet fall back to the legacy dishArtwork templates so the app is
- * correct at every step of the migration (see docs/DISH-ART-PLAN.md).
+ * seeded per-recipe variation, ingredient-derived toppings). Unknown forms fall
+ * back to the v2 default plate (see docs/DISH-ART-PLAN.md).
  */
 
 interface Props {
@@ -41,23 +39,10 @@ function PlateSvg({ recipe, size = 240, className, rounded = true, ingredientIds
   const garnishIds = useGarnishIds(recipe, ingredientIds);
   const slug = recipe.slug || recipe.title || 'unknown';
   const palette: [string, string] = (recipe.palette as [string, string]) ?? ['#c89e6b', '#fef3c7'];
-  const bgId = useId(); // legacy path only — unique per instance
 
-  const template = recipe.dish_form ? FORMS[recipe.dish_form] : undefined;
-  const art = template ? (
-    template({ tones: tonesFor(palette), slug, toppingIds: pickToppings(garnishIds), size })
-  ) : (
-    <>
-      <defs>
-        <radialGradient id={bgId} cx="50%" cy="40%" r="85%">
-          <stop offset="0%" stopColor={palette[1]} stopOpacity={0.9} />
-          <stop offset="100%" stopColor={palette[1]} stopOpacity={0.4} />
-        </radialGradient>
-      </defs>
-      <rect width="400" height="400" fill={`url(#${bgId})`} />
-      {dishArtworkFor(slug, palette, garnishIds, recipe.dish_form)}
-    </>
-  );
+  // Unknown/missing dish_form (e.g. user-created recipes) → the v2 default plate.
+  const template = FORMS[recipe.dish_form ?? ''] ?? FORMS['default-plate'];
+  const art = template({ tones: tonesFor(palette), slug, toppingIds: pickToppings(garnishIds), size });
 
   return (
     <svg

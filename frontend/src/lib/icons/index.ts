@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { PRODUCE_ICONS } from './produce';
 import { PROTEIN_ICONS } from './protein';
 import { PANTRY_ICONS } from './pantry';
+import { PANTRY2_ICONS } from './pantry2';
 import { DAIRY_ICONS } from './dairy';
 
 /**
@@ -13,5 +14,6 @@ export const ICON_OVERRIDES: Record<string, () => ReactNode> = {
   ...PRODUCE_ICONS,
   ...PROTEIN_ICONS,
   ...PANTRY_ICONS,
+  ...PANTRY2_ICONS,
   ...DAIRY_ICONS,
 };
