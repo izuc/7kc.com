@@ -20,7 +20,6 @@ Built from [`7kc-spec.md`](./7kc-spec.md).
 ├── frontend/    React + TS + Vite PWA
 ├── backend/     PHP Slim API (MySQL | SQLite)
 ├── shared/      ingredient dictionary (222) + recipe catalogue (240, seeded into DB)
-├── prototype/   original static HTML prototype (for reference only)
 ├── docs/        DEPLOY.md, ADMIN.md, API.md, DISH-ART-PLAN.md, art exploration
 └── 7kc-spec.md  product spec
 ```

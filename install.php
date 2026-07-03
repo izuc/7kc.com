@@ -73,7 +73,7 @@ function runCli(array $argv): void
     if (!is_dir(BACKEND . '/vendor')) {
         if (!$composer) cliFatal('composer not found on PATH — install composer first.');
         cliOut("Installing backend dependencies (this takes 30–60s)…\n");
-        cliRun(escapeshellcmd($composer) . ' install --no-interaction --no-progress --prefer-dist', BACKEND, $verbose);
+        cliRun($composer . ' install --no-interaction --no-progress --prefer-dist', BACKEND, $verbose);
         cliOk('composer install complete');
     } else {
         cliOk('vendor/ already present — skipping composer install');
@@ -109,6 +109,9 @@ function runCli(array $argv): void
         $env['DB_USER'] = cliAsk('MySQL user', $env['DB_USER']);
         $env['DB_PASS'] = cliAskSecret('MySQL password (blank if none)', $env['DB_PASS']);
         $env['DB_NAME'] = cliAsk('Database name', $env['DB_NAME']);
+        if (!preg_match('/^[A-Za-z0-9_]+$/', $env['DB_NAME'])) {
+            cliFatal('Database name may only contain letters, numbers and underscores.');
+        }
 
         cliOut("\nTesting MySQL connection…\n");
         $test = testMysql($env);
@@ -138,7 +141,7 @@ function runCli(array $argv): void
         if (!is_dir(dirname($sqlitePath))) @mkdir(dirname($sqlitePath), 0775, true);
         if (!empty($opts['reset']) && file_exists($sqlitePath)) {
             if ($GLOBALS['__assume_yes'] || strtolower(cliAsk("Reset will delete $sqlitePath. Continue?", 'n')) === 'y') {
-                unlink($sqlitePath);
+                deleteSqliteDatabase($sqlitePath);
                 cliWarn('Deleted existing SQLite database.');
             }
         }
@@ -149,8 +152,12 @@ function runCli(array $argv): void
     cliOk('Wrote backend/.env');
 
     cliStep('Database schema + seed data');
-    $result = runMigrationsAndSeed($verbose);
-    if (!$result['ok']) cliFatal("migration failed: " . $result['message']);
+    $result = runMigrationsAndSeed();
+    if (!$result['ok']) {
+        if (!empty($result['output'])) cliOut("\n" . $result['output'] . "\n");
+        cliFatal('migration failed: ' . $result['message']);
+    }
+    if ($verbose && !empty($result['output'])) cliOut($result['output'] . "\n");
     cliOk('Migrations applied');
     cliOk('Seed data loaded');
 
@@ -166,7 +173,7 @@ function runCli(array $argv): void
                 cliOk('Wrote frontend/.env');
             }
             if (!is_dir(FRONTEND . '/node_modules')) {
-                cliRun(escapeshellcmd($npm) . ' install --no-audit --no-fund', FRONTEND, $verbose);
+                cliRun(escapeshellarg($npm) . ' install --no-audit --no-fund', FRONTEND, $verbose);
                 cliOk('Frontend dependencies installed');
             } else {
                 cliOk('node_modules/ already present — skipping npm install');
@@ -201,6 +208,7 @@ function runWeb(): void
 
     try {
         if ($wantsJson) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') webGuardOrigin();
             header('Content-Type: application/json');
             switch ($action) {
                 case 'check':
@@ -236,10 +244,36 @@ function webGuardRemote(): void
 {
     if (!empty($_ENV['INSTALL_ALLOW_REMOTE']) || getenv('INSTALL_ALLOW_REMOTE')) return;
     $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+    if (str_starts_with($ip, '::ffff:')) $ip = substr($ip, 7); // IPv4-mapped IPv6
     $allow = ['127.0.0.1', '::1', '0.0.0.0'];
-    if ($ip !== '' && !in_array($ip, $allow, true) && !str_starts_with($ip, '192.168.') && !str_starts_with($ip, '10.')) {
+    $isPrivate = str_starts_with($ip, '192.168.') || str_starts_with($ip, '10.')
+        || (preg_match('/^172\.(\d{1,3})\./', $ip, $m) && (int)$m[1] >= 16 && (int)$m[1] <= 31);
+    if ($ip !== '' && !in_array($ip, $allow, true) && !$isPrivate) {
         http_response_code(403);
         echo 'The web installer is restricted to local network addresses. Set INSTALL_ALLOW_REMOTE=1 in the environment to override.';
+        exit;
+    }
+}
+
+/**
+ * Reject cross-origin POSTs. A drive-by page can fire form-encoded POSTs at a
+ * localhost installer (webPayload() accepts $_POST), so any browser-sent
+ * Origin/Referer must match the Host we're being served on. Requests without
+ * either header (curl, same-origin fetches in older browsers) pass.
+ */
+function webGuardOrigin(): void
+{
+    $source = $_SERVER['HTTP_ORIGIN'] ?? $_SERVER['HTTP_REFERER'] ?? '';
+    if ($source === '') return;
+    $host = strtolower((string)($_SERVER['HTTP_HOST'] ?? ''));
+    $parts = parse_url($source);
+    $srcHost = strtolower((string)($parts['host'] ?? ''));
+    $srcPort = $parts['port'] ?? (($parts['scheme'] ?? 'http') === 'https' ? 443 : 80);
+    $expected = $srcHost . (in_array($srcPort, [80, 443], true) && !str_contains($host, ':') ? '' : ":$srcPort");
+    if ($host !== '' && $srcHost !== '' && $expected !== $host) {
+        http_response_code(403);
+        header('Content-Type: application/json');
+        echo json_encode(['error' => 'cross_origin_rejected', 'message' => 'Cross-origin requests to the installer are not allowed.']);
         exit;
     }
 }
@@ -259,7 +293,7 @@ function webCheck(): array
         'fatal' => $report['fatal'],
         'vendor_installed' => is_dir(BACKEND . '/vendor'),
         'already_installed' => isAlreadyInstalled(),
-        'installed_at' => file_exists(SENTINEL) ? (int)@file_get_contents(SENTINEL) : null,
+        'installed_at' => installedAt(),
     ];
 }
 
@@ -272,7 +306,11 @@ function webTestDb(): array
         if (!extension_loaded('pdo_sqlite')) {
             return ['ok' => false, 'message' => 'pdo_sqlite is not loaded on this PHP install.'];
         }
-        $path = BACKEND . '/' . ($payload['sqlite_path'] ?? 'var/sevenkc.sqlite');
+        $rel = (string)($payload['sqlite_path'] ?? 'var/sevenkc.sqlite');
+        if (!isSafeSqlitePath($rel)) {
+            return ['ok' => false, 'message' => 'SQLite path must be a simple relative path inside backend/ (no .., no absolute paths).'];
+        }
+        $path = BACKEND . '/' . $rel;
         $dir = dirname($path);
         if (!is_dir($dir)) @mkdir($dir, 0775, true);
         if (!is_writable($dir)) {
@@ -297,10 +335,27 @@ function webTestDb(): array
 
 function webInstall(): array
 {
+    // Two phinx children (migrate + full-catalogue seed) run inside this
+    // request; on Windows web servers max_execution_time counts the wall-clock
+    // time spent blocked on them, and a killed request would leave the DB
+    // half-installed with no sentinel.
+    @set_time_limit(0);
+    ignore_user_abort(true);
+
     $payload = webPayload();
     $driver = strtolower((string)($payload['driver'] ?? 'sqlite'));
     if (!in_array($driver, ['sqlite', 'mysql'], true)) {
         return ['ok' => false, 'message' => 'Invalid driver'];
+    }
+
+    // The "Allow reinstall" checkbox must be enforced HERE, not just in the
+    // page's JS — a direct POST would otherwise clobber .env and the DB.
+    if (isAlreadyInstalled() && empty($payload['force'])) {
+        return [
+            'ok' => false,
+            'step' => 'guard',
+            'message' => 'Already installed — tick "Allow reinstall" to overwrite backend/.env and re-run migrations.',
+        ];
     }
 
     if (!is_dir(BACKEND . '/vendor')) {
@@ -325,6 +380,9 @@ function webInstall(): array
         $env['DB_USER'] = $payload['user'] ?? $env['DB_USER'];
         $env['DB_PASS'] = (string)($payload['pass'] ?? $env['DB_PASS']);
         $env['DB_NAME'] = $payload['name'] ?? $env['DB_NAME'];
+        if (!preg_match('/^[A-Za-z0-9_]+$/', $env['DB_NAME'])) {
+            return ['ok' => false, 'step' => 'validate', 'message' => 'Database name may only contain letters, numbers and underscores.'];
+        }
 
         $test = testMysql($env);
         if (!$test['ok']) return ['ok' => false, 'step' => 'connect', 'message' => $test['message']];
@@ -339,14 +397,17 @@ function webInstall(): array
         }
     } else {
         $env['DB_SQLITE_PATH'] = $payload['sqlite_path'] ?? $env['DB_SQLITE_PATH'];
+        if (!isSafeSqlitePath((string)$env['DB_SQLITE_PATH'])) {
+            return ['ok' => false, 'step' => 'validate', 'message' => 'SQLite path must be a simple relative path inside backend/ (no .., no absolute paths).'];
+        }
         $path = BACKEND . '/' . $env['DB_SQLITE_PATH'];
         if (!is_dir(dirname($path))) @mkdir(dirname($path), 0775, true);
-        if (!empty($payload['reset']) && file_exists($path)) @unlink($path);
+        if (!empty($payload['reset']) && file_exists($path)) deleteSqliteDatabase($path);
     }
 
     writeEnvFile($envPath, $env);
 
-    $result = runMigrationsAndSeed(false);
+    $result = runMigrationsAndSeed();
     if (!$result['ok']) {
         return ['ok' => false, 'step' => 'migrate', 'message' => $result['message'], 'output' => $result['output'] ?? ''];
     }
@@ -392,8 +453,11 @@ function webRenderPage(): void
     $already = isAlreadyInstalled();
     $vendorPresent = $check['vendor_installed'];
 
-    $envReport = json_encode($check);
+    $envReport = json_encode($check, JSON_HEX_TAG | JSON_HEX_AMP);
     $title = '7KC installer';
+    $recipes = json_decode((string)@file_get_contents(ROOT . '/shared/recipes.json'), true);
+    $recipeCount = is_array($recipes) ? count($recipes) : 0;
+    $recipeCopy = $recipeCount > 0 ? "the ingredient dictionary + $recipeCount recipes" : 'the ingredient dictionary + recipe catalogue';
 
     ?><!doctype html>
 <html lang="en-AU">
@@ -574,7 +638,7 @@ pre.log { background: var(--ink); color: var(--cream); padding: 14px 16px; borde
   <section class="card">
     <div class="step-num">Step 3</div>
     <h2>Install</h2>
-    <p class="muted small">Runs migrations, seeds the ingredient dictionary + 52 starter recipes, writes <code>backend/.env</code> with a fresh JWT secret.</p>
+    <p class="muted small">Runs migrations, seeds <?= htmlspecialchars($recipeCopy) ?>, writes <code>backend/.env</code> with a fresh JWT secret.</p>
     <div class="form-grid" style="margin-top:6px">
       <div class="field full">
         <label>Frontend URL (for CORS)</label>
@@ -641,6 +705,7 @@ function collect() {
   }
   body.frontend_url = $('frontendUrl').value.trim();
   body.reset = $('resetOpt').checked;
+  body.force = !!document.getElementById('forceReinstall')?.checked;
   return body;
 }
 
@@ -772,7 +837,7 @@ function envReport(): array
 
 function defaultEnv(array $existing): array
 {
-    return [
+    $env = [
         'APP_ENV' => $existing['APP_ENV'] ?? 'development',
         'APP_DEBUG' => $existing['APP_DEBUG'] ?? 'true',
         'DB_DRIVER' => $existing['DB_DRIVER'] ?? 'sqlite',
@@ -786,6 +851,12 @@ function defaultEnv(array $existing): array
         'JWT_TTL_HOURS' => $existing['JWT_TTL_HOURS'] ?? '168',
         'CORS_ALLOW_ORIGIN' => $existing['CORS_ALLOW_ORIGIN'] ?? 'http://localhost:5173',
     ];
+    // Carry through any operator-added settings (AI_SCAN_*, mail, analytics…)
+    // so a reinstall never silently drops them from .env.
+    foreach ($existing as $k => $v) {
+        if (!array_key_exists($k, $env)) $env[$k] = $v;
+    }
+    return $env;
 }
 
 function testMysql(array $env): array
@@ -840,39 +911,88 @@ function resetMysqlDatabase(array $env): void
     $pdo->exec("CREATE DATABASE `$name` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
 }
 
-function runMigrationsAndSeed(bool $verbose): array
+function runMigrationsAndSeed(): array
 {
-    $phinxCandidates = [BACKEND . '/vendor/bin/phinx', BACKEND . '/vendor/bin/phinx.bat'];
-    $phinx = null;
-    foreach ($phinxCandidates as $c) if (file_exists($c)) { $phinx = $c; break; }
+    $phinx = phinxCommand();
     if (!$phinx) return ['ok' => false, 'message' => 'phinx binary missing — run `composer install` first.'];
 
     $cfg = BACKEND . '/config/phinx.php';
 
-    $migrateCmd = escapeshellarg($phinx) . ' migrate -c ' . escapeshellarg($cfg);
+    $migrateCmd = $phinx . ' migrate -c ' . escapeshellarg($cfg);
     [$ok1, $out1] = captureRun($migrateCmd, BACKEND);
     if (!$ok1) return ['ok' => false, 'message' => 'migrate failed', 'output' => $out1];
 
-    $seedCmd = escapeshellarg($phinx) . ' seed:run -c ' . escapeshellarg($cfg);
+    $seedCmd = $phinx . ' seed:run -c ' . escapeshellarg($cfg);
     [$ok2, $out2] = captureRun($seedCmd, BACKEND);
     if (!$ok2) return ['ok' => false, 'message' => 'seed failed', 'output' => $out1 . "\n" . $out2];
 
     return ['ok' => true, 'output' => $out1 . "\n" . $out2];
 }
 
+/**
+ * Runnable phinx command prefix. Composer's vendor/bin/phinx is a PHP proxy
+ * script — cmd.exe cannot execute it directly (only the .bat shim, which in
+ * turn needs `php` on PATH, which XAMPP setups often lack). Running it through
+ * the PHP binary that's executing this installer works everywhere the
+ * installer is supported (CLI and `php -S`); mod_php/FPM hosts fall back to
+ * `php` on PATH, then the OS-native launcher.
+ */
+function phinxCommand(): ?string
+{
+    $proxy = BACKEND . '/vendor/bin/phinx';
+    if (!file_exists($proxy)) return null;
+
+    $php = PHP_BINARY;
+    $base = strtolower(basename($php));
+    $isCliPhp = str_starts_with($base, 'php') && !str_contains($base, 'fpm') && !str_contains($base, 'cgi');
+    if (!$isCliPhp) $php = findBinary('php');
+    if ($php) return escapeshellarg($php) . ' ' . escapeshellarg($proxy);
+
+    if (DIRECTORY_SEPARATOR === '\\') {
+        $bat = $proxy . '.bat';
+        return file_exists($bat) ? escapeshellarg($bat) : null;
+    }
+    return escapeshellarg($proxy);
+}
+
+/**
+ * A web-supplied SQLite path must stay inside backend/: relative, no `..`
+ * segments, no absolute/drive-letter/UNC forms — otherwise a POST could
+ * delete (reset) or create files anywhere the PHP user can write.
+ */
+function isSafeSqlitePath(string $rel): bool
+{
+    if ($rel === '' || str_starts_with($rel, '/') || str_starts_with($rel, '\\')) return false;
+    if (preg_match('/^[A-Za-z]:/', $rel)) return false;
+    if (!preg_match('#^[A-Za-z0-9._/\\\\-]+$#', $rel)) return false;
+    foreach (preg_split('#[/\\\\]#', $rel) as $seg) {
+        if ($seg === '' || $seg === '.' || $seg === '..') return false;
+    }
+    return true;
+}
+
+/** Remove an SQLite database including its WAL/journal sidecar files. */
+function deleteSqliteDatabase(string $path): void
+{
+    foreach (['', '-wal', '-shm', '-journal'] as $suffix) {
+        if (file_exists($path . $suffix)) @unlink($path . $suffix);
+    }
+}
+
 function captureRun(string $cmd, string $cwd): array
 {
-    $desc = [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']];
+    // stderr is merged into stdout at the descriptor level. Draining two pipes
+    // sequentially deadlocks: Composer writes nearly everything to stderr, and
+    // once the OS pipe buffer fills (4 KB on Windows) the child blocks writing
+    // while we block reading the other pipe.
+    $desc = [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['redirect', 1]];
     $proc = proc_open($cmd, $desc, $pipes, $cwd);
     if (!is_resource($proc)) return [false, "could not start: $cmd"];
     fclose($pipes[0]);
-    $stdout = stream_get_contents($pipes[1]);
-    $stderr = stream_get_contents($pipes[2]);
+    $output = stream_get_contents($pipes[1]);
     fclose($pipes[1]);
-    fclose($pipes[2]);
     $code = proc_close($proc);
-    $combined = stripAnsi(($stdout ?: '') . ($stderr ? "\n" . $stderr : ''));
-    return [$code === 0, $combined];
+    return [$code === 0, stripAnsi((string)$output)];
 }
 
 function stripAnsi(string $s): string
@@ -885,6 +1005,13 @@ function isAlreadyInstalled(): bool
     if (!file_exists(BACKEND . '/.env')) return false;
     if (!file_exists(SENTINEL)) return false;
     return true;
+}
+
+function installedAt(): ?int
+{
+    if (!file_exists(SENTINEL)) return null;
+    $meta = json_decode((string)@file_get_contents(SENTINEL), true);
+    return is_array($meta) && isset($meta['installed_at']) ? (int)$meta['installed_at'] : null;
 }
 
 function markInstalled(string $driver): void
@@ -922,7 +1049,13 @@ function parseEnvFile(string $path): array
         if ($l === '' || str_starts_with(ltrim($l), '#')) continue;
         $eq = strpos($l, '=');
         if ($eq === false) continue;
-        $out[trim(substr($l, 0, $eq))] = trim(substr($l, $eq + 1), " \t\"");
+        $v = trim(substr($l, $eq + 1));
+        // Undo exactly what writeEnvFile does for quoted values, otherwise
+        // every reinstall stacks another layer of backslashes.
+        if (strlen($v) >= 2 && $v[0] === '"' && str_ends_with($v, '"')) {
+            $v = preg_replace('/\\\\(["\\\\])/', '$1', substr($v, 1, -1));
+        }
+        $out[trim(substr($l, 0, $eq))] = $v;
     }
     return $out;
 }
@@ -937,25 +1070,42 @@ function writeEnvFile(string $path, array $env): void
         'CORS_ALLOW_ORIGIN',
     ];
     $lines = ['# 7KC backend — generated by install.php on ' . date('c')];
+    $fmt = function (string $k, string $v): string {
+        // Escape only backslash + double quote — phpdotenv's double-quote
+        // semantics. addslashes would also escape single quotes, which
+        // phpdotenv keeps literally, corrupting the value.
+        if ($v !== '' && preg_match('/[\s"#\\\\]/', $v)) {
+            $v = '"' . preg_replace('/(["\\\\])/', '\\\\$1', $v) . '"';
+        }
+        return "$k=$v";
+    };
     foreach ($order as $k) {
         if ($k === '') { $lines[] = ''; continue; }
-        if (array_key_exists($k, $env)) {
-            $v = (string)$env[$k];
-            if ($v !== '' && preg_match('/[\s"#]/', $v)) $v = '"' . addslashes($v) . '"';
-            $lines[] = "$k=$v";
-        }
+        if (array_key_exists($k, $env)) $lines[] = $fmt($k, (string)$env[$k]);
+    }
+    // Anything defaultEnv() carried through from the previous .env
+    // (AI_SCAN_*, mail, analytics…) is kept below the managed block.
+    $extras = array_diff_key($env, array_flip(array_filter($order)));
+    if ($extras) {
+        $lines[] = '';
+        $lines[] = '# preserved settings';
+        foreach ($extras as $k => $v) $lines[] = $fmt((string)$k, (string)$v);
     }
     file_put_contents($path, implode("\n", $lines) . "\n");
 }
 
+/**
+ * A ready-to-run composer command prefix (already shell-quoted — callers must
+ * NOT escapeshell* it again; paths like "C:\Program Files\..." would break).
+ */
 function findComposer(): ?string
 {
     foreach (['composer', 'composer.phar'] as $name) {
         $found = findBinary($name);
-        if ($found) return $found;
+        if ($found) return escapeshellarg($found);
     }
     $phar = ROOT . '/composer.phar';
-    return file_exists($phar) ? 'php ' . escapeshellarg($phar) : null;
+    return file_exists($phar) ? escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($phar) : null;
 }
 
 function findBinary(string $name): ?string
@@ -1017,13 +1167,26 @@ function cliAskSecret(string $prompt, string $default = ''): string
 {
     if (!empty($GLOBALS['__assume_yes'])) return $default;
     $suffix = $default !== '' ? ' [' . cliColor('••••••', 'dim') . ']' : ' [' . cliColor('blank', 'dim') . ']';
-    echo "  $prompt$suffix: ";
     if (DIRECTORY_SEPARATOR === '/') {
+        echo "  $prompt$suffix: ";
+        // Restore echo even if the process dies mid-prompt (fatal error, or
+        // Ctrl+C when pcntl is available) — otherwise the user's shell is left
+        // silently swallowing keystrokes.
+        $saved = trim((string)@shell_exec('stty -g 2>/dev/null'));
+        $restore = function () use ($saved) {
+            @system($saved !== '' ? 'stty ' . escapeshellarg($saved) : 'stty echo');
+        };
+        register_shutdown_function($restore);
+        if (function_exists('pcntl_signal')) {
+            pcntl_signal(SIGINT, function () use ($restore) { $restore(); exit(130); });
+        }
         @system('stty -echo');
         $line = fgets(STDIN);
-        @system('stty echo');
+        $restore();
         echo "\n";
     } else {
+        // No portable way to mask console input on Windows — be upfront.
+        echo '  ' . $prompt . cliColor(' (input will be visible)', 'dim') . "$suffix: ";
         $line = fgets(STDIN);
     }
     if ($line === false) return $default;
@@ -1032,21 +1195,23 @@ function cliAskSecret(string $prompt, string $default = ''): string
 }
 function cliRun(string $cmd, string $cwd, bool $verbose): void
 {
-    $desc = [0 => STDIN, 1 => $verbose ? STDOUT : ['pipe', 'w'], 2 => $verbose ? STDERR : ['pipe', 'w']];
+    // Non-verbose merges stderr into stdout (see captureRun) — reading the two
+    // pipes one after the other deadlocks against stderr-chatty children like
+    // Composer once the OS pipe buffer fills.
+    $desc = $verbose
+        ? [0 => STDIN, 1 => STDOUT, 2 => STDERR]
+        : [0 => STDIN, 1 => ['pipe', 'w'], 2 => ['redirect', 1]];
     $proc = proc_open($cmd, $desc, $pipes, $cwd);
     if (!is_resource($proc)) cliFatal("Could not run: $cmd");
-    $stdout = $stderr = '';
+    $output = '';
     if (!$verbose) {
-        $stdout = stream_get_contents($pipes[1]);
-        $stderr = stream_get_contents($pipes[2]);
+        $output = (string)stream_get_contents($pipes[1]);
         fclose($pipes[1]);
-        fclose($pipes[2]);
     }
     $code = proc_close($proc);
     if ($code !== 0) {
         cliOut(cliColor("\n command failed: $cmd\n", 'red'));
-        if ($stdout !== '') cliOut($stdout . "\n");
-        if ($stderr !== '') cliOut(cliColor($stderr, 'red') . "\n");
+        if ($output !== '') cliOut($output . "\n");
         exit($code);
     }
 }
