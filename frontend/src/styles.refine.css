@@ -457,8 +457,9 @@ h3 {
   padding-bottom: 6px;
 }
 .week-cell {
-  flex: 1 0 96px;
-  min-width: 96px;
+  flex: 1 0 118px;
+  min-width: 118px;
+  min-height: 136px;
   scroll-snap-align: start;
   border-radius: 12px;
   border: 1px solid var(--line, #e7ddd1);
@@ -470,6 +471,13 @@ h3 {
 .week-cell.empty {
   border-style: dashed;
   background: transparent;
+}
+.week-cell.today {
+  border-color: var(--accent, #c2410c);
+  border-style: solid;
+}
+.week-cell.today .week-cell-dom {
+  color: var(--accent-ink, var(--accent, #c2410c));
 }
 .week-cell-head {
   display: flex;
@@ -498,38 +506,101 @@ h3 {
   color: var(--danger, #b91c1c);
   background: var(--cream-2);
 }
-.week-cell-body {
-  flex: 1;
+/* The meals stacked inside a day — scrolls within the cell when the day fills up */
+.week-meals {
   display: flex;
   flex-direction: column;
+  gap: 4px;
+  padding: 6px 6px 0;
+  overflow-y: auto;
+  max-height: 238px;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.week-meal {
+  display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px;
-  min-height: 96px;
+  gap: 2px;
+  flex: none;
+  border-radius: 10px;
+  background: var(--cream-2, #f6efe6);
+}
+.week-meal-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 0 5px 6px;
   border: none;
   background: transparent;
   cursor: pointer;
   color: inherit;
-  text-align: center;
+  text-align: left;
+  border-radius: 10px;
 }
-.week-cell-title {
-  font-size: 12.5px;
+.week-meal-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.week-meal-tag {
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--sage, #5a7d5a);
+}
+.week-meal-title {
+  font-size: 12px;
   line-height: 1.25;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.week-cell-add {
-  margin: auto;
+.week-meal .week-cell-x {
+  margin: 0 2px 0 0;
+  flex: none;
+}
+.week-add {
+  margin: 6px;
+  margin-top: auto;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
+  padding: 6px 8px;
+  border: 1px dashed var(--line, #e7ddd1);
+  border-radius: 9px;
+  background: transparent;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 12.5px;
+  cursor: pointer;
 }
-.week-cell-body:hover .week-cell-add {
+.week-cell .week-meals + .week-add {
+  margin-top: 6px;
+}
+.week-add:hover {
   color: var(--accent-ink, var(--accent));
+  border-color: currentColor;
+}
+/* Meal-slot chips in the recipe picker (Breakfast / Lunch / Dinner / …) */
+.meal-slot-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 2px 0 12px;
+}
+/* Mobile: bigger snap targets, slightly tighter per-day scroll window */
+@media (max-width: 640px) {
+  .week-cell {
+    flex: 0 0 156px;
+    min-width: 156px;
+  }
+  .week-meals {
+    max-height: 206px;
+  }
 }
 
 /* Recipe picker results */

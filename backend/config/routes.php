@@ -58,7 +58,9 @@ use SevenKC\Action\Recipes\CookedRecipesAction;
 use SevenKC\Action\Recipes\FavouriteRecipesAction;
 use SevenKC\Action\Recipes\ToggleFavouriteAction;
 use SevenKC\Action\MealPlan\GetMealPlanAction;
-use SevenKC\Action\MealPlan\SetMealPlanAction;
+use SevenKC\Action\MealPlan\AddMealPlanAction;
+use SevenKC\Action\MealPlan\UpdateMealPlanAction;
+use SevenKC\Action\MealPlan\RemoveMealPlanEntryAction;
 use SevenKC\Action\MealPlan\ClearMealPlanAction;
 use SevenKC\Action\MealPlan\BuildListFromWeekAction;
 use SevenKC\Action\Recipes\CreateRecipeAction;
@@ -151,7 +153,9 @@ return function (App $app): void {
             $a->delete('/recipes/{slug}/comments/{id}', DeleteRecipeCommentAction::class);
 
             $a->get('/meal-plan', GetMealPlanAction::class);
-            $a->put('/meal-plan', SetMealPlanAction::class);
+            $a->post('/meal-plan', AddMealPlanAction::class);
+            $a->put('/meal-plan/{id}', UpdateMealPlanAction::class);
+            $a->delete('/meal-plan/{id}', RemoveMealPlanEntryAction::class);
             $a->delete('/meal-plan', ClearMealPlanAction::class);
             $a->post('/meal-plan/build-list', BuildListFromWeekAction::class);
 

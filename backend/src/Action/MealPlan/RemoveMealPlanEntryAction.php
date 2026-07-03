@@ -8,19 +8,18 @@ use Psr\Http\Message\ServerRequestInterface;
 use SevenKC\Domain\Repository\MealPlanRepository;
 use SevenKC\Infrastructure\Http\Json;
 
-final class ClearMealPlanAction
+/** Remove a single planned meal (owner-scoped by id). */
+final class RemoveMealPlanEntryAction
 {
     public function __construct(private readonly MealPlanRepository $plan) {}
 
-    public function __invoke(ServerRequestInterface $req, ResponseInterface $res): ResponseInterface
+    public function __invoke(ServerRequestInterface $req, ResponseInterface $res, array $args): ResponseInterface
     {
         $userId = (string)$req->getAttribute('user_id');
-        $params = $req->getQueryParams();
-        $date = trim((string)($params['date'] ?? ''));
-        if (!MealPlanDates::isValid($date)) {
-            return Json::error($res, 'bad_request', 'A valid date (YYYY-MM-DD) is required.', 400);
+        $id = (string)($args['id'] ?? '');
+        if (!$this->plan->removeEntry($userId, $id)) {
+            return Json::error($res, 'not_found', 'Planned meal not found', 404);
         }
-        $this->plan->clearDay($userId, $date);
         return Json::send($res, ['ok' => true]);
     }
 }

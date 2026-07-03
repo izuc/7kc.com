@@ -227,16 +227,21 @@ export const api = {
   deleteRecipeComment: (slug: string, id: string) =>
     request<{ ok: boolean }>(`/recipes/${slug}/comments/${id}`, { method: 'DELETE' }),
 
-  // meal plan
+  // meal plan — a day holds any number of meals; entries are addressed by id
   getMealPlan: (weekStart: string) =>
     request<MealPlanWeek>(`/meal-plan?week_start=${encodeURIComponent(weekStart)}`),
-  setMealPlan: (date: string, recipeSlug: string) =>
+  addMealPlan: (date: string, recipeSlug: string, label?: string | null) =>
     request<{ entry: MealPlanEntry }>('/meal-plan', {
-      method: 'PUT',
-      body: JSON.stringify({ date, recipe_slug: recipeSlug }),
+      method: 'POST',
+      body: JSON.stringify({ date, recipe_slug: recipeSlug, label: label ?? undefined }),
     }),
-  clearMealPlan: (date: string) =>
-    request<{ ok: boolean }>(`/meal-plan?date=${encodeURIComponent(date)}`, { method: 'DELETE' }),
+  updateMealPlanEntry: (id: string, recipeSlug: string, label?: string | null) =>
+    request<{ entry: { id: string } }>(`/meal-plan/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ recipe_slug: recipeSlug, label: label ?? undefined }),
+    }),
+  removeMealPlanEntry: (id: string) =>
+    request<{ ok: boolean }>(`/meal-plan/${id}`, { method: 'DELETE' }),
   buildListFromWeek: (weekStart: string) =>
     request<{ list: ShoppingList; added: number }>('/meal-plan/build-list', {
       method: 'POST',

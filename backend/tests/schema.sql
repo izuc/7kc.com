@@ -41,8 +41,8 @@ CREATE TABLE group_feed_events (
 );
 CREATE TABLE meal_plan (
   id TEXT PRIMARY KEY, owner_user_id TEXT, group_id TEXT, plan_date TEXT,
-  recipe_id TEXT, recipe_title TEXT, created_at INTEGER,
-  UNIQUE (owner_user_id, plan_date)
+  meal_label TEXT, sort_order INTEGER NOT NULL DEFAULT 0,
+  recipe_id TEXT, recipe_title TEXT, created_at INTEGER
 );
 CREATE TABLE push_subscriptions (
   id TEXT PRIMARY KEY, user_id TEXT, endpoint TEXT, p256dh TEXT, auth TEXT, created_at INTEGER,

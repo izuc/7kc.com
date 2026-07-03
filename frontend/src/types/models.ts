@@ -204,7 +204,10 @@ export interface RecipeComment {
 }
 
 export interface MealPlanEntry {
+  id: string;
   date: string;
+  label: string | null;
+  sort_order: number;
   recipe_id: string | null;
   recipe_title: string | null;
   recipe: RecipeSummary | null;

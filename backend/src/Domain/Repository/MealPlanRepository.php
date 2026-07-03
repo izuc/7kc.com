@@ -4,72 +4,79 @@ declare(strict_types=1);
 namespace SevenKC\Domain\Repository;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use SevenKC\Support\Uid;
 
 /**
- * Solo week meal-planner. One planned meal per (owner, plan_date); plan_date is an
- * ISO 'YYYY-MM-DD' string so lexicographic range filters are correct.
+ * Solo week meal-planner. A day holds any number of meals — each entry has an
+ * optional label ("Breakfast", "Dinner"…) and a per-day sort position.
+ * plan_date is an ISO 'YYYY-MM-DD' string so lexicographic range filters are
+ * correct.
  */
 final class MealPlanRepository
 {
     public function __construct(private readonly Connection $db) {}
 
-    /** @return list<array{id:string,plan_date:string,recipe_id:?string,recipe_title:?string,created_at:int}> */
+    /** @return list<array{id:string,plan_date:string,meal_label:?string,sort_order:int,recipe_id:?string,recipe_title:?string,created_at:int}> */
     public function forRange(string $userId, string $start, string $end): array
     {
         $rows = $this->db->fetchAllAssociative(
-            'SELECT * FROM meal_plan WHERE owner_user_id = ? AND plan_date >= ? AND plan_date <= ? ORDER BY plan_date ASC',
+            'SELECT * FROM meal_plan
+             WHERE owner_user_id = ? AND plan_date >= ? AND plan_date <= ?
+             ORDER BY plan_date ASC, sort_order ASC, created_at ASC',
             [$userId, $start, $end]
         );
         return array_map(fn ($r) => [
             'id' => $r['id'],
             'plan_date' => $r['plan_date'],
+            'meal_label' => $r['meal_label'] !== null && $r['meal_label'] !== '' ? (string)$r['meal_label'] : null,
+            'sort_order' => (int)$r['sort_order'],
             'recipe_id' => $r['recipe_id'],
             'recipe_title' => $r['recipe_title'],
             'created_at' => (int)$r['created_at'],
         ], $rows);
     }
 
-    /** Upsert the meal for a given day (keyed on owner + date). Returns the row id.
-     *  A UNIQUE(owner_user_id, plan_date) index makes this race-safe: a concurrent
-     *  INSERT that loses the race is caught and converted to an UPDATE. */
-    public function upsertSlot(string $userId, string $date, ?string $recipeId, ?string $recipeTitle): string
+    /** Append a meal to a day. Returns the new row id. */
+    public function addEntry(string $userId, string $date, ?string $recipeId, ?string $recipeTitle, ?string $label): string
     {
-        $existing = $this->db->fetchOne(
-            'SELECT id FROM meal_plan WHERE owner_user_id = ? AND plan_date = ?',
+        $next = (int)$this->db->fetchOne(
+            'SELECT COALESCE(MAX(sort_order), -1) + 1 FROM meal_plan WHERE owner_user_id = ? AND plan_date = ?',
             [$userId, $date]
         );
-        if ($existing) {
-            $this->db->update('meal_plan', ['recipe_id' => $recipeId, 'recipe_title' => $recipeTitle], ['id' => $existing]);
-            return (string)$existing;
-        }
         $id = Uid::new();
-        try {
-            $this->db->insert('meal_plan', [
-                'id' => $id,
-                'owner_user_id' => $userId,
-                'group_id' => null,
-                'plan_date' => $date,
-                'recipe_id' => $recipeId,
-                'recipe_title' => $recipeTitle,
-                'created_at' => time(),
-            ]);
-            return $id;
-        } catch (UniqueConstraintViolationException) {
-            // Another request inserted this (owner,date) first — update that row instead.
-            $this->db->update('meal_plan', ['recipe_id' => $recipeId, 'recipe_title' => $recipeTitle], [
-                'owner_user_id' => $userId,
-                'plan_date' => $date,
-            ]);
-            return (string)$this->db->fetchOne(
-                'SELECT id FROM meal_plan WHERE owner_user_id = ? AND plan_date = ?',
-                [$userId, $date]
-            );
-        }
+        $this->db->insert('meal_plan', [
+            'id' => $id,
+            'owner_user_id' => $userId,
+            'group_id' => null,
+            'plan_date' => $date,
+            'meal_label' => $label,
+            'sort_order' => $next,
+            'recipe_id' => $recipeId,
+            'recipe_title' => $recipeTitle,
+            'created_at' => time(),
+        ]);
+        return $id;
     }
 
-    public function clearSlot(string $userId, string $date): void
+    /** Replace an entry's recipe and label. Owner-scoped; false when not found. */
+    public function updateEntry(string $userId, string $id, ?string $recipeId, ?string $recipeTitle, ?string $label): bool
+    {
+        $count = $this->db->update(
+            'meal_plan',
+            ['recipe_id' => $recipeId, 'recipe_title' => $recipeTitle, 'meal_label' => $label],
+            ['id' => $id, 'owner_user_id' => $userId]
+        );
+        return $count > 0;
+    }
+
+    /** Remove one meal. Owner-scoped; false when not found. */
+    public function removeEntry(string $userId, string $id): bool
+    {
+        return $this->db->delete('meal_plan', ['id' => $id, 'owner_user_id' => $userId]) > 0;
+    }
+
+    /** Remove every meal planned for a day. */
+    public function clearDay(string $userId, string $date): void
     {
         $this->db->executeStatement(
             'DELETE FROM meal_plan WHERE owner_user_id = ? AND plan_date = ?',

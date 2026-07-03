@@ -27,7 +27,10 @@ final class GetMealPlanAction
         $summaries = $this->recipes->summariesByIds(array_filter(array_column($rows, 'recipe_id')));
 
         $entries = array_map(fn ($r) => [
+            'id' => $r['id'],
             'date' => $r['plan_date'],
+            'label' => $r['meal_label'],
+            'sort_order' => $r['sort_order'],
             'recipe_id' => $r['recipe_id'],
             'recipe_title' => $r['recipe_title'],
             'recipe' => $r['recipe_id'] ? ($summaries[$r['recipe_id']] ?? null) : null,
