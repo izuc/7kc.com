@@ -129,9 +129,12 @@ final class SeedIngredientsAndRecipes extends AbstractSeed
             }
         }
 
-        if ($recipeRows) $this->table('recipes')->insert($recipeRows)->save();
-        if ($recipeIngRows) $this->table('recipe_ingredients')->insert($recipeIngRows)->save();
-        if ($recipeStepRows) $this->table('recipe_steps')->insert($recipeStepRows)->save();
+        // Insert in chunks so a large catalogue (1000+ recipes → thousands of
+        // step rows with long detail text) never builds a single INSERT that
+        // exceeds MySQL's max_allowed_packet.
+        foreach (array_chunk($recipeRows, 200) as $chunk) $this->table('recipes')->insert($chunk)->save();
+        foreach (array_chunk($recipeIngRows, 500) as $chunk) $this->table('recipe_ingredients')->insert($chunk)->save();
+        foreach (array_chunk($recipeStepRows, 150) as $chunk) $this->table('recipe_steps')->insert($chunk)->save();
 
         // ---------- metadata + detail sync ----------
         // For every recipe in the JSON, sync editable metadata (title,
