@@ -74147,5 +74147,1020 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "caramel-slice",
+    "title": "Caramel Slice",
+    "description": "The lunchbox legend: a coconut-biscuit base, a thick chewy caramel made from scratch, and a snap of dark chocolate on top.",
+    "prep_time": 20,
+    "cook_time": 25,
+    "servings": 16,
+    "difficulty": "medium",
+    "equipment": [
+      "oven",
+      "20 cm square tin",
+      "baking paper",
+      "medium heavy saucepan",
+      "wooden spoon",
+      "mixing bowl"
+    ],
+    "storage": "Keeps 1 week in an airtight container in the fridge; the caramel firms up cold. Bring to room temperature for 10 minutes before eating so the chocolate isn't brittle.",
+    "make_ahead": "Make it a day ahead — an overnight set in the fridge gives the cleanest slices.",
+    "substitutions": [
+      {
+        "ingredient_id": "biscuit_sweet",
+        "swap": "any plain sweet biscuit blitzed to crumbs, or use 1 cup plain flour rubbed with the butter for a shortbread base"
+      },
+      {
+        "ingredient_id": "coconut_desiccated",
+        "swap": "leave it out and add 2 extra tablespoons of biscuit crumbs"
+      }
+    ],
+    "tags": [
+      "baking",
+      "dessert",
+      "retro"
+    ],
+    "palette": [
+      "#7a4a24",
+      "#f2e3cf"
+    ],
+    "dish_form": "cake-slice",
+    "ingredients": [
+      {
+        "id": "biscuit_sweet",
+        "amount": "250 g"
+      },
+      {
+        "id": "coconut_desiccated",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "butter",
+        "amount": "180 g"
+      },
+      {
+        "id": "brown_sugar",
+        "amount": "1 cup, firmly packed"
+      },
+      {
+        "id": "cream",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "dark_chocolate",
+        "amount": "200 g"
+      },
+      {
+        "id": "vanilla",
+        "amount": "1 tsp"
+      }
+    ],
+    "steps": [
+      {
+        "title": "Press the base",
+        "content": "Mix biscuit crumbs, coconut and melted butter, press into a lined tin, bake 10 min.",
+        "detail": "Heat the oven to 170°C fan-forced and line a 20 cm square tin with paper, leaving an overhang so you can lift the slice out later. Blitz or bash the biscuits to fine crumbs, stir through the coconut and 80 g of melted butter until it looks like wet sand, then press it hard and flat into the tin with the back of a spoon. Bake for 10 minutes until it smells toasty, then set aside.",
+        "timer_seconds": 600,
+        "tips": [
+          "A flat-bottomed glass presses the base tighter and more evenly than a spoon."
+        ],
+        "ingredient_ids": [
+          "biscuit_sweet",
+          "coconut_desiccated",
+          "butter"
+        ]
+      },
+      {
+        "title": "Cook the caramel",
+        "content": "Simmer butter, brown sugar and cream 6–8 min to a thick golden caramel.",
+        "detail": "In a heavy saucepan melt the remaining 100 g butter with the brown sugar and cream over medium heat, stirring constantly with a wooden spoon. Once it comes to a simmer, keep stirring for 6–8 minutes until it darkens to a deep gold and thickens enough to briefly show the pan bottom when you drag the spoon through. Stir in the vanilla, then pour over the base and smooth the top.",
+        "timer_seconds": 420,
+        "tips": [
+          "Without condensed milk the caramel sets softer and chewier — that extra couple of minutes of bubbling is what firms it up."
+        ],
+        "warnings": [
+          "Hot caramel is far more dangerous than boiling water and sticks to skin — stir at arm's length and never taste it straight from the pan."
+        ],
+        "ingredient_ids": [
+          "butter",
+          "brown_sugar",
+          "cream",
+          "vanilla"
+        ]
+      },
+      {
+        "title": "Bake and cool the caramel",
+        "content": "Bake 12 min until bubbling at the edges, then cool completely.",
+        "detail": "Return the tin to the oven for about 12 minutes, until the caramel is bubbling gently around the edges and no longer loose in the middle when you nudge the tin. Let it cool on the bench, then chill in the fridge for an hour so it is fully firm before the chocolate goes on.",
+        "timer_seconds": 720,
+        "ingredient_ids": []
+      },
+      {
+        "title": "Top with chocolate",
+        "content": "Spread melted dark chocolate over the set caramel and chill until just firm.",
+        "detail": "Melt the dark chocolate gently — 30-second bursts in the microwave, stirring between each, or in a bowl set over a pan of barely-simmering water. Pour it over the cold caramel and tilt the tin so it flows into an even sheet. Chill for just 15–20 minutes until the chocolate has lost its shine but isn't rock hard.",
+        "tips": [
+          "Score the chocolate into squares with a warm knife before it sets fully — it stops the top cracking when you cut it properly later."
+        ],
+        "ingredient_ids": [
+          "dark_chocolate"
+        ]
+      },
+      {
+        "title": "Lift and slice",
+        "content": "Lift out by the paper and cut into small squares with a hot dry knife.",
+        "detail": "Use the paper overhang to lift the whole slab onto a board. Dip a large knife in hot water and wipe it dry, then cut into 16 squares, re-warming and wiping the blade between cuts. It is rich, so keep the pieces small.",
+        "ingredient_ids": []
+      }
+    ]
+  },
+  {
+    "slug": "chocolate-ripple-cake",
+    "title": "Chocolate Ripple Cake",
+    "description": "The no-bake party classic: chocolate biscuits sandwiched with coffee-kissed cream, left overnight until they turn to soft cake and slice in stripes.",
+    "prep_time": 20,
+    "cook_time": 0,
+    "servings": 10,
+    "difficulty": "easy",
+    "equipment": [
+      "large mixing bowl",
+      "electric beaters",
+      "serving platter"
+    ],
+    "storage": "Best eaten within 2 days; keep covered in the fridge. It softens further over time and won't slice as neatly on day three.",
+    "make_ahead": "This dish only works made ahead — it needs at least 6 hours, ideally overnight, in the fridge for the biscuits to soften into cake.",
+    "substitutions": [
+      {
+        "ingredient_id": "coffee",
+        "swap": "use milk instead for a kid-friendly version, or a splash of orange juice"
+      },
+      {
+        "ingredient_id": "dark_chocolate",
+        "swap": "cocoa dusted over the top, or crushed chocolate biscuits"
+      }
+    ],
+    "tags": [
+      "dessert",
+      "no-cook",
+      "party"
+    ],
+    "palette": [
+      "#6f4327",
+      "#f0e2d0"
+    ],
+    "dish_form": "loaf-slice",
+    "ingredients": [
+      {
+        "id": "biscuit_sweet",
+        "amount": "250 g chocolate biscuits"
+      },
+      {
+        "id": "cream",
+        "amount": "600 ml"
+      },
+      {
+        "id": "icing_sugar",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "vanilla",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "coffee",
+        "amount": "1/2 cup, cooled"
+      },
+      {
+        "id": "dark_chocolate",
+        "amount": "50 g, to finish",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "title": "Whip the cream",
+        "content": "Beat cream, icing sugar and vanilla to soft, spoonable peaks.",
+        "detail": "Pour the cold cream into a large bowl with the icing sugar and vanilla and beat until it holds soft peaks — thick enough to hold a shape but still smooth, not stiff or grainy. Stop the moment it thickens; over-beaten cream turns buttery and splits.",
+        "tips": [
+          "Cold cream in a cold bowl whips faster and holds better — chill both for 10 minutes first if your kitchen is warm."
+        ],
+        "ingredient_ids": [
+          "cream",
+          "icing_sugar",
+          "vanilla"
+        ]
+      },
+      {
+        "title": "Build the log",
+        "content": "Dip each biscuit in coffee, sandwich with cream and stand them in a log.",
+        "detail": "Pour the cooled coffee into a shallow bowl. Spread a little cream on a biscuit, dip the next biscuit briefly in the coffee — one second a side, or it goes soggy — and press it on. Keep going to build a standing log on its side down the length of a platter, then cover the whole thing in the remaining cream.",
+        "tips": [
+          "If a biscuit gets too soft to stand, lay it flat as the next one in the log — once it's under the cream no one will know."
+        ],
+        "ingredient_ids": [
+          "biscuit_sweet",
+          "coffee",
+          "cream"
+        ]
+      },
+      {
+        "title": "Chill overnight",
+        "content": "Cover and refrigerate at least 6 hours, ideally overnight.",
+        "detail": "Cover loosely and leave it in the fridge for a minimum of 6 hours, though overnight is better. The moisture from the cream slowly softens the biscuits until the whole log has the texture of soft chocolate cake — this waiting is the entire trick.",
+        "ingredient_ids": []
+      },
+      {
+        "title": "Grate and slice",
+        "content": "Grate dark chocolate over the top and slice on a 45° diagonal.",
+        "detail": "Just before serving, grate the dark chocolate over the top if using. Slice at a 45-degree angle across the log — cutting on the diagonal is what reveals the signature stripes of biscuit and cream running through each piece.",
+        "ingredient_ids": [
+          "dark_chocolate"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "basque-burnt-cheesecake",
+    "title": "Basque Burnt Cheesecake",
+    "description": "The deliberately scorched, crustless cheesecake from San Sebastián — burnished and cracked on top, molten and custardy in the middle.",
+    "prep_time": 20,
+    "cook_time": 50,
+    "servings": 12,
+    "difficulty": "medium",
+    "equipment": [
+      "oven",
+      "20 cm springform tin",
+      "baking paper",
+      "large mixing bowl",
+      "electric beaters",
+      "sieve"
+    ],
+    "storage": "Keeps 4 days covered in the fridge. The centre firms up cold, so let slices sit out for 20 minutes to bring back the custardy middle.",
+    "make_ahead": "Bake it a day ahead — a night in the fridge lets it set to sliceable while keeping a soft centre.",
+    "substitutions": [
+      {
+        "ingredient_id": "cream_cheese",
+        "swap": "must be full-fat block cream cheese, not spreadable — the tub kind is too wet and won't set"
+      },
+      {
+        "ingredient_id": "flour",
+        "swap": "cornflour for a gluten-free version, same quantity"
+      }
+    ],
+    "tags": [
+      "dessert",
+      "baking",
+      "make-ahead"
+    ],
+    "palette": [
+      "#a05a2a",
+      "#f6e6d2"
+    ],
+    "dish_form": "cake-slice",
+    "ingredients": [
+      {
+        "id": "cream_cheese",
+        "amount": "500 g, softened"
+      },
+      {
+        "id": "sugar",
+        "amount": "3/4 cup"
+      },
+      {
+        "id": "eggs",
+        "amount": "4"
+      },
+      {
+        "id": "cream",
+        "amount": "300 ml"
+      },
+      {
+        "id": "flour",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "vanilla",
+        "amount": "1 tsp"
+      }
+    ],
+    "steps": [
+      {
+        "title": "Line and heat high",
+        "content": "Heat oven to 220°C fan and line the tin with crumpled baking paper.",
+        "detail": "Heat the oven to 220°C fan-forced — the fierce heat is what burnishes the top. Scrunch a large sheet of baking paper into a ball, open it back out and press it into a 20 cm springform tin, letting it come well up the sides in rough folds. The messy, pleated paper is traditional and holds the loose batter.",
+        "ingredient_ids": []
+      },
+      {
+        "title": "Beat the batter",
+        "content": "Beat cream cheese and sugar smooth, then add eggs, cream, vanilla and flour.",
+        "detail": "Beat the softened cream cheese with the sugar until completely smooth with no lumps — lumps now mean a grainy cake later. Add the eggs one at a time, beating just until each disappears, then mix in the cream and vanilla. Finally sift in the flour and fold through until the batter is silky and pourable.",
+        "tips": [
+          "Let the cream cheese and eggs come to room temperature first — cold cream cheese never beats out smooth."
+        ],
+        "ingredient_ids": [
+          "cream_cheese",
+          "sugar",
+          "eggs",
+          "cream",
+          "vanilla",
+          "flour"
+        ]
+      },
+      {
+        "title": "Bake until scorched",
+        "content": "Pour in and bake 45–50 min until deeply browned and wobbly in the centre.",
+        "detail": "Pour the batter through a sieve into the tin to catch any lumps, then bake for 45–50 minutes. It is ready when the top is deeply, almost alarmingly bronzed and the centre still wobbles like set jelly when you jiggle the tin — it firms as it cools. A too-firm middle means it's overbaked.",
+        "timer_seconds": 2700,
+        "warnings": [
+          "Don't open the oven in the first 30 minutes — the blast of cool air stops the top browning and can sink the middle."
+        ],
+        "ingredient_ids": []
+      },
+      {
+        "title": "Cool and set",
+        "content": "Cool completely in the tin, then chill before releasing and slicing.",
+        "detail": "Let it cool completely in the tin — it will sink and crack in the centre, which is exactly right. Chill for a few hours or overnight, then release the springform and peel back the paper. Slice with a hot dry knife for a clean cut through the molten middle.",
+        "ingredient_ids": []
+      }
+    ]
+  },
+  {
+    "slug": "banoffee-pie",
+    "title": "Banoffee Pie",
+    "description": "Banana and toffee piled into a buttery biscuit crust under a cloud of cream — the toffee made from scratch, no tin of condensed milk needed.",
+    "prep_time": 25,
+    "cook_time": 15,
+    "servings": 10,
+    "difficulty": "medium",
+    "equipment": [
+      "23 cm pie dish or loose-based tart tin",
+      "medium heavy saucepan",
+      "wooden spoon",
+      "mixing bowl",
+      "electric beaters"
+    ],
+    "storage": "Best assembled and eaten the same day; keep in the fridge. The banana browns and the base softens overnight, so it won't be as good on day two.",
+    "make_ahead": "Make the base and toffee a day ahead and keep them separately in the fridge; slice the banana and whip the cream just before serving.",
+    "substitutions": [
+      {
+        "ingredient_id": "dark_chocolate",
+        "swap": "a dusting of cocoa, or a handful of crushed biscuits"
+      },
+      {
+        "ingredient_id": "biscuit_sweet",
+        "swap": "any plain sweet or digestive-style biscuit"
+      }
+    ],
+    "tags": [
+      "dessert",
+      "make-ahead",
+      "party"
+    ],
+    "palette": [
+      "#b5793a",
+      "#f7e7d2"
+    ],
+    "dish_form": "pie-whole",
+    "ingredients": [
+      {
+        "id": "biscuit_sweet",
+        "amount": "250 g"
+      },
+      {
+        "id": "butter",
+        "amount": "170 g"
+      },
+      {
+        "id": "brown_sugar",
+        "amount": "3/4 cup"
+      },
+      {
+        "id": "cream",
+        "amount": "600 ml"
+      },
+      {
+        "id": "banana",
+        "amount": "3"
+      },
+      {
+        "id": "vanilla",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "dark_chocolate",
+        "amount": "30 g, to finish",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "title": "Press the crumb base",
+        "content": "Mix biscuit crumbs with melted butter, press into the dish and chill.",
+        "detail": "Blitz the biscuits to fine crumbs and stir through 90 g of melted butter until evenly damp. Press firmly over the base and up the sides of a 23 cm pie dish, using a glass to pack it tight. Chill it in the fridge while you make the toffee so it sets solid.",
+        "ingredient_ids": [
+          "biscuit_sweet",
+          "butter"
+        ]
+      },
+      {
+        "title": "Cook the toffee",
+        "content": "Simmer butter, brown sugar and 1 cup of the cream 8–10 min to a thick toffee.",
+        "detail": "In a heavy saucepan melt the remaining 80 g butter with the brown sugar and 1 cup of the cream, stirring over medium heat. Bring to a simmer and keep stirring for 8–10 minutes until it turns a rich amber and thickens to a pourable toffee that coats the spoon. Pour it onto the cold base and spread level.",
+        "timer_seconds": 540,
+        "tips": [
+          "It thickens a lot more as it cools, so stop while it still flows — a firm-in-the-pan toffee will be hard to slice."
+        ],
+        "warnings": [
+          "Molten toffee scalds badly and clings to skin — keep children clear and never dip a finger in to taste."
+        ],
+        "ingredient_ids": [
+          "butter",
+          "brown_sugar",
+          "cream"
+        ]
+      },
+      {
+        "title": "Cool the toffee",
+        "content": "Let the toffee layer cool and firm in the fridge, about 30 min.",
+        "detail": "Slide the dish into the fridge for about 30 minutes until the toffee is cool and set enough to hold the bananas without them sinking through. Meanwhile whip the remaining cream with the vanilla to soft peaks.",
+        "timer_seconds": 1800,
+        "ingredient_ids": [
+          "cream",
+          "vanilla"
+        ]
+      },
+      {
+        "title": "Top with banana and cream",
+        "content": "Slice bananas over the toffee, pile on the cream and grate over chocolate.",
+        "detail": "Slice the bananas into coins and lay them over the cooled toffee in an even layer. Pile the whipped cream on top and swoosh it into peaks, then grate the dark chocolate over the lot. Serve straight away while the base is still crisp.",
+        "ingredient_ids": [
+          "banana",
+          "cream",
+          "dark_chocolate"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "chocolate-fondant",
+    "title": "Chocolate Fondant",
+    "description": "Individual dark chocolate puddings with a set sponge outside and a molten, flowing centre — a restaurant trick that lives or dies on timing.",
+    "prep_time": 20,
+    "cook_time": 12,
+    "servings": 4,
+    "difficulty": "hard",
+    "equipment": [
+      "oven",
+      "4 ramekins",
+      "heatproof bowl",
+      "medium saucepan",
+      "whisk"
+    ],
+    "storage": "Fondants are a cook-to-order dessert and don't keep once baked. You can fill the ramekins and refrigerate them raw for up to a day, then bake straight from cold, adding a minute.",
+    "make_ahead": "Fill the ramekins and chill them raw up to a day ahead; bake from the fridge when you want them, adding about 1 minute.",
+    "substitutions": [
+      {
+        "ingredient_id": "dark_chocolate",
+        "swap": "milk chocolate for a sweeter, softer centre, though a good dark block gives the richest molten result"
+      }
+    ],
+    "tags": [
+      "dessert",
+      "baking"
+    ],
+    "palette": [
+      "#5a341f",
+      "#efe0cf"
+    ],
+    "dish_form": "ramekin",
+    "ingredients": [
+      {
+        "id": "dark_chocolate",
+        "amount": "120 g"
+      },
+      {
+        "id": "butter",
+        "amount": "120 g, plus extra for the ramekins"
+      },
+      {
+        "id": "eggs",
+        "amount": "3"
+      },
+      {
+        "id": "sugar",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "flour",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "cocoa",
+        "amount": "2 tbsp, for dusting"
+      }
+    ],
+    "steps": [
+      {
+        "title": "Butter and dust",
+        "content": "Brush ramekins with butter and coat with cocoa so the fondants release.",
+        "detail": "Heat the oven to 200°C fan-forced. Brush the inside of each ramekin generously with soft butter, using upward strokes, then spoon in a little cocoa, tip and turn to coat all the way up the sides, and knock out the excess. This cocoa jacket is what lets the delicate pudding slide out cleanly.",
+        "ingredient_ids": [
+          "butter",
+          "cocoa"
+        ]
+      },
+      {
+        "title": "Melt the chocolate",
+        "content": "Melt chocolate and butter together until smooth, then cool slightly.",
+        "detail": "Set a heatproof bowl over a saucepan of barely-simmering water — the bowl shouldn't touch the water — and melt the dark chocolate and butter together, stirring until glossy and smooth. Take it off the heat and let it cool for a few minutes so it won't cook the eggs.",
+        "tips": [
+          "A splash of water or trapped steam seizes the chocolate into a stiff, dull paste, so keep the heat low and the bowl clear of the water."
+        ],
+        "ingredient_ids": [
+          "dark_chocolate",
+          "butter"
+        ]
+      },
+      {
+        "title": "Fold the batter",
+        "content": "Whisk eggs and sugar pale, fold in the chocolate, then the flour.",
+        "detail": "Whisk the eggs and sugar together hard for a couple of minutes until pale and thickened. Pour in the slightly-cooled chocolate and fold gently to keep the air in, then sift over the flour and fold just until no streaks remain. Divide between the ramekins, filling them about three-quarters full.",
+        "ingredient_ids": [
+          "eggs",
+          "sugar",
+          "flour"
+        ]
+      },
+      {
+        "title": "Bake to the second",
+        "content": "Bake exactly 10–12 min until risen with a soft wobble, then turn out.",
+        "detail": "Bake for 10–12 minutes — the tops should be set and risen but still have a soft wobble in the very centre. This window is everything: a minute too long and the molten middle bakes solid. Rest for 1 minute, then invert each onto a plate, lift the ramekin away, and serve immediately while the centre still flows.",
+        "timer_seconds": 660,
+        "tips": [
+          "Ovens vary, so treat the first fondant as a tester — note the exact time it needs and trust it for the rest."
+        ],
+        "warnings": [
+          "The ramekins come out oven-hot — turn them out holding a cloth, and warn everyone the pudding inside is molten and scalding."
+        ],
+        "ingredient_ids": []
+      }
+    ]
+  },
+  {
+    "slug": "portuguese-custard-tarts",
+    "title": "Portuguese Custard Tarts",
+    "description": "Pastéis de nata: flaky spirals of puff pastry filled with a silky cinnamon-vanilla custard and blistered dark on top.",
+    "prep_time": 25,
+    "cook_time": 25,
+    "servings": 12,
+    "difficulty": "medium",
+    "equipment": [
+      "oven",
+      "12-hole muffin tin",
+      "medium saucepan",
+      "whisk",
+      "mixing bowl"
+    ],
+    "storage": "Best the day they're made — the pastry softens overnight. Keep leftovers in the fridge and crisp them back up in a hot oven for a few minutes.",
+    "substitutions": [
+      {
+        "ingredient_id": "pastry_puff",
+        "swap": "block puff pastry rolled and rolled up gives the flakiest spiral, but sheets work fine"
+      },
+      {
+        "ingredient_id": "cinnamon",
+        "swap": "a strip of lemon or orange peel steeped in the milk instead"
+      }
+    ],
+    "tags": [
+      "dessert",
+      "baking",
+      "party"
+    ],
+    "palette": [
+      "#d9a441",
+      "#fdf1d6"
+    ],
+    "dish_form": "scones-plate",
+    "ingredients": [
+      {
+        "id": "pastry_puff",
+        "amount": "2 sheets"
+      },
+      {
+        "id": "milk",
+        "amount": "1 cup"
+      },
+      {
+        "id": "cream",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "sugar",
+        "amount": "2/3 cup"
+      },
+      {
+        "id": "eggs",
+        "amount": "3 yolks"
+      },
+      {
+        "id": "cornflour",
+        "amount": "2 tbsp"
+      },
+      {
+        "id": "vanilla",
+        "amount": "1 tsp"
+      },
+      {
+        "id": "cinnamon",
+        "amount": "1/2 tsp, plus extra to dust"
+      }
+    ],
+    "steps": [
+      {
+        "title": "Roll the pastry",
+        "content": "Roll each pastry sheet into a log, slice into rounds and press into the tin.",
+        "detail": "Heat the oven as high as it will go on fan-forced, 240°C if it reaches it — nata need ferocious heat. Roll each puff sheet up into a tight log, cut into 6 pinwheels, and press each cut-side-down into a muffin hole, working the pastry up the sides with your thumbs into a thin cup. Chill the tin while you make the custard.",
+        "tips": [
+          "A wet thumb stops the pastry sticking as you press it up the sides."
+        ],
+        "ingredient_ids": [
+          "pastry_puff"
+        ]
+      },
+      {
+        "title": "Cook the custard",
+        "content": "Whisk milk, cream, sugar, yolks and cornflour, then cook to a thick custard.",
+        "detail": "Whisk the cornflour with a splash of the milk to a paste, then whisk in the rest of the milk, the cream, sugar, egg yolks, vanilla and cinnamon. Cook over medium heat, whisking constantly, until it thickens to a pourable custard that coats the whisk, about 4–5 minutes. Don't let it boil hard or the yolks scramble.",
+        "timer_seconds": 300,
+        "tips": [
+          "Keep the whisk moving right into the corners of the pan — that's where the custard catches and turns to sweet scrambled egg first."
+        ],
+        "ingredient_ids": [
+          "milk",
+          "cream",
+          "sugar",
+          "eggs",
+          "cornflour",
+          "vanilla",
+          "cinnamon"
+        ]
+      },
+      {
+        "title": "Fill and blister",
+        "content": "Fill the pastry cups and bake 18–20 min until the tops are blackened in spots.",
+        "detail": "Pour the warm custard into the chilled pastry cups, filling them about four-fifths full to leave room to bubble. Bake for 18–20 minutes until the pastry is deep gold and the custard is scorched with dark, almost black caramel spots on top — those burnt patches are the signature, not a mistake.",
+        "timer_seconds": 1080,
+        "tips": [
+          "If your oven won't blacken the tops, flash them under a hot grill for the last minute."
+        ],
+        "ingredient_ids": []
+      },
+      {
+        "title": "Cool briefly",
+        "content": "Cool in the tin 5 min, then lift out to eat warm.",
+        "detail": "Let the tarts sit in the tin for 5 minutes so the custard settles, then run a knife around each and lift them out. They are best eaten warm, when the pastry still shatters and the custard is just set. A final dusting of cinnamon is traditional.",
+        "ingredient_ids": [
+          "cinnamon"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "golden-syrup-dumplings",
+    "title": "Golden Syrup Dumplings",
+    "description": "Soft scone dumplings poached in a buttery caramel sauce — a thrifty old-fashioned Aussie pudding that turns pantry staples into something special.",
+    "prep_time": 15,
+    "cook_time": 20,
+    "servings": 6,
+    "difficulty": "easy",
+    "equipment": [
+      "large lidded saucepan or deep frying pan",
+      "mixing bowl",
+      "wooden spoon"
+    ],
+    "storage": "Best served fresh and hot. Leftovers keep a day in the fridge; reheat gently with a splash of water as the sauce thickens right up when cold.",
+    "substitutions": [
+      {
+        "ingredient_id": "maple_syrup",
+        "swap": "golden syrup is traditional if you have it; honey also works, each giving a slightly different caramel note"
+      }
+    ],
+    "tags": [
+      "dessert",
+      "retro",
+      "cheap"
+    ],
+    "palette": [
+      "#c07f22",
+      "#fbeccb"
+    ],
+    "dish_form": "bake-dish",
+    "ingredients": [
+      {
+        "id": "flour_self_raising",
+        "amount": "1 1/2 cups"
+      },
+      {
+        "id": "butter",
+        "amount": "90 g"
+      },
+      {
+        "id": "milk",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "maple_syrup",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "brown_sugar",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "cream",
+        "amount": "to serve",
+        "is_optional": true
+      }
+    ],
+    "steps": [
+      {
+        "title": "Mix the scone dough",
+        "content": "Rub 30 g butter into the flour, then stir in milk to a soft dough.",
+        "detail": "Rub 30 g of the butter into the self-raising flour with your fingertips until it looks like breadcrumbs. Make a well, pour in the milk and stir with a knife just until it comes together into a soft, slightly sticky dough — over-mixing makes tough dumplings. Roll into 12 walnut-sized balls with lightly floured hands.",
+        "tips": [
+          "Wetter dough gives lighter dumplings, so resist adding extra flour — just flour your hands instead."
+        ],
+        "ingredient_ids": [
+          "flour_self_raising",
+          "butter",
+          "milk"
+        ]
+      },
+      {
+        "title": "Simmer the syrup",
+        "content": "Simmer 2 cups water with the remaining butter, syrup and brown sugar.",
+        "detail": "In a large lidded pan bring 2 cups of water to a simmer with the remaining 60 g butter, the maple syrup and the brown sugar, stirring until the sugar dissolves and it smells of caramel. Let it bubble gently — this thin sauce thickens as the dumplings cook and release their flour into it.",
+        "warnings": [
+          "The sugar syrup is hotter than boiling water and spits — add the dumplings gently, don't drop them from a height."
+        ],
+        "ingredient_ids": [
+          "butter",
+          "maple_syrup",
+          "brown_sugar"
+        ]
+      },
+      {
+        "title": "Poach the dumplings",
+        "content": "Lower in the dumplings, cover and simmer 15 min without lifting the lid.",
+        "detail": "Lower the dough balls into the gently simmering syrup, leaving space between them as they double in size. Put the lid on and simmer for 15 minutes without peeking — the trapped steam is what puffs them up light and cooks them through. They're done when a skewer comes out clean from the biggest one.",
+        "timer_seconds": 900,
+        "ingredient_ids": []
+      },
+      {
+        "title": "Serve in the sauce",
+        "content": "Spoon into bowls with plenty of sauce and a pour of cream.",
+        "detail": "Spoon the puffed dumplings into bowls with a generous ladle of the glossy caramel sauce. They're at their best hot, with cold cream or a scoop of ice cream melting into the warm syrup.",
+        "ingredient_ids": [
+          "cream"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "lemon-meringue-pie",
+    "title": "Lemon Meringue Pie",
+    "description": "A crisp pastry shell, a sharp silky lemon curd and a mountain of soft-peaked meringue toasted gold — the showstopper worth the effort.",
+    "prep_time": 30,
+    "cook_time": 30,
+    "servings": 10,
+    "difficulty": "hard",
+    "equipment": [
+      "oven",
+      "23 cm tart tin",
+      "baking paper",
+      "baking weights or dried beans",
+      "medium saucepan",
+      "whisk",
+      "electric beaters"
+    ],
+    "storage": "Best eaten the day it's made — the meringue weeps and the pastry softens after a day. Keep in the fridge and eat within 2 days.",
+    "substitutions": [
+      {
+        "ingredient_id": "pastry_shortcrust",
+        "swap": "a crushed sweet-biscuit-and-butter base, pressed and chilled, if you'd rather skip blind baking"
+      }
+    ],
+    "tags": [
+      "dessert",
+      "baking"
+    ],
+    "palette": [
+      "#e0a81e",
+      "#fdf2cf"
+    ],
+    "dish_form": "pie-whole",
+    "ingredients": [
+      {
+        "id": "pastry_shortcrust",
+        "amount": "1 sheet"
+      },
+      {
+        "id": "lemon",
+        "amount": "4"
+      },
+      {
+        "id": "sugar",
+        "amount": "1 3/4 cups"
+      },
+      {
+        "id": "eggs",
+        "amount": "5, separated"
+      },
+      {
+        "id": "cornflour",
+        "amount": "1/3 cup"
+      },
+      {
+        "id": "butter",
+        "amount": "50 g"
+      },
+      {
+        "id": "salt",
+        "amount": "pinch, for the whites"
+      }
+    ],
+    "steps": [
+      {
+        "title": "Blind bake the shell",
+        "content": "Line the tin, fill with weights and bake 15 min, then 5 min uncovered.",
+        "detail": "Heat the oven to 180°C fan-forced. Press the shortcrust into a 23 cm tart tin and trim the edge, line it with baking paper and fill with weights or dried beans. Bake 15 minutes, lift out the paper and weights, then bake another 5 minutes until the base is dry and pale gold. This stops a soggy bottom under the wet curd.",
+        "timer_seconds": 900,
+        "ingredient_ids": [
+          "pastry_shortcrust"
+        ]
+      },
+      {
+        "title": "Cook the lemon curd",
+        "content": "Whisk lemon juice, zest, sugar, cornflour, water and yolks to a thick curd.",
+        "detail": "Zest and juice the lemons. Whisk the cornflour and 1 cup of the sugar in a saucepan, blend in 1 cup of water and the lemon juice, then cook over medium heat, whisking, until it thickens and turns glossy, about 4 minutes. Take it off the heat, whisk in the egg yolks and zest, then the butter, and return it to a gentle bubble for 1 minute until very thick. Pour into the shell.",
+        "timer_seconds": 300,
+        "tips": [
+          "Whisk the yolks in fast once the pan is off the heat — left to sit in the hot filling they scramble into little lumps."
+        ],
+        "warnings": [
+          "The thick filling spits scalding blobs as it bubbles — stand back a little and stir with a long-handled spoon."
+        ],
+        "ingredient_ids": [
+          "lemon",
+          "sugar",
+          "cornflour",
+          "eggs",
+          "butter"
+        ]
+      },
+      {
+        "title": "Whip the meringue",
+        "content": "Beat egg whites with a pinch of salt, adding sugar to stiff glossy peaks.",
+        "detail": "Beat the egg whites with a pinch of salt until foamy, then add the remaining 3/4 cup sugar a spoonful at a time, beating until the meringue is thick, glossy and holds a stiff peak that stands straight up. Rub a little between your fingers — it should feel smooth, not gritty, meaning the sugar has dissolved.",
+        "tips": [
+          "Not a speck of yolk or grease can touch the whites or they won't whip — separate each egg over a small bowl first."
+        ],
+        "ingredient_ids": [
+          "eggs",
+          "sugar",
+          "salt"
+        ]
+      },
+      {
+        "title": "Pile and bake",
+        "content": "Spread meringue to the edges, swirl peaks and bake 12–15 min until golden.",
+        "detail": "Spoon the meringue over the warm curd, spreading it right to the pastry edge to seal it — gaps are where it shrinks and weeps. Swirl it into peaks with the back of a spoon and bake 12–15 minutes until the peaks are toasted gold. Cool completely before slicing so the curd sets.",
+        "timer_seconds": 780,
+        "ingredient_ids": []
+      }
+    ]
+  },
+  {
+    "slug": "vanilla-slice",
+    "title": "Vanilla Slice",
+    "description": "The bakery classic locals call the snot block: two sheets of crisp puff pastry gripping a thick slab of vanilla custard, finished with passionfruit icing.",
+    "prep_time": 30,
+    "cook_time": 25,
+    "servings": 12,
+    "difficulty": "medium",
+    "equipment": [
+      "oven",
+      "2 baking trays",
+      "baking paper",
+      "20 cm square tin",
+      "medium saucepan",
+      "whisk"
+    ],
+    "storage": "Keeps 2 days in an airtight container in the fridge. The pastry gradually softens against the custard, so it's crispest on day one.",
+    "make_ahead": "The slice needs at least 4 hours chilling to set firm enough to cut, so it's a good make-the-day-before dessert.",
+    "substitutions": [
+      {
+        "ingredient_id": "passionfruit",
+        "swap": "plain lemon icing, or just a dusting of icing sugar"
+      }
+    ],
+    "tags": [
+      "dessert",
+      "baking",
+      "retro"
+    ],
+    "palette": [
+      "#d9b84a",
+      "#fdf4d8"
+    ],
+    "dish_form": "tart-slice",
+    "ingredients": [
+      {
+        "id": "pastry_puff",
+        "amount": "2 sheets"
+      },
+      {
+        "id": "milk",
+        "amount": "3 cups"
+      },
+      {
+        "id": "cream",
+        "amount": "1/2 cup"
+      },
+      {
+        "id": "sugar",
+        "amount": "3/4 cup"
+      },
+      {
+        "id": "cornflour",
+        "amount": "3/4 cup"
+      },
+      {
+        "id": "eggs",
+        "amount": "3 yolks"
+      },
+      {
+        "id": "vanilla",
+        "amount": "2 tsp"
+      },
+      {
+        "id": "butter",
+        "amount": "40 g"
+      },
+      {
+        "id": "icing_sugar",
+        "amount": "1 cup"
+      },
+      {
+        "id": "passionfruit",
+        "amount": "2"
+      }
+    ],
+    "steps": [
+      {
+        "title": "Bake the pastry flat",
+        "content": "Bake each pastry sheet between paper and trays so it stays flat and crisp.",
+        "detail": "Heat the oven to 200°C fan-forced. Prick each puff sheet all over, lay it on a lined tray, cover with more paper and set a second tray on top so it bakes flat instead of puffing up. Bake 15 minutes until deep gold and crisp all the way through. Trim each sheet to fit a paper-lined 20 cm square tin, and sit one in the base.",
+        "timer_seconds": 900,
+        "ingredient_ids": [
+          "pastry_puff"
+        ]
+      },
+      {
+        "title": "Cook the custard",
+        "content": "Whisk milk, cream, sugar, cornflour and yolks, cook to a very thick custard.",
+        "detail": "Whisk the cornflour and sugar in a saucepan, then whisk in the milk, cream and egg yolks until smooth. Cook over medium heat, whisking without stopping, until it thickens to a very stiff custard that holds the mark of the whisk, about 6–8 minutes. Off the heat, beat in the vanilla and butter until glossy.",
+        "timer_seconds": 480,
+        "warnings": [
+          "This custard is thick and volcanic — it splutters as it bubbles, so use a long spoon and keep whisking to stop it catching."
+        ],
+        "ingredient_ids": [
+          "milk",
+          "cream",
+          "sugar",
+          "cornflour",
+          "eggs",
+          "vanilla",
+          "butter"
+        ]
+      },
+      {
+        "title": "Set the slab",
+        "content": "Pour custard over the base, top with the second pastry sheet and chill 4 hr.",
+        "detail": "Pour the hot custard over the pastry in the tin and smooth it level — it should be a good 3 cm deep. Press the second pastry sheet gently on top, flat-side up. Cool, then refrigerate at least 4 hours or overnight until the custard is set firm enough to slice cleanly.",
+        "ingredient_ids": []
+      },
+      {
+        "title": "Ice and slice",
+        "content": "Spread passionfruit icing over the top, set, then cut into squares.",
+        "detail": "Mix the icing sugar with the pulp of the passionfruit and a teaspoon or two of warm water to a thick, spreadable icing. Spread it over the top pastry and leave 15 minutes to set. Cut into squares with a hot dry serrated knife, wiping the blade between cuts so the custard stays neat.",
+        "ingredient_ids": [
+          "icing_sugar",
+          "passionfruit"
+        ]
+      }
+    ]
   }
 ]
