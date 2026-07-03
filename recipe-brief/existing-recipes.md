@@ -1,0 +1,506 @@
+# Existing recipes — do NOT duplicate these
+
+The catalogue already has **500** recipes. When you author new ones, do not repeat any dish below or make a trivial variant of it (e.g. "Beef Bolognese" when "Spaghetti Bolognese" exists, or the same dish with one ingredient swapped). Aim for genuinely different dishes — new cuisines, techniques, proteins, occasions.
+
+Format: **Title** `[dish_form]` · tags — ingredient ids used.
+
+- **Bacon Egg Bagel Stack** `[bagel-stack]` · brunch, sandwich, comfort — bread, bacon, eggs, cream_cheese, rocket, tomato, olive_oil, salt, pepper
+- **Smoked Salmon Bagel** `[bagel-stack]` · breakfast, brunch, quick — bread, cream_cheese, smoked_salmon, caper, onion_red, lemon, parsley
+- **BBQ Pulled Pork** `[baguette-roll]` · american, slow, family, batch-friendly — pork_shoulder, paprika, sugar, cumin, tomato_paste, vinegar_balsamic, worcestershire, honey, stock_chicken, bread, cabbage, mayo, carrot
+- **BBQ Snag Sanga** `[baguette-roll]` · bbq, quick — snags, bread, onion_brown, butter, tomato_sauce
+- **Chicken Schnitzel Baguette** `[baguette-roll]` · sandwich, lunchbox, family — chicken_breast, flour, eggs, breadcrumbs, bread, lettuce, tomato, mayo, olive_oil, salt, pepper
+- **Pork Banh Mi** `[baguette-roll]` · vietnamese, quick, sandwich — pork_belly, bread, carrot, cucumber, coriander, chilli, mayo, sriracha, soy_sauce, lime, vinegar_white, sugar
+- **Pork Belly Pickle-Style Baguette** `[baguette-roll]` · sandwich, pork, vietnamese — bread, pork_belly, cucumber, carrot, coriander, soy_sauce, vinegar_rice, sugar, mayo, olive_oil, salt, pepper
+- **Steak Rocket Baguette** `[baguette-roll]` · sandwich, pub-classic, aussie — beef_steak, bread, onion_red, vinegar_balsamic, butter, dijon, rocket, olive_oil, salt, pepper
+- **Apple & Oat Crumble** `[bake-dish]` · dessert, comfort, baking — apple, sugar, cinnamon, lemon, oats, flour, butter, walnut, cream, brown_sugar
+- **Bread & Butter Pudding** `[bake-dish]` · british, dessert, comfort, batch-friendly — bread, butter, raisin, eggs, milk, cream, sugar, vanilla, cinnamon, nutmeg
+- **Cauliflower Cheese** `[bake-dish]` · british, side, vegetarian — cauliflower, butter, flour, milk, dijon, cheddar, nutmeg, breadcrumbs, parmesan, salt, pepper
+- **Chicken Broccoli Pasta Bake** `[bake-dish]` · baked, family, comfort — pasta, chicken_breast, broccoli, garlic, cream, cheddar, breadcrumbs, butter, olive_oil, salt, pepper
+- **Chicken Enchiladas** `[bake-dish]` · mexican, family, batch-friendly — chicken_thigh, tortilla, onion_brown, garlic, tinned_tomato, tomato_paste, chilli_powder, cumin, oregano, cheddar, vegetable_oil, salt, sour_cream, coriander
+- **Chicken Pumpkin Rice Bake** `[bake-dish]` · baked, family, one-pot — chicken_thigh, pumpkin, rice_jasmine, stock_chicken, onion_brown, garlic, sage, parmesan, olive_oil, salt, pepper
+- **Classic Lasagna** `[bake-dish]` · italian, family, batch-friendly, comfort — pasta, beef_mince, tinned_tomato, onion_brown, garlic, carrot, celery, butter, flour, milk, parmesan, mozzarella
+- **Cottage Pie** `[bake-dish]` · comfort, family, batch-friendly — beef_mince, potato, carrot, celery, onion_brown, garlic, stock_beef, worcestershire, butter, milk, peas_frozen
+- **Creamy Fish Pie** `[bake-dish]` · seafood, comfort, family — barramundi, salmon, potato, milk, butter, flour, peas_frozen, cheddar, parsley
+- **Creamy Potato Bake** `[bake-dish]` · side, family, batch-friendly — potato, cream, milk, garlic, cheddar, butter, salt, pepper, thyme
+- **Eggplant Tomato Feta Bake** `[bake-dish]` · vegetarian, baked, italian — eggplant, tinned_tomato, onion_brown, garlic, feta, basil, breadcrumbs, olive_oil, salt, pepper
+- **Golden Syrup Dumplings** `[bake-dish]` · dessert, retro, cheap — flour_self_raising, butter, milk, maple_syrup, brown_sugar, cream
+- **Mac & Cheese** `[bake-dish]` · family, comfort, vegetarian — pasta, milk, butter, flour, cheddar, breadcrumbs
+- **Moussaka** `[bake-dish]` · greek, comfort, baked — eggplant, lamb_mince, tinned_tomato, onion_brown, cinnamon, milk, butter, flour, olive_oil
+- **Mushroom Leek Potato Gratin** `[bake-dish]` · vegetarian, baked, comfort — potato, mushroom, leek, cream, parmesan, garlic, butter, thyme, salt, pepper, olive_oil
+- **Peach Cobbler** `[bake-dish]` · dessert, fruit, comfort, baking — peach, sugar, flour, butter, baking_powder, milk, pecan, cinnamon, ice_cream
+- **Sausage Pasta Bake** `[bake-dish]` · family, comfort, batch-friendly — snags, pasta, tinned_tomato, onion_brown, garlic, mozzarella, basil
+- **Stuffed Capsicums** `[bake-dish]` · greek, family, batch-friendly — capsicum_red, rice_jasmine, olive_oil, onion_brown, garlic, beef_mince, tinned_tomato, tomato_paste, oregano, parsley, mint, salt, pepper, feta
+- **Tuna Mornay Bake** `[bake-dish]` · family, cheap, comfort, baked — pasta, tinned_tuna, butter, flour, milk, cheddar, peas_frozen, breadcrumbs, dijon, salt, pepper
+- **Tuna Tomato Pasta Bake** `[bake-dish]` · baked, pantry, family — pasta, tinned_tuna, tinned_tomato, cheddar, breadcrumbs, parsley, onion_brown, garlic, olive_oil, salt, pepper
+- **Lamb Mince Filo Coil** `[borek-coil]` · middle-eastern, baked, share-plate — pastry_filo, lamb_mince, onion_brown, garlic, cumin, pine_nut, mint, yoghurt, olive_oil, salt, pepper
+- **Spinach & Cheese Borek** `[borek-coil]` · balkan, vegetarian, baked — pastry_filo, feta, spinach, ricotta, eggs, butter, olive_oil, sesame_oil
+- **Spinach Ricotta Filo Coil** `[borek-coil]` · vegetarian, baked, balkan — pastry_filo, spinach, ricotta, feta, eggs, lemon, nutmeg, olive_oil, salt, pepper
+- **Bacon and Egg Roll** `[burger-stack]` · breakfast, quick, aussie — bacon, eggs, bread, tomato_sauce, cheddar
+- **Cheddar Beef Burger Stack** `[burger-stack]` · family, pub, american — beef_mince, cheddar, bread, lettuce, tomato, onion_red, mayo, olive_oil, salt, pepper
+- **Chicken Haloumi Burger Stack** `[burger-stack]` · family, pub-classic, aussie — bread, chicken_breast, haloumi, lettuce, mayo, lemon, salt, pepper, olive_oil
+- **Classic Beef Burger** `[burger-stack]` · family, bbq, comfort — beef_mince, bread, cheddar, lettuce, tomato, onion_red, mayo, dijon
+- **Crispy Chicken Burger** `[burger-stack]` · family, pub — chicken_thigh, buttermilk, flour, paprika, salt, pepper, cabbage, carrot, mayo, sriracha, vinegar_white, vegetable_oil, bread
+- **Haloumi Burger** `[burger-stack]` · vegetarian, quick — haloumi, bread, avocado, rocket, tomato, mayo, sriracha, olive_oil, pepper, lemon
+- **Mushroom Feta Burger Stack** `[burger-stack]` · vegetarian, sandwich, quick — bread, mushroom, feta, rocket, onion_red, garlic, dijon, olive_oil, salt, pepper
+- **Apple Tea Cake** `[cake-slice]` · baking, retro, family — butter, sugar, eggs, vanilla, flour_self_raising, salt, milk, apple, cinnamon
+- **Basque Burnt Cheesecake** `[cake-slice]` · dessert, baking, make-ahead — cream_cheese, sugar, eggs, cream, flour, vanilla
+- **Caramel Slice** `[cake-slice]` · baking, dessert, retro — biscuit_sweet, coconut_desiccated, butter, brown_sugar, cream, dark_chocolate, vanilla
+- **Carrot Cake with Cream Cheese Icing** `[cake-slice]` · baking, dessert, family — carrot, flour, sugar, eggs, vegetable_oil, cinnamon, baking_powder, walnut, raisin, cream_cheese, butter, vanilla, icing_sugar
+- **Lemon Delicious Pudding** `[cake-slice]` · dessert, baking, comfort — lemon, butter, sugar, eggs, flour, milk
+- **Pineapple Upside-Down Cake** `[cake-slice]` · dessert, fruit, baking, retro — pineapple, cherry, butter, sugar, flour, eggs, baking_powder, milk, vanilla
+- **Sticky Date Pudding** `[cake-slice]` · dessert, baking, comfort — dates, butter, sugar, eggs, flour, baking_powder, vanilla, cream
+- **Tiramisu** `[cake-slice]` · italian, dessert, no-cook — mascarpone, eggs, sugar, cream, bread, coffee, cocoa, vanilla
+- **Cherry Clafoutis** `[clafoutis-pan]` · dessert, fruit, french, baking — cherry, eggs, milk, flour, sugar, butter, vanilla, cream
+- **Toad in the Hole** `[clafoutis-pan]` · british, retro, family — snags, flour, eggs, milk, vegetable_oil, onion_brown, butter, stock_beef, worcestershire, dijon, salt, pepper, peas_frozen
+- **Anzac Biscuits** `[cookie-scatter]` · aussie, baking, snack, batch-friendly — oats, flour, sugar, butter, honey, baking_powder
+- **Choc Chip Cookies** `[cookie-scatter]` · baking, dessert, batch-friendly, snack — flour, butter, sugar, eggs, vanilla, baking_powder, chocolate_chip
+- **Choc Peanut Bliss Balls** `[cookie-scatter]` · snack, no-cook, vegetarian — dates, oats, cocoa, peanut_butter, honey, salt, coconut_desiccated
+- **Chocolate Walnut Cookies** `[cookie-scatter]` · baking, dessert, snack — flour, butter, sugar, brown_sugar, eggs, vanilla, dark_chocolate, walnut, salt
+- **Fig & Honey Filo Bites** `[cookie-scatter]` · greek, dessert, vegetarian — fig, pastry_filo, honey, walnut, butter, cinnamon, mascarpone
+- **Fudgy Chocolate Brownies** `[cookie-scatter]` · baking, dessert, batch-friendly — dark_chocolate, butter, sugar, eggs, flour, cocoa, vanilla, walnut
+- **Hedgehog Slice** `[cookie-scatter]` · baking, no-cook, snack — biscuit_sweet, dark_chocolate, butter, honey, cocoa, walnut, coconut_desiccated
+- **Jam Drop Biscuits** `[cookie-scatter]` · baking, retro, lunchbox — berries_frozen, sugar, lemon, butter, eggs, vanilla, flour_self_raising, salt
+- **Lamingtons** `[cookie-scatter]` · aussie, dessert, baking — flour_self_raising, sugar, butter, eggs, milk, vanilla, cocoa, coconut_desiccated, icing_sugar
+- **Oat Raisin Cookies** `[cookie-scatter]` · baking, snack, lunchbox — oats, raisin, flour, eggs, sugar, cinnamon, butter, baking_powder, salt
+- **Rocky Road** `[cookie-scatter]` · dessert, no-cook, snack, batch-friendly — dark_chocolate, butter, walnut, almond, raisin, strawberry, marshmallow
+- **Weet-Bix Breakfast Slice** `[cookie-scatter]` · australian, baking, lunchbox, vegetarian — weetbix, muesli, flour, butter, honey, sugar, raisin, cinnamon
+- **Chicken Katsu Curry** `[crumbed-plate]` · japanese, family, comfort — chicken_breast, breadcrumbs, flour, eggs, rice_jasmine, onion_brown, carrot, curry_powder, stock_chicken, soy_sauce, honey
+- **Chicken Parma** `[crumbed-plate]` · family, comfort, pub — chicken_breast, breadcrumbs, eggs, flour, tinned_tomato, ham_sliced, mozzarella, garlic
+- **Chicken Schnitty** `[crumbed-plate]` · family, comfort — chicken_breast, breadcrumbs, eggs, flour, lemon, butter
+- **Chicken Schnitzel Rocket Plate** `[crumbed-plate]` · pub, family, comfort — chicken_breast, flour, eggs, breadcrumbs, parmesan, rocket, lemon, olive_oil, salt, pepper
+- **Crumbed Lamb Cutlets** `[crumbed-plate]` · aussie, family, retro — lamb_cutlet, flour, eggs, breadcrumbs, parmesan, lemon, vegetable_oil, peas_frozen, butter, salt, pepper
+- **Eggplant Parma** `[crumbed-plate]` · vegetarian, comfort — eggplant, eggs, flour, breadcrumbs, tinned_tomato, mozzarella, basil, garlic
+- **Eggplant Parmesan Crumbed Plate** `[crumbed-plate]` · vegetarian, comfort, italian — eggplant, flour, eggs, breadcrumbs, parmesan, tinned_tomato, mozzarella, basil, olive_oil, salt, pepper
+- **Aloo Gobi** `[curry-bowl]` · indian, vegetarian, vegan, gluten-free — potato, cauliflower, onion_brown, garlic, ginger, tomato, turmeric, cumin, curry_powder, coriander, lemon, olive_oil
+- **Beef Massaman Curry** `[curry-bowl]` · thai, slow, batch-friendly — beef_brisket, potato, onion_brown, coconut_milk, curry_paste_red, peanut_butter, star_anise, cinnamon, fish_sauce, brown_sugar, vegetable_oil, rice_jasmine, peanut, lime
+- **Beef Rendang** `[curry-bowl]` · indonesian, slow-cooked, curry, gluten-free — beef_brisket, coconut_milk, onion_brown, garlic, ginger, chilli, turmeric, cinnamon, star_anise, rice_jasmine
+- **Beef Tomato Coconut Curry** `[curry-bowl]` · curry, comfort, hearty — beef_steak, onion_brown, garlic, ginger, curry_powder, tinned_tomato, coconut_milk, rice_basmati, olive_oil, salt, pepper
+- **Butter Chicken** `[curry-bowl]` · indian, family, comfort — chicken_thigh, yoghurt, turmeric, curry_powder, tinned_tomato, cream, butter, onion_brown, garlic, ginger, rice_basmati, coriander
+- **Cauliflower Cashew Korma Bowl** `[curry-bowl]` · curry, vegetarian, vegan, indian — cauliflower, cashew, coconut_milk, curry_powder, rice_basmati, coriander, onion_brown, garlic, ginger, olive_oil, salt
+- **Chana Masala** `[curry-bowl]` · indian, vegetarian, vegan, batch-friendly, pantry — tinned_chickpea, tinned_tomato, onion_brown, garlic, ginger, cumin, turmeric, curry_powder, rice_basmati, coriander
+- **Chicken Coconut Lentil Curry** `[curry-bowl]` · curry, comfort, family — chicken_thigh, onion_brown, garlic, ginger, curry_powder, lentil_red, coconut_milk, rice_basmati, olive_oil, salt, pepper
+- **Chicken Peanut Lime Curry** `[curry-bowl]` · thai, family, curry — chicken_breast, curry_paste_red, coconut_milk, peanut_butter, fish_sauce, lime, rice_jasmine, coriander, olive_oil, salt
+- **Chicken Tikka Masala** `[curry-bowl]` · indian, family — chicken_thigh, yoghurt, curry_powder, tinned_tomato, cream, onion_brown, garlic, rice_basmati, coriander
+- **Chickpea Spinach Coconut Curry** `[curry-bowl]` · vegan, curry, pantry — tinned_chickpea, spinach, coconut_milk, curry_powder, rice_basmati, onion_brown, garlic, lemon, coriander, olive_oil, salt, pepper
+- **Chilli Con Carne** `[curry-bowl]` · mexican, family, batch-friendly — beef_mince, tinned_bean, tinned_tomato, onion_brown, capsicum_red, cumin, paprika, chilli_powder
+- **Coconut Fish Curry** `[curry-bowl]` · seafood, gluten-free, quick — barramundi, coconut_milk, turmeric, ginger, garlic, onion_brown, tomato, lime, fish_sauce, vegetable_oil, rice_jasmine, salt, coriander, chilli
+- **Eggplant & Chickpea Curry** `[curry-bowl]` · vegetarian, vegan, gluten-free, indian — eggplant, tinned_chickpea, tinned_tomato, coconut_milk, onion_brown, garlic, ginger, curry_powder, turmeric, spinach, rice_basmati
+- **Eggplant Tomato Coconut Curry** `[curry-bowl]` · vegan, curry, vegetarian — eggplant, onion_brown, garlic, tinned_tomato, coconut_milk, curry_powder, rice_basmati, coriander, olive_oil, salt, pepper
+- **Green Curry Barramundi Rice Bowl** `[curry-bowl]` · seafood, thai, curry, rice-bowl — barramundi, curry_paste_green, coconut_milk, rice_jasmine, bok_choy, lime, fish_sauce, olive_oil
+- **Green Thai Curry** `[curry-bowl]` · thai, quick, gluten-free — chicken_thigh, curry_paste_green, coconut_milk, fish_sauce, rice_jasmine, basil, lime, chilli
+- **Japanese Curry Rice** `[curry-bowl]` · japanese, family, comfort — chicken_thigh, onion_brown, carrot, potato, garlic, ginger, stock_chicken, butter, flour, curry_powder, honey, soy_sauce, rice_jasmine, vegetable_oil
+- **Lamb Mince Chickpea Curry Bowl** `[curry-bowl]` · curry, family, comfort — lamb_mince, onion_brown, garlic, tinned_chickpea, tinned_tomato, curry_powder, rice_basmati, coriander, olive_oil, salt, pepper
+- **Lemon Chicken & Rice** `[curry-bowl]` · one-pot, quick, family — chicken_thigh, rice_basmati, stock_chicken, lemon, garlic, parsley, olive_oil
+- **Mapo-Style Tofu** `[curry-bowl]` · chinese, spicy, quick — rice_jasmine, tofu, pork_mince, fermented_black_bean, chilli_flakes, ginger, garlic, spring_onion, stock_chicken, soy_sauce, sugar, cornflour, sesame_oil, vegetable_oil
+- **Moroccan Chicken Tagine** `[curry-bowl]` · moroccan, slow, family — chicken_thigh, onion_brown, garlic, cumin, cinnamon, turmeric, paprika, ginger, lemon, olive, stock_chicken, couscous, coriander
+- **Mushroom Miso Coconut Curry** `[curry-bowl]` · vegetarian, curry, japanese — rice_jasmine, mushroom, coconut_milk, miso, garlic, ginger, spinach, spring_onion, olive_oil, salt, pepper
+- **Palak Paneer** `[curry-bowl]` · indian, vegetarian, gluten-free — spinach, paneer, onion_brown, garlic, ginger, tinned_tomato, cream, cumin, turmeric, rice_basmati
+- **Paneer Tomato Cashew Curry** `[curry-bowl]` · vegetarian, indian, curry — paneer, tinned_tomato, cashew, curry_powder, garlic, ginger, rice_basmati, coriander, salt, olive_oil
+- **Pork Shoulder Coconut Curry** `[curry-bowl]` · curry, pork, thai, slow-cooked — pork_shoulder, coconut_milk, curry_paste_red, ginger, fish_sauce, brown_sugar, lime, rice_jasmine, olive_oil, salt
+- **Prawn Sweet Potato Red Curry** `[curry-bowl]` · seafood, curry, thai — prawns, sweet_potato, curry_paste_red, coconut_milk, rice_jasmine, fish_sauce, lime, coriander, olive_oil, salt
+- **Pumpkin & Chickpea Curry** `[curry-bowl]` · vegetarian, vegan, gluten-free — pumpkin, tinned_chickpea, coconut_milk, curry_powder, onion_brown, spinach, rice_basmati
+- **Quick Chicken Biryani** `[curry-bowl]` · indian, family, rice-bowl — chicken_thigh, rice_basmati, yoghurt, onion_brown, garlic, ginger, curry_powder, turmeric, cinnamon, mint, coriander
+- **Red Curry Pumpkin Chickpeas** `[curry-bowl]` · vegan, thai, curry — tinned_chickpea, pumpkin, curry_paste_red, coconut_milk, rice_jasmine, lime, coriander, sugar, salt, olive_oil
+- **Red Lentil Dahl** `[curry-bowl]` · vegetarian, vegan, gluten-free, batch-friendly — lentil_red, onion_brown, garlic, ginger, tinned_tomato, coconut_milk, curry_powder, rice_basmati
+- **Red Lentil Tomato Curry Soup** `[curry-bowl]` · soup, vegetarian, curry, pantry — lentil_red, tinned_tomato, onion_brown, garlic, curry_powder, stock_veg, yoghurt, coriander, salt, pepper, olive_oil
+- **Thai Basil Chicken (Pad Kra Pao)** `[curry-bowl]` · thai, quick, spicy — chicken_thigh, garlic, chilli, basil, fish_sauce, soy_sauce, oyster_sauce, sugar, rice_jasmine, eggs
+- **Tofu Green Bean Green Curry** `[curry-bowl]` · vegan, curry, thai — tofu, green_bean, curry_paste_green, coconut_milk, rice_jasmine, basil, soy_sauce, lime, vegetable_oil, salt
+- **Vegetable Korma** `[curry-bowl]` · indian, vegetarian, gluten-free — cauliflower, carrot, green_bean, onion_brown, garlic, ginger, cashew, yoghurt, coconut_milk, turmeric, curry_powder, vegetable_oil, salt, rice_basmati
+- **Baba Ganoush** `[dip-plate]` · middle-eastern, vegan, dip, gluten-free — eggplant, tahini, lemon, garlic, olive_oil, sumac, parsley
+- **Guacamole with Crispy Tortilla Chips** `[dip-plate]` · mexican, dip, vegan — avocado, lime, onion_red, coriander, chilli, tortilla, olive_oil, salt
+- **Hummus & Flatbread** `[dip-plate]` · vegetarian, vegan, no-cook — tinned_chickpea, garlic, lemon, olive_oil, cumin, wrap
+- **Muhammara** `[dip-plate]` · middle-eastern, vegan, dip, make-ahead — capsicum_red, walnut, breadcrumbs, olive_oil, lemon, cumin, chilli, pine_nut
+- **Pan-Fried Gyoza** `[dumpling-steamer]` · japanese, asian, snack — pork_mince, cabbage, ginger, garlic, soy_sauce, sesame_oil, flour, spring_onion, vinegar_rice
+- **Breakfast Frittata** `[egg-brunch]` · breakfast, vegetarian, batch-friendly — eggs, potato, spinach, feta, onion_brown, olive_oil
+- **Charred Asparagus with Egg** `[egg-brunch]` · brunch, vegetarian, quick — asparagus, eggs, olive_oil, parmesan, lemon, bread, butter
+- **Eggs Benedict** `[egg-brunch]` · breakfast, brunch — eggs, ham_sliced, bread, butter, lemon, dijon, parsley, vinegar_white
+- **French Omelette** `[egg-brunch]` · breakfast, quick, vegetarian, french — eggs, butter, spring_onion, cheddar
+- **Huevos Rancheros** `[egg-brunch]` · mexican, breakfast, vegetarian — eggs, tortilla, tinned_tomato, tinned_black_bean, onion_brown, garlic, chilli, cumin, paprika, avocado, feta, olive_oil, salt, coriander
+- **Poached Eggs** `[egg-brunch]` · breakfast, quick — eggs, bread, butter, vinegar_white
+- **Beer-Battered Fish** `[fish-chips]` · pub, comfort, seafood — barramundi, flour, beer, baking_powder, vegetable_oil, potato, salt, lemon
+- **Fish & Chips** `[fish-chips]` · family, seafood, pub — barramundi, potato, flour, lemon, vegetable_oil, beer, baking_powder
+- **Lemon Pepper Fish and Chips** `[fish-chips]` · seafood, family, pub — barramundi, potato, lemon, breadcrumbs, flour, eggs, mayo, olive_oil, salt, pepper
+- **Salt & Pepper Calamari** `[fish-chips]` · seafood, asian, snack — calamari, flour, salt, pepper, vegetable_oil, lemon, chilli, spring_onion
+- **Bacon Egg Pea Fried Rice** `[fried-rice]` · chinese, quick, family — rice_jasmine, bacon, eggs, peas_frozen, spring_onion, garlic, soy_sauce, sesame_oil, vegetable_oil, pepper
+- **Chicken Ginger Fried Rice** `[fried-rice]` · chinese, family, quick — rice_jasmine, chicken_breast, ginger, garlic, eggs, carrot, spring_onion, soy_sauce, salt, pepper, olive_oil
+- **Chorizo Corn Fried Rice** `[fried-rice]` · quick, family, one-pot — rice_jasmine, chorizo, corn_frozen, eggs, spring_onion, soy_sauce, salt, pepper, olive_oil
+- **Kimchi Fried Rice** `[fried-rice]` · korean, quick, cheap — rice_jasmine, kimchi, bacon, garlic, gochujang, soy_sauce, sesame_oil, eggs, spring_onion, nori, vegetable_oil
+- **Kimchi Tofu Fried Rice** `[fried-rice]` · korean, vegetarian, rice-bowl — rice_jasmine, kimchi, tofu, eggs, spring_onion, soy_sauce, sesame_oil, olive_oil, salt, pepper
+- **Mushroom Miso Fried Rice** `[fried-rice]` · vegetarian, japanese, quick — rice_jasmine, mushroom, miso, eggs, spring_onion, garlic, soy_sauce, sesame_oil, vegetable_oil, pepper
+- **Nasi Goreng** `[fried-rice]` · indonesian, quick, family — rice_jasmine, chicken_thigh, eggs, soy_sauce, brown_sugar, sriracha, onion_brown, garlic, spring_onion, cucumber, vegetable_oil
+- **Prawn Pineapple Fried Rice** `[fried-rice]` · seafood, quick, asian — rice_jasmine, prawns, pineapple, eggs, spring_onion, garlic, soy_sauce, vegetable_oil, salt, pepper
+- **Veggie Fried Rice** `[fried-rice]` · quick, vegetarian, one-pot — rice_jasmine, eggs, peas_frozen, carrot, spring_onion, soy_sauce, garlic
+- **Corn Fritters** `[fritter-stack]` · brunch, vegetarian, comfort — corn, flour, eggs, milk, spring_onion, feta, olive_oil, avocado, lime
+- **Corn Zucchini Fritter Stack** `[fritter-stack]` · vegetarian, brunch, budget — corn_frozen, zucchini, eggs, flour, feta, spring_onion, baking_powder, yoghurt, salt, pepper, olive_oil
+- **Crispy Hash Browns** `[fritter-stack]` · breakfast, vegetarian, side — potato, onion_brown, butter, vegetable_oil, salt, pepper
+- **Crispy Smashed Potatoes** `[fritter-stack]` · side, vegetarian, gluten-free — potato, olive_oil, rosemary, parmesan, salt, pepper
+- **Okonomiyaki** `[fritter-stack]` · japanese, quick — cabbage, flour, eggs, stock_chicken, spring_onion, bacon, tomato_sauce, worcestershire, honey, mayo, nori, vegetable_oil, salt
+- **Sweet Potato Haloumi Fritters** `[fritter-stack]` · vegetarian, brunch, family — sweet_potato, haloumi, eggs, flour, spring_onion, yoghurt, lemon, mint, salt, pepper, olive_oil
+- **Tortilla Espanola** `[fritter-stack]` · spanish, tapas, vegetarian, gluten-free — potato, eggs, onion_brown, olive_oil, salt
+- **Tuna Potato Patties** `[fritter-stack]` · cheap, family, lunchbox — potato, tinned_tuna, spring_onion, parsley, lemon, eggs, breadcrumbs, vegetable_oil, salt, pepper, mayo
+- **Zucchini Slice** `[fritter-stack]` · family, batch-friendly — zucchini, eggs, bacon, cheddar, flour, onion_brown
+- **Full English Fry-Up** `[fry-up-plate]` · british, breakfast, hearty — snags, bacon, mushroom, eggs, tomato, tinned_bean, bread, butter
+- **Beef Brisket Polenta Bowl** `[grain-bowl]` · comfort, slow-cooked, hearty — polenta, beef_brisket, stock_beef, tomato_paste, rosemary, parmesan, onion_brown, garlic, salt, pepper, olive_oil
+- **Bibimbap** `[grain-bowl]` · korean, quick, rice-bowl — rice_jasmine, beef_mince, carrot, spinach, mushroom, eggs, kimchi, gochujang, sesame_oil, soy_sauce
+- **Black Bean Beef Rice Bowl** `[grain-bowl]` · mexican, rice-bowl, weeknight — rice_jasmine, beef_steak, tinned_black_bean, capsicum_red, cumin, garlic, lime, coriander, olive_oil, salt, pepper
+- **Chicken Burrito Bowl** `[grain-bowl]` · mexican, family, batch-friendly — chicken_thigh, rice_jasmine, tinned_black_bean, corn_frozen, avocado, sour_cream, lime, cumin, paprika, garlic, olive_oil, salt, coriander
+- **Chicken Tahini Quinoa Bowl** `[grain-bowl]` · middle-eastern, lunchbox, quick — quinoa, chicken_thigh, tahini, cucumber, tomato, garlic, cumin, lemon, olive_oil, salt, pepper
+- **Chickpea Couscous Herb Bowl** `[grain-bowl]` · vegetarian, salad, quick — couscous, tinned_chickpea, cucumber, tomato, parsley, mint, lemon, cumin, olive_oil, salt, pepper
+- **Falafel Bowl with Garlic Yoghurt** `[grain-bowl]` · vegetarian, middle-eastern, batch-friendly — tinned_chickpea, garlic, onion_red, parsley, coriander, cumin, flour, yoghurt, lemon, quinoa, cucumber, rocket
+- **Gochujang Chicken Rice Bowl** `[grain-bowl]` · korean, rice-bowl, spicy — rice_jasmine, chicken_thigh, gochujang, honey, garlic, cabbage, carrot, lime, olive_oil, salt, pepper
+- **Haloumi Grain Bowl** `[grain-bowl]` · vegetarian, quick — haloumi, pumpkin, rocket, rice_basmati, lemon, olive_oil, cumin
+- **Haloumi Quinoa Roast Veg Bowl** `[grain-bowl]` · vegetarian, mediterranean, lunchbox — quinoa, haloumi, zucchini, capsicum_red, lemon, yoghurt, garlic, olive_oil, salt, pepper
+- **Korean Beef Bowl** `[grain-bowl]` · korean, quick, rice-bowl — beef_mince, rice_jasmine, soy_sauce, honey, sesame_oil, gochujang, garlic, ginger, carrot, spring_onion, eggs, kimchi
+- **Lamb Sumac Couscous Bowl** `[grain-bowl]` · middle-eastern, quick, hearty — couscous, lamb_mince, sumac, cucumber, tomato, yoghurt, cumin, garlic, olive_oil, salt, pepper
+- **Mango Prawn Quinoa Bowl** `[grain-bowl]` · seafood, fresh, quick — quinoa, prawns, mango, cucumber, lime, garlic, mint, olive_oil, salt, pepper
+- **Mujadara** `[grain-bowl]` · middle-eastern, vegan, cheap — onion_brown, olive_oil, rice_basmati, lentil_red, cumin, cinnamon, bay_leaf, salt, pepper, lemon, coriander
+- **Oyakodon** `[grain-bowl]` · japanese, quick, comfort — rice_jasmine, chicken_thigh, onion_brown, eggs, stock_chicken, soy_sauce, sugar, spring_onion
+- **Polenta Mushroom Ragout Bowl** `[grain-bowl]` · vegetarian, comfort, italian — polenta, mushroom, onion_brown, garlic, stock_veg, parmesan, thyme, butter, salt, pepper, olive_oil
+- **Pumpkin Feta Couscous Bowl** `[grain-bowl]` · vegetarian, mediterranean, lunchbox — pumpkin, couscous, cumin, feta, rocket, lemon, pine_nut, olive_oil, salt, pepper
+- **Roast Veg Couscous** `[grain-bowl]` · vegetarian, batch-friendly — sweet_potato, capsicum_red, zucchini, onion_red, feta, lemon, olive_oil, couscous
+- **Saffron Rice Pilaf** `[grain-bowl]` · middle-eastern, vegetarian, side, gluten-free — rice_basmati, saffron, onion_brown, butter, stock_veg, pine_nut, preserved_lemon, parsley
+- **Salmon Avocado Rice Bowl** `[grain-bowl]` · seafood, japanese, rice-bowl — rice_jasmine, salmon, avocado, cucumber, nori, soy_sauce, sesame_oil, vinegar_rice, olive_oil, salt, pepper
+- **Salmon Teriyaki** `[grain-bowl]` · seafood, japanese, quick — salmon, soy_sauce, honey, ginger, rice_jasmine, spring_onion
+- **Sesame Salmon Rice Bowl** `[grain-bowl]` · seafood, rice-bowl, quick — rice_jasmine, salmon, honey, soy_sauce, sesame_oil, cucumber, spring_onion, salt, pepper, olive_oil
+- **Teriyaki Chicken Bowl** `[grain-bowl]` · japanese, family, quick — chicken_thigh, soy_sauce, honey, vinegar_rice, ginger, garlic, rice_jasmine, broccoli, vegetable_oil, sesame_oil, spring_onion
+- **Tofu Peanut Rice Bowl** `[grain-bowl]` · vegan, rice-bowl, quick — rice_jasmine, tofu, cornflour, peanut_butter, soy_sauce, lime, cabbage, carrot, olive_oil, salt, pepper
+- **Tomato Olive Couscous Bowl** `[grain-bowl]` · vegetarian, mediterranean, quick — couscous, tomato, olive, caper, parsley, lemon, olive_oil, salt, pepper
+- **Tuna Sweetcorn Rice Bowl** `[grain-bowl]` · rice-bowl, pantry, quick — rice_jasmine, tinned_tuna, corn_frozen, cucumber, spring_onion, mayo, soy_sauce, sriracha, salt, pepper
+- **Chickpea Fritter Lettuce Cups** `[lettuce-cups]` · vegetarian, fresh, share-plate, middle-eastern — tinned_chickpea, eggs, flour, cumin, lettuce, cucumber, yoghurt, lemon, olive_oil, salt, pepper
+- **Pork Mince Lettuce Cups** `[lettuce-cups]` · pork, quick, fresh — pork_mince, lettuce, cucumber, spring_onion, ginger, garlic, soy_sauce, oyster_sauce, vegetable_oil, pepper
+- **Prawn Cocktail** `[lettuce-cups]` · retro, entree, party — prawns, mayo, tomato_sauce, worcestershire, lemon, sriracha, lettuce, paprika, pepper
+- **Prawn Mango Rice Paper Rolls** `[lettuce-cups]` · fresh, seafood, vietnamese — prawns, rice_paper, mango, cucumber, mint, noodle_rice, lime, fish_sauce, salt
+- **San Choy Bow** `[lettuce-cups]` · asian, quick — pork_mince, lettuce, mushroom, carrot, garlic, ginger, spring_onion, oyster_sauce, soy_sauce, sesame_oil, lime
+- **Tofu Peanut Lettuce Cups** `[lettuce-cups]` · vegan, fresh, quick — tofu, lettuce, peanut_butter, lime, carrot, coriander, soy_sauce, garlic, olive_oil
+- **Vietnamese Summer Rolls** `[lettuce-cups]` · vietnamese, fresh, asian — prawns, noodle_rice, lettuce, mint, coriander, basil, carrot, cucumber, rice_paper, peanut_butter, soy_sauce, lime, sriracha
+- **Apple Cinnamon Loaf** `[loaf-slice]` · baking, family, snack — apple, flour, eggs, sugar, cinnamon, butter, baking_powder, vanilla, salt
+- **Banana Bread** `[loaf-slice]` · baking, snack — banana, flour, sugar, butter, eggs, cinnamon, baking_powder
+- **Banana Chocolate Chip Loaf** `[loaf-slice]` · baking, snack, lunchbox — banana, flour, baking_powder, eggs, chocolate_chip, sugar, butter, salt
+- **Campfire Damper** `[loaf-slice]` · aussie, baking — flour_self_raising, butter, milk, salt, honey
+- **Chocolate Ripple Cake** `[loaf-slice]` · dessert, no-cook, party — biscuit_sweet, cream, icing_sugar, vanilla, coffee, dark_chocolate
+- **Date Walnut Loaf** `[loaf-slice]` · baking, snack, make-ahead — dates, walnut, flour, baking_powder, eggs, sugar, butter
+- **Pull-Apart Garlic Bread** `[loaf-slice]` · side, vegetarian, italian, quick — bread, butter, garlic, parsley, parmesan, olive_oil
+- **Rosemary Focaccia** `[loaf-slice]` · baking, italian, vegetarian — flour, yeast, sugar, olive_oil, salt, rosemary, garlic
+- **Zucchini Walnut Loaf** `[loaf-slice]` · baking, vegetarian, snack — zucchini, flour, sugar, eggs, vegetable_oil, cinnamon, baking_powder, walnut, vanilla
+- **Bangers & Mash with Onion Gravy** `[mash-mound]` · british, comfort, pub-classic — snags, potato, onion_brown, butter, milk, flour, stock_beef, worcestershire, parsley
+- **Beef Brisket Mash Bowl** `[mash-mound]` · comfort, slow-cooked, hearty — beef_brisket, potato, onion_brown, stock_beef, tomato_paste, bay_leaf, butter, milk, olive_oil, salt, pepper
+- **Creamy Parmesan Polenta** `[mash-mound]` · italian, comfort, vegetarian, gluten-free — polenta, stock_veg, parmesan, butter, milk, salt, pepper
+- **Silky Mashed Potato** `[mash-mound]` · side, vegetarian, comfort — potato, butter, milk, salt, pepper
+- **Blueberry Muffins** `[muffins]` · baking, breakfast, lunchbox — flour_self_raising, sugar, salt, eggs, milk, butter, vanilla, berries_frozen
+- **Cheddar Corn Muffins** `[muffins]` · baking, snack, lunchbox — flour, polenta, corn_frozen, cheddar, eggs, buttermilk, baking_powder, olive_oil, salt, pepper
+- **Chocolate Banana Muffins** `[muffins]` · baking, snack, lunchbox — banana, flour, cocoa, baking_powder, sugar, eggs, milk, vegetable_oil, chocolate_chip
+- **Chorizo Corn Nachos** `[nachos-pile]` · mexican, share-plate, snack — tortilla, chorizo, corn_frozen, cheddar, tomato, sour_cream, salt, pepper, olive_oil
+- **Loaded Beef Nachos** `[nachos-pile]` · mexican, family, snack — beef_mince, tinned_bean, tinned_tomato, cheddar, sour_cream, avocado, coriander, chilli, paprika, cumin, tortilla, lime
+- **Beef Black Bean Noodle Bowl** `[noodle-pull]` · noodles, chinese, weeknight — beef_steak, noodle_egg, fermented_black_bean, soy_sauce, capsicum_green, spring_onion, garlic, ginger, pepper, olive_oil
+- **Beef Pho** `[noodle-pull]` · vietnamese, soup, asian — beef_steak, noodle_rice, stock_beef, ginger, onion_brown, cinnamon, fish_sauce, basil, coriander, lime, chilli, spring_onion
+- **Char Kway Teow** `[noodle-pull]` · asian, seafood, quick — noodle_rice, prawns, bacon, eggs, garlic, chilli, spring_onion, soy_sauce, brown_sugar, vegetable_oil, pepper
+- **Chicken Chow Mein** `[noodle-pull]` · chinese, quick, family — chicken_breast, cornflour, soy_sauce, noodle_egg, cabbage, carrot, celery, spring_onion, garlic, ginger, oyster_sauce, sugar, sesame_oil, vegetable_oil
+- **Chicken Noodle Soup** `[noodle-pull]` · soup, comfort, family — chicken_thigh, carrot, stock_chicken, spring_onion, spaghetti, ginger
+- **Duck Noodle Soup** `[noodle-pull]` · asian, soup — duck, noodle_rice, stock_chicken, ginger, garlic, bok_choy, spring_onion, soy_sauce, chilli
+- **Gochujang Pork Noodle Toss** `[noodle-pull]` · korean, noodles, spicy — pork_mince, noodle_egg, gochujang, soy_sauce, cabbage, spring_onion, ginger, garlic, sesame_oil, olive_oil, salt, pepper
+- **Kimchi Bacon Noodle Bowl** `[noodle-pull]` · korean, noodles, quick — bacon, noodle_egg, kimchi, eggs, spring_onion, soy_sauce, sesame_oil, olive_oil, salt, pepper
+- **Miso Butter Mushroom Noodles** `[noodle-pull]` · japanese, vegetarian, noodles — mushroom, noodle_egg, miso, butter, spring_onion, garlic, spinach, soy_sauce, olive_oil, salt, pepper
+- **Miso Ramen** `[noodle-pull]` · japanese, soup, asian — noodle_egg, stock_chicken, miso, eggs, pork_belly, spring_onion, bok_choy, garlic, ginger, sesame_oil, nori
+- **Pad See Ew** `[noodle-pull]` · thai, quick, asian — noodle_rice, beef_steak, bok_choy, eggs, garlic, soy_sauce, oyster_sauce, sugar
+- **Peanut Lime Chicken Noodles** `[noodle-pull]` · thai, noodles, family — chicken_thigh, noodle_rice, peanut_butter, lime, soy_sauce, honey, garlic, cucumber, coriander, olive_oil, salt, pepper
+- **Prawn Coconut Rice Noodles** `[noodle-pull]` · seafood, noodles, thai — prawns, noodle_rice, coconut_milk, lime, coriander, ginger, chilli, garlic, fish_sauce, salt, vegetable_oil
+- **Sesame Peanut Noodles** `[noodle-pull]` · asian, vegetarian, quick — noodle_egg, peanut_butter, soy_sauce, sesame_oil, vinegar_rice, sriracha, sugar, garlic, cucumber, peanut, spring_onion
+- **Tofu Sesame Bok Choy Noodles** `[noodle-pull]` · vegan, noodles, asian, quick — tofu, noodle_rice, bok_choy, garlic, ginger, soy_sauce, sesame_oil, olive_oil, salt, pepper
+- **Banana Peanut Oats Jar** `[oats-jar]` · breakfast, make-ahead, vegetarian — oats, milk, banana, peanut_butter, honey, cinnamon, vanilla
+- **Berry Yoghurt Oats Jar** `[oats-jar]` · breakfast, make-ahead, fruit — oats, yoghurt, berries_frozen, milk, honey, vanilla, almond
+- **Chocolate Cherry Oats Jar** `[oats-jar]` · breakfast, make-ahead, batch-friendly — oats, cherry, cocoa, milk, honey, vanilla
+- **Mango Coconut Oats Jar** `[oats-jar]` · breakfast, make-ahead, fruit — oats, coconut_milk, yoghurt, honey, mango, lime, coconut_desiccated
+- **Masala Chai Porridge** `[oats-jar]` · breakfast, vegetarian, comfort, quick — oats, milk, tea_chai, banana, hazelnut, honey, cinnamon, fig
+- **Overnight Bircher Muesli** `[oats-jar]` · breakfast, no-cook, vegetarian, batch-friendly — oats, milk, apple, yoghurt, honey, almond, raisin, cinnamon
+- **Overnight Oats** `[oats-jar]` · breakfast, no-cook, quick — oats, milk, yoghurt, honey, berries_frozen
+- **Yoghurt & Granola Bowl** `[oats-jar]` · breakfast, batch-friendly, vegetarian — oats, almond, walnut, honey, vegetable_oil, cinnamon, vanilla, yoghurt, blueberry
+- **Chicken & Chorizo Paella** `[paella-pan]` · spanish, one-pot, family — chicken_thigh, chorizo, rice_arborio, prawns, stock_chicken, tomato_paste, onion_brown, garlic, capsicum_red, peas_frozen, paprika, turmeric, lemon
+- **Chicken Chorizo Rice Pan** `[paella-pan]` · family, one-pot, spanish — chicken_thigh, chorizo, capsicum_red, onion_brown, garlic, rice_jasmine, stock_chicken, paprika, olive_oil, salt, pepper
+- **Mussel Tomato Rice Pan** `[paella-pan]` · seafood, spanish, one-pot — mussel, rice_jasmine, onion_brown, garlic, tinned_tomato, saffron, stock_chicken, parsley, olive_oil, salt, pepper
+- **Saffron Prawn Rice Pan** `[paella-pan]` · seafood, spanish, share-plate — rice_jasmine, prawns, saffron, capsicum_red, peas_frozen, stock_chicken, onion_brown, garlic, olive_oil, salt, pepper
+- **Beef Bourguignon** `[pan-dish]` · french, slow, comfort, one-pot — beef_brisket, wine_red, bacon, mushroom, onion_brown, carrot, garlic, stock_beef, tomato_paste, thyme, bay_leaf
+- **Beef Goulash** `[pan-dish]` · eastern-european, slow, batch-friendly — beef_brisket, onion_brown, garlic, paprika, cumin, capsicum_red, potato, tomato_paste, stock_beef, bay_leaf, vegetable_oil, salt, pepper, sour_cream
+- **Black Bean Corn Rice Skillet** `[pan-dish]` · vegetarian, one-pot, mexican — rice_jasmine, tinned_black_bean, corn_frozen, capsicum_red, cheddar, onion_brown, cumin, lime, olive_oil, salt, pepper
+- **Char Siu Pork** `[pan-dish]` · chinese, pork, roast, sticky — pork_shoulder, honey, soy_sauce, miso, garlic, ginger, sesame_oil, rice_jasmine
+- **Chicken Cacciatore** `[pan-dish]` · italian, one-pot, family — chicken_thigh, olive_oil, onion_brown, capsicum_red, garlic, wine_red, tinned_tomato, stock_chicken, oregano, bay_leaf, olive, salt, pepper, parsley
+- **Chicken Piccata** `[pan-dish]` · italian, quick, weeknight — chicken_breast, flour, butter, olive_oil, wine_white, stock_chicken, lemon, caper, parsley, salt, pepper
+- **Coq au Vin** `[pan-dish]` · french, slow, comfort — chicken_thigh, bacon, mushroom, onion_brown, garlic, flour, wine_red, stock_chicken, tomato_paste, bay_leaf, thyme, butter, salt, pepper
+- **Curried Sausages** `[pan-dish]` · retro, family, cheap — snags, onion_brown, carrot, curry_powder, flour, stock_chicken, peas_frozen, potato, milk, butter, vegetable_oil, salt, pepper
+- **Devilled Sausages** `[pan-dish]` · retro, family, cheap — snags, onion_brown, apple, tomato_sauce, worcestershire, brown_sugar, dijon, stock_chicken, vegetable_oil, pepper
+- **Gambas al Ajillo** `[pan-dish]` · spanish, tapas, quick, seafood — prawns, garlic, chilli, olive_oil, paprika, lemon, parsley, bread, salt
+- **Lentil Tomato Couscous Skillet** `[pan-dish]` · vegetarian, one-pot, budget — lentil_red, tinned_tomato, couscous, stock_veg, onion_brown, garlic, cumin, parsley, olive_oil, salt, pepper
+- **Patatas Bravas** `[pan-dish]` · spanish, tapas, share-plate — potato, chorizo, tinned_tomato, paprika, garlic, olive_oil, salt, parsley
+- **Provençal Ratatouille** `[pan-dish]` · vegetarian, vegan, french — eggplant, zucchini, capsicum_red, tomato, tinned_tomato, onion_brown, garlic, basil, olive_oil
+- **Seared Scallops with Pea Purée** `[pan-dish]` · seafood, quick, entree — scallop, peas_frozen, butter, mint, lemon, garlic, olive_oil
+- **Star-Anise Braised Pork Belly** `[pan-dish]` · chinese, slow, comfort — pork_belly, star_anise, cinnamon, soy_sauce, sugar, ginger, garlic, spring_onion
+- **Sweet Potato Lentil Pan** `[pan-dish]` · vegetarian, curry, one-pot — sweet_potato, onion_brown, garlic, curry_powder, lentil_red, stock_veg, spinach, yoghurt, olive_oil, salt, pepper
+- **Apple Walnut Pancakes** `[pancakes]` · breakfast, brunch, fruit — apple, walnut, flour, baking_powder, eggs, milk, cinnamon, butter
+- **Banana Cinnamon Pancakes** `[pancakes]` · breakfast, brunch, family — banana, flour, baking_powder, eggs, milk, cinnamon, maple_syrup, butter
+- **Buttermilk Pancakes** `[pancakes]` · american, brunch, comfort, vegetarian — flour, buttermilk, eggs, baking_powder, sugar, butter, salt, maple_syrup
+- **Cinnamon French Toast** `[pancakes]` · breakfast, brunch, family — bread, eggs, milk, cinnamon, vanilla, butter, maple_syrup, strawberry
+- **Fluffy Buttermilk Pancakes** `[pancakes]` · breakfast, family — flour, baking_powder, sugar, eggs, buttermilk, butter, vanilla, maple_syrup, blueberry
+- **French Crepes** `[pancakes]` · french, dessert, breakfast — flour, eggs, milk, butter, salt, sugar, lemon
+- **Lemon Ricotta Pancakes** `[pancakes]` · breakfast, brunch, family — ricotta, flour, eggs, milk, lemon, sugar, baking_powder, butter
+- **Pancakes** `[pancakes]` · breakfast, family — flour, milk, eggs, butter, sugar, baking_powder
+- **Anchovy Olive Chilli Spaghetti** `[pasta-bowl]` · pantry, italian, quick — spaghetti, anchovy, olive, caper, chilli, garlic, parsley, olive_oil, salt, pepper
+- **Bacon Broccoli Cream Pasta** `[pasta-bowl]` · comfort, family, italian — bacon, pasta, broccoli, cream, garlic, parmesan, olive_oil, salt, pepper
+- **Barramundi Lemon Herb Spaghetti** `[pasta-bowl]` · seafood, quick, weeknight — barramundi, spaghetti, lemon, parsley, garlic, butter, olive_oil, salt, pepper, chilli_flakes
+- **Beef Stroganoff** `[pasta-bowl]` · comfort, family, eastern-european — beef_steak, mushroom, onion_brown, garlic, sour_cream, stock_beef, dijon, noodle_egg, parsley, butter
+- **Cacio e Pepe** `[pasta-bowl]` · italian, quick, vegetarian, pantry — spaghetti, parmesan, pepper, salt
+- **Carbonara** `[pasta-bowl]` · quick, italian, comfort — spaghetti, bacon, eggs, parmesan, pepper
+- **Chicken Pesto-Style Rocket Pasta** `[pasta-bowl]` · italian, family, weeknight — chicken_thigh, pasta, rocket, basil, parmesan, garlic, lemon, pine_nut, olive_oil, salt, pepper
+- **Chorizo Capsicum Spaghetti** `[pasta-bowl]` · weeknight, spicy, spanish — chorizo, capsicum_red, garlic, tinned_tomato, spaghetti, parsley, chilli_flakes, olive_oil, salt, pepper
+- **Creamy Leek Mushroom Spaghetti** `[pasta-bowl]` · vegetarian, comfort, weeknight — leek, spaghetti, mushroom, cream, garlic, parmesan, olive_oil, salt, pepper
+- **Eggplant Tomato Mozzarella Pasta** `[pasta-bowl]` · vegetarian, italian, comfort — eggplant, pasta, tinned_tomato, mozzarella, basil, garlic, olive_oil, salt, pepper
+- **Gnocchi al Pomodoro** `[pasta-bowl]` · italian, quick, vegetarian — tinned_tomato, garlic, gnocchi, basil, parmesan, olive_oil, butter
+- **Haloumi Tomato Pasta Bowl** `[pasta-bowl]` · vegetarian, quick, mediterranean — haloumi, pasta, cherry_tomato, basil, garlic, lemon, salt, pepper, olive_oil
+- **Lamb Mince Ragu Pasta** `[pasta-bowl]` · comfort, family, italian — lamb_mince, pasta, tinned_tomato, tomato_paste, onion_brown, garlic, rosemary, parmesan, olive_oil, salt, pepper
+- **Lemon Basil Chicken Spaghetti** `[pasta-bowl]` · italian, weeknight, family — chicken_breast, spaghetti, lemon, basil, garlic, parmesan, butter, olive_oil, salt, pepper
+- **Lentil Bolognese** `[pasta-bowl]` · vegetarian, vegan, batch-friendly — lentil_red, tinned_tomato, carrot, onion_brown, garlic, spaghetti, stock_veg
+- **Mushroom Ricotta Pantry Pasta** `[pasta-bowl]` · vegetarian, comfort, pantry — pasta, mushroom, ricotta, spinach, garlic, parmesan, butter, olive_oil, salt, pepper
+- **One-Pan Chorizo Pasta** `[pasta-bowl]` · quick, one-pot — chorizo, pasta, tinned_tomato, garlic, chilli, parsley, parmesan, olive_oil
+- **Pasta alla Norma** `[pasta-bowl]` · italian, vegetarian, comfort — eggplant, salt, olive_oil, garlic, chilli_flakes, tinned_tomato, pasta, basil, ricotta, pepper
+- **Penne Arrabbiata** `[pasta-bowl]` · italian, vegan, quick, cheap — pasta, olive_oil, garlic, chilli_flakes, tinned_tomato, parsley, salt, sugar
+- **Pesto Pasta** `[pasta-bowl]` · quick, vegetarian — pasta, basil, parmesan, garlic, olive_oil, lemon, pine_nut
+- **Pork Mince Tomato Shell Pasta** `[pasta-bowl]` · comfort, family, weeknight — pork_mince, pasta, tinned_tomato, tomato_paste, onion_brown, garlic, parmesan, olive_oil, salt, pepper
+- **Prawn Chilli Tomato Spaghetti** `[pasta-bowl]` · seafood, quick, italian — prawns, spaghetti, cherry_tomato, chilli, garlic, parsley, lemon, olive_oil, salt, pepper
+- **Prawn Linguine** `[pasta-bowl]` · quick, seafood — prawns, pasta_linguine, garlic, chilli, wine_white, parsley, olive_oil, lemon
+- **Prawn Pad Thai** `[pasta-bowl]` · thai, quick — prawns, eggs, spring_onion, peanut_butter, fish_sauce, lime, chilli, noodle_rice, coriander, peanut
+- **Pumpkin Sage Brown Butter Pasta** `[pasta-bowl]` · vegetarian, comfort, italian — pumpkin, pasta, sage, butter, parmesan, garlic, salt, pepper, olive_oil
+- **Salmon Spinach Lemon Pasta** `[pasta-bowl]` · seafood, pasta, comfort — salmon, pasta, spinach, lemon, cream, garlic, parmesan, olive_oil, salt, pepper
+- **Spaghetti Aglio e Olio** `[pasta-bowl]` · italian, quick, vegan, pantry — spaghetti, garlic, chilli, olive_oil, parsley
+- **Spaghetti Bolognese** `[pasta-bowl]` · comfort, one-pot, family — beef_mince, onion_brown, garlic, tinned_tomato, spaghetti, parmesan, olive_oil, salt, butter
+- **Spaghetti Puttanesca** `[pasta-bowl]` · italian, quick, pantry — spaghetti, tinned_tomato, olive, caper, garlic, chilli, olive_oil, parsley
+- **Tuna Caper Lemon Pasta** `[pasta-bowl]` · italian, pantry, quick — tinned_tuna, pasta, caper, lemon, parsley, garlic, olive, chilli_flakes, olive_oil, salt, pepper
+- **Tuna Pasta** `[pasta-bowl]` · quick, pantry — spaghetti, tinned_tuna, garlic, chilli, lemon, parsley, olive_oil
+- **Zucchini Feta Mint Pasta** `[pasta-bowl]` · vegetarian, quick, mediterranean — zucchini, pasta, feta, mint, lemon, garlic, olive_oil, salt, pepper
+- **Mango Passionfruit Pavlova** `[pavlova-cloud]` · dessert, aussie, no-cook — meringue, cream, mango, passionfruit, kiwi, icing_sugar, vanilla
+- **Passionfruit Pavlova** `[pavlova-cloud]` · aussie, dessert, baking — eggs, sugar, vanilla, cream, passionfruit, strawberry, mango
+- **Pavlova Berry Cloud** `[pavlova-cloud]` · dessert, aussie, gluten-free — meringue, cream, berries_frozen, strawberry, passionfruit, icing_sugar, vanilla
+- **Strawberry Eton Mess** `[pavlova-cloud]` · british, dessert, no-cook, quick — strawberry, sugar, lemon, cream, vanilla, meringue, mint
+- **Apple Pie** `[pie-whole]` · dessert, baking, family — apple, sugar, cinnamon, lemon, pastry_shortcrust, butter, flour, eggs
+- **Banoffee Pie** `[pie-whole]` · dessert, make-ahead, party — biscuit_sweet, butter, brown_sugar, cream, banana, vanilla, dark_chocolate
+- **Beef Mushroom Shortcrust Pie** `[pie-whole]` · comfort, hearty, family — pastry_shortcrust, beef_steak, mushroom, stock_beef, tomato_paste, thyme, onion_brown, flour, olive_oil, salt, pepper
+- **Chicken & Mushroom Pie** `[pie-whole]` · british, family, comfort — chicken_thigh, mushroom, onion_brown, garlic, leek, stock_chicken, cream, flour, butter, thyme, dijon, pastry_puff, eggs
+- **Chicken Leek Puff Pie** `[pie-whole]` · comfort, family, british — pastry_puff, chicken_thigh, leek, cream, stock_chicken, thyme, flour, butter, salt, pepper, olive_oil
+- **Classic Meat Pie** `[pie-whole]` · aussie, comfort, family — beef_mince, onion_brown, garlic, stock_beef, tinned_tomato, worcestershire, flour, pastry_puff, eggs
+- **Lemon Meringue Pie** `[pie-whole]` · dessert, baking — pastry_shortcrust, lemon, sugar, eggs, cornflour, butter, salt
+- **Pumpkin Feta Filo Pie** `[pie-whole]` · vegetarian, baked, greek — pastry_filo, pumpkin, feta, spinach, eggs, sage, garlic, olive_oil, salt, pepper
+- **Tuna Corn Puff Pies** `[pie-whole]` · pantry, baked, family — pastry_puff, tinned_tuna, corn_frozen, cheddar, mayo, spring_onion, eggs, salt, pepper
+- **Chorizo Capsicum Pizza** `[pizza-whole]` · family, spicy, italian — flour, yeast, sugar, tinned_tomato, oregano, mozzarella, chorizo, capsicum_red, olive_oil, salt, pepper
+- **Margherita Pizza** `[pizza-whole]` · italian, vegetarian, family, baking — flour, yeast, salt, olive_oil, tinned_tomato, mozzarella, basil, garlic
+- **Prawn Chilli Lemon Pizza** `[pizza-whole]` · seafood, spicy, share-plate — flour, yeast, prawns, chilli, mozzarella, garlic, parsley, lemon, olive_oil, salt, pepper
+- **Pumpkin Sage Ricotta Pizza** `[pizza-whole]` · vegetarian, italian, baked — flour, yeast, pumpkin, ricotta, mozzarella, sage, olive_oil, salt, pepper
+- **Tomato Olive Mozzarella Pizza** `[pizza-whole]` · italian, vegetarian, family — flour, yeast, tinned_tomato, mozzarella, olive, basil, garlic, olive_oil, salt, pepper
+- **Fig Honey Poached Fruit** `[poached-fruit]` · dessert, fruit, quick — fig, honey, mascarpone, walnut, cinnamon, vanilla, lemon
+- **Maple Peach Poached Fruit** `[poached-fruit]` · dessert, fruit, make-ahead — peach, maple_syrup, vanilla, cinnamon, yoghurt, pecan
+- **Poached Pear Saffron Fruit** `[poached-fruit]` · dessert, fruit, make-ahead — pear, saffron, sugar, vanilla, lemon, mascarpone, almond
+- **Red Wine Poached Pears** `[poached-fruit]` · dessert, fruit, make-ahead — pear, wine_red, sugar, cinnamon, star_anise, orange, hazelnut, ice_cream_vanilla
+- **Tea-Poached Pears** `[poached-fruit]` · dessert, fruit, vegetarian, make-ahead — pear, tea, honey, cinnamon, star_anise, lemon, hazelnut, yoghurt
+- **Chai-Spiced Rice Pudding** `[ramekin]` · dessert, comfort, vegetarian — rice_basmati, milk, tea_chai, sugar, cinnamon, raisin, cream
+- **Chocolate Fondant** `[ramekin]` · dessert, baking — dark_chocolate, butter, eggs, sugar, flour, cocoa
+- **Creamy Chocolate Ramekins** `[ramekin]` · dessert, make-ahead, french — dark_chocolate, cream, eggs, sugar, vanilla
+- **Crème Brûlée** `[ramekin]` · dessert, french, gluten-free — cream, eggs, sugar, vanilla
+- **Crème Caramel** `[ramekin]` · dessert, french, make-ahead — sugar, milk, cream, vanilla, eggs, salt
+- **Dark Chocolate Mousse** `[ramekin]` · dessert, french, no-cook — dark_chocolate, eggs, sugar, cream, butter, vanilla
+- **Passionfruit Mascarpone Ramekins** `[ramekin]` · dessert, fruit, make-ahead — mascarpone, cream, eggs, sugar, vanilla, passionfruit
+- **Self-Saucing Chocolate Pudding** `[ramekin]` · dessert, baking, family — flour_self_raising, sugar, cocoa, milk, butter, eggs, vanilla, brown_sugar, ice_cream_vanilla
+- **Vanilla Coffee Ramekins** `[ramekin]` · dessert, make-ahead, french — coffee, cream, milk, eggs, sugar, vanilla
+- **Arroz con Pollo** `[risotto]` · latin, spanish, one-pot, family — chicken_thigh, chorizo, rice_jasmine, capsicum_red, onion_brown, garlic, saffron, stock_chicken, peas_frozen, paprika
+- **Beetroot Feta Risotto** `[risotto]` · vegetarian, italian, comfort — rice_arborio, beetroot, onion_brown, feta, stock_veg, lemon, parsley, butter, olive_oil, salt, pepper
+- **Chicken Leek Risotto** `[risotto]` · family, comfort, italian — rice_arborio, chicken_thigh, leek, stock_chicken, parmesan, butter, wine_white, salt, pepper, olive_oil
+- **Ginger Chicken Congee** `[risotto]` · chinese, comfort, one-pot — rice_jasmine, stock_chicken, chicken_thigh, ginger, spring_onion, sesame_oil, soy_sauce, salt
+- **Mushroom Risotto** `[risotto]` · vegetarian, comfort — mushroom, rice_arborio, stock_veg, onion_brown, garlic, wine_white, parmesan, butter
+- **Prawn Lemon Pea Risotto** `[risotto]` · seafood, italian, comfort — rice_arborio, prawns, peas_frozen, lemon, stock_chicken, onion_brown, butter, parmesan, olive_oil, salt, pepper
+- **Pumpkin & Sage Risotto** `[risotto]` · vegetarian, comfort, italian — pumpkin, rice_arborio, stock_veg, onion_brown, garlic, wine_white, parmesan, butter, sage
+- **Tomato Basil Risotto** `[risotto]` · vegetarian, italian, comfort — rice_arborio, tinned_tomato, basil, stock_veg, parmesan, garlic, onion_brown, butter, salt, pepper, olive_oil
+- **Sunday Roast Chook** `[roast-chicken]` · family, sunday — chicken_whole, lemon, garlic, potato, olive_oil, salt, pepper
+- **Whole Chicken Citrus Roast** `[roast-chicken]` · roast, family, sunday — chicken_whole, lemon, rosemary, garlic, potato, carrot, olive_oil, salt, pepper
+- **Duck Orange Cabbage Plate** `[roast-plate]` · french, roast, entree — duck, orange, cabbage, potato, thyme, honey, olive_oil, salt, pepper
+- **Pork Chop Apple Sage Plate** `[roast-plate]` · pork, family, weeknight — pork_chop, apple, sage, potato, butter, green_bean, vinegar_cider, milk, olive_oil, salt, pepper
+- **Pork Chops with Apple & Sage** `[roast-plate]` · quick, family, comfort — pork_chop, apple, sage, butter, garlic, olive_oil, dijon, honey
+- **Pork Ribs Honey Paprika Plate** `[roast-plate]` · pork, bbq, family — pork_ribs, honey, paprika, potato, cabbage, mayo, garlic, vinegar_cider, olive_oil, salt, pepper
+- **Rissoles with Onion Gravy** `[roast-plate]` · aussie, family, comfort — beef_mince, onion_brown, garlic, breadcrumbs, eggs, worcestershire, flour, stock_beef, butter, olive_oil, salt, pepper
+- **Sticky Pork Ribs** `[roast-plate]` · bbq, slow, family — pork_ribs, paprika, sugar, honey, soy_sauce, garlic, vinegar_balsamic, sriracha
+- **Sumac-Roasted Cauliflower with Tahini** `[roast-plate]` · middle-eastern, vegan, roast — cauliflower, chickpea_dry, sumac, cumin, olive_oil, tahini, lemon, garlic, pine_nut
+- **Honey Mustard Chicken Traybake** `[roast-plate-chicken]` · family, weeknight, roast — chicken_thigh, potato, green_bean, honey, dijon, garlic, olive_oil, lemon, salt, pepper, thyme
+- **Rosemary Chicken Potato Tray** `[roast-plate-chicken]` · family, roast, weeknight — chicken_thigh, potato, rosemary, garlic, lemon, green_bean, olive_oil, salt, pepper
+- **Barramundi Lemon Potato Plate** `[roast-plate-fish]` · seafood, roast, family — barramundi, potato, green_bean, garlic, lemon, parsley, butter, olive_oil, salt, pepper
+- **Garlic Butter Barramundi** `[roast-plate-fish]` · seafood, quick, gluten-free — barramundi, vegetable_oil, butter, garlic, thyme, lemon, salt, pepper, parsley
+- **Kiwi-Mango Salsa over Pan-Fried Fish** `[roast-plate-fish]` · seafood, fresh, gluten-free, quick — barramundi, kiwi, mango, lime, chilli, coriander, olive_oil, salt
+- **Salmon Beetroot Yoghurt Plate** `[roast-plate-fish]` · seafood, roast, hearty — salmon, beetroot, potato, yoghurt, lemon, rocket, olive_oil, salt, pepper
+- **Scallop Lemon Butter Plate** `[roast-plate-fish]` · seafood, quick, french — scallop, green_bean, lemon, butter, garlic, parsley, bread, olive_oil, salt, pepper
+- **Lamb Cutlet Couscous Plate** `[roast-plate-lamb]` · middle-eastern, quick, weeknight — lamb_cutlet, couscous, cucumber, yoghurt, mint, garlic, cumin, lemon, olive_oil, salt, pepper
+- **Moroccan Lamb** `[roast-plate-lamb]` · slow, family — lamb_mince, tinned_chickpea, raisin, tinned_tomato, onion_brown, cumin, cinnamon, stock_chicken, coriander, couscous
+- **Beer-Braised Brisket** `[roast-plate-steak]` · british, slow, batch-friendly — beef_brisket, beer, onion_brown, carrot, garlic, tomato_paste, stock_beef, flour, bay_leaf
+- **Chimichurri Steak** `[roast-plate-steak]` · south-american, bbq, gluten-free — beef_steak, parsley, oregano, garlic, chilli, vinegar_red_wine, olive_oil, lemon
+- **Slow-Cooked Beef Brisket** `[roast-plate-steak]` · slow, family, batch-friendly — beef_brisket, onion_brown, carrot, garlic, stock_beef, tomato_paste, worcestershire, bay_leaf, thyme, rosemary, paprika
+- **Steak & Chips** `[roast-plate-steak]` · family, comfort — beef_steak, potato, butter, garlic, salt, thyme
+- **Steak Mushroom Pepper Plate** `[roast-plate-steak]` · beef, pub, comfort — beef_steak, potato, mushroom, cream, garlic, butter, pepper, rocket, olive_oil, salt
+- **Apple Cheddar Cabbage Slaw** `[salad-plate]` · salad, budget, side — cabbage, carrot, apple, cheddar, mayo, dijon, lemon, olive_oil, salt, pepper
+- **Beetroot Feta Walnut Salad** `[salad-plate]` · salad, vegetarian, fresh — beetroot, feta, walnut, rocket, vinegar_balsamic, honey, dijon, olive_oil, salt, pepper
+- **Beetroot, Ricotta & Walnut Salad** `[salad-plate]` · vegetarian, salad, entree — beetroot, ricotta, walnut, rocket, olive_oil, honey, vinegar_balsamic, orange
+- **Broccoli Almond Yoghurt Salad** `[salad-plate]` · salad, vegetarian, side — broccoli, almond, yoghurt, lemon, parsley, garlic, olive_oil, salt, pepper
+- **Buttermilk Coleslaw** `[salad-plate]` · side, no-cook, salad, bbq — cabbage, carrot, onion_red, mayo, yoghurt, vinegar_cider, dijon, sugar, parsley
+- **Calamari Lime Cabbage Salad** `[salad-plate]` · salad, seafood, quick — calamari, cabbage, lime, coriander, chilli, mayo, spring_onion, cornflour, olive_oil, salt, pepper
+- **Caprese Salad** `[salad-plate]` · italian, salad, vegetarian, no-cook — tomato, mozzarella, basil, olive_oil, vinegar_balsamic, salt
+- **Charred Corn Tomato Salad** `[salad-plate]` · salad, mexican, vegetarian — corn, tomato, chilli, coriander, lime, sour_cream, feta, olive_oil, salt, pepper
+- **Chicken Caesar Salad** `[salad-plate]` · salad, family — chicken_breast, lettuce, bacon, parmesan, bread, eggs, garlic, dijon, lemon, anchovy
+- **Chicken Mango Cucumber Salad** `[salad-plate]` · salad, fresh, quick — chicken_breast, mango, cucumber, lettuce, lime, coriander, chilli, olive_oil, salt, pepper
+- **Chickpea Cucumber Herb Salad** `[salad-plate]` · salad, vegan, no-cook — tinned_chickpea, cucumber, tomato, parsley, mint, onion_red, lemon, olive_oil, salt, pepper
+- **Cobb Salad** `[salad-plate]` · american, salad, family — chicken_breast, bacon, eggs, avocado, cherry_tomato, blue_cheese, lettuce, spring_onion, olive_oil, vinegar_red_wine, dijon, honey
+- **Fattoush Salad** `[salad-plate]` · middle-eastern, vegan, salad, fresh — bread, cucumber, tomato, lettuce, onion_red, mint, sumac, lemon, olive_oil
+- **Grape, Walnut & Rocket Salad** `[salad-plate]` · salad, vegetarian, side, quick — rocket, grape, walnut, parmesan, olive_oil, vinegar_balsamic, honey, dijon
+- **Greek Salad** `[salad-plate]` · vegetarian, salad, no-cook, quick — tomato, cucumber, onion_red, feta, olive_oil, lemon, oregano, olive
+- **Kale Apple Parmesan Salad** `[salad-plate]` · salad, vegetarian, fresh — kale, apple, parmesan, lemon, almond, honey, salt, pepper, olive_oil
+- **Kale Caesar Salad** `[salad-plate]` · salad, vegetarian, make-ahead — kale, parmesan, bread, garlic, lemon, dijon, mayo, olive_oil
+- **Lentil Carrot Parsley Salad** `[salad-plate]` · salad, vegetarian, budget, middle-eastern — lentil_red, carrot, parsley, lemon, cumin, garlic, yoghurt, olive_oil, salt, pepper
+- **Panzanella** `[salad-plate]` · italian, salad, vegetarian — bread, tomato, cucumber, onion_red, basil, caper, vinegar_red_wine, olive_oil, salt, pepper, garlic
+- **Parsley Tabouleh** `[salad-plate]` · middle-eastern, salad, vegetarian, no-cook — parsley, mint, couscous, tomato, spring_onion, lemon, olive_oil
+- **Peach Haloumi Rocket Salad** `[salad-plate]` · salad, vegetarian, fresh — haloumi, peach, rocket, mint, lemon, almond, honey, olive_oil, salt, pepper
+- **Pear Blue Cheese-ish Feta Salad** `[salad-plate]` · salad, vegetarian, fresh — pear, feta, rocket, walnut, honey, vinegar_balsamic, olive_oil, salt, pepper
+- **Pineapple Prawn Noodle Salad** `[salad-plate]` · salad, seafood, noodles — prawns, pineapple, noodle_rice, cucumber, mint, lime, chilli, fish_sauce, olive_oil, salt
+- **Pork Larb** `[salad-plate]` · thai, quick, gluten-free — pork_mince, fish_sauce, lime, spring_onion, mint, coriander, chilli, lettuce
+- **Potato Green Bean Dijon Salad** `[salad-plate]` · salad, vegetarian, side — potato, green_bean, dijon, parsley, lemon, eggs, onion_red, salt, pepper, olive_oil
+- **Potato Salad** `[salad-plate]` · salad, bbq, vegetarian — potato, eggs, yoghurt, spring_onion, parsley
+- **Prawn Avocado Lime Salad** `[salad-plate]` · salad, seafood, quick — prawns, avocado, lettuce, cucumber, lime, chilli, garlic, coriander, olive_oil, salt, pepper
+- **Rainbow Quinoa Salad** `[salad-plate]` · vegetarian, batch-friendly, gluten-free, salad — quinoa, pumpkin, beetroot, feta, rocket, almond, lemon, olive_oil, mint
+- **Roast Pumpkin and Feta Salad** `[salad-plate]` · salad, vegetarian, gluten-free — pumpkin, rocket, feta, pine_nut, onion_red, vinegar_balsamic, honey, olive_oil, salt, pepper
+- **Roast Pumpkin Quinoa Salad** `[salad-plate]` · salad, vegetarian, make-ahead — pumpkin, quinoa, feta, rocket, pine_nut, lemon, olive_oil, salt, pepper
+- **Salade Niçoise** `[salad-plate]` · french, salad, gluten-free — tinned_tuna, eggs, potato, green_bean, cherry_tomato, olive, onion_red, lettuce, dijon, vinegar_red_wine, olive_oil, caper
+- **Smoked Salmon Beetroot Salad** `[salad-plate]` · salad, seafood, brunch — smoked_salmon, beetroot, rocket, cream_cheese, lemon, caper, olive_oil, salt, pepper
+- **Thai Beef Salad** `[salad-plate]` · thai, salad, quick — beef_steak, cucumber, cherry_tomato, mint, coriander, fish_sauce, lime, chilli, onion_red, sugar
+- **Tomato Peach Basil Salad** `[salad-plate]` · salad, vegetarian, fresh, no-cook — tomato, peach, mozzarella, basil, olive, vinegar_balsamic, olive_oil, salt, pepper
+- **Tuna White Bean Tomato Salad** `[salad-plate]` · salad, no-cook, pantry — tinned_tuna, tinned_bean, tomato, onion_red, parsley, caper, lemon, olive_oil, salt, pepper
+- **Vietnamese Chicken Noodle Salad** `[salad-plate]` · vietnamese, fresh, salad — chicken_thigh, noodle_rice, fish_sauce, lime, sugar, garlic, chilli, cucumber, carrot, mint, coriander, peanut, vegetable_oil
+- **Watermelon-Style Mango Mint Salad** `[salad-plate]` · salad, vegetarian, fresh, no-cook — mango, cucumber, feta, mint, lime, chilli, olive_oil, salt
+- **Zucchini Ricotta Lemon Salad** `[salad-plate]` · salad, vegetarian, fresh — zucchini, ricotta, lemon, rocket, basil, pine_nut, olive_oil, salt, pepper
+- **Chicken Caesar-ish Toasties** `[sandwich-stack]` · sandwich, comfort, quick — bread, chicken_breast, bacon, mayo, parmesan, garlic, worcestershire, lettuce, olive_oil, salt, pepper
+- **Curried Egg Sandwiches** `[sandwich-stack]` · retro, lunchbox, quick — eggs, mayo, curry_powder, spring_onion, bread, butter, lettuce, salt, pepper
+- **Fried Egg Sandwich** `[sandwich-stack]` · breakfast, quick, cheap — eggs, bread, butter, vegemite
+- **Ham & Cheese Jaffle** `[sandwich-stack]` · aussie, quick, snack, comfort — bread, ham_sliced, cheddar, butter, tomato
+- **Kimchi Cheese Toastie** `[sandwich-stack]` · korean, sandwich, quick — bread, kimchi, cheddar, mayo, spring_onion, butter, pepper
+- **Mushroom Mozzarella Toastie** `[sandwich-stack]` · vegetarian, sandwich, comfort — bread, mushroom, mozzarella, garlic, thyme, butter, olive_oil, salt, pepper
+- **Pub Steak Sandwich** `[sandwich-stack]` · pub, aussie, quick — beef_steak, onion_brown, butter, brown_sugar, vinegar_balsamic, bread, rocket, mayo, tomato_sauce, olive_oil, salt, pepper
+- **The Ultimate Cheese Toastie** `[sandwich-stack]` · quick, snack, comfort, vegetarian — bread, cheddar, butter, dijon, pepper
+- **Tuna Melt Tomato Toastie** `[sandwich-stack]` · sandwich, pantry, quick — bread, tinned_tuna, cheddar, tomato, mayo, spring_onion, olive_oil, salt, pepper
+- **Chicken Feta Sausage Rolls** `[sausage-rolls]` · snack, party, baked — pastry_puff, chicken_breast, feta, spinach, breadcrumbs, eggs, salt, pepper
+- **Lamb Mint Sausage Rolls** `[sausage-rolls]` · snack, party, baked — pastry_puff, lamb_mince, onion_brown, garlic, mint, breadcrumbs, eggs, cumin, olive_oil, salt, pepper
+- **Sausage Roll Tray** `[sausage-rolls]` · aussie, snack, party — pastry_puff, pork_mince, breadcrumbs, onion_brown, eggs, tomato_paste, garlic, parsley, salt, pepper, olive_oil
+- **Sausage Rolls** `[sausage-rolls]` · baking, party, family — pork_mince, onion_brown, garlic, breadcrumbs, sage, parsley, eggs, pastry_puff, salt, pepper, tomato_sauce
+- **Arancini** `[scones-plate]` · italian, party, batch-friendly — rice_arborio, stock_chicken, onion_brown, butter, parmesan, wine_white, mozzarella, flour, eggs, breadcrumbs, vegetable_oil, salt
+- **Cheddar Cheese Scones** `[scones-plate]` · british, baking, vegetarian — flour, baking_powder, butter, cheddar, milk, eggs, dijon
+- **Portuguese Custard Tarts** `[scones-plate]` · dessert, baking, party — pastry_puff, milk, cream, sugar, eggs, cornflour, vanilla, cinnamon
+- **Pumpkin Scones** `[scones-plate]` · baking, retro, aussie — pumpkin, butter, sugar, eggs, flour_self_raising, salt, milk
+- **Scones with Jam & Cream** `[scones-plate]` · baking, retro, aussie — strawberry, sugar, lemon, flour_self_raising, salt, butter, milk, cream, icing_sugar
+- **Yorkshire Puddings** `[scones-plate]` · side, british, family — eggs, milk, flour, vegetable_oil, salt
+- **Chickpea Tomato Shakshuka** `[shakshuka]` · brunch, vegetarian, middle-eastern, pantry — eggs, tinned_tomato, tinned_chickpea, onion_brown, garlic, cumin, coriander, bread, olive_oil, salt, pepper
+- **Green Shakshuka Spinach Feta** `[shakshuka]` · brunch, vegetarian, middle-eastern — eggs, spinach, feta, leek, garlic, bread, olive_oil, salt, pepper
+- **Shakshuka** `[shakshuka]` · breakfast, vegetarian — eggs, tinned_tomato, capsicum_red, onion_brown, garlic, paprika, feta, bread
+- **Tomato Egg Shakshuka Rice** `[shakshuka]` · brunch, vegetarian, one-pot, middle-eastern — eggs, tinned_tomato, capsicum_red, onion_brown, cumin, paprika, garlic, chilli_flakes, bread, olive_oil, salt, pepper
+- **Chicken Satay Skewers** `[skewers]` · asian, bbq, family — chicken_thigh, peanut_butter, coconut_milk, soy_sauce, garlic, ginger, honey, lime, chilli, rice_jasmine, coriander
+- **Garlic Prawn Skewers** `[skewers]` · bbq, seafood, quick — prawns, butter, garlic, chilli, lemon, parsley, olive_oil, salt, bread
+- **Lamb Kofta with Tzatziki** `[skewers]` · bbq, mediterranean, family — lamb_mince, onion_red, garlic, cumin, paprika, mint, yoghurt, cucumber, wrap, lemon, tomato
+- **Tandoori Chicken** `[skewers]` · indian, family, gluten-free — chicken_thigh, yoghurt, lemon, garlic, ginger, paprika, turmeric, cumin, curry_powder, coriander, onion_red
+- **Berry Smoothie Bowl** `[smoothie-bowl]` · breakfast, no-cook, vegetarian, quick — banana_frozen, berries_frozen, yoghurt, milk, honey, oats, almond, strawberry
+- **Creamy Banana Porridge** `[smoothie-bowl]` · breakfast, quick, vegetarian — oats, milk, salt, banana, honey, cinnamon
+- **Frozen Berry Smoothie Bowl** `[smoothie-bowl]` · breakfast, quick, fruit — berries_frozen, banana_frozen, yoghurt, milk, muesli, honey, almond
+- **Mango Lime Smoothie Bowl** `[smoothie-bowl]` · breakfast, fruit, no-cook — mango, banana_frozen, yoghurt, lime, milk, muesli, coconut_desiccated
+- **Peanut Banana Smoothie Bowl** `[smoothie-bowl]` · breakfast, no-cook, quick — banana_frozen, peanut_butter, milk, cocoa, honey, muesli
+- **Pineapple Mint Smoothie Bowl** `[smoothie-bowl]` · breakfast, fruit, fresh — pineapple, banana_frozen, yoghurt, milk, honey, mint, coconut_desiccated
+- **Avgolemono (Lemon Chicken Soup)** `[soup-bowl]` · greek, soup, gluten-free — chicken_thigh, stock_chicken, eggs, lemon, rice_jasmine, onion_brown, parsley
+- **Bacon Cabbage Potato Soup** `[soup-bowl]` · soup, budget, comfort — bacon, onion_brown, garlic, potato, cabbage, stock_chicken, parsley, olive_oil, salt, pepper
+- **Beef Barley-Style Quinoa Soup** `[soup-bowl]` · soup, beef, hearty — beef_steak, quinoa, stock_beef, carrot, celery, onion_brown, garlic, bay_leaf, olive_oil, salt, pepper
+- **Broccoli Cheddar Soup** `[soup-bowl]` · soup, vegetarian, comfort — butter, onion_brown, garlic, flour, stock_veg, milk, broccoli, carrot, cheddar, salt, pepper, nutmeg
+- **Cauliflower Turmeric Soup** `[soup-bowl]` · soup, vegetarian, comfort — cauliflower, onion_brown, garlic, turmeric, stock_veg, cream, almond, olive_oil, salt, pepper
+- **Chicken and Corn Soup** `[soup-bowl]` · chinese, soup, family — stock_chicken, chicken_breast, ginger, corn_frozen, cornflour, eggs, soy_sauce, sesame_oil, spring_onion, salt, pepper
+- **Chicken Corn Coconut Soup** `[soup-bowl]` · soup, comfort, family — chicken_breast, corn_frozen, coconut_milk, stock_chicken, ginger, spring_onion, garlic, coriander, salt, pepper, olive_oil
+- **Chicken Ginger Bok Choy Broth** `[soup-bowl]` · soup, quick, asian — chicken_thigh, stock_chicken, bok_choy, ginger, garlic, soy_sauce, spring_onion, sesame_oil, olive_oil, salt, pepper
+- **Chicken Lemon Rice Soup** `[soup-bowl]` · soup, family, comfort — chicken_thigh, rice_jasmine, stock_chicken, lemon, celery, carrot, onion_brown, salt, pepper, olive_oil
+- **Chilli Black Bean Soup** `[soup-bowl]` · latin, vegetarian, budget, one-pot — tinned_black_bean, onion_brown, capsicum_red, garlic, cumin, chilli_powder, stock_veg, lime, sour_cream
+- **Coconut Chicken Soup** `[soup-bowl]` · thai, soup, gluten-free — chicken_breast, coconut_milk, stock_chicken, ginger, mushroom, lime, fish_sauce, sugar, chilli, coriander, spring_onion
+- **Corn Zucchini Chowder** `[soup-bowl]` · soup, vegetarian, family — potato, zucchini, onion_brown, garlic, corn_frozen, stock_veg, cream, spring_onion, olive_oil, salt, pepper
+- **Cream of Mushroom** `[soup-bowl]` · vegetarian, soup, comfort — mushroom, onion_brown, garlic, butter, flour, stock_veg, cream, thyme, bread
+- **French Onion Soup** `[soup-bowl]` · french, soup, comfort — onion_brown, butter, stock_beef, wine_white, bread, cheddar, thyme, flour
+- **Green Pea Mint Soup** `[soup-bowl]` · soup, vegetarian, quick — peas_frozen, mint, stock_veg, leek, yoghurt, lemon, olive_oil, salt, pepper
+- **Hot and Sour Soup** `[soup-bowl]` · chinese, soup, vegetarian — stock_veg, mushroom, carrot, ginger, tofu, soy_sauce, vinegar_rice, pepper, sugar, cornflour, eggs, spring_onion, sesame_oil
+- **Leek Potato Thyme Soup** `[soup-bowl]` · soup, vegetarian, comfort — leek, potato, stock_veg, thyme, cream, butter, salt, pepper, olive_oil
+- **Lentil Pumpkin Coconut Soup** `[soup-bowl]` · soup, vegan, pantry — lentil_red, pumpkin, coconut_milk, stock_veg, onion_brown, garlic, curry_powder, coriander, olive_oil, salt, pepper
+- **Minestrone** `[soup-bowl]` · vegetarian, batch-friendly, soup — tinned_bean, tinned_tomato, carrot, zucchini, onion_brown, pasta, stock_veg, parmesan, celery, garlic
+- **Miso Mushroom Noodle Soup** `[soup-bowl]` · japanese, soup, noodles, vegetarian — miso, mushroom, noodle_egg, bok_choy, spring_onion, ginger, soy_sauce, sesame_oil
+- **Moules Mariniere** `[soup-bowl]` · french, seafood, quick — mussel, wine_white, garlic, onion_brown, butter, cream, parsley, bread
+- **Mussel Tomato Chilli Soup** `[soup-bowl]` · seafood, soup, quick — mussel, tinned_tomato, onion_brown, garlic, chilli, parsley, bread, olive_oil, salt, pepper
+- **Pea and Ham Soup** `[soup-bowl]` · soup, family, cheap — butter, onion_brown, garlic, ham_sliced, potato, stock_chicken, peas_frozen, salt, pepper, mint, bread
+- **Pork Wonton Soup** `[soup-bowl]` · chinese, soup, asian — pork_mince, ginger, garlic, soy_sauce, sesame_oil, spring_onion, flour, stock_chicken, bok_choy, chilli
+- **Potato and Leek Soup** `[soup-bowl]` · french, soup, vegetarian — leek, butter, potato, stock_veg, bay_leaf, cream, salt, pepper, spring_onion
+- **Prawn Laksa-ish Noodle Soup** `[soup-bowl]` · seafood, soup, noodles, spicy — prawns, noodle_rice, coconut_milk, curry_paste_red, stock_chicken, fish_sauce, lime, coriander, olive_oil
+- **Pumpkin Ginger Coconut Soup** `[soup-bowl]` · soup, vegan, gluten-free — pumpkin, onion_brown, garlic, ginger, coconut_milk, stock_veg, lime, coriander, olive_oil, salt, pepper
+- **Pumpkin Soup with Crispy Sage** `[soup-bowl]` · vegetarian, soup, comfort, batch-friendly — pumpkin, onion_brown, garlic, stock_veg, cream, butter, sage, bread
+- **Red Curry Noodle Soup** `[soup-bowl]` · thai, soup, quick, gluten-free — chicken_thigh, curry_paste_red, coconut_milk, stock_chicken, noodle_rice, corn_frozen, fish_sauce, lime, coriander
+- **Roasted Capsicum Tomato Soup** `[soup-bowl]` · soup, vegetarian, comfort — capsicum_red, tinned_tomato, stock_veg, garlic, onion_brown, basil, cream, olive_oil, salt, pepper
+- **Roma Tomato & White Bean Braise** `[soup-bowl]` · italian, vegan, one-pot, comfort — roma_tomato, tinned_bean, onion_brown, garlic, rosemary, olive_oil, tomato_paste, bread
+- **Sweet Potato Peanut Soup** `[soup-bowl]` · soup, vegan, comfort — sweet_potato, peanut_butter, stock_veg, coconut_milk, onion_brown, garlic, lime, coriander, olive_oil, salt, pepper
+- **Sweet Potato Soup** `[soup-bowl]` · vegetarian, vegan, gluten-free, batch-friendly — sweet_potato, onion_brown, garlic, stock_veg, cumin, coconut_milk
+- **Tom Yum Goong** `[soup-bowl]` · thai, soup, quick — prawns, stock_chicken, mushroom, chilli, ginger, lime, fish_sauce, coriander, tomato, spring_onion
+- **Tomato Basil Soup** `[soup-bowl]` · vegetarian, soup, comfort, batch-friendly — tinned_tomato, tomato, onion_brown, garlic, stock_veg, cream, basil, butter, sugar, tomato_paste
+- **Tomato Basil White Bean Soup** `[soup-bowl]` · soup, pantry, vegetarian — tinned_tomato, tinned_bean, stock_veg, onion_brown, garlic, basil, parmesan, olive_oil, salt, pepper
+- **Tomato Chickpea Harissa-Style Soup** `[soup-bowl]` · soup, pantry, vegetarian, middle-eastern — tinned_chickpea, tinned_tomato, garlic, paprika, cumin, chilli_flakes, stock_veg, yoghurt, olive_oil, salt, pepper
+- **Beef Snow Pea Stir-Fry** `[stir-fry]` · stir-fry, quick, asian — beef_steak, snow_pea, rice_jasmine, oyster_sauce, soy_sauce, cornflour, ginger, garlic, vegetable_oil, salt, pepper
+- **Black Bean Beef Stir-Fry** `[stir-fry]` · chinese, stir-fry, quick — beef_steak, fermented_black_bean, capsicum_green, onion_brown, garlic, ginger, soy_sauce, oyster_sauce, rice_jasmine
+- **Calamari Chilli Lime Stir-Fry** `[stir-fry]` · seafood, quick, stir-fry, spicy — calamari, chilli, lime, coriander, garlic, soy_sauce, rice_jasmine, vegetable_oil, pepper
+- **Cashew Chicken** `[stir-fry]` · chinese, stir-fry, quick, weeknight — chicken_thigh, cashew, capsicum_red, spring_onion, garlic, ginger, soy_sauce, oyster_sauce, vegetable_oil, rice_jasmine
+- **Chicken Cashew Capsicum Stir-Fry** `[stir-fry]` · family, stir-fry, quick — chicken_breast, cashew, capsicum_red, soy_sauce, oyster_sauce, ginger, garlic, rice_jasmine, pepper, olive_oil
+- **Chicken Sriracha Honey Stir-Fry** `[stir-fry]` · spicy, stir-fry, quick — chicken_thigh, rice_jasmine, sriracha, honey, soy_sauce, capsicum_green, onion_brown, garlic, vegetable_oil, salt, pepper
+- **Crispy Tofu Broccoli Stir-Fry** `[stir-fry]` · vegan, stir-fry, quick, asian — tofu, broccoli, cornflour, soy_sauce, garlic, ginger, rice_jasmine, olive_oil, salt, pepper
+- **Crispy Tofu Stir-Fry** `[stir-fry]` · vegetarian, asian, quick — tofu, broccoli, capsicum_red, snow_pea, garlic, ginger, soy_sauce, honey, sesame_oil, rice_jasmine, cornflour
+- **Duck Orange Stir-Fry** `[stir-fry]` · stir-fry, chinese, asian — duck, orange, soy_sauce, bok_choy, ginger, garlic, honey, rice_jasmine, salt, pepper
+- **Eggplant Miso Stir-Fry** `[stir-fry]` · vegetarian, japanese, stir-fry — eggplant, miso, soy_sauce, ginger, spring_onion, rice_jasmine, sugar, olive_oil
+- **Ginger Beef Stir-Fry** `[stir-fry]` · quick, asian — beef_steak, broccoli, snow_pea, bok_choy, garlic, ginger, soy_sauce, sesame_oil, noodle_egg
+- **Honey Chicken** `[stir-fry]` · chinese, family, sticky — chicken_breast, cornflour, eggs, rice_jasmine, vegetable_oil, honey, soy_sauce, garlic, sesame_oil, spring_onion, salt
+- **Kung Pao Chicken** `[stir-fry]` · chinese, quick, asian, spicy — chicken_thigh, peanut_butter, soy_sauce, vinegar_rice, honey, sriracha, chilli, garlic, ginger, spring_onion, capsicum_red, rice_jasmine, sesame_oil, peanut
+- **Mongolian Beef** `[stir-fry]` · chinese, quick, asian — beef_steak, cornflour, soy_sauce, brown_sugar, garlic, ginger, spring_onion, vegetable_oil, sesame_oil, rice_jasmine
+- **Mushroom Cabbage Sesame Stir-Fry** `[stir-fry]` · stir-fry, vegan, budget — mushroom, cabbage, rice_jasmine, ginger, garlic, soy_sauce, sesame_oil, olive_oil, salt, pepper
+- **Paneer Capsicum Stir-Fry** `[stir-fry]` · vegetarian, indian, stir-fry — paneer, capsicum_red, capsicum_green, onion_brown, garlic, curry_powder, rice_basmati, yoghurt, olive_oil, salt
+- **Pork Belly Bok Choy Stir-Fry** `[stir-fry]` · pork, stir-fry, chinese — pork_belly, bok_choy, soy_sauce, oyster_sauce, honey, ginger, garlic, rice_jasmine, olive_oil, salt, pepper
+- **Pork Mince Green Bean Stir-Fry** `[stir-fry]` · stir-fry, pork, quick — pork_mince, green_bean, garlic, ginger, chilli, soy_sauce, sesame_oil, rice_jasmine, vegetable_oil, salt, pepper
+- **Prawn Green Bean Stir-Fry** `[stir-fry]` · seafood, stir-fry, quick — prawns, green_bean, ginger, garlic, soy_sauce, sesame_oil, rice_jasmine, salt, pepper, olive_oil
+- **Stir-Fry Beef** `[stir-fry]` · quick, one-pot, asian — beef_steak, broccoli, capsicum_red, oyster_sauce, garlic, ginger, rice_jasmine, soy_sauce, sesame_oil, spring_onion
+- **Sweet and Sour Pork** `[stir-fry]` · chinese, family, retro — pork_shoulder, cornflour, soy_sauce, vinegar_white, sugar, tomato_sauce, capsicum_red, capsicum_green, onion_brown, pineapple, garlic, vegetable_oil, rice_jasmine, salt
+- **Tofu Japchae** `[stir-fry]` · korean, noodles, vegetarian, stir-fry — noodle_glass, tofu, carrot, spinach, mushroom, spring_onion, soy_sauce, sesame_oil, gochujang, sugar
+- **Beef Mince Cheese Tacos** `[tacos]` · mexican, family, weeknight — tortilla, beef_mince, cheddar, lettuce, tomato, cumin, paprika, onion_brown, olive_oil, salt, pepper
+- **Beef Tacos** `[tacos]` · mexican, family, quick — beef_mince, tortilla, avocado, tomato, lime, cumin, paprika, coriander
+- **Black Bean Corn Tacos** `[tacos]` · vegetarian, mexican, quick — tortilla, tinned_black_bean, corn_frozen, capsicum_red, lime, coriander, cumin, paprika, salt, pepper, olive_oil
+- **Cheesy Quesadillas** `[tacos]` · mexican, quick, vegetarian, snack — tortilla, cheddar, mozzarella, spring_onion, capsicum_red, coriander, sour_cream
+- **Chicken Fajitas** `[tacos]` · mexican, family, quick — chicken_thigh, capsicum_red, capsicum_green, onion_red, tortilla, cumin, paprika, lime, sour_cream, coriander, avocado
+- **Fish Finger-ish Barramundi Tacos** `[tacos]` · seafood, mexican, family — barramundi, flour, eggs, breadcrumbs, tortilla, cabbage, mayo, lime, olive_oil, salt, pepper
+- **Fish Tacos** `[tacos]` · mexican, quick, seafood — barramundi, tortilla, lettuce, yoghurt, lime, coriander, paprika
+- **Sweet Potato and Black Bean Tacos** `[tacos]` · mexican, vegan, family — sweet_potato, olive_oil, cumin, paprika, tinned_black_bean, avocado, lime, tortilla, onion_red, salt, coriander
+- **Bacon Leek Cheddar Tart** `[tart-slice]` · brunch, comfort, french — pastry_shortcrust, bacon, leek, cheddar, eggs, cream, nutmeg, olive_oil, salt, pepper
+- **Caramelised Onion and Feta Tart** `[tart-slice]` · vegetarian, brunch, party — onion_brown, butter, olive_oil, salt, brown_sugar, vinegar_balsamic, pastry_puff, eggs, feta, thyme, pepper, rocket
+- **Lemon Tart** `[tart-slice]` · dessert, baking — flour, butter, sugar, eggs, lemon, cream, vanilla
+- **New York Cheesecake** `[tart-slice]` · dessert, baking — cream_cheese, sugar, eggs, cream, vanilla, lemon, flour, butter, biscuit_sweet, strawberry
+- **Pear Walnut Blue-Feta Tart** `[tart-slice]` · vegetarian, brunch, baked — pastry_shortcrust, pear, feta, blue_cheese, walnut, honey, thyme, olive_oil, pepper
+- **Quiche Lorraine** `[tart-slice]` · french, baking, family — pastry_shortcrust, bacon, eggs, cream, milk, cheddar, onion_brown, pepper
+- **Tomato Goat-ish Feta Tart** `[tart-slice]` · vegetarian, brunch, baked — pastry_shortcrust, tomato, feta, eggs, cream, basil, olive_oil, salt, pepper
+- **Vanilla Slice** `[tart-slice]` · dessert, baking, retro — pastry_puff, milk, cream, sugar, cornflour, eggs, vanilla, butter, icing_sugar, passionfruit
+- **Avocado Feta Chilli Toast** `[toast-open]` · brunch, vegetarian, quick — bread, avocado, feta, chilli, lime, coriander, olive_oil, salt, pepper
+- **Creamy Scrambled Eggs on Toast** `[toast-open]` · breakfast, quick, vegetarian — eggs, butter, bread, salt, pepper, spring_onion
+- **Croque Monsieur** `[toast-open]` · french, brunch, comfort — bread, ham_sliced, cheddar, butter, flour, milk, dijon, nutmeg, salt, pepper
+- **Homemade Baked Beans** `[toast-open]` · breakfast, vegetarian, cheap — olive_oil, onion_brown, garlic, paprika, tomato_paste, tinned_tomato, brown_sugar, vinegar_cider, tinned_bean, salt, pepper, bread, butter, parsley
+- **Prawn Sriracha Toast** `[toast-open]` · seafood, quick, spicy — bread, prawns, mayo, sriracha, spring_onion, lime, olive_oil, salt, pepper
+- **Ricotta Fig Honey Toast** `[toast-open]` · brunch, vegetarian, quick — bread, ricotta, fig, honey, walnut, lemon, olive_oil, salt, pepper
+- **Roast Grape & Ricotta Toast** `[toast-open]` · breakfast, vegetarian, quick — grape, ricotta, bread, honey, olive_oil, thyme, lemon, walnut
+- **Savoury Mince on Toast** `[toast-open]` · retro, cheap, family — beef_mince, onion_brown, carrot, garlic, olive_oil, tomato_sauce, worcestershire, stock_beef, cornflour, peas_frozen, bread, butter, salt, pepper
+- **Smashed Avo on Toast** `[toast-open]` · breakfast, quick, vegetarian — avocado, bread, feta, lemon, chilli_flakes, olive_oil
+- **Tomato Bruschetta** `[toast-open]` · italian, snack, vegetarian — bread, tomato, garlic, basil, olive_oil, vinegar_balsamic
+- **Welsh Rarebit** `[toast-open]` · british, quick, vegetarian — cheddar, beer, butter, flour, dijon, worcestershire, eggs, bread
+- **Buffalo Chicken Wings** `[wings-pile]` · american, snack, party — chicken_wing, butter, sriracha, honey, vinegar_white, celery, paprika, flour, yoghurt, blue_cheese
+- **Chicken Wing Sriracha Pile** `[wings-pile]` · snack, spicy, share-plate — chicken_wing, baking_powder, sriracha, honey, butter, lime, spring_onion, mayo, olive_oil, salt, pepper
+- **Honey Soy Chicken Wings** `[wings-pile]` · asian, family, snack, party — chicken_wing, soy_sauce, honey, garlic, ginger, sesame_oil, vinegar_rice, sriracha, spring_onion
+- **Salt and Pepper Tofu** `[wings-pile]` · chinese, vegan, spicy — tofu, cornflour, salt, pepper, sugar, garlic, chilli, spring_onion, vegetable_oil, rice_jasmine
+- **Breakfast Burrito** `[wrap-roll]` · breakfast, quick — eggs, tinned_bean, cheddar, tortilla, avocado, coriander
+- **Chicken Avocado Lime Wraps** `[wrap-roll]` · lunchbox, quick, mexican — chicken_breast, wrap, avocado, lettuce, lime, yoghurt, cumin, paprika, olive_oil, salt, pepper
+- **Chicken Shawarma Wraps** `[wrap-roll]` · middle-eastern, family — chicken_thigh, yoghurt, cumin, paprika, turmeric, garlic, lemon, wrap, tomato, cucumber, onion_red, parsley, lettuce
+- **Greek Lamb Souva** `[wrap-roll]` · bbq, family — lamb_cutlet, yoghurt, cucumber, garlic, mint, lemon, wrap, oregano, tomato, onion_red
+- **Haloumi Pumpkin Wraps** `[wrap-roll]` · vegetarian, lunchbox, mediterranean — wrap, haloumi, pumpkin, rocket, yoghurt, garlic, lemon, cumin, olive_oil, salt, pepper
+- **Veggie Wrap** `[wrap-roll]` · vegetarian, quick — wrap, haloumi, avocado, cucumber, rocket, feta
