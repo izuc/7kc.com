@@ -39,6 +39,7 @@ use SevenKC\Action\Retailers\ListRetailersAction;
 use SevenKC\Action\Stats\StatsAction;
 use SevenKC\Action\Lists\AddListItemsAction;
 use SevenKC\Action\Lists\ArchiveListAction;
+use SevenKC\Action\Lists\DeleteListAction;
 use SevenKC\Action\Lists\CreateListAction;
 use SevenKC\Action\Lists\DeleteListItemAction;
 use SevenKC\Action\Lists\GetListAction;
@@ -126,6 +127,7 @@ return function (App $app): void {
             $a->get('/lists/{id}', GetListAction::class);
             $a->patch('/lists/{id}', RenameListAction::class);
             $a->delete('/lists/{id}', ArchiveListAction::class);
+            $a->delete('/lists/{id}/permanent', DeleteListAction::class);
             $a->post('/lists/{id}/items', AddListItemsAction::class);
             $a->delete('/lists/{id}/items/{itemId}', DeleteListItemAction::class);
             $a->post('/lists/{id}/items/{itemId}/toggle-bought', ToggleBoughtAction::class);

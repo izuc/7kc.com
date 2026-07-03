@@ -32,7 +32,8 @@ final class AiScanner
 
     public function isConfigured(): bool
     {
-        return $this->config['endpoint'] !== '' && $this->config['model'] !== ''
+        return ($this->config['enabled'] ?? true)
+            && $this->config['endpoint'] !== '' && $this->config['model'] !== ''
             && \function_exists('curl_init');
     }
 

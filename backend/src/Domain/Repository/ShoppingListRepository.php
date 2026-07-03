@@ -135,6 +135,13 @@ final class ShoppingListRepository
         $this->db->update('shopping_lists', ['archived_at' => $archived ? time() : null], ['id' => $id]);
     }
 
+    /** Permanently remove a list and all its items. Not reversible. */
+    public function delete(string $id): void
+    {
+        $this->db->delete('shopping_list_items', ['list_id' => $id]);
+        $this->db->delete('shopping_lists', ['id' => $id]);
+    }
+
     public function addItem(string $listId, string $addedBy, ?string $ingId, ?string $customName, string $section): string
     {
         $id = Uid::new();

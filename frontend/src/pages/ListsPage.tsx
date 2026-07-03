@@ -31,6 +31,7 @@ export function ListsPage() {
   const [showOcr, setShowOcr] = useState(false);
   const [ocrSeedText, setOcrSeedText] = useState<string | null>(null);
   const [showArchived, setShowArchived] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState<{ id: string; name: string } | null>(null);
 
   const { data, isLoading } = useQuery({ queryKey: ['lists'], queryFn: () => api.lists() });
   const { data: pantryData } = useQuery({ queryKey: ['pantry'], queryFn: () => api.pantry() });
@@ -110,6 +111,44 @@ export function ListsPage() {
       }
     });
 
+  // Permanent delete (via a confirm) — for a list added by mistake. Unlike archive,
+  // it can't be restored, so it always goes through the confirm modal.
+  const deleteList = (id: string) =>
+    guard(async () => {
+      await api.deleteListPermanently(id);
+      invalidate();
+      toast('List deleted');
+      if (id === list?.id) {
+        const next = activeLists.find((l) => l.id !== id);
+        navigate(next ? `/lists/${next.id}` : '/lists', { replace: true });
+      }
+    });
+
+  const confirmDeleteModal = confirmDelete && (
+    <Modal small title="Delete this list?" onClose={() => setConfirmDelete(null)}>
+      <p className="muted small">
+        <b>{confirmDelete.name}</b> and everything on it will be permanently deleted. This can't be
+        undone — to keep it out of the way but recoverable, archive it instead.
+      </p>
+      <div className="modal-actions">
+        <button className="btn btn-ghost" onClick={() => setConfirmDelete(null)}>
+          Cancel
+        </button>
+        <button
+          className="btn btn-danger"
+          onClick={() => {
+            const id = confirmDelete.id;
+            setConfirmDelete(null);
+            setShowArchived(false);
+            deleteList(id);
+          }}
+        >
+          <Icon name="trash" size={14} /> Delete for good
+        </button>
+      </div>
+    </Modal>
+  );
+
   // Rendered in BOTH the empty state and the main view so archived lists are never
   // stranded — archiving your last active list must still let you restore it.
   const archivedModal = showArchived && (
@@ -124,15 +163,25 @@ export function ListsPage() {
                 <span className="archived-row-name">{l.name}</span>
                 <span className="mono muted small">{l.items.length} items</span>
               </div>
-              <button
-                className="btn btn-ghost"
-                onClick={() => {
-                  setArchived(l.id, false);
-                  setShowArchived(false);
-                }}
-              >
-                <Icon name="refresh" size={13} /> Restore
-              </button>
+              <div className="archived-row-actions">
+                <button
+                  className="btn btn-ghost"
+                  onClick={() => {
+                    setArchived(l.id, false);
+                    setShowArchived(false);
+                  }}
+                >
+                  <Icon name="refresh" size={13} /> Restore
+                </button>
+                <button
+                  className="btn btn-ghost btn-danger-ghost"
+                  aria-label={`Delete ${l.name} permanently`}
+                  title="Delete permanently"
+                  onClick={() => setConfirmDelete({ id: l.id, name: l.name })}
+                >
+                  <Icon name="trash" size={13} />
+                </button>
+              </div>
             </li>
           ))}
         </ul>
@@ -173,6 +222,7 @@ export function ListsPage() {
           )}
         </div>
         {archivedModal}
+        {confirmDeleteModal}
       </div>
     );
   }
@@ -272,6 +322,13 @@ export function ListsPage() {
             onClick={() => setArchived(list.id, true)}
           >
             <Icon name="archive" size={14} /> Archive
+          </button>
+          <button
+            className="btn btn-ghost btn-danger-ghost"
+            title="Delete this list permanently"
+            onClick={() => setConfirmDelete({ id: list.id, name: list.name })}
+          >
+            <Icon name="trash" size={14} /> Delete
           </button>
           <button className="btn btn-primary" onClick={() => setShowPaste(true)}>
             <Icon name="sparkle" size={14} /> Paste list
@@ -443,6 +500,7 @@ export function ListsPage() {
       )}
 
       {archivedModal}
+      {confirmDeleteModal}
     </div>
   );
 }

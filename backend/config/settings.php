@@ -71,6 +71,11 @@ return [
         // Pantry/fridge tiling: grid size per axis (1 = whole image, 2 = 2×2, … up to 4 = 4×4).
         // Higher = better recall on dense shelves, but that many more model calls per photo.
         'tiles' => max(1, min(4, (int)($_ENV['AI_SCAN_TILES'] ?? 1))),
+        // Explicit off switch: set AI_SCAN_ENABLED=false/0/no/off to disable AI photo
+        // scanning even when an endpoint + model are configured. Defaults on, so a
+        // blank/absent value keeps the endpoint+model behaviour unchanged. When off,
+        // /config reports ai_scan:false and the client hides every AI scan option.
+        'enabled' => !in_array(strtolower(trim((string)($_ENV['AI_SCAN_ENABLED'] ?? 'true'))), ['0', 'false', 'no', 'off'], true),
     ],
     'paths' => [
         'root' => dirname(__DIR__),

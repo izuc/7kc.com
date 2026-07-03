@@ -131,6 +131,9 @@ export const api = {
       method: 'PATCH',
       body: JSON.stringify({ archived }),
     }),
+  // Permanent, non-reversible delete (distinct from archive) — for lists added by mistake.
+  deleteListPermanently: (id: string) =>
+    request<{ ok: boolean }>(`/lists/${id}/permanent`, { method: 'DELETE' }),
   addListItems: (
     listId: string,
     items: { ingredient_id?: string | null; custom_name?: string | null; section?: string }[]
