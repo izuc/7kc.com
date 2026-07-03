@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Suspense, lazy, useEffect } from 'react';
 import { useAuth } from './store/auth';
+import { getToken } from './lib/api';
 import { useUi } from './store/ui';
 import { AppShell } from './components/AppShell';
 import { Toasts } from './components/Toasts';
@@ -60,6 +61,13 @@ export function App() {
 
   // public SEO routes render without auth and outside the AppShell
   if (location.pathname.startsWith('/r/') || location.pathname.startsWith('/collection/') || location.pathname.startsWith('/browse')) {
+    // A signed-in visitor shouldn't be treated as a stranger here: wait for
+    // the session check when a token exists, then give /r/:slug readers the
+    // full in-app recipe page (pantry ticks, cook mode, favourites).
+    if (loading && getToken()) return <Loading label="Loading…" />;
+    if (user && location.pathname.startsWith('/r/')) {
+      return <Navigate to={`/recipes/${location.pathname.slice('/r/'.length)}`} replace />;
+    }
     return (
       <div className={`accent-${accent} density-${density}`}>
         <ErrorBoundary resetKey={location.pathname}>

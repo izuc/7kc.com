@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api';
+import { useAuth } from '../store/auth';
 import { Icon } from '../components/Icon';
 import { MealPlate } from '../components/MealPlate';
 
@@ -15,6 +16,7 @@ const label = (t: string) => LABELS[t] ?? t.charAt(0).toUpperCase() + t.slice(1)
 
 /** Public tag collection landing page (/collection/:tag) — internal-links the catalogue for SEO. */
 export function CollectionPage() {
+  const { user } = useAuth();
   const { tag } = useParams();
   const { data, isLoading } = useQuery({
     queryKey: ['collection', tag],
@@ -47,9 +49,15 @@ export function CollectionPage() {
           <Link to="/browse" className="btn btn-ghost">
             All recipes
           </Link>
-          <Link to="/register" className="btn btn-primary">
-            <Icon name="sparkle" size={14} /> Start your pantry
-          </Link>
+          {user ? (
+            <Link to="/today" className="btn btn-primary">
+              <Icon name="home" size={14} /> My kitchen
+            </Link>
+          ) : (
+            <Link to="/register" className="btn btn-primary">
+              <Icon name="sparkle" size={14} /> Start your pantry
+            </Link>
+          )}
         </div>
       </header>
 
@@ -63,7 +71,7 @@ export function CollectionPage() {
         ) : (
           <div className="recipe-grid stagger-in" style={{ marginTop: 16 }}>
             {recipes.map((r) => (
-              <Link key={r.id} className="recipe-card" to={`/r/${r.slug}`}>
+              <Link key={r.id} className="recipe-card" to={user ? `/recipes/${r.slug}` : `/r/${r.slug}`}>
                 <div style={{ aspectRatio: '5 / 4', overflow: 'hidden' }}>
                   <MealPlate recipe={r} ingredientIds={r.ingredient_ids} size={280} rounded={false} />
                 </div>

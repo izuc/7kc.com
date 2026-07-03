@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api';
+import { useAuth } from '../store/auth';
 import { Icon } from '../components/Icon';
 import { MealPlate } from '../components/MealPlate';
 
@@ -9,6 +10,8 @@ import { MealPlate } from '../components/MealPlate';
  * Public catalogue browser (/browse) — every recipe with its generated dish
  * artwork, searchable and filterable, no account needed. Cards link to the
  * public /r/:slug pages; the only asks are quiet "start your pantry" CTAs.
+ * Signed-in visitors get their in-app chrome instead: cards link to the full
+ * /recipes/:slug pages and the CTAs point back into the kitchen.
  */
 
 const TAG_LABELS: Record<string, string> = {
@@ -20,6 +23,7 @@ const TAG_LABELS: Record<string, string> = {
 const tagLabel = (t: string) => TAG_LABELS[t] ?? t.charAt(0).toUpperCase() + t.slice(1);
 
 export function BrowsePage() {
+  const { user } = useAuth();
   const { data, isLoading } = useQuery({
     queryKey: ['public-recipes'],
     queryFn: () => api.publicRecipes(),
@@ -79,10 +83,18 @@ export function BrowsePage() {
           </div>
         </Link>
         <div className="row-inline" style={{ gap: 10 }}>
-          <Link to="/login" className="btn btn-ghost">Sign in</Link>
-          <Link to="/register" className="btn btn-primary">
-            <Icon name="sparkle" size={14} /> Start your pantry
-          </Link>
+          {user ? (
+            <Link to="/today" className="btn btn-primary">
+              <Icon name="home" size={14} /> My kitchen
+            </Link>
+          ) : (
+            <>
+              <Link to="/login" className="btn btn-ghost">Sign in</Link>
+              <Link to="/register" className="btn btn-primary">
+                <Icon name="sparkle" size={14} /> Start your pantry
+              </Link>
+            </>
+          )}
         </div>
       </header>
 
@@ -137,7 +149,7 @@ export function BrowsePage() {
         ) : (
           <div className="recipe-grid stagger-in browse-grid">
             {shown.map((r) => (
-              <Link key={r.id} className="recipe-card" to={`/r/${r.slug}`}>
+              <Link key={r.id} className="recipe-card" to={user ? `/recipes/${r.slug}` : `/r/${r.slug}`}>
                 <div style={{ aspectRatio: '5 / 4', overflow: 'hidden' }}>
                   <MealPlate recipe={r} ingredientIds={r.ingredient_ids} size={280} rounded={false} slice />
                 </div>
@@ -158,13 +170,20 @@ export function BrowsePage() {
           <div>
             <h2>Cook from what you own</h2>
             <p className="muted">
-              Add your pantry once and these {recipes.length || __RECIPE_COUNT__} recipes rank themselves by what
-              you can make tonight. Free, offline, no subscription.
+              {user
+                ? `Your pantry ranks these ${recipes.length || __RECIPE_COUNT__} recipes by what you can make tonight.`
+                : `Add your pantry once and these ${recipes.length || __RECIPE_COUNT__} recipes rank themselves by what you can make tonight. Free, offline, no subscription.`}
             </p>
           </div>
-          <Link to="/register" className="btn btn-primary btn-lg">
-            Start your pantry — free <Icon name="arrow" size={14} />
-          </Link>
+          {user ? (
+            <Link to="/recipes" className="btn btn-primary btn-lg">
+              See what you can cook tonight <Icon name="arrow" size={14} />
+            </Link>
+          ) : (
+            <Link to="/register" className="btn btn-primary btn-lg">
+              Start your pantry — free <Icon name="arrow" size={14} />
+            </Link>
+          )}
         </div>
       </main>
     </div>
