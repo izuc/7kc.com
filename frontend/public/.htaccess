@@ -1,0 +1,45 @@
+# 7 Day Kitchen — single-domain deploy (Apache).
+# Layout on the web root of 7kc.com:
+#   <docroot>/            → the built frontend (everything from frontend/dist/)
+#   <docroot>/.htaccess   → this file
+#   <docroot>/api/        → the backend (the whole backend/ folder; api/public/index.php is the entry)
+#
+# The SPA is served at / and the API answers under /api on the same domain, so
+# no CORS is involved. This file ships inside the build (frontend/public/.htaccess
+# → dist/.htaccess), so copying dist/* to the web root includes it.
+
+RewriteEngine On
+Options -Indexes
+
+# --- API → the PHP backend (Slim front controller) -------------------------
+# Hand every /api/... request to api/public/index.php WITHOUT changing the URL,
+# so Slim's routes (grouped under /api/v1) still match. Routing everything
+# through Slim also shields the backend internals: a direct hit on api/.env,
+# api/config/ or api/vendor/ is handed to Slim, which 404s anything that is not
+# a real API route. The condition stops a rewrite loop once the request has
+# landed on the front controller.
+RewriteCond %{REQUEST_FILENAME} !api/public/index\.php$
+RewriteRule ^api(?:/.*)?$ api/public/index.php [L]
+
+# --- Real files & prerendered pages ----------------------------------------
+# Serve anything that exists on disk as-is: hashed assets, the service worker,
+# the prerendered /r/<slug>/index.html recipe pages, robots.txt, etc.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# --- SPA fallback ----------------------------------------------------------
+# Any other path is a client-side route → serve the app shell.
+RewriteRule ^ index.html [L]
+
+# --- Caching ---------------------------------------------------------------
+# Fingerprinted assets can be cached hard; index.html and the service worker
+# must always revalidate so a new deploy is picked up promptly.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2|png|svg|jpg|jpeg|webp)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "(index\.html|sw\.js|registerSW\.js|manifest\.webmanifest)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

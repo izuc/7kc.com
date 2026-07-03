@@ -95,6 +95,7 @@ Off by default. If the server operator points `AI_SCAN_ENDPOINT` / `AI_SCAN_MODE
 ## Docs
 
 - [`docs/DEPLOY.md`](./docs/DEPLOY.md) — production deploy notes
+- [`docs/DEPLOY-7KC.md`](./docs/DEPLOY-7KC.md) — single-domain deploy (SPA at `/`, API at `/api`) with a ready `.htaccess`
 - [`docs/ADMIN.md`](./docs/ADMIN.md) — day-two operations, SQL recipes, user management
 - [`docs/FLIPPING.md`](./docs/FLIPPING.md) — monetisation paths, SEO playbook, hand-off checklist
 - [`docs/API.md`](./docs/API.md) — endpoint reference
