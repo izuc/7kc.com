@@ -5,9 +5,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // The catalogue size, baked in at build time so marketing copy can never
 // drift from shared/recipes.json again.
-const RECIPE_COUNT = JSON.parse(
-  readFileSync(new URL('../shared/recipes.json', import.meta.url), 'utf8')
-).length;
+const RECIPES_PATH = new URL('../shared/recipes.json', import.meta.url);
+const RECIPE_COUNT = JSON.parse(readFileSync(RECIPES_PATH, 'utf8')).length;
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -16,6 +15,20 @@ export default defineConfig(({ mode }) => {
       __RECIPE_COUNT__: JSON.stringify(RECIPE_COUNT),
     },
     plugins: [
+      {
+        // __RECIPE_COUNT__ is fixed when this config loads, so a dev server
+        // that outlives a catalogue change would keep serving the old number.
+        // Watch recipes.json and restart (which re-evaluates the config).
+        name: '7kc:recipe-count-refresh',
+        apply: 'serve',
+        configureServer(server) {
+          const p = RECIPES_PATH.pathname.replace(/^\/([A-Za-z]:)/, '$1');
+          server.watcher.add(p);
+          server.watcher.on('change', (file) => {
+            if (file.replace(/\\/g, '/').endsWith('shared/recipes.json')) server.restart();
+          });
+        },
+      },
       react(),
       VitePWA({
         registerType: 'autoUpdate',
