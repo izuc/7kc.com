@@ -19,7 +19,7 @@ Built from [`7kc-spec.md`](./7kc-spec.md).
 7kc/
 ├── frontend/    React + TS + Vite PWA
 ├── backend/     PHP Slim API (MySQL | SQLite)
-├── shared/      ingredient dictionary (222) + recipe catalogue (240, seeded into DB)
+├── shared/      ingredient dictionary (222) + recipe catalogue (280, seeded into DB)
 ├── docs/        DEPLOY.md, ADMIN.md, API.md, DISH-ART-PLAN.md, art exploration
 └── 7kc-spec.md  product spec
 ```
@@ -86,7 +86,7 @@ No stock photos: every recipe card, hero and thumbnail is an SVG illustration ge
 
 ## Guided cooking
 
-Every one of the 240 seeded recipes carries a full beginner layer: each step has a short title, a plain-English walkthrough, technique tips and real-hazard warnings (raw-chicken hygiene, hot-oil-and-water, don't-open-the-oven), plus the ingredients that step actually uses. Recipes also know their difficulty, the equipment you'll need, easy ingredient swaps, and make-ahead / storage / leftover guidance — all food-safety checked (chicken to 74°C, cooked rice keeps 1 day, seafood 1–2 days). Cook Mode (`/cook/:slug`) walks you through step by step with per-step countdown timers (chime + vibration), pantry-aware "in this step" ingredient chips, and a screen wake-lock so the phone stays on at the stove. The whole layer lives in `shared/recipes.json` and is enforced by `scripts/validate-recipes.mjs`; authoring rules are in [`docs/GUIDED-COOKING.md`](./docs/GUIDED-COOKING.md).
+Every one of the 280 seeded recipes carries a full beginner layer: each step has a short title, a plain-English walkthrough, technique tips and real-hazard warnings (raw-chicken hygiene, hot-oil-and-water, don't-open-the-oven), plus the ingredients that step actually uses. Recipes also know their difficulty, the equipment you'll need, easy ingredient swaps, and make-ahead / storage / leftover guidance — all food-safety checked (chicken to 74°C, cooked rice keeps 1 day, seafood 1–2 days). Cook Mode (`/cook/:slug`) walks you through step by step with per-step countdown timers (chime + vibration), pantry-aware "in this step" ingredient chips, and a screen wake-lock so the phone stays on at the stove. The whole layer lives in `shared/recipes.json` and is enforced by `scripts/validate-recipes.mjs`; authoring rules are in [`docs/GUIDED-COOKING.md`](./docs/GUIDED-COOKING.md).
 
 ## Optional AI photo scanning
 
@@ -109,7 +109,7 @@ Off by default. If the server operator points `AI_SCAN_ENDPOINT` / `AI_SCAN_MODE
 - ✅ Phase 5: OCR (Tesseract.js), PWA install prompt, Plausible analytics, affiliate buttons (Woolies/Coles seeded), `/r/:slug` SEO recipe pages with Schema.org JSON-LD, sitemap generator, sponsored-recipe + view-count columns, FLIPPING/ADMIN docs
 - ✅ Phase 6: catalogue grown to 204 chef-reviewed recipes; dish artwork v2 (generated, seeded, 54 archetypes) + 222 redrawn ingredient icons; public `/browse` catalogue and landing-page art showcase; mobile responsiveness pass; optional operator-configured AI photo scanning (shopping lists + pantry/fridge shelves)
 - ✅ Phase 7: guided cooking — beginner walkthroughs on every step of all 204 recipes (titles, tips, safety warnings, per-step ingredients), difficulty/equipment/swaps/storage on every recipe, and a Cook Mode with per-step timers and pantry-aware ingredient chips
-- ✅ Phase 8: catalogue grown to 240 — 36 new chef-verified dishes filling the gaps (Aussie retro classics, Chinese/Japanese/South-East Asian favourites, European mains, Mexican brunch, baking and sweets), each with the full guided-cooking layer and its own generated artwork
+- ✅ Phase 8: catalogue grown to 240, then 280 — 76 new chef-verified dishes filling the gaps (Aussie retro classics, Chinese/Japanese/South-East Asian favourites, European bistro, Mexican, British comfort, baking and sweets), each with the full guided-cooking layer and its own generated artwork, plus two new art archetypes (sausage rolls, muffins)
 
 ## Principles
 

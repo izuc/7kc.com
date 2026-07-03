@@ -611,7 +611,152 @@ export function BorekCoil({ tones, slug, toppingIds, size }: DishProps) {
   );
 }
 
+// ---------------------------------------------------------------------------
+// sausage-rolls — golden puff logs on a round plate, flaky score marks, darker
+// filling peeking from the cut ends, and the obligatory dish of tomato sauce.
+// ---------------------------------------------------------------------------
+export function SausageRolls({ tones, slug, toppingIds, size }: DishProps) {
+  const rnd = rngFor(slug + ':rolls');
+  const simplified = size < SIMPLIFY_BELOW;
+  const pastry = mix(tones.food, PASTRY, 0.78);
+  const pastryHi = lighten(pastry, 0.15);
+  const flake = darken(pastry, 0.13);
+  const filling = mix(tones.food, '#8a5a40', 0.5);
+  const SAUCE = '#c2452c';
+
+  // Two relaxed rows of chunky logs, each with its own small tilt.
+  const rows = [
+    { y: 152, n: 2, w: 102 },
+    { y: 244, n: 2, w: 102 },
+  ];
+  const logs: ReactNode[] = [];
+  rows.forEach((row, ri) => {
+    const span = row.n * (row.w + 18) - 18;
+    for (let i = 0; i < row.n; i++) {
+      const x = 200 - span / 2 + i * (row.w + 18) + row.w / 2 + (rnd() - 0.5) * 8;
+      const y = row.y + (rnd() - 0.5) * 8;
+      const rot = (rnd() - 0.5) * 10;
+      const h = 52 + rnd() * 5;
+      const v = rnd();
+      logs.push(
+        <g key={`${ri}-${i}`} transform={`rotate(${rot} ${x} ${y})`}>
+          <rect x={x - row.w / 2 + 4} y={y - h / 2 + 7} width={row.w} height={h} rx={16} fill={tones.shadow} opacity={0.5} />
+          <rect x={x - row.w / 2} y={y - h / 2} width={row.w} height={h} rx={16} fill={pastry} stroke={INK} strokeWidth={SW.topping} />
+          {/* filling peeking from the cut end */}
+          <ellipse cx={x + (v > 0.5 ? 1 : -1) * (row.w / 2 - 6)} cy={y} rx={5} ry={h / 2 - 12} fill={filling} />
+          {!simplified && (
+            <path
+              d={`M${x - row.w * 0.16},${y - h * 0.16} q${row.w * 0.1},${h * 0.16} 0,${h * 0.34}`}
+              fill="none"
+              stroke={flake}
+              strokeWidth={3.2}
+              strokeLinecap="round"
+            />
+          )}
+          <path d={`M${x - row.w * 0.28},${y - h / 2 + 9} q${row.w * 0.24},-7 ${row.w * 0.5},0`} fill="none" stroke={pastryHi} strokeWidth={7} strokeLinecap="round" />
+        </g>
+      );
+    }
+  });
+
+  return (
+    <>
+      <CardWash tones={tones} />
+      <TopPlate tones={tones} r={148} />
+      {logs}
+      {/* sauce dish tucked at the rim */}
+      <g>
+        <circle cx={296} cy={140} r={26} fill="#fdf6e8" stroke={INK} strokeWidth={SW.topping} />
+        <circle cx={296} cy={140} r={17} fill={SAUCE} />
+        {!simplified && <ellipse cx={290} cy={134} rx={6} ry={3.5} fill={lighten(SAUCE, 0.22)} />}
+      </g>
+      {!simplified && <CrumbScatter seedKey={`${slug}:flakes`} cx={200} cy={205} rx={110} ry={80} n={7} color={flake} rMax={3.4} />}
+      <ToppingScatter slug={slug} ids={toppingIds.filter((id) => stampFor(id)?.kind === 'scatter')} cx={200} cy={200} clipR={90} rimR={132} size={26} simplified={simplified} />
+      {!simplified && <Steam x={186} y={54} scale={0.65} />}
+    </>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// muffins — three tall muffins on a plate: pleated paper cases, overhanging
+// golden domes, fruit/choc studs from the recipe's own scatter stamps or
+// hand-placed dots in a darker food tone.
+// ---------------------------------------------------------------------------
+export function Muffins({ tones, slug, toppingIds, size }: DishProps) {
+  const rnd = rngFor(slug + ':muffins');
+  const simplified = size < SIMPLIFY_BELOW;
+  const dome = mix(tones.food, '#eec27a', 0.5);
+  const domeHi = lighten(dome, 0.15);
+  const domeShade = darken(dome, 0.14);
+  const stud = darken(tones.food, 0.28);
+  const CASE = '#f4e6c8';
+  const pleat = darken(CASE, 0.14);
+
+  const spots = [
+    { x: 130 + (rnd() - 0.5) * 10, y: 216, s: 1 },
+    { x: 270 + (rnd() - 0.5) * 10, y: 212, s: 0.96 },
+    { x: 200 + (rnd() - 0.5) * 8, y: 168, s: 1.04 },
+  ];
+
+  const muffins = spots.map((m, i) => {
+    const v = rngFor(`${slug}:muffin${i}`)();
+    const cw = 62 * m.s; // case width at the top
+    const ch = 46 * m.s; // case height
+    const domeR = 44 * m.s;
+    const caseTop = m.y;
+    const dots = simplified
+      ? null
+      : [0, 1, 2, 3].map((j) => {
+          const a = (j / 4) * Math.PI + v * 1.2;
+          const rr = domeR * (0.32 + ((j * 0.23 + v) % 0.45));
+          return <circle key={j} cx={m.x + Math.cos(a) * rr} cy={caseTop - domeR * 0.42 - Math.sin(a) * rr * 0.55} r={4 + (j % 2)} fill={stud} />;
+        });
+    return (
+      <g key={i}>
+        <ellipse cx={m.x + 5} cy={caseTop + ch - 2} rx={cw * 0.62} ry={9} fill={tones.shadow} opacity={0.5} />
+        {/* dome overhangs the case */}
+        <path
+          d={`M${m.x - cw / 2 - 9},${caseTop} q${-domeR * 0.14},${-domeR * 1.28} ${cw / 2 + 9},${-domeR * 1.18} q${cw / 2 + 9 + domeR * 0.14},${-domeR * 0.1} ${cw / 2 + 9},${domeR * 1.18} Z`}
+          fill={dome}
+          stroke={INK}
+          strokeWidth={SW.topping}
+        />
+        {dots}
+        <SheenArc cx={m.x} cy={caseTop - domeR * 0.52} r={domeR * 0.56} from={205} to={255} color={domeHi} width={6.5} opacity={1} />
+        {/* pleated case */}
+        <path
+          d={`M${m.x - cw / 2},${caseTop} L${m.x - cw * 0.38},${caseTop + ch} L${m.x + cw * 0.38},${caseTop + ch} L${m.x + cw / 2},${caseTop} Z`}
+          fill={CASE}
+          stroke={INK}
+          strokeWidth={SW.topping}
+          strokeLinejoin="round"
+        />
+        {!simplified && (
+          <g stroke={pleat} strokeWidth={3.2} strokeLinecap="round">
+            {[-0.3, -0.1, 0.1, 0.3].map((t, j) => (
+              <line key={j} x1={m.x + cw * t} y1={caseTop + 4} x2={m.x + cw * t * 0.78} y2={caseTop + ch - 4} />
+            ))}
+          </g>
+        )}
+        <path d={`M${m.x - cw / 2},${caseTop} L${m.x + cw / 2},${caseTop}`} stroke={domeShade} strokeWidth={4} strokeLinecap="round" />
+      </g>
+    );
+  });
+
+  return (
+    <>
+      <CardWash tones={tones} />
+      <TopPlate tones={tones} r={148} />
+      {muffins}
+      {!simplified && <CrumbScatter seedKey={`${slug}:crumbs`} cx={200} cy={252} rx={112} ry={40} n={6} color={domeShade} rMax={3} />}
+      {!simplified && <Steam x={214} y={50} scale={0.6} />}
+    </>
+  );
+}
+
 export const BAKES_FORMS: Record<string, DishTemplate> = {
+  'sausage-rolls': (p) => <SausageRolls {...p} />,
+  'muffins': (p) => <Muffins {...p} />,
   'pizza-whole': (p) => <PizzaWhole {...p} />,
   'pie-whole': (p) => <PieWhole {...p} />,
   'tart-slice': (p) => <TartSlice {...p} />,

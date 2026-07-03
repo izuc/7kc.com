@@ -326,8 +326,10 @@ export function BagelStack({ tones, slug, toppingIds, size }: DishProps) {
 function LettuceCup({ tones, cx, cy, s, seedKey }: { tones: DishProps['tones']; cx: number; cy: number; s: number; seedKey: string }) {
   const rnd = rngFor(seedKey);
   const j = () => (rnd() - 0.5) * 6;
-  // savoury mince — warmed from tones.food so green-palette recipes stay legible
-  const mince = mix(tones.food, '#a8703a', 0.62);
+  // savoury mince — warmed from tones.food so green-palette recipes stay legible.
+  // Seafood fillings (prawn cocktail…) keep their coral instead of going mince-brown.
+  const seafood = /prawn|shrimp|crab|seafood/.test(seedKey);
+  const mince = seafood ? mix(tones.food, '#f29b74', 0.4) : mix(tones.food, '#a8703a', 0.62);
   const minceHi = lighten(mince, 0.14);
   const minceLo = darken(mince, 0.16);
   return (
